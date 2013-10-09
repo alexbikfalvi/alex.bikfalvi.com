@@ -658,6 +658,15 @@ span.xmlname {
 	color:#A31515;
 }
 
+.flag_banner {
+	width:200px;
+	height:52px;
+	margin-left:800px;
+	margin-top:20px;
+	margin-bottom:-72px;
+	background-repeat:no-repeat;
+}
+
 #flag_beta {
 	width:200px;
 	height:52px;
@@ -666,4 +675,8 @@ span.xmlname {
 	margin-bottom:-72px;
 	background-image:url(../images/flag_beta.png);
 	background-repeat:no-repeat;
+}
+
+#flag_coming_soon {
+	background-image:url(../images/flag_coming_soon.png);
 }
