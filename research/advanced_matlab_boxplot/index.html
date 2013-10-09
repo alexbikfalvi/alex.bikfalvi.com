@@ -1,0 +1,399 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Alex, Bikfalvi, personal, site, Matlab, plot, box plot, boxplot"/>
+<meta name="description" content="Alex Bikfalvi personal web site - Advanced Matlab box plot"/>
+<meta name="copyright" content="Alex Bikfalvi"/>
+<meta name="robots" content="index, follow" />
+
+<link href="../../images/icon.ico" rel="shortcut icon" />
+<link href="../../style/style.css" rel="stylesheet" title="Silver stylesheet" type="text/css"/>
+<link href="../../style/mglass.css" rel="stylesheet" type="text/css"/>
+
+<title>Alex Bikfalvi - Advanced Boxplot for Matlab</title>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24480564-1']);
+  _gaq.push(['_setDomainName', '.bikfalvi.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script type="text/javascript" src="../../script/mglass.js"></script>
+
+<style type="text/css">
+<!--
+.mglass_viewer {
+	width: 250px; 
+	height: 250px;
+	-moz-border-radius: 150px;
+	-webkit-border-radius: 150px;
+	-khtml-border-radius: 150px;
+	border-radius: 150px;
+	-moz-box-shadow: 15px 15px 30px #000000;
+	-webkit-box-shadow: 15px 15px 30px #000000;
+	box-shadow: 15px 15px 30px #000000;
+}
+.exampleFigure {
+	width:900px;
+	height:350px;
+}
+.exampleFigure p {
+	margin-top:-5px;
+	margin-bottom:0;
+	margin-left:10px;
+	color:#999999;
+	font-style:italic;
+}
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+span.code { font-family:Consolas,Menlo,Monaco,"Lucida Console","Liberation Mono","DejaVu Sans Mono","Bitstream Vera Sans Mono","Courier New",monospace,serif; }
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+
+-->
+</style>
+
+</head>
+
+<body>
+
+<div id="content">
+
+<div id="header">
+<p class="hidden">Alex Bikfalvi</p>
+</div>
+
+<div id="back">
+
+<div id="navigation">
+<ul id="nav_main" class="nav">
+<li><a href="../../" accesskey="H"><span class="accesskey">H</span>ome</a></li>
+<li><a href="../../bio.html" accesskey="B"><span class="accesskey">B</span>io</a></li>
+<li><a href="../../contact.html" accesskey="C"><span class="accesskey">C</span>ontact</a></li>
+<li id="nav_index"><a href="../../research.html" accesskey="R"><span class="accesskey">R</span>esearch</a></li>
+<li><a href="../../projects.html" accesskey="J">Pro<span class="accesskey">j</span>ects</a></li>
+<li><a href="../../pubs.html" accesskey="P"><span class="accesskey">P</span>ublications</a></li>
+<li><a href="../../teaching.html" accesskey="T"><span class="accesskey">T</span>eaching</a></li>
+<li><a href="../../events.html" accesskey="E"><span class="accesskey">E</span>vents</a></li>
+</ul>
+</div>
+
+<div id="path">
+	<ul>
+    	<li id="path_home"><a href="../../" title="Home"><span>Home</span></a></li>
+    	<li class="path_arrow"><a href="../../research.html">Research</a></li>
+    	<li class="path_arrow">Advanced Box Plot for Matlab</li>
+    </ul>
+</div>
+
+<div id="flag_beta"></div>
+
+<div id="main_content">
+
+<h1>Advanced Box Plot for Matlab</h1>
+
+<div>
+
+<h2>Overview</h2>
+
+<p>To illustrate the statistical properties of large data sets, Matlab includes a builtin box plot function. Although this function is a suitable tool in everyday use, some circumstances may require a more powerful alternative. These include the addition of the sample mean to the boxplot data, the grouping of data based on a given criterion and customzied coloring for publishing. To address these requirements, in this page, we introduce an advanced box blot function designed for Matlab power users.</p>
+
+<h2>Download</h2>
+<ul>
+  <li><a href="../../download/aboxplot.zip">aboxplot.zip</a> (ZIP/3.48 KB)</li>
+</ul>
+<p>Beta 1 version as of September 27, 2012.</p>
+<p></p>
+
+<h2>Usage</h2>
+
+<p>To plot an advanced boxplot, call the following function:</p>
+
+<pre>aboxplot(x);</pre>
+
+<p>or:</p>
+
+<pre>aboxplot(x, <span class="string">'argument_name'</span>, argument_value, ...);</pre>
+
+<p>where <em>x</em> may be:</p>
+
+<ul>
+	<li>A two-dimensional <em>n</em> x <em>m</em> numeric matrix. The figure will contain a number of <em>m</em> box plot bars, equal to the number of columns. Each box plot bar will use the <em>n</em> values from the corresponding data set.</li>
+	<li>A three-dimensional <em>p</em> x <em>n</em> x <em>m</em> numeric array. The figure will contain a <em>m</em> groups of <em>p</em> box plot bars each. Each box plot bar will use the <em>n</em> values from the corresponding data set.</li>    
+    <li>An array of <em>p</em> cells, where each cell contains a <em>n</em> x <em>m</em> numeric matrix. The figure will contain a <em>m</em> groups of <em>p</em> box plot bars each. Each box plot bar will use the <em>n</em> values from the corresponding data set.</li>
+</ul>
+
+<p>Currently, the following optional arguments are supported:</p>
+<table class="tableinfo" width="960">
+  <tr>
+    <th width="150" scope="col" class="strong">Argument name</th>
+    <th scope="col">Argument description</th>
+  </tr>
+  <tr>
+    <td width="150" class="strong"><pre><span class="string">'Colorgrad'</span></pre></td>
+    <td>A text string representing the color gradient applied to the box plot bars. Currently, the following colors are supported:<pre><span class="string">
+    'blue_down'
+    'blue_up'
+    'green_down'
+    'green_up'
+    'orange_down'
+    'orange_up'
+    'red_down'
+    'red_up'
+    </span></pre></td>
+  </tr>
+  <tr>
+    <td width="150" class="strong"><pre><span class="string">'Colorrev'</span></pre></td>
+    <td>A boolean value:
+    	<ul>
+        	<li>if false, the color gradient applies across the <em>m</em> box plot bars within a group (default);</li>
+        	<li>if true, the color gradient applies across the <em>p</em> groups.</li>
+        </ul>
+    </td>
+  </tr>
+  <tr>
+    <td width="150" class="strong"><pre><span class="string">'Colormap'</span></pre></td>
+    <td>A color matrix, which specifies custom colors for the box plot bars.</td>
+  </tr>
+  <tr>
+    <td width="150" class="strong"><pre><span class="string">'Labels'</span></pre></td>
+    <td>The X-axis labels, corresponding to the <em>m</em> groups.</td>
+  </tr>
+  <tr>
+    <td width="150" class="strong"><pre><span class="string">'OutlierMarker'</span></pre></td>
+    <td>The marker used to plot the outliers.</td>
+  </tr>
+  <tr>
+    <td width="150" class="strong"><pre><span class="string">'OutlierMarkerSize'</span></pre></td>
+    <td>The size of the marker used to plot the outliers.</td>
+  </tr>
+  <tr>
+    <td width="150" class="strong"><pre><span class="string">'OutlierMarkerEdgeColor'</span></pre></td>
+    <td>The edge color of the marker used to plot the outliers.</td>
+  </tr>
+  <tr>
+    <td width="150" class="strong"><pre><span class="string">'OutlierMarkerFaceColor'</span></pre></td>
+    <td>The face color of the marker used to plot the outliers.</td>
+  </tr>
+  <tr>
+    <td width="150" class="strong"><pre><span class="string">'WidthE'</span></pre></td>
+    <td>A numeric value in the interval (0, 1), represeting the width of the whisker edge, relative to width available to an individual box plot bar.</td>
+  </tr>
+  <tr>
+    <td width="150" class="strong"><pre><span class="string">'WidthL'</span></pre></td>
+    <td>A numeric value in the interval (0, 1), represeting the width of the box plot group, relative to width available to an individual box plot group.</td>
+  </tr>
+  <tr>
+    <td width="150" class="strong"><pre><span class="string">'WidthS'</span></pre></td>
+    <td>A numeric value in the interval (0, 1), represeting the width of the box plot bar, relative to width available to an individual box plot bar.</td>
+  </tr>
+</table>
+
+<h2>Tutorial</h2>
+
+<p>To demonstrate the power of the advanced box plot function, we include a walkthrough that covers the most common features.</p>
+
+<h3>Single Box Plot</h3>
+
+<p>This example plots three data sets of normally distributed random variables, <span class="code">x1</span>, <span class="code">x2</span> and <span class="code">x3</span> with a mean of 5, 10 and 15, respectively. The data sets must have the same an equal number of elements (10000) and are concatenated in a 10000 x 3 matrix.</p>
+
+<div class="contents" style="height:150px">
+<pre class="codeinput">
+x1 = normrnd(5,2,10000,1); <span class="comment">% First data set of 10000 values with mean 5</span>
+x2 = normrnd(10,2,10000,1); <span class="comment">% Second data set of 10000 values with mean 10</span>
+x3 = normrnd(15,2,10000,1); <span class="comment">% Third data set of 10000 values with mean 15</span>
+
+x = cat(2,x1,x2,x3); <span class="comment">% Concatenate the data sets in a 10000 x 3 matrix</span>
+
+aboxplot(x,<span class="string">'labels'</span>,[5,10,15]); <span class="comment">% Advanced box plot</span>
+
+xlabel(<span class="string">'$\mu$'</span>); <span class="comment">% Set the X-axis label</span>
+</pre>
+</div>
+
+<div class="exampleFigure">
+	<img id="imageSingle" src="FigureSingleSmall.png" width="420" height="320" alt="" border="0"/>
+<script type="text/javascript">
+new MGlass("imageSingle","./FigureSingleLarge.png");
+</script>
+	<p>Single box plot</p>
+</div>
+
+<h3>Grouped Box Plot with 3D Array</h3>
+
+<p>This example plots three groups of tree data sets each, of normally distributed random variables. The data sets in each group have a mean of 5, 10 and 15, respectively. The standard deviation for each group is 2, 4 and 6, respectively.</p>
+
+<p>There are two possibilities to plot grouped data sets. In the first, the data sets must have the same the number of elements (10000) and are concatenated in a 3 x 10000 x 3 array, where the first dimesion represents the group.</p>
+
+<div class="contents" style="height:420px">
+<pre class="codeinput">
+<span class="comment">% First group of 3 data set with standard deviation 2</span>
+x1 = normrnd(5,2,10000,1);
+x2 = normrnd(10,2,10000,1);
+x3 = normrnd(15,2,10000,1);
+<span class="comment">% Second group of 3 data set with standard deviation 4</span>
+y1 = normrnd(5,4,10000,1);
+y2 = normrnd(10,4,10000,1);
+y3 = normrnd(15,4,10000,1);
+<span class="comment">% Third group of 3 data set with standard deviation 6</span>
+z1 = normrnd(5,6,10000,1);
+z2 = normrnd(10,6,10000,1);
+z3 = normrnd(15,6,10000,1);
+
+<span class="comment">% Concatenate the data sets from each group in a 10000 x 3 matrix</span>
+x = cat(2,x1,x2,x3); 
+y = cat(2,y1,y2,y3);
+z = cat(2,z1,z2,z3);
+
+<span class="comment">% Concatenate the each group in a  3 x 10000 x 3 matrix</span>
+h = cat(1, reshape(x,[1 size(x)]), reshape(y,[1 size(y)]), reshape(z,[1 size(z)]));
+
+aboxplot(h,<span class="string">'labels'</span>,[5,10,15]); <span class="comment">% Advanced box plot</span>
+
+xlabel(<span class="string">'$\mu$'</span>); <span class="comment">% Set the X-axis label</span>
+
+legend(<span class="string">'$\sigma=2$'</span>,<span class="string">'$\sigma=4$'</span>,<span class="string">'$\sigma=6$'</span>); <span class="comment">% Add a legend</span>
+</pre>
+</div>
+
+<div class="exampleFigure">
+	<img id="imageMultipleArray" src="FigureMultipleArraySmall.png" width="420" height="320" alt="" border="0"/>
+<script type="text/javascript">
+new MGlass("imageMultipleArray","./FigureMultipleArrayLarge.png");
+</script>
+	<p>Grouped box plot with 3D array</p>
+</div>
+
+<h3>Grouped Box Plot with Cell Array</h3>
+
+<p>The second possibility is to use a cell array instead of a three dimensional array. The cell array has the advantage that it does not require the same number of elements for data sets in different groups. However, data sets in the same group must still have an equal number of elements.</p>
+
+<div class="contents" style="height:400px">
+<pre class="codeinput">
+<span class="comment">% First group of 3 data set with standard deviation 2</span>
+x1 = normrnd(5,2,10000,1);
+x2 = normrnd(10,2,10000,1);
+x3 = normrnd(15,2,10000,1);
+<span class="comment">% Second group of 3 data set with standard deviation 4</span>
+y1 = normrnd(5,4,10000,1);
+y2 = normrnd(10,4,10000,1);
+y3 = normrnd(15,4,10000,1);
+<span class="comment">% Third group of 3 data set with standard deviation 6</span>
+z1 = normrnd(5,6,10000,1);
+z2 = normrnd(10,6,10000,1);
+z3 = normrnd(15,6,10000,1);
+
+<span class="comment">% Concatenate the data sets from each group in a 10000 x 3 matrix</span>
+x = cat(2,x1,x2,x3); 
+y = cat(2,y1,y2,y3);
+z = cat(2,z1,z2,z3);
+
+h = {x;y;z}; <span class="comment">% Create a cell array with the data for each group</span>
+
+aboxplot(h,<span class="string">'labels'</span>,[5,10,15]); <span class="comment">% Advanced box plot</span>
+
+xlabel(<span class="string">'$\mu$'</span>); <span class="comment">% Set the X-axis label</span>
+
+legend(<span class="string">'$\sigma=2$'</span>,<span class="string">'$\sigma=4$'</span>,<span class="string">'$\sigma=6$'</span>); <span class="comment">% Add a legend</span>
+</pre>
+</div>
+
+<div class="exampleFigure">
+	<img id="imageMultipleCell" src="FigureMultipleCellSmall.png" width="420" height="320" alt="" border="0"/>
+<script type="text/javascript">
+new MGlass("imageMultipleCell","./FigureMultipleCellLarge.png");
+</script>
+	<p>Grouped box plot with cell array</p>
+</div>
+
+<h3>Color Gradient</h3>
+
+<p>Blue is the default color for the advanced box plot, and the function uses a color gradient for the data sets in individual groups. The <span class="code"><span class="string">colorgrad</span></span> option enables the user to change the default color gradient with seven other possible alternatives.</p>
+
+<div class="contents" style="height:50px">
+<pre class="codeinput">
+...
+aboxplot(h,<span class="string">'labels'</span>,[5,10,15],<span class="string">'colorgrad'</span>,<span class="string">'orange_down'</span>);
+...
+</pre>
+</div>
+
+<div class="exampleFigure">
+	<img id="imageColorgrad" src="FigureColorgradSmall.png" width="420" height="320" alt="" border="0"/>
+<script type="text/javascript">
+new MGlass("imageColorgrad","./FigureColorgradLarge.png");
+</script>
+	<p>Color gradient</p>
+</div>
+
+<h3>Coloring Groups</h3>
+
+<p>By default, the advanced box plot applies the color gardient across the data sets in individual groups. Use the <span class="code"><span class="string">colorrev</span></span> option set to <span class="code">true</span> to apply the gradient across groups.</p>
+
+<div class="contents" style="height:50px">
+<pre class="codeinput">
+...
+aboxplot(h,<span class="string">'labels'</span>,[5,10,15],<span class="string">'colorgrad'</span>,<span class="string">'green_down'</span>,<span class="string">'colorrev'</span>,true);
+...
+</pre>
+</div>
+
+<div class="exampleFigure">
+	<img id="imageColorrev" src="FigureColorrevSmall.png" width="420" height="320" alt="" border="0"/>
+<script type="text/javascript">
+new MGlass("imageColorrev","./FigureColorrevLarge.png");
+</script>
+	<p>Coloring groups</p>
+</div>
+<h2>Version History</h2>
+
+<table class="tableinfo" width="960">
+  <tr>
+    <th width="150" scope="col">Version</th>
+    <th width="150" scope="col" class="strong">Date</th>
+    <th scope="col">Description</th>
+  </tr>
+  <tr>
+    <td width="150">Beta 1</td>
+    <td width="150" class="strong">September 27, 2012</td>
+    <td>Initial beta release.</td>
+  </tr>
+</table>
+
+</div>
+
+<p class="update">Published: September 27, 2012<br/>Last updated: September 27, 2012</p>
+
+</div>
+</div>
+
+<div id="footer">
+<p><a href="../../accessibility.html" title="Accessibility">Accessibility</a> | <a href="../../copyright.html" title="Copyright Information">Copyright Information</a></p>
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Alex, Bikfalvi, personal, site"/>
+<meta name="description" content="Alex Bikfalvi personal web site"/>
+
+<link href="../../style/styler.css" rel="stylesheet" title="Research stylesheet" type="text/css"/>
+<link href="../../style/style2.css" rel="alternate stylesheet" title="Brand new shiny stylesheet" type="text/css"/>
+<link href="../../style/style.css" rel="alternate stylesheet" title="Plain old stylesheet" type="text/css"/>
+
+<title>Alex Bikfalvi - Research | Peer-to-Peer Video Caching | Evaluation</title>
+
+</head>
+
+<body>
+
+<div id="content">
+
+<div class="header">
+<p class="hidden">Alex Bikfalvi</p>
+</div>
+
+<div class="back">
+
+<div id="path">
+<p>You are here: <a href="../../index.html">Home</a> &gt; <a href="../../research.html">Research</a> &gt; <a href="index.html">Peer-to-Peer Video Caching</a> &gt; Evaluation</p>
+</div>
+
+<div class="main_content">
+
+<h1>Evaluation</h1>
+<h2>BHR vs. cache size</h2>
+<table class="pub_table" cellpadding="4">
+    <tr>
+     	<td width="100px" valign="top">
+        	<p class="pub_date">Variable input</p>
+        </td>
+    	<td width="700px" valign="top">
+    	  <p>Cache size: <strong><em>10</em></strong>, <em><strong>20</strong></em>, ..., <em><strong>100</strong></em>, <strong><em>200</em></strong>, ..., <em><strong>500</strong></em> segments</p>
+       	</td>
+    </tr>
+    <tr>
+      <td valign="top"><span class="pub_date">Fixed input</span></td>
+      <td><p>Stream size: <em><strong>100</strong></em> segments</p>
+        <p>Number of streams: <em><strong>1000</strong></em><strong></strong></p>
+        <p>Stream popularity (spatial)</p>
+        <p>- alpha for zipf: <em><strong>0.8</strong></em><strong></strong></p>
+        <p>- number of session for most popular stream: <em><strong>1000</strong></em> sessions</p>
+        <p>Stream popularity (temporal)</p>
+        <p>- mean of the lognormal function for session lifespan: <em><strong>8</strong></em></p>
+        <p>Time scaling factor: <em><strong>0.0008</strong></em></p>
+        <p>Maximum time: <em><strong>750000</strong></em> seconds</p>
+        <p></p></td>
+    </tr>
+</table>
+<h2>BHR vs. number of streams</h2>
+<table class="pub_table" cellpadding="4">
+    <tr>
+     	<td width="100px" valign="top">
+        	<p class="pub_date">Variable input</p>
+        </td>
+    	<td width="700px" valign="top">
+    	  <p>Number of streams: <strong><em>100</em></strong>, <em><strong>200</strong></em>, ... , <em><strong>900</strong></em>, <em><strong>1000</strong></em>, <em><strong>2000</strong></em>, ... , <em><strong>10000</strong></em> streams</p>
+       	</td>
+    </tr>
+    <tr>
+      <td valign="top"><span class="pub_date">Fixed input</span></td>
+      <td><p>Stream size: <em><strong>100</strong></em> segments</p>
+        <p>Cache size: <em><strong>200</strong></em> segments</p>
+        <p>Stream popularity (spatial)</p>
+<p>- alpha for zipf: <em><strong>0.6</strong></em><strong><em>7</em></strong> (needs to be lower to accomodate 10000 streams)</p>
+        <p>- number of session for most popular stream: <em><strong>1000</strong></em> sessions</p>
+        <p>Stream popularity (temporal)</p>
+        <p>- mean of the lognormal funtion for session lifespan: <em><strong>8</strong></em></p>
+        <p>Time scaling factor: <em><strong>0.0014</strong></em><strong></strong></p>
+        <p>Maximum time: <em><strong>2000000</strong></em> seconds</p>
+        <p></p></td>
+    </tr>
+</table>
+<h2>BHR vs. stream popularity (spatial)</h2>
+<table class="pub_table" cellpadding="4">
+    <tr>
+     	<td width="100px" valign="top">
+        	<p class="pub_date">Variable input</p>
+        </td>
+    	<td width="700px" valign="top">
+    	  <p>Alpha for zipf distribution: <em><strong>0.3</strong></em>, <em><strong>0.4</strong></em>, <em><strong>0.5</strong></em>, ..., <em><strong>1</strong></em><strong></strong></p>
+    	  <p><a href="in_pop_spatial.pdf" target="_blank"><img src="in_pop_spatial.png" width="560" height="420" /></a></p>
+       	</td>
+    </tr>
+    <tr>
+      <td valign="top"><span class="pub_date">Fixed input</span></td>
+      <td><p>Number of streams: <em><strong>1000</strong></em> streams</p>
+        <p>Stream size: <em><strong>100</strong></em> segments</p>
+        <p>Cache size: <em><strong>200</strong></em> segments</p>
+        <p>Stream popularity (spatial)</p>
+<p>- number of session for most popular stream: <em><strong>1000</strong></em> sessions</p>
+<p>Stream popularity (temporal)</p>
+        <p>- mean of the lognormal funtion for session lifespan: <em><strong>8</strong></em></p>
+        <p>Time scaling factor: <em><strong>0.004</strong></em><strong></strong></p>
+        <p>Maximum time: <em><strong>TBD</strong></em><strong></strong></p>
+        <p></p></td>
+    </tr>
+</table>
+<h2>BHR vs. stream popularity (temporal)</h2>
+<table class="pub_table" cellpadding="4">
+    <tr>
+     	<td width="100px" valign="top">
+        	<p class="pub_date">Variable input</p>
+        </td>
+    	<td width="700px" valign="top">
+    	  <p>Mean for lognormal distribution of the session lifespan: <em><strong>3</strong></em>,<em><strong> 4</strong></em>,<em><strong> 5</strong></em>,<em><strong> 6</strong></em>,<em><strong> 7</strong></em>,<em><strong> 8</strong></em></p>
+    	  <p><a href="in_pop_temp.pdf" target="_blank"><img src="in_pop_temp.png" width="560" height="420" /></a></p>
+       	</td>
+    </tr>
+    <tr>
+      <td valign="top"><span class="pub_date">Fixed input</span></td>
+      <td><p>Number of streams: <em><strong>1000</strong></em> streams</p>
+        <p>Stream size: <em><strong>100</strong></em> segments</p>
+        <p>Cache size: <em><strong>200</strong></em> segments</p>
+        <p>Stream popularity (spatial)</p>
+        <p>- alpha for zipf: <em><strong>0.8</strong></em><strong></strong></p>
+<p>- number of session for most popular stream: <em><strong>1000</strong></em> sessions</p>
+<p>Time scaling factor: <em><strong>0.012</strong></em><strong></strong></p>
+<p>Maximum time: <em><strong>TBD</strong></em><strong></strong></p>
+<p></p></td>
+    </tr>
+</table>
+
+<p class="update">Last updated: February 19, 2010</p>
+
+</div>
+</div>
+
+<div class="footer"/>
+
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-7601310-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

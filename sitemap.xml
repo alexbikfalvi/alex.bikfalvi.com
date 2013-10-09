@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+    <loc>http://alex.bikfalvi.com/</loc>
+    <lastmod>2011-07-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1</priority>
+</url>
+<url>
+    <loc>http://alex.bikfalvi.com/bio.html</loc>
+    <lastmod>2011-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+</url>
+<url>
+    <loc>http://alex.bikfalvi.com/contact.html</loc>
+    <lastmod>2009-12-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+</url>
+<url>
+    <loc>http://alex.bikfalvi.com/research.html</loc>
+    <lastmod>2009-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+</url>
+<url>
+    <loc>http://alex.bikfalvi.com/projects.html</loc>
+    <lastmod>2011-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+</url>
+<url>
+    <loc>http://alex.bikfalvi.com/pubs.html</loc>
+    <lastmod>2011-04-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+</url>
+<url>
+    <loc>http://alex.bikfalvi.com/teaching.html</loc>
+    <lastmod>2013-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+</url>
+<url>
+    <loc>http://alex.bikfalvi.com/events.html</loc>
+    <lastmod>2011-07-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+</url>
+</urlset>

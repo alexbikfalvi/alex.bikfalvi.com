@@ -1,0 +1,9 @@
+@conference{garcia_ap2ps_2009,
+	title={{FLaCoSt: A Novel Peer to Peer Architecture for Video Streaming in a Next Generation Network}},
+	author={Jaime Garc\'{i}a-Reinoso and Alex Bikfalvi and Iv\'{a}n Vidal and Francisco Valera},
+	booktitle={Proceedings of the 2009 First International Conference on Advances in P2P Systems},
+	pages={186--191},
+	publisher={IEEE Computer Society},
+	month={October},
+	year={2009}
+}

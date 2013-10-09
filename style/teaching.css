@@ -1,0 +1,96 @@
+/* CSS Document */
+
+.infoboxes {
+	height:150px;
+	padding-left:0px;
+	padding-right:0px;
+	text-align:center;
+}
+
+.infobox_container {
+	border:none;
+	-webkit-border-radius: 100% / 8px;
+	-moz-border-radius: 100% / 8px;
+	-webkit-box-shadow: rgba(0,0,0,.30) 0 2px 3px;
+	-moz-box-shadow: rgba(0,0,0,.30) 0 2px 3px;
+	box-shadow: rgba(0,0,0,.30) 0 2px 3px;
+	display:inline;
+	float:left;
+	margin-left:10px;
+	margin-right:10px;
+	width:300px;
+	height:134px;
+}
+
+.infobox {
+	background:#FAFAFA;
+	background: -moz-linear-gradient(top, #FAFAFA 0%, #EEEEEE 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FAFAFA), color-stop(100%,#EEEEEE));
+	background: -webkit-linear-gradient(top, #FAFAFA 0%,#EEEEEE 100%);
+	background: -o-linear-gradient(top, #FAFAFA 0%,#EEEEEE 100%);
+	background: -ms-linear-gradient(top, #FAFAFA 0%,#EEEEEE 100%);
+	background: linear-gradient(top, #FAFAFA 0%,#EEEEEE 100%);
+	color:#555;
+	padding:5px;
+	border:2px solid #FFFFFF;
+	-moz-box-shadow: 0 0 3px #BBB;
+	-webkit-box-shadow: 0 0 3px #BBB;
+	box-shadow: 0 0 3px #BBB;
+	width:286px;
+	height:120px;
+}
+
+.infobox:hover {
+	background:#FAFAFA;
+	background: -moz-linear-gradient(top, #FAFAFA 0%, #DDDDDD 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FAFAFA), color-stop(100%,#DDDDDD));
+	background: -webkit-linear-gradient(top, #FAFAFA 0%,#DDDDDD 100%);
+	background: -o-linear-gradient(top, #FAFAFA 0%,#DDDDDD 100%);
+	background: -ms-linear-gradient(top, #FAFAFA 0%,#DDDDDD 100%);
+	background: linear-gradient(top, #FAFAFA 0%,#DDDDDD 100%);
+}
+
+.infobox a {
+	margin:-5px;
+	width:296px;
+	height:130px;
+	display:block;
+	color:#0645AD;
+	text-decoration:none;
+	text-align:left;
+	font-size:16px;
+	background-position:0 0;
+	background-repeat:no-repeat;
+}
+
+.infoboximage {
+	float:left;
+	overflow: hidden;
+}
+
+.infoboxtitle {
+	display:block;
+	width:186px;
+	height:40px;
+	font-size:16px;
+	font-weight: 300;
+	margin-top:0px;
+	margin-left:100px;
+	margin-right:10px;
+	padding-top:20px;
+}
+
+.infoboxtext {
+	display:block;
+	width:186px;
+	text-align:left;
+	font-size:14px;
+	margin-top:10px;
+	margin-left:100px;
+	margin-right:10px;
+	color:#333;
+}
+
+.infoboxtext p{
+	margin-top:5px;
+}

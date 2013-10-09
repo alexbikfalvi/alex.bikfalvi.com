@@ -1,0 +1,637 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Alex, Bikfalvi, personal, site, Matlab, plot, LaTeX, axis, tick, label"/>
+<meta name="description" content="Alex Bikfalvi personal web site - Adding LaTeX to Plot Tick Labels in Matlab"/>
+<meta name="copyright" content="Alex Bikfalvi"/>
+<meta name="robots" content="index, follow" />
+
+<link href="../../images/icon.ico" rel="shortcut icon" />
+<link href="../../style/style.css" rel="stylesheet" title="Silver stylesheet" type="text/css"/>
+<link href="../../style/mglass.css" rel="stylesheet" type="text/css"/>
+
+<title>Alex Bikfalvi - Adding LaTeX to Plot Tick Labels in Matlab</title>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24480564-1']);
+  _gaq.push(['_setDomainName', '.bikfalvi.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<script type="text/javascript" src="../../script/mglass.js"></script>
+
+<style type="text/css">
+<!--
+	.mglass_viewer {
+		width: 250px; 
+		height: 250px;
+		-moz-border-radius: 150px;
+		-webkit-border-radius: 150px;
+		-khtml-border-radius: 150px;
+		border-radius: 150px;
+		-moz-box-shadow: 15px 15px 30px #000000;
+		-webkit-box-shadow: 15px 15px 30px #000000;
+		box-shadow: 15px 15px 30px #000000;
+	}
+	#compareResults {
+		width:900px;
+		height:350px;
+	}
+	#compareResults p {
+		margin-top:-5px;
+		margin-bottom:0;
+		margin-left:10px;
+		color:#999999;
+		font-style:italic;
+	}
+	#compareResultsBefore {
+		float:left;
+		width:450px;
+	}
+	#compareResultsAfter {
+		float:left;
+		width:450px;
+	}
+	
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+-->
+</style>
+
+</head>
+
+<body>
+
+<div id="content">
+
+<div id="header">
+<p class="hidden">Alex Bikfalvi</p>
+</div>
+
+<div id="back">
+
+<div id="navigation">
+<ul id="nav_main" class="nav">
+<li><a href="../../" accesskey="H"><span class="accesskey">H</span>ome</a></li>
+<li><a href="../../bio.html" accesskey="B"><span class="accesskey">B</span>io</a></li>
+<li><a href="../../contact.html" accesskey="C"><span class="accesskey">C</span>ontact</a></li>
+<li id="nav_index"><a href="../../research.html" accesskey="R"><span class="accesskey">R</span>esearch</a></li>
+<li><a href="../../projects.html" accesskey="J">Pro<span class="accesskey">j</span>ects</a></li>
+<li><a href="../../pubs.html" accesskey="P"><span class="accesskey">P</span>ublications</a></li>
+<li><a href="../../teaching.html" accesskey="T"><span class="accesskey">T</span>eaching</a></li>
+<li><a href="../../events.html" accesskey="E"><span class="accesskey">E</span>vents</a></li>
+</ul>
+</div>
+
+<div id="path">
+	<ul>
+    	<li id="path_home"><a href="../../" title="Home"><span>Home</span></a></li>
+    	<li class="path_arrow"><a href="../../research.html">Research</a></li>
+    	<li class="path_arrow">Adding LaTeX to Plot Tick Labels in Matlab</li>
+    </ul>
+</div>
+
+<div id="flag_beta"></div>
+
+<div id="main_content">
+
+<h1>Adding LaTeX to Plot Tick Labels in Matlab</h1>
+
+<div>
+
+<h2>Overview</h2>
+
+<p>Matlab plots generally support LaTeX markup for the various components, including axes labels, legends, annotations, etc. However, one of the few exceptions are the axis tick labels, that is the data values alongside each axis, regardless of whether they are set automatically or manually by the user. Since in many situations it becomes necessary to use LaTeX in the tick labels, either to include mathematical expressions such as fractions, or simply to maintain a uniform look-and-feel, the Matlab code on this page enables this functionality without any change to normal plotting functions.</p>
+
+<h2>Download</h2>
+<ul>
+  <li><a href="../../download/plotTickLatex2D.m">plotTickLatex2D.m</a> (M/14.7 KB)</li>
+	<li><a href="../../download/plotTickLatex2DExample.m">plotTickLatex2DExample.m</a> (M/3.05 KB)</li>
+</ul>
+<p>Beta 4 version as of December 13, 2011.</p>
+
+<h2>Usage</h2>
+
+<p>After you finished plotting, and for every axis, call the following function:</p>
+
+<pre>plotTickLatex2D;</pre>
+
+<p>or:</p>
+
+<pre>plotTickLatex2D(<span class="string">'argument_name'</span>, argument_value, ...);</pre>
+
+<p>Currently, the following optional arguments are supported:</p>
+<table class="tableinfo" width="960">
+  <tr>
+    <th width="150" scope="col" class="strong">Argument name</th>
+    <th scope="col">Argument description</th>
+  </tr>
+  <tr>
+    <td width="150" class="strong"><pre><span class="string">'Axis'</span></pre></td>
+    <td>A handle of the axis. The default is the current axis.</td>
+  </tr>
+  <tr>
+    <td width="150" class="strong"><pre><span class="string">'FontSize'</span></pre></td>
+    <td>The font size of the tick labels. The default is the font size of the current or specified axis.</td>
+  </tr>
+  <tr>
+    <td width="150" class="strong"><pre><span class="string">'XLabelDy'</span></pre></td>
+    <td>An argument of value double, representing a shift of the X-axis label on the vertical direction. The value is in the coordinate system of the figure where the bottom-left is (0,0) and top-right is (1,1).</td>
+  </tr>
+  <tr>
+    <td width="150" class="strong"><pre><span class="string">'YLabelDx'</span></pre></td>
+    <td>An argument of value double, representing a shift of the Y-axis label on the horizontal direction. The value is in the coordinate system of the figure where the bottom-left is (0,0) and top-right is (1,1).</td>
+  </tr>
+</table>
+
+<h2>Example</h2>
+
+<p>This example demonstrates the use of LaTeX in horizontal and vertical axes tick labels. Check out the following differences:</p>
+
+<ul>
+<li>The font changes from Helvetica to Computer Modern, the standard LaTeX font in Matlab. Hence, the look-and-feel is consistent with the other LaTeX annotations.</li>
+<li>The labels on the vertical axis contain mathematical expressions, including fractions and symbols.</li>
+</ul>
+
+<p>Move the mouse to zoom in.</p>
+
+<div id="compareResults">
+	<div id="compareResultsBefore">
+		<img id="imageBefore" src="latex_in_matlab_ticks_before_small.png" width="420" height="320" alt="" border="0"/>
+<script type="text/javascript">
+new MGlass("imageBefore","./latex_in_matlab_ticks_before_large.png");
+</script>
+        <p>Before</p>
+	</div>
+	<div id="compareResultsAfter">
+		<img id="imageAfter" src="latex_in_matlab_ticks_after_small.png" width="420" height="320" alt="" border="0"/>
+<script type="text/javascript">
+new MGlass("imageAfter","./latex_in_matlab_ticks_after_large.png");
+</script>
+        <p>After</p>
+	</div>
+
+</div>
+
+<h2>Limitations</h2>
+
+<p>The current version is limited to two-dimensional plots; three-dimensional plots are not yet supported.</p>
+<h2>Version History</h2>
+
+<table class="tableinfo" width="960">
+  <tr>
+    <th width="150" scope="col">Version</th>
+    <th width="150" scope="col" class="strong">Date</th>
+    <th scope="col">Description</th>
+  </tr>
+  <tr>
+    <td width="150">Beta 1</td>
+    <td width="150" class="strong">August 31, 2011</td>
+    <td>Initial beta release.</td>
+  </tr>
+  <tr>
+    <td>Beta 2</td>
+    <td class="strong">October 23, 2011</td>
+    <td>Fixed an issue where scaled negative axis labels would not display properly.</td>
+  </tr>
+  <tr>
+    <td>Beta 3</td>
+    <td class="strong">November 19, 2011</td>
+    <td>Better support for multiple axes in the same figure with the possibility of selecting the plot axis.<br/>Support for axis tick labels in non-default location (top or left).</td>
+  </tr>
+  <tr>
+    <td>Beta 4</td>
+    <td class="strong">December 13, 2011</td>
+    <td>Included font size support.</td>
+  </tr>
+</table>
+
+<h2>Code</h2>
+
+<div class="contents" style="height:600px">
+<pre class="codeinput"><span class="comment">%</span>
+<span class="comment">% Copyright (C) 2011 Alex Bikfalvi</span>
+<span class="comment">%</span>
+<span class="comment">% This program is free software; you can redistribute it and/or modify</span>
+<span class="comment">% it under the terms of the GNU General Public License as published by</span>
+<span class="comment">% the Free Software Foundation; either version 3 of the License, or (at</span>
+<span class="comment">% your option) any later version.</span>
+
+<span class="comment">% This program is distributed in the hope that it will be useful, but</span>
+<span class="comment">% WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="comment">% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU</span>
+<span class="comment">% General Public License for more details.</span>
+
+<span class="comment">% You should have received a copy of the GNU General Public License</span>
+<span class="comment">% along with this program; if not, write to the Free Software</span>
+<span class="comment">% Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.</span>
+<span class="comment">%</span>
+
+<span class="keyword">function</span> plotTickLatex2D(varargin)
+
+<span class="comment">% Optional arguments</span>
+optargin = size(varargin,2);
+
+<span class="keyword">if</span> mod(optargin,2) ~= 0
+    error(<span class="string">'The number of optional arguments must be even'</span>);
+<span class="keyword">end</span>
+
+xLabelDy = 0;
+yLabelDx = 0;
+hAxis = gca;
+
+i = 1;
+<span class="keyword">while</span> i &lt;= optargin
+    <span class="keyword">switch</span> lower(varargin{i})
+        <span class="keyword">case</span> <span class="string">'xlabeldy'</span>
+            xLabelDy = varargin{i+1};
+        <span class="keyword">case</span> <span class="string">'ylabeldx'</span>
+            yLabelDx = varargin{i+1};
+        <span class="keyword">case</span> <span class="string">'axis'</span>
+            hAxis = varargin{i+1};
+        <span class="keyword">case</span> <span class="string">'fontsize'</span>
+            fontSize = varargin{i+1};
+    <span class="keyword">end</span>
+    i = i + 2;
+<span class="keyword">end</span>
+
+<span class="comment">% Get properties for the specified axis</span>
+xLimit = get(hAxis,<span class="string">'XLim'</span>);
+xTick = get(hAxis,<span class="string">'XTick'</span>);
+xTickLabel = get(hAxis,<span class="string">'XTickLabel'</span>);
+xTickLabelMode = get(hAxis,<span class="string">'XTickLabelMode'</span>);
+xScale = get(hAxis,<span class="string">'XScale'</span>);
+xAxisLocation = get(hAxis,<span class="string">'XAxisLocation'</span>);
+
+yLimit = get(hAxis,<span class="string">'YLim'</span>);
+yTick = get(hAxis,<span class="string">'YTick'</span>);
+yTickLabel = get(hAxis,<span class="string">'YTickLabel'</span>);
+yTickLabelMode = get(hAxis,<span class="string">'YTickLabelMode'</span>);
+yScale = get(hAxis,<span class="string">'YScale'</span>);
+yAxisLocation = get(hAxis,<span class="string">'YAxisLocation'</span>);
+
+<span class="keyword">if</span> ~exist(<span class="string">'fontSize'</span>,<span class="string">'var'</span>)
+    fontSize = get(hAxis, <span class="string">'FontSize'</span>);
+<span class="keyword">end</span>
+
+<span class="comment">% Get properties for the current axis</span>
+xLimitCurr = get(gca,<span class="string">'XLim'</span>);
+xScaleCurr = get(gca,<span class="string">'XScale'</span>);
+
+yLimitCurr = get(gca,<span class="string">'YLim'</span>);
+yScaleCurr = get(gca,<span class="string">'YScale'</span>);
+
+<span class="comment">% Clear the current labels</span>
+set(hAxis,<span class="string">'XTickLabel'</span>,[]);
+set(hAxis,<span class="string">'YTickLabel'</span>,[]);
+
+<span class="comment">% Get position of the specified axis</span>
+posAxis = get(hAxis,<span class="string">'Position'</span>);
+
+<span class="comment">% Get position of the current axis</span>
+posCurr = get(gca, <span class="string">'Position'</span>);
+
+<span class="comment">% Convert x point between figure and axis data coordinates on linear scale</span>
+xFig2DatLinAxis = @(x)(xLimit(1) + diff(xLimit)*(x-posAxis(1))/posAxis(3));
+xDat2FigLinAxis = @(x)(posAxis(1) + (x - xLimit(1))*posAxis(3)/diff(xLimit));
+
+xFig2DatLinCurr = @(x)(xLimitCurr(1) + diff(xLimitCurr)*(x-posCurr(1))/posCurr(3));
+xDat2FigLinCurr = @(x)(posCurr(1) + (x - xLimitCurr(1))*posCurr(3)/diff(xLimitCurr));
+
+<span class="comment">% Convert y point between figure and axis data coordinates on linear scale</span>
+yFig2DatLinAxis = @(y)(yLimit(1) + diff(yLimit)*(y-posAxis(2))/posAxis(4));
+yDat2FigLinAxis = @(y)(posAxis(2) + (y - yLimit(1))*posAxis(4)/diff(yLimit));
+
+yFig2DatLinCurr = @(y)(yLimitCurr(1) + diff(yLimitCurr)*(y-posCurr(2))/posCurr(4));
+yDat2FigLinCurr = @(y)(posCurr(2) + (y - yLimitCurr(1))*posCurr(4)/diff(yLimitCurr));
+
+<span class="comment">% Convert x point between figure and axis data coordinates on logarithmic scale</span>
+xFig2DatLogAxis = @(x)(exp(log(xLimit(1)) + log(xLimit(2)/xLimit(1))*(x-posAxis(1))/posAxis(3)));
+xDat2FigLogAxis = @(x)(posAxis(1) + posAxis(3)*log(x/xLimit(1))/log(xLimit(2)/xLimit(1)));
+
+xFig2DatLogCurr = @(x)(exp(log(xLimitCurr(1)) + log(xLimitCurr(2)/xLimitCurr(1))*(x-posCurr(1))/posCurr(3)));
+xDat2FigLogCurr = @(x)(posCurr(1) + posCurr(3)*log(x/xLimitCurr(1))/log(xLimitCurr(2)/xLimitCurr(1)));
+
+<span class="comment">% Convert y point between figure and axis data coordinates on logarithmic scale</span>
+yFig2DatLogAxis = @(y)(exp(log(yLimit(1)) + log(yLimit(2)/yLimit(1))*(y-posAxis(2))/posAxis(4)));
+yDat2FigLogAxis = @(y)(posAxis(2) + posAxis(4)*log(y/yLimit(1))/log(yLimit(2)/yLimit(1)));
+
+yFig2DatLogCurr = @(y)(exp(log(yLimitCurr(1)) + log(yLimitCurr(2)/yLimitCurr(1))*(y-posCurr(2))/posCurr(4)));
+yDat2FigLogCurr = @(y)(posCurr(2) + posCurr(4)*log(y/yLimitCurr(1))/log(yLimitCurr(2)/yLimitCurr(1)));
+
+<span class="comment">% Convert x point between figure and axis [0,1] coordinates</span>
+xFig2Ax = @(x)((x - posAxis(1))/posAxis(3));
+xAx2Fig = @(x)(posAxis(1) + x*posAxis(3));
+
+<span class="comment">% Convert y point between figure and axis [0,1] coordinates</span>
+yFig2Ax = @(y)((y - posAxis(2))/posAxis(4));
+yAx2Fig = @(y)(posAxis(2) + x*posAxis(4));
+
+<span class="keyword">switch</span> xScale
+    <span class="keyword">case</span> <span class="string">'linear'</span>
+        xFig2DatAxis = xFig2DatLinAxis;
+        xDat2FigAxis = xDat2FigLinAxis;
+    <span class="keyword">case</span> <span class="string">'log'</span>
+        xFig2DatAxis = xFig2DatLogAxis;
+        xDat2FigAxis = xDat2FigLogAxis;
+<span class="keyword">end</span>
+
+<span class="keyword">switch</span> yScale
+    <span class="keyword">case</span> <span class="string">'linear'</span>
+        yFig2DatAxis = yFig2DatLinAxis;
+        yDat2FigAxis = yDat2FigLinAxis;
+    <span class="keyword">case</span> <span class="string">'log'</span>
+        yFig2DatAxis = yFig2DatLogAxis;
+        yDat2FigAxis = yDat2FigLogAxis;
+<span class="keyword">end</span>
+
+<span class="keyword">switch</span> xScaleCurr
+    <span class="keyword">case</span> <span class="string">'linear'</span>
+        xFig2DatCurr = xFig2DatLinCurr;
+        xDat2FigCurr = xDat2FigLinCurr;
+    <span class="keyword">case</span> <span class="string">'log'</span>
+        xFig2DatCurr = xFig2DatLogCurr;
+        xDat2FigCurr = xDat2FigLogCurr;
+<span class="keyword">end</span>
+
+<span class="keyword">switch</span> yScaleCurr
+    <span class="keyword">case</span> <span class="string">'linear'</span>
+        yFig2DatCurr = yFig2DatLinCurr;
+        yDat2FigCurr = yDat2FigLinCurr;
+    <span class="keyword">case</span> <span class="string">'log'</span>
+        yFig2DatCurr = yFig2DatLogCurr;
+        yDat2FigCurr = yDat2FigLogCurr;
+<span class="keyword">end</span>
+
+<span class="keyword">if</span> ~isempty(xTickLabel)
+    <span class="comment">% Set the X Axis</span>
+
+    xTickIndex = find((xTick &gt;= xLimit(1)) &amp; (xTick &lt;= xLimit(2)));
+    xTickVisible = xTick((xTick &gt;= xLimit(1)) &amp; (xTick &lt;= xLimit(2)));
+    xLabel = cell(length(xTickVisible),1);
+
+    <span class="keyword">switch</span> xTickLabelMode
+        <span class="keyword">case</span> <span class="string">'auto'</span>
+            assert(length(xTickVisible) &lt;= size(xTickLabel,1));
+            <span class="keyword">switch</span> xScale
+                <span class="keyword">case</span> <span class="string">'linear'</span>
+                    <span class="comment">% Determine where there should be an exponent</span>
+                    xExp = max(abs(xLimit));
+                    <span class="keyword">if</span> xExp &gt; 0
+                        xExpLog = ceil(log10(xExp));
+                        <span class="keyword">if</span>(xExpLog &gt; 0)
+                            xExpLog = xExpLog - 1;
+                        <span class="keyword">end</span>
+                        <span class="keyword">if</span> (xExpLog &gt; -3) &amp;&amp; (xExpLog &lt;= 3)
+                            xExpLog = 0;
+                        <span class="keyword">end</span>
+                    <span class="keyword">else</span>
+                        xExpLog = 0;
+                    <span class="keyword">end</span>
+                    xExp = 10^xExpLog;
+
+                    <span class="keyword">for</span> i=1:length(xTickVisible)
+                        value = xTickVisible(i)/xExp;
+                        <span class="keyword">if</span> abs(value) &lt;= eps
+                            value = 0;
+                        <span class="keyword">end</span>
+                        xLabel{i} = [<span class="string">'$'</span> num2str(value) <span class="string">'$'</span>];
+                    <span class="keyword">end</span>
+
+                    <span class="keyword">if</span> (abs(xExpLog) &gt; eps) &amp;&amp; (abs(xExpLog) &lt; 1/eps)
+                        <span class="keyword">switch</span> xAxisLocation
+                            <span class="keyword">case</span> <span class="string">'bottom'</span>
+                                hText = text(<span class="keyword">...</span>
+                                    xFig2DatCurr(xDat2FigAxis(xLimit(2))),<span class="keyword">...</span>
+                                    yFig2DatCurr(yDat2FigAxis(yLimit(1))-0.06),<span class="keyword">...</span>
+                                    [<span class="string">'$\times 10^{'</span> num2str(xExpLog) <span class="string">'}$'</span>],<span class="keyword">...</span>
+                                    <span class="string">'HorizontalAlignment'</span>,<span class="string">'Right'</span>,<span class="keyword">...</span>
+                                    <span class="string">'Interpreter'</span>,<span class="string">'latex'</span>,<span class="keyword">...</span>
+                                    <span class="string">'FontSize'</span>, fontSize);
+                            <span class="keyword">case</span> <span class="string">'top'</span>
+                                hText = text(<span class="keyword">...</span>
+                                    xFig2DatCurr(xDat2FigAxis(xLimit(2))),<span class="keyword">...</span>
+                                    yFig2DatCurr(yDat2FigAxis(yLimit(2))+0.06),<span class="keyword">...</span>
+                                    [<span class="string">'$\times 10^{'</span> num2str(xExpLog) <span class="string">'}$'</span>],<span class="keyword">...</span>
+                                    <span class="string">'HorizontalAlignment'</span>,<span class="string">'Right'</span>,<span class="keyword">...</span>
+                                    <span class="string">'Interpreter'</span>,<span class="string">'latex'</span>,<span class="keyword">...</span>
+                                    <span class="string">'FontSize'</span>, fontSize);
+                        <span class="keyword">end</span>
+                        set(hText,<span class="string">'HitTest'</span>,<span class="string">'off'</span>);
+                    <span class="keyword">end</span>
+                <span class="keyword">case</span> <span class="string">'log'</span>
+                    <span class="keyword">for</span> i=1:length(xTickVisible)
+                        sgn = sign(xTickVisible(i));
+                        xExp = log10(abs(xTickVisible(i)));
+                        <span class="keyword">if</span> abs(xExp) &lt;= eps
+                            xExp = 0;
+                        <span class="keyword">end</span>
+                        xLabel{i} = [<span class="string">'$'</span> num2str(10*sgn) <span class="string">'^{'</span> num2str(xExp) <span class="string">'}$'</span>];
+                    <span class="keyword">end</span>
+            <span class="keyword">end</span>
+        <span class="keyword">case</span> <span class="string">'manual'</span>
+            <span class="keyword">if</span> iscell(xTickLabel)
+                <span class="keyword">for</span> i=1:length(xTickVisible)
+                    xLabel{i} = xTickLabel{1+mod(xTickIndex(i)-1,length(xTickLabel))};
+                <span class="keyword">end</span>
+            <span class="keyword">else</span>
+                <span class="keyword">for</span> i=1:length(xTickVisible)
+                    xLabel{i} = xTickLabel(1+mod(xTickIndex(i)-1,size(xTickLabel,1)),:);
+                <span class="keyword">end</span>
+            <span class="keyword">end</span>
+    <span class="keyword">end</span>
+
+    <span class="keyword">switch</span> xAxisLocation
+        <span class="keyword">case</span> <span class="string">'bottom'</span>
+            <span class="keyword">for</span> i = 1:length(xTickVisible)
+                hText = text(<span class="keyword">...</span>
+                    xFig2DatCurr(xDat2FigAxis(xTickVisible(i))),<span class="keyword">...</span>
+                    yFig2DatCurr(yDat2FigAxis(yLimit(1))-0.025),<span class="keyword">...</span>
+                    strtrim(xLabel{i}),<span class="keyword">...</span>
+                    <span class="string">'HorizontalAlignment'</span>,<span class="string">'Center'</span>,<span class="keyword">...</span>
+                    <span class="string">'Interpreter'</span>,<span class="string">'latex'</span>,<span class="keyword">...</span>
+                    <span class="string">'FontSize'</span>, fontSize);
+                set(hText,<span class="string">'HitTest'</span>,<span class="string">'off'</span>);
+            <span class="keyword">end</span>
+        <span class="keyword">case</span> <span class="string">'top'</span>
+            <span class="keyword">for</span> i = 1:length(xTickVisible)
+                hText = text(<span class="keyword">...</span>
+                    xFig2DatCurr(xDat2FigAxis(xTickVisible(i))),<span class="keyword">...</span>
+                    yFig2DatCurr(yDat2FigAxis(yLimit(2))+0.025),<span class="keyword">...</span>
+                    strtrim(xLabel{i}),<span class="keyword">...</span>
+                    <span class="string">'HorizontalAlignment'</span>,<span class="string">'Center'</span>,<span class="keyword">...</span>
+                    <span class="string">'Interpreter'</span>,<span class="string">'latex'</span>,<span class="keyword">...</span>
+                    <span class="string">'FontSize'</span>, fontSize);
+                set(hText,<span class="string">'HitTest'</span>,<span class="string">'off'</span>);
+            <span class="keyword">end</span>
+    <span class="keyword">end</span>
+
+    xLabel = get(hAxis,<span class="string">'XLabel'</span>);
+    xLabelPos = get(xLabel,<span class="string">'Position'</span>);
+    set(xLabel,<span class="string">'Position'</span>,[xLabelPos(1) yFig2DatCurr(yDat2FigAxis(yLimit(1))-0.07+xLabelDy) xLabelPos(3)]);
+
+    xlim(hAxis, xLimit);
+<span class="keyword">end</span>
+
+<span class="keyword">if</span> ~isempty(yTickLabel)
+    <span class="comment">% Set the Y axis</span>
+
+    yTickIndex = find((yTick &gt;= yLimit(1)) &amp; (yTick &lt;= yLimit(2)));
+    yTickVisible = yTick((yTick &gt;= yLimit(1)) &amp; (yTick &lt;= yLimit(2)));
+    yLabel = cell(length(yTickVisible),1);
+
+    <span class="keyword">switch</span> yTickLabelMode
+        <span class="keyword">case</span> <span class="string">'auto'</span>
+            assert(length(yTickVisible) &lt;= size(yTickLabel,1));
+            <span class="keyword">switch</span> yScale
+                <span class="keyword">case</span> <span class="string">'linear'</span>
+                    <span class="comment">% Determine where there should be an exponent</span>
+                    yExp = max(abs(yLimit));
+                    <span class="keyword">if</span> yExp &gt; 0
+                        yExpLog = ceil(log10(yExp))-1;
+                        <span class="keyword">if</span>(yExpLog &gt; 0)
+                            yExpLog = yExpLog - 1;
+                        <span class="keyword">end</span>
+                        <span class="keyword">if</span> (yExpLog &gt; -3) &amp;&amp; (yExpLog &lt;= 3)
+                            yExpLog = 0;
+                        <span class="keyword">end</span>
+                    <span class="keyword">else</span>
+                        yExpLog = 0;
+                    <span class="keyword">end</span>
+                    yExp = 10^yExpLog;
+
+                    <span class="keyword">for</span> i=1:length(yTickVisible)
+                        value = yTickVisible(i)/yExp;
+                        <span class="keyword">if</span> abs(value) &lt;= eps
+                            value = 0;
+                        <span class="keyword">end</span>
+                        yLabel{i} = [<span class="string">'$'</span> num2str(value) <span class="string">'$'</span>];
+                    <span class="keyword">end</span>
+
+                    <span class="keyword">if</span> (abs(yExpLog) &gt; eps) &amp;&amp; (abs(yExpLog) &lt; 1/eps)
+                        <span class="keyword">switch</span> yAxisLocation
+                            <span class="keyword">case</span> <span class="string">'left'</span>
+                                hText = text(<span class="keyword">...</span>
+                                    xFig2DatCurr(xDat2FigAxis(xLimit(1))),<span class="keyword">...</span>
+                                    yFig2DatCurr(yDat2FigAxis(yLimit(2)) + 0.03),<span class="keyword">...</span>
+                                    [<span class="string">'$\times 10^{'</span> num2str(yExpLog) <span class="string">'}$'</span>],<span class="keyword">...</span>
+                                    <span class="string">'Interpreter'</span>,<span class="string">'latex'</span>,<span class="keyword">...</span>
+                                    <span class="string">'FontSize'</span>, fontSize);
+                            <span class="keyword">case</span> <span class="string">'right'</span>
+                                hText = text(<span class="keyword">...</span>
+                                    xFig2DatCurr(xDat2FigAxis(xLimit(2))),<span class="keyword">...</span>
+                                    yFig2DatCurr(yDat2FigAxis(yLimit(2)) + 0.03),<span class="keyword">...</span>
+                                    [<span class="string">'$\times 10^{'</span> num2str(yExpLog) <span class="string">'}$'</span>],<span class="keyword">...</span>
+                                    <span class="string">'HorizontalAlignment'</span>,<span class="string">'Right'</span>,<span class="keyword">...</span>
+                                    <span class="string">'Interpreter'</span>,<span class="string">'latex'</span>,<span class="keyword">...</span>
+                                    <span class="string">'FontSize'</span>, fontSize);
+                        <span class="keyword">end</span>
+                        set(hText,<span class="string">'HitTest'</span>,<span class="string">'off'</span>);
+                    <span class="keyword">end</span>
+                <span class="keyword">case</span> <span class="string">'log'</span>
+                    <span class="keyword">for</span> i=1:length(yTickVisible)
+                        sgn = sign(yTickVisible(i));
+                        yExp = log10(yTickVisible(i));
+                        <span class="keyword">if</span> abs(yExp) &lt;= eps
+                            yExp = 0;
+                        <span class="keyword">end</span>
+                        yLabel{i} = [<span class="string">'$'</span> num2str(10*sgn) <span class="string">'^{'</span> num2str(yExp) <span class="string">'}$'</span>];
+                    <span class="keyword">end</span>
+            <span class="keyword">end</span>
+        <span class="keyword">case</span> <span class="string">'manual'</span>
+            <span class="keyword">if</span> iscell(yTickLabel)
+                <span class="keyword">for</span> i=1:length(yTickVisible)
+                    yLabel{i} = yTickLabel{1+mod(yTickIndex(i)-1,length(yTickLabel))};
+                <span class="keyword">end</span>
+            <span class="keyword">else</span>
+                <span class="keyword">for</span> i=1:length(yTickVisible)
+                    yLabel{i} = yTickLabel(1+mod(yTickIndex(i)-1,size(yTickLabel,1)),:);
+                <span class="keyword">end</span>
+            <span class="keyword">end</span>
+    <span class="keyword">end</span>
+
+    xMin = bitmax;
+
+    <span class="keyword">switch</span> yAxisLocation
+        <span class="keyword">case</span> <span class="string">'left'</span>
+            <span class="keyword">for</span> i = 1:length(yTickVisible)
+                hText = text(<span class="keyword">...</span>
+                    xFig2DatCurr(xDat2FigAxis(xLimit(1))-0.01),<span class="keyword">...</span>
+                    yFig2DatCurr(yDat2FigAxis(yTickVisible(i))),<span class="keyword">...</span>
+                    strtrim(yLabel{i}),<span class="keyword">...</span>
+                    <span class="string">'HorizontalAlignment'</span>,<span class="string">'Right'</span>,<span class="keyword">...</span>
+                    <span class="string">'Interpreter'</span>,<span class="string">'latex'</span>,<span class="keyword">...</span>
+                    <span class="string">'FontSize'</span>, fontSize);
+                set(hText,<span class="string">'HitTest'</span>,<span class="string">'off'</span>);
+                set(hText,<span class="string">'Units'</span>,<span class="string">'normalized'</span>);
+                xExt = get(hText,<span class="string">'Extent'</span>);
+                set(hText,<span class="string">'Units'</span>,<span class="string">'data'</span>);
+                xMin = min(xMin, xExt(1));
+            <span class="keyword">end</span>
+        <span class="keyword">case</span> <span class="string">'right'</span>
+            <span class="keyword">for</span> i = 1:length(yTickVisible)
+                hText = text(<span class="keyword">...</span>
+                    xFig2DatCurr(xDat2FigAxis(xLimit(2))+0.01),<span class="keyword">...</span>
+                    yFig2DatCurr(yDat2FigAxis(yTickVisible(i))),<span class="keyword">...</span>
+                    strtrim(yLabel{i}),<span class="keyword">...</span>
+                    <span class="string">'HorizontalAlignment'</span>,<span class="string">'Left'</span>,<span class="keyword">...</span>
+                    <span class="string">'Interpreter'</span>,<span class="string">'latex'</span>,<span class="keyword">...</span>
+                    <span class="string">'FontSize'</span>, fontSize);
+                set(hText,<span class="string">'HitTest'</span>,<span class="string">'off'</span>);
+                set(hText,<span class="string">'Units'</span>,<span class="string">'normalized'</span>);
+                xExt = get(hText,<span class="string">'Extent'</span>);
+                set(hText,<span class="string">'Units'</span>,<span class="string">'data'</span>);
+                xMin = min(xMin, xExt(1));
+            <span class="keyword">end</span>
+    <span class="keyword">end</span>
+
+    yLabel = get(hAxis,<span class="string">'YLabel'</span>);
+    yLabelPos = get(yLabel,<span class="string">'Position'</span>);
+    set(yLabel,<span class="string">'Position'</span>,[xFig2DatCurr(xAx2Fig(xMin) - 0.002 + yLabelDx) yLabelPos(2) yLabelPos(3)]);
+
+    ylim(hAxis, yLimit);
+<span class="keyword">end</span>
+
+
+<span class="keyword">end</span>
+</pre>
+</div>
+
+</div>
+
+<p class="update">Published: August 31, 2011<br/>Last updated: December 13, 2011</p>
+
+</div>
+</div>
+
+<div id="footer">
+<p><a href="../../accessibility.html" title="Accessibility">Accessibility</a> | <a href="../../copyright.html" title="Copyright Information">Copyright Information</a></p>
+</div>
+
+</div>
+
+</body>
+</html>

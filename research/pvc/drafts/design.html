@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style type="text/css">
+<!--
+.ToDo {
+	color: #F00;
+}
+-->
+</style>
+</head>
+
+<body>
+<h1>Related work</h1>
+<h1>Design</h1>
+<p>Steps:</p>
+<ul>
+  <li>#1: oracle-knows-everything, decisions made in real time</li>
+  <li>#2: real-life implementation: <span class="ToDo">TBD</span></li>
+</ul>
+<h2>Peer Discovery</h2>
+<p>Specifies the mechanism a peer uses to find other peers that have at least a part of the video file. Approaches:</p>
+<ul>
+  <li>Model #1 (simple): &quot;oracle&quot;-like bootstrap server (the bootstap server maintains the record of all cached segments);</li>
+  <li>Model #2: for each video file the last <em>k</em> peers that requested the video;</li>
+  <li>Model #3: gossipping <span class="ToDo">(TBD)</span>.</li>
+</ul>
+<h2>Peer Selection</h2>
+<p>Specifies how the bootstrap server or a peer chooses a subset of peers (from the set of peers that have at least a part of the video) that will be used to pull the content.</p>
+<ul>
+  <li>Model #1 (simple): all discovered peers;</li>
+  <li>Model #2: a random subset of <em>m</em> peers;</li>
+  <li>Model #3: a subset of <em>m </em>peers, where the peers must meet a set of constraints (<em>see peer constraints below</em>). If there are less than <em>m</em> peers that meet the constraints, the remaining number are chosen at random. If there are more than <em>m</em> peers that meet the constraints, a random subset of <em>m</em> is chosen out of them.</li>
+</ul>
+<p>How often is peer selection performed?</p>
+<ul>
+  <li>Model #1 (simple): for each streamed segment/video.</li>
+  <li>Model #2: once, at the beginning of the streaming</li>
+  <li>Model #3: at regular time intervals (e.g., every 10 min)</li>
+  <li>Model #4: at irregular time intervals when the fraction of segments served from the cache is below a certain threshold (less than 50%)</li>
+  <li>Model #5: (#3) + (#4)</li>
+</ul>
+<p>Newly discovered/selected peers replace old peers that meet certain requirements (otherwise are discarded):</p>
+<ul>
+  <li>served less than a certain fraction of requested segments (less than 50%).</li>
+</ul>
+<h3>Peer Constraints</h3>
+<p>Constraints when new peers are selected from a batch of discovered peers:</p>
+<ul>
+  <li>Content</li>
+  <li>Bandwidth</li>
+  <li>Relaying (the peer is watching the requested video)</li>
+</ul>
+<p><em>This part can be very complex depending on what information peers keep and how they share it. For instance, if the delivery mechanism uses bitmaps that inform sender peers of future requests, these can be used to anticipate future demand for content and estimate content and bandwidth accordingly. The peers can separate past values of these parameters from future estimated values. Future values can be shared as time dependend values (e.g. estimated bandwidth for first 5 min, next 5 min etc.)</em>. <em>Receiver peer can use this estimations to schedule segment requests.</em></p>
+<p class="ToDo">TBD</p>
+<h2>Delivery Mechanism</h2>
+<ul>
+  <li>Model #1 (simple): decision made for each individual segment at request time</li>
+  <li>Model #2: &quot;Bitmap&quot; requests, i.e. the receiver  peer allocates to each segment one or more peers (in a given order) that <em>should</em> serve the segment: <em>segment_i</em> -&gt; {<em>peer_1</em>, <em>peer_2</em>, ..., <em>peer_l</em>}.
+    <ul>
+      <li>[<em>Are senders informed?</em>] Depending on whether the sender peers are informed of this mapping, we have:
+<ul>
+          <li>Sender peers are informed of the mapping (assume sender peers will also remember the mapping during the connection lifetime)
+            <ul>
+              <li>The sender peers will reply with a bitmap of the segments that are currently available.</li>
+              <li>Are bitmap requests sent for the whole file or just a part (a fraction or fixed duration)? Bitmaps should be send for parts of the file, it is hard to anticipate whether the receiver will keep watching the content for longer time frames, it is hard to make sure sender peers will still have the requested segments by that time : bitmaps would have to be regenerated.</li>
+              <li>After the senders response, what happens with segments that are not available? If bitmaps are sent for a fraction of the file: nothing - use the server (we assume bitmaps will not be regenerated over smaller time frames). If bitmaps are sent for the whole file, bitmaps should be recalculated at certain time intervals (<em>see when to calculate bitmaps, below</em>).              </li>
+              <li>Will sender peers mark these segments in a special way?
+                <ul>
+                  <li>No - there is no way to know when and if the segments will be actually pulled - the receiver may stop watch the video.</li>
+                  <li>Yes - peers could assign a low priority metric: if during cache replacement, two segments from the cache have an equal cache metric, using the &quot;bitmap&quot; metric can evict the segments that are not requested.</li>
+                  <li>Will senders keep other information? (e.g. the approximate time those segments are expected to be requested)</li>
+                </ul>
+              </li>
+              <li>Will sender peers take a proactive approach in notifying the receiver when a certain number/fraction of requested segments have been evicted from the cache? This can trigger a recalculation of the bitmaps / a new peer discovery / selection.</li>
+            </ul>
+          </li>
+          <li>Sender peers are not informed of the mapping (receiver peers will only use it to schedule segment requests)</li>
+        </ul>
+      </li>
+      <li>[<em>When to generate bitmaps?</em>]
+        <ul>
+          <li>Bitmaps are generated when the set of senders is changed
+            <ul>
+              <li>If sender peers are informed of the bitmaps, bitmaps are recalculated only for the segments without mapped peers or mapped to peers that have been removed from the senders set.</li>
+            </ul>
+          </li>
+          <li>Bitmaps are generated when a certain fraction of segments (either from the whole video or from the current part) are not mapped to any peer.
+            <ul>
+              <li>If peer discovery/selection is not periodic, bitmap regeneration should also trigger a peer discovery before.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>[<em>How to generate bitmaps?</em>]
+        <ul>
+    <li>Without using sender information: segmentes allocated  in a Round-Robin fashion to the senders set.</li>
+    <li>Using sender information: we calculate metric = <em>f</em>(content availability, bandwidth, cache metric), and segments are mapped to peers proportional to this metric (<em>see above: peer constraints - depending on what information is shared and how</em>). Cache metric = a sender can inform the receiver if the a certain segment has a high or low expectation of being evicted from the cache (e.g. top 10%... bottom 10%).</li>
+    </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<h2>Caching</h2>
+<p class="ToDo">TBD</p>
+<h1>Evaluation</h1>
+<h2>Workload</h2>
+<p class="ToDo">TBD </p>
+<p>this only determines generated request, main  parameters<br />
+  - number of streams<br />
+- popularity of streams (spatial,  temporal), flashcrowd</p>
+<p>we will use MediaSyn to produce workload with a wide  range of parameters we also use a couple of real world traces as samples</p>
+<h2>Scenario</h2>
+<p class="ToDo">TBD</p>
+<p>  - num of peers<br />
+  - cache size at each peer<br />
+  - bw of each peer<br />
+- churn: peer arrival time, peer session  time</p>
+<h2>Workload to Scenario Mapping</h2>
+<p class="ToDo">TBD</p>
+<p>  - how each request is mapped to peers (say  random)<br />
+  - stress level: the number of concurrent  requests/number of peers</p>
+<p>- Evaluation plan (some thoughts)<br />
+  - compare to the eprformance or oracle,  having global knowledge 
+  of available content, peer bw, etc (central  approach) or
+having indefinite cache size or indefinite  bw at each peer</p>
+<p>      - main dimensions of theevaluation space  are:<br />
+  - peer bw<br />
+  - peer cache size<br />
+  - workload and<br />
+  - scenario</p>
+<h1>Modeling</h1>
+<p class="ToDo">TBD</p>
+<p>  we should try to model the proposed mechanism. as  starting point, we can model the basi cproblem<br />
+  - n video, fixed length<br />
+  - m peers, with cache size x and bandwidth  y
+  either homogeneous and heterogeneous cases<br />
+  - certain popularity for each video 
+  consider stationary cases where popularity  is fixed
+  what is the best placement of videos across  caches that
+optimizes performance</p>
+<p>performance metric is the availability of a peer with  adequate bw in the system so cache miss is zero (or minimal)</p>
+</body>
+</html>

@@ -1,0 +1,309 @@
+a {
+	color:#0645AD;
+	text-decoration:none;
+}
+
+a:hover {
+	color:#BA0000;
+	text-decoration:underline;
+}
+
+a.external{
+	background-image:url(../../images/external.png);
+	background-repeat:no-repeat;
+	background-position:right;
+	padding-right:14px;
+}
+
+a:hover.external{
+	background-image:url(../../images/external_hover.png);
+	background-repeat:no-repeat;
+	background-position:right;
+	padding-right:14px;
+}
+
+#page {
+	margin-left:10px;
+	margin-right:10px;
+	width:1000px;
+	/*background-image:url(../../images/phd/gradient.png);
+	background-position:bottom;
+	background-repeat:repeat-x;*/
+}
+
+#pagetop {
+	background-image:url(../../images/phd/Top.png);
+}
+
+#banner {
+	width:1000px;
+	height:500px;
+	background-image:url(../../images/phd/Banner.png);
+	background-repeat:no-repeat;
+
+}
+
+#counterdown {
+	width:640px;
+	float:left;
+	display:block;
+	margin-left:180px;
+	margin-right:180px;
+	margin-top:120px;
+	display:inline;
+	overflow: hidden;
+}
+
+.counterdowndigitgroup {
+	width:140px;
+	height:169px;
+	margin-left:10px;
+	margin-right:10px;
+	margin-top:0;
+	margin-bottom:0;
+	padding:0;
+	float:left;
+	display:inline;
+	overflow: hidden;
+}
+
+.counterdowndigit {
+	width:80px;
+	height:139px;
+	margin-left:-5px;
+	margin-right:-5px;
+	margin-top:0;
+	margin-bottom:0;
+	padding:0;
+	float:left;
+	display:inline;
+	overflow: hidden;
+}
+
+.counterdowntext {
+	text-align:center;
+	color: #444;
+	font-size:20px;
+	font-weight: 300;
+	line-height: 1.2em;
+}
+
+#counterdowndigitdayfirst {
+	background-image:url(counter/Digits10down.png);
+	background-repeat:no-repeat;
+}
+
+#counterdowndigitdaysecond {
+	background-image:url(counter/Digits10down.png);
+	background-repeat:no-repeat;
+}
+
+#counterdowndigithourfirst {
+	background-image:url(counter/Digits10down.png);
+	background-repeat:no-repeat;
+}
+
+#counterdowndigithoursecond {
+	background-image:url(counter/Digits10down.png);
+	background-repeat:no-repeat;
+}
+
+#counterdowndigitminutefirst {
+	background-image:url(counter/Digits10down.png);
+	background-repeat:no-repeat;
+}
+
+#counterdowndigitminutesecond {
+	background-image:url(counter/Digits10down.png);
+	background-repeat:no-repeat;
+}
+
+#counterdowndigitsecfirst {
+	background-image:url(counter/Digits10down.png);
+	background-repeat:no-repeat;
+}
+
+#counterdowndigitsecsecond {
+	background-image:url(counter/Digits10down.png);
+	background-repeat:no-repeat;
+}
+
+#counterup {
+	width:401px;
+	float:left;
+	display:block;
+	margin-left:300px;
+	margin-right:299px;
+	margin-top:70px;
+	display:inline;
+	overflow: hidden;
+}
+
+.counterupdigitgroup2 {
+	width:71px; /* 34 + 3 + 34 */
+	height:100px;
+	margin-left:10px;
+	margin-right:10px;
+	margin-top:0;
+	margin-bottom:0;
+	padding:0;
+	float:left;
+	display:inline;
+	overflow: hidden;
+}
+
+.counterupdigitgroup3 {
+	width:108px; /* 34 + 3 + 34 + 3 + 34 */
+	height:100px;
+	margin-left:10px;
+	margin-right:10px;
+	margin-top:0;
+	margin-bottom:0;
+	padding:0;
+	float:left;
+	display:inline;
+	overflow: hidden;
+}
+
+.counterupdigit {
+	width:40px;
+	height:70px;
+	margin-left:-3px;
+	margin-right:-3px;
+	margin-top:0;
+	margin-bottom:0;
+	padding:0;
+	float:left;
+	display:inline;
+	overflow: hidden;
+}
+
+.counteruptext {
+	text-align:center;
+	color: #444;
+	font-size:14px;
+	font-weight: 300;
+	line-height: 1.2em;
+}
+
+#counterupdigitdayfirst {
+	background-image:url(counter/Digits10up.png);
+	background-repeat:no-repeat;
+}
+
+#counterupdigitdaysecond {
+	background-image:url(counter/Digits10up.png);
+	background-repeat:no-repeat;
+}
+
+#counterupdigitdaythird {
+	background-image:url(counter/Digits10up.png);
+	background-repeat:no-repeat;
+}
+
+#counterupdigithourfirst {
+	background-image:url(counter/Digits03up.png);
+	background-repeat:no-repeat;
+}
+
+#counterupdigithoursecond {
+	background-image:url(counter/Digits10up.png);
+	background-repeat:no-repeat;
+}
+
+#counterupdigitminutefirst {
+	background-image:url(counter/Digits06up.png);
+	background-repeat:no-repeat;
+}
+
+#counterupdigitminutesecond {
+	background-image:url(counter/Digits10up.png);
+	background-repeat:no-repeat;
+}
+
+#counterupdigitsecfirst {
+	background-image:url(counter/Digits06up.png);
+	background-repeat:no-repeat;
+}
+
+#counterupdigitsecsecond {
+	background-image:url(counter/Digits10up.png);
+	background-repeat:no-repeat;
+}
+
+.infoboxes {
+	height:230px;
+	padding-left:20px;
+	padding-right:20px;
+	text-align:center;
+}
+
+.infobox_container {
+	border:none;
+	-webkit-border-radius: 100% / 8px;
+	-moz-border-radius: 100% / 8px;
+	-webkit-box-shadow: rgba(0,0,0,.30) 0 2px 3px;
+	-moz-box-shadow: rgba(0,0,0,.30) 0 2px 3px;
+	box-shadow: rgba(0,0,0,.30) 0 2px 3px;
+	display:inline;
+	float:left;
+	margin-left:10px;
+	margin-right:10px;
+	width:300px;
+	height:214px;
+}
+
+.infobox {
+	background:#FAFAFA;
+	background: -moz-linear-gradient(top, #FAFAFA 0%, #EEEEEE 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FAFAFA), color-stop(100%,#EEEEEE));
+	background: -webkit-linear-gradient(top, #FAFAFA 0%,#EEEEEE 100%);
+	background: -o-linear-gradient(top, #FAFAFA 0%,#EEEEEE 100%);
+	background: -ms-linear-gradient(top, #FAFAFA 0%,#EEEEEE 100%);
+	background: linear-gradient(top, #FAFAFA 0%,#EEEEEE 100%);
+	color:#555;
+	padding:5px;
+	border:2px solid #FFFFFF;
+	-moz-box-shadow: 0 0 3px #BBB;
+	-webkit-box-shadow: 0 0 3px #BBB;
+	box-shadow: 0 0 3px #BBB;
+	width:286px;
+	height:200px;
+}
+
+.infobox:hover {
+	background:#FAFAFA;
+	background: -moz-linear-gradient(top, #FAFAFA 0%, #DDDDDD 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FAFAFA), color-stop(100%,#DDDDDD));
+	background: -webkit-linear-gradient(top, #FAFAFA 0%,#DDDDDD 100%);
+	background: -o-linear-gradient(top, #FAFAFA 0%,#DDDDDD 100%);
+	background: -ms-linear-gradient(top, #FAFAFA 0%,#DDDDDD 100%);
+	background: linear-gradient(top, #FAFAFA 0%,#DDDDDD 100%);
+}
+
+.infoboximage {
+	float:left;
+	overflow: hidden;
+}
+
+.infoboxtitle {
+	width:286px;
+	text-align:center;
+	color: #444;
+	font-size:18px;
+	font-weight: 300;
+	line-height: 1.2em;
+}
+
+.infoboxtext {
+	text-align:left;
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-left:10px;
+	padding-right:0px;
+	font-size:1.2em;
+}
+
+.infoboxtext p{
+	margin-top:5px;
+}

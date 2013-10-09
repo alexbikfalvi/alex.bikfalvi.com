@@ -1,0 +1,9 @@
+@conference{bikfalvi_icns_2009,
+	title={{Nozzilla: A Peer-to-Peer IPTV Distribution Service for an IMS-based NGN}},
+	author={Alex Bikfalvi and Jaime Garc\'{i}a-Reinoso and Iv\'{a}n Vidal and Francisco Valera},
+	booktitle={Proceedings of the 2009 Fifth International Conference on Networking and Services},
+	pages={450--455},
+	publisher={IEEE Computer Society},
+	month={April},
+	year={2009}
+}

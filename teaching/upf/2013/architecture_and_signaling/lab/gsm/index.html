@@ -1,0 +1,449 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Alex, Bikfalvi, personal, site"/>
+<meta name="description" content="Alex Bikfalvi personal web site"/>
+<meta name="copyright" content="Alex Bikfalvi"/>
+<meta name="robots" content="index, follow" />
+
+<link href="../../../../../../images/icon.ico" rel="shortcut icon" />
+<link href="../../../../../../style/style.css" rel="stylesheet" title="Silver stylesheet" type="text/css"/>
+<link href="../../../../../../style/teaching.css" rel="stylesheet" type="text/css"/>
+
+<title>Alex Bikfalvi - Teaching - Accessing GSM Functions on an Android Smartphone</title>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24480564-1']);
+  _gaq.push(['_setDomainName', '.bikfalvi.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>
+
+<div id="content">
+
+<div id="header">
+<p class="hidden">Alex Bikfalvi</p>
+</div>
+
+<div id="back">
+
+<div id="navigation">
+<ul id="nav_main" class="nav">
+<li><a href="../../../../../../" accesskey="H"><span class="accesskey">H</span>ome</a></li>
+<li><a href="../../../../../../bio.html" accesskey="B"><span class="accesskey">B</span>io</a></li>
+<li><a href="../../../../../../contact.html" accesskey="C"><span class="accesskey">C</span>ontact</a></li>
+<li><a href="../../../../../../research.html" accesskey="R"><span class="accesskey">R</span>esearch</a></li>
+<li><a href="../../../../../../projects.html" accesskey="J">Pro<span class="accesskey">j</span>ects</a></li>
+<li><a href="../../../../../../pubs.html" accesskey="P"><span class="accesskey">P</span>ublications</a></li>
+<li id="nav_index"><a href="../../../../../../teaching.html" accesskey="T"><span class="accesskey">T</span>eaching</a></li>
+<li><a href="../../../../../../events.html" accesskey="E"><span class="accesskey">E</span>vents</a></li>
+</ul>
+</div>
+
+<div id="path">
+	<ul>
+    	<li id="path_home"><a href="../../../../../../" title="Home"><span>Home</span></a></li>
+    	<li class="path_arrow"><a href="../../../../../../teaching.html" title="Teaching">Teaching</a></li>
+    	<li class="path_arrow"><a href="../../../../" title="UPF">Pompeu Fabra University</a></li>
+    	<li class="path_arrow"><a href="../../../" title="2013">2013</a></li>
+    	<li class="path_arrow"><a href="../../" title="UPF">Architecture and Signaling</a></li>
+    	<li class="path_arrow"><a href="../" title="UPF">Lab</a></li>
+    	<li class="path_arrow">Accessing GSM Functions on an Android Smartphone</li>
+    </ul>
+</div>
+
+<div id="main_content">
+
+<h1 class="title">Accessing GSM Functions on an Android Smartphone</h1>
+
+<h1>Lab Overview</h1>
+
+<h2>Goals</h2>
+
+<p>The objective of this practical exercise is to create an application for a smartphone with the Android mobile operating system, which can access the GSM functionality. To write our application, we shall use the Java programming language with the Eclipse integrated development environment (IDE).</p>
+
+<h2>Software Tools</h2>
+
+<p>During this lab, we shall use a customized version of the Eclipse platform, called <i>Android Development Tools</i> or <i>ADT</i>, which includes the functionality and the API to easily create applications for the Android OS. In addition, the software package includes an Android smartphone emulator, called <i>Android Virtual Device</i> or <i>AVD</i>, which we shall use to test our code.</p>
+<p><img src="Steps.png" width="181" height="188" alt="The steps taken to design, develop and test an Android application." /></p>
+<p class="figure">Figure 1. The steps taken to design, develop and test an Android application.</p>
+<p>The figure 1 illustrates the steps we take to create our application. The ADT makes it possible to perform all these steps from the same integrated environment.</p>
+
+<h1>Lab Assignment</h1>
+
+<p>This lab consists of two tasks.</p>
+
+<ul>
+<li>For the first, we develop a simple Android application that displays several static GSM parameters, such as subscriber and equipment identity numbers.</li>
+<li>For the second, we display sevaral dynamic GSM parameters, such as roaming indication and radio signal strength.</li>
+</ul>
+
+<p>For evaluation, you should upload to Aula Global your code plus the answer to the lab questions, as a single archive file. The deadline is on February 22, 2013. The answers to questions is 60% of the final mark, uploaded code is 40% of the final mark.</p>
+
+<h1>Lab Steps</h1>
+
+<h2>Step 1: Download / Open the Android Development Tools</h2>
+
+<p>Open or download the Android Development Tools from the following web site:</p>
+
+<a href="http://developer.android.com/sdk/index.html" class="external" target="_blank">http://developer.android.com/sdk/index.html</a>
+
+<p>or from a link indicated by your instructor. Unpack the ADT in an empty folder.</p>
+
+<p>Start the IDE by opening the <i>eclipse</i> program from the <i>eclipse</i> folder. When staring the IDE for the first time, you will be asked to select the folder where you want to store your Eclipse projects, as shown in the figure 2. You may choose the default or create a new folder for this purpose.</p>
+<p><img src="Workspace.png" width="497" height="242" alt="Selecting the default ADT workspace folder." /></p>
+<p class="figure">Figure 2. Selecting the default ADT workspace folder.</p>
+<h2>Step 2: Create an Android Application Project</h2>
+
+<ol>
+	<li>Create a new Android application project from the <b>File</b> &gt; <b>New</b> &gt; <b>Android Application Project</b>. Enter the application name such as <code><span class="keyword">GsmInfo</span></code> and the project package name <code><span class="keyword">edu.upf.gsminfo</span></code>. Click <b>Next</b>.</li>
+	<li>On the following wizard steps, you may use the default settings for configuring the project, selecting an icon, and creating a new activity. After the wizard completes, select <b>Finish</b>.</li>
+	<li>After the new Android application project is created, the IDE displays the main activity or GUI of our application, called <code><span class="keyword">activity_main.xml</span></code> if you selected the default settings. The activity can be visualized and edited in two different ways: as an <i>XML</i> file or using a graphical <i>designer</i>. You may switch between these different modes using the buttons from the bottom of the <code><span class="keyword">activity_main.xml</span></code> frame, as shown in the figure 3.</li>
+</ol>
+<p><img src="Adt.png" width="248" height="24" alt="Switching between the XML and the design mode of the Android activity." /></p>
+<p class="figure">Figure 3. Switching between the XML and the design mode of the Android activity. </p>
+<h2>Step 3: Test the Application in an Android Virtual Device</h2>
+
+By default the Android application displays a simple <i>Hello World!</i> message. Now it is time to compile and test or application using the Android smartphone emulator, or AVD. For this purpose, we must create a new running configuration.
+
+<ol>
+	<li>Select the <b>Run</b> &gt; <b>Run Configurations</b> menu. A new dialog opens, where we can create a new running configuration.</li>
+	<li>In the opened dialog, select <b>Android Application</b> from the left-hand side list, and the click on the <b>New</b> button.</li>
+	<li>A new configuration is created, and the dialog displays three new tabs: <b>Android</b>, <b>Target</b>, and <b>Common</b>. In the <b>Name</b> field, you can select a different name for the configuration.</li>
+	<li>In the <b>Android</b> tab, use the <b>Browse</b> button to select our current project, as the project to execute in this configuration.</li>
+	<li>In the <b>Target</b> tab, we create and select a new Android Virtual Device to emulate the smartphone. Open the <b>Android Virtual Device Manager</b>, by clicking on the <b>Manager</b> button.</li>
+	<li>In the manager, from the <b>New</b> button, create a new virtual device. Select a name, choose a device type of your own preference, and you may leave the remaining settings on their default values.</li>
+	<li>After creating the device, and closing the manager, refresh the list of Android virtual devices used in the project configuration, and check the device we just created as the preferred one.</li>
+	<li>Click <b>Apply</b> and then <b>Run</b> to begin running the application on the emulated device.</li>
+</ol>
+
+<h2>Step 4: Interacting with the Android Virtual Device</h2>
+
+<p>The Android Virtual Device or AVD, emulates an Android smartphone. When staring the virtual device for the first time, please be patient and wait for the device's operating system to load. Our Android application is automatically loaded, installed and started on the phone. A virtual keyboard allows us to interact with the phone, in addition to the mouse, which can be used to simulate the touching of the touch screen, as illustrated in the figure 4.</p>
+<p><img src="Avd.png" width="450" height="413" alt="An Android Virtual Device (AVD) running on the local port 5444." /></p>
+<p class="figure">Figure 4. An Android Virtual Device (AVD) running on the local port 5444. </p>
+<p>Because the Android Virtual Device emulates the behavior of a real life phone, it cannot be used to make or receive real life phone calls. However, this characteristic can be emulated as well, in order to test Android applications. For this purpose, the AVD allows a Telnet connection on a given local port. The port number is displayed in the title of the emulator window, and usually starts with <i>5554</i>.</p>
+
+<p>We can use <i>putty</i> as a Telnet client to connect to AVD, and send commands that will change the behavior of the emulated phone.</p>
+
+<ol>
+	<li>Open <i>putty</i> and use the Telnet option to connect to the AVD on the specified port number.</li>
+	<li>Once connected, a new text-line console appears, which we can use to send commands to the AVD, as shown below.
+
+<div class="boxcode"><pre>
+Android Console: type 'help' for a list of commands
+OK</pre></div>
+</li>
+
+	<li>At any time, you can type <code><span class="keyword">help</span></code> or <code><span class="keyword">?</span></code> to display the commands available.</li>
+	<li>During this practice you shall use the <code><span class="keyword">gsm</span></code> command to simulate the behavior of a real-life GSM network. Type the <code><span class="keyword">gsm</span></code> command in the console to display the list of the available options, as shown below:
+
+<div class="boxcode"><pre>
+help gsm
+allows you to change GSM-related settings, or to make a new inbound phone
+call
+
+available sub-commands:
+   gsm list             list current phone calls
+   gsm call             create inbound phone call
+   gsm busy             close waiting outbound call as busy
+   gsm hold             change the state of an oubtound call to 'held'
+   gsm accept           change the state of an outbound call to 'active'
+   gsm cancel           disconnect an inbound or outbound phone call
+   gsm data             modify data connection state
+   gsm voice            modify voice connection state
+   gsm status           display GSM status
+   gsm signal           set sets the rssi and ber
+
+OK</pre></div>
+</li>
+
+	<li>Test some of these commands, and observe the behavior of the phone. You may start each command with the <code><span class="keyword">help</span></code> or <code><span class="keyword">?</span></code> keywords to display additional options.</li>
+</ol>
+
+<table width="960" border="0" cellpadding="0" cellspacing="0" class="tableinfo">
+  <tr><th class="strong">Questions</th></tr>
+  <tr><td class="strong">What is the Telnet command to simulate an incoming telephone call?</td></tr>
+  <tr><td class="strong">What is the Telnet command to send an SMS to the virtual smartphone?</td></tr>
+  <tr><td class="strong">Change the <code><span class="keyword">gsm voice</span></code> setting to <code><span class="keyword">off</span></code> and attempt to perform a phone call from the AVD. What happens?</td></tr>
+</table>
+
+<h2>Step 5: Design the Application GUI</h2>
+
+<p>Return the Android Development Tools. Now, we shall design the GUI of our Android application, using the GUI designer. If you are an experienced Android developer, you may also edit your code in XML mode.</p>
+
+<ol>
+	<li>First, remove the <i>Hello World!</i> <code><span class="keyword">TextView</span></code> component from the main activity.</li>
+	<li>From the components palette, on the left-hand side, open the <b>Composite</b> set, and click and drag a <code><span class="keyword">ScrollView</span></code> component to the activity window. We shall use this component to help us scroll through the text that we shall display later. Use the mouse to resize the scroll view component to fill the entire activity window. Then, in the component properties list, at the right-bottom side, set the component <code><span class="keyword">Id</span></code> to <code><span class="keyword">@+id/scrollView</span></code>.</li>
+	<li>In the component <b>Outline</b> window, on the right-top side, select the <code><span class="keyword">LinearLayout</span></code> of the scroll view. In the component properties, set the <b>Layout Parameters</b> &gt; <b>Height</b> to <code><span class="keyword">wrap_content</span></code>.</li>
+	<li>Finally, we shall add a component where we can display text. To this end, go to the <b>Form Widgets</b> components set, and click and drag a <code><span class="keyword">TextView</span></code> component, on top of the previous scroll view. Resize the text view component to fill the entire activity screen. Change the <code><span class="keyword">Id</span></code> to <code><span class="keyword">@+id/textView</span></code>. Set the <b>Layout Parameters</b> &gt; <b>Height</b> to <code><span class="keyword">wrap_content</span></code>. Set the <b>Text</b> property to an empty string.</li>
+	<li>Switch to the XML display of the activity user interface. The XML should be similar to the one displayed below. Alternatively, you may copy and paste this code into your XML file.</li>
+	<li> Compile and test your application.</li>
+</ol>
+
+<div class="boxcode"><pre>
+&lt;<span class="xmlname">RelativeLayout</span> <span class="xmlattr">xmlns:android</span>=<span class="xmlattrvalue">"http://schemas.android.com/apk/res/android"</span>
+    <span class="xmlattr">xmlns:tools</span>=<span class="xmlattrvalue">"http://schemas.android.com/tools"</span>
+    <span class="xmlattr">android:layout_width</span>=<span class="xmlattrvalue">"match_parent"</span>
+    <span class="xmlattr">android:layout_height</span>=<span class="xmlattrvalue">"match_parent"</span>
+    <span class="xmlattr">tools:context</span>=<span class="xmlattrvalue">".MainActivity"</span> &gt;
+
+    &lt;<span class="xmlname">ScrollView</span>
+        <span class="xmlattr">android:id</span>=<span class="xmlattrvalue">"@+id/scrollView"</span>
+        <span class="xmlattr">android:layout_width</span>=<span class="xmlattrvalue">"wrap_content"</span>
+        <span class="xmlattr">android:layout_height</span>=<span class="xmlattrvalue">"wrap_content"</span>
+        <span class="xmlattr">android:layout_alignParentBottom</span>=<span class="xmlattrvalue">"true"</span>
+        <span class="xmlattr">android:layout_alignParentLeft</span>=<span class="xmlattrvalue">"true"</span>
+        <span class="xmlattr">android:layout_alignParentRight</span>=<span class="xmlattrvalue">"true"</span>
+        <span class="xmlattr">android:layout_alignParentTop</span>=<span class="xmlattrvalue">"true"</span> &gt;
+
+        &lt;<span class="xmlname">LinearLayout</span>
+            <span class="xmlattr">android:layout_width</span>=<span class="xmlattrvalue">"match_parent"</span>
+            <span class="xmlattr">android:layout_height</span>=<span class="xmlattrvalue">"wrap_content"</span> &gt;
+
+            &lt;<span class="xmlname">TextView</span>
+                <span class="xmlattr">android:id</span>=<span class="xmlattrvalue">"@+id/textView"</span>
+                <span class="xmlattr">android:layout_width</span>=<span class="xmlattrvalue">"match_parent"</span>
+                <span class="xmlattr">android:layout_height</span>=<span class="xmlattrvalue">"wrap_content" </span>/&gt;
+
+        &lt;/<span class="xmlname">LinearLayout</span>&gt;
+    &lt;/<span class="xmlname">ScrollView</span>&gt;
+
+&lt;/<span class="xmlname">RelativeLayout</span>&gt;</pre></div>
+
+<h2>Step 6: Develop Your Code</h2>
+
+<p>The Android Development Tools IDE uses the user interface XML to automatically generate the Java code needed to interact with the GUI components. However, for each GUI component we want to access, we need to declare a corresponding variable in our code using the <code><span class="keyword">findViewById</span></code> method.</p>
+
+<ol>
+	<li>Open the Java code file <i>MainActivity.java</i> corresponding to our application. You can open the file using the <b>Package Explorer</b>, under the <i>src</i> &gt; <i>edu.upf.gsminfo</i> package path.</li>
+	<li>We need to add a package that allows us to declare a variable corresponding to the text view from the user interface.
+
+<div class="boxcode"><pre><span class="keyword">import</span> android.widget.<span class="keywordtype">TextView</span>;</pre></div>
+</li>
+
+	<li>We declare a new variable within the main class of our application, corresponding to the text view component.
+
+<div class="boxcode"><pre>
+<span class="keyword">public class</span> <span class="keywordtype">MainActivity</span> <span class="keyword">extends</span> <span class="keywordtype">Activity</span> {
+	<span class="keyword">private</span> <span class="keywordtype">TextView</span> textView;
+    ...
+}</pre></div>
+</li>
+
+	<li>We add the remaining of the code for our application, to the <code><span class="keyword">onCreate</span></code> method, which is called every time the application is created.
+
+<div class="boxcode"><pre>
+<span class="keyword">protected void</span> onCreate(<span class="keywordtype">Bundle</span> savedInstanceState) {
+    ...
+}</pre></div>
+</li>
+
+	<li>In this method, first we initialize the text view variable by using the component <b>Id</b>, declared previously with the user interface designer.
+
+<div class="boxcode"><pre>
+<span class="keyword">this</span>.textView = (<span class="keywordtype">TextView</span>)<span class="keyword">this</span>.findViewById(<span class="keywordtype">R</span>.id.textView);</pre></div>
+</li>
+
+	<li>To display a text on the user interface, we can set or append a string to the text view component using any of the following methods. To display text, we shall add a new <code><span class="keyword">onStart</span></code> method, such that the text is updated every time we open the application.
+
+<div class="boxcode"><pre>
+<span class="keyword">protected void</span> onStart() {
+    <span class="keyword">super</span>.onStart();
+    ...
+    <span class="keyword">this</span>.textView.setText(<span class="stringliteral">"Set this text.\n"</span>);
+    ...
+    <span class="keyword">this</span>.textView.append(<span class="stringliteral">"Append this text.\n"</span>);
+}</pre></div>
+</li>
+
+	<li>Test your application. You should see your application, similar to the one displayed in the figure 5.</li>
+</ol>
+<p><img src="AvdText.png" width="450" height="413" alt="Displaying a string in the Android application." /></p>
+<p class="figure">Figure 5. Displaying a string in the Android application.</p>
+<h1>Lab Tasks</h1>
+
+<h2>Display Static GSM Parameters</h2>
+
+<p>We use the <code><span class="keyword">android.telephony</span></code> package to read and display the GSM parameters. The key Java class to achieve this objective is called <code><span class="keyword">TelephonyManager</span></code>, which features a large set of methods that we can use.</p>
+
+<ol>
+	<li>Open the Android API documentation in your browser at the following URL:
+
+<a href="http://developer.android.com/reference/android/telephony/TelephonyManager.html" class="external" target="_blank">http://developer.android.com/reference/android/telephony/TelephonyManager.html</a>.
+
+Use it to determine which methods return GSM parameters that could be of our interest.</li>
+
+	<li>To access the telephony service on an Android phone, first, we must create an instance (that is an object) of the <code><span class="keyword">TelephonyManager</span></code> class. To do this, we create a new variable at the beginning of the class, as shown below.
+
+<div class="boxcode"><pre><span class="keyword">private</span> <span class="keywordtype">TelephonyManager</span> telephonyManager;</pre></div>
+</li>
+	<li>Then, we create the class instance, by adding the following line of code in the <code><span class="keyword">onCreate</span></code> method.
+
+<div class="boxcode"><pre>
+<span class="keyword">this</span>.telephonyManager = (<span class="keywordtype">TelephonyManager</span>) <span class="keyword">this</span>.getSystemService(<span class="keywordenum">TELEPHONY_SERVICE</span>);
+</pre></div>
+</li>
+	<li>Now, we can use the newly created telephony manager to display GSM parameters for our smarthphone. For example, we can display the IMEI (International Mobile Equipment Identity number) by calling the <code><span class="keyword">getDeviceId</span></code> method, as shown below. We use a <code><span class="keyword">try</span></code> -- <code><span class="keyword">catch</span></code> statement to prevent the application crashing if the telephony manager throws an exception.</li>
+	<li>Test now your application. When successful, your application should look like in the figure 6.
+</li>
+</ol>
+
+<p><img src="AvdImei.png" width="450" height="413" alt="Displaying the IMEI in the Android application." /></p>
+<p class="figure">Figure 6. Displaying the IMEI in the Android application.</p>
+<table width="960" border="0" cellpadding="0" cellspacing="0" class="tableinfo">
+  <tr><th class="strong">Questions</th></tr>
+  <tr><td class="strong">Does the application display the IMEI? Was any change required?</td></tr>
+  <tr><td class="strong">What other methods do you know for displaying the IMEI of a mobile phone?</td></tr>
+</table>
+
+<table width="960" border="0" cellpadding="0" cellspacing="0" class="tableinfo">
+  <tr><th>Tasks</th></tr>
+  <tr><td>Display the phone type. What method do you use? What does the value mean?</td></tr>
+  <tr><td>Display the IMEISV. What method do you use? What value do you obtain?</td></tr>
+  <tr><td>Display the network type. What method do you use? What does the value mean?</td></tr>
+  <tr><td>Display the call state. What method do you use? What does the value mean?</td></tr>
+  <tr><td>Display the IMSI. What method do you use?</td></tr>
+  <tr><td>Display the MSISDN. What method do you use?</td></tr>
+  <tr><td>Display the SIM serial. What method do you use?</td></tr>
+  <tr><td>Which is mobile country code of the current subscriber? Which is its mobile network code? How do you find it?</td></tr>
+  <tr><td>Which is mobile country code of the current registered operator? Which is its mobile network code? Are the MCC and MNC of the subscriber equal to the ones of the current operator? Why? How can you change them? Test your application and note the results.</td></tr>
+</table>
+
+<h2>Display Dynamic GSM Parameters</h2>
+
+<p>In this task, we shall dynamically display GSM parameters, such as changes of the phone or network state. To this end, we shall use the <code><span class="keyword">PhoneStateListener</span></code> class. Check out the API documentation to become familiar to this class, how you can use it, and what information it provides.</p>
+
+<ol>
+	<li>First, open the Android API documentation in your browser at the following URL:
+
+<a href="http://developer.android.com/reference/android/telephony/PhoneStateListener.html" class="external" target="_blank">http://developer.android.com/reference/android/telephony/PhoneStateListener.html</a>
+
+Use it to determine which methods return GSM parameters that could be of our interest.
+</li>
+	<li>Second, we need to create a new class, which extends <code><span class="keyword">PhoneStateListener</span></code> and overrides its methods. We shall call this class <code><span class="keyword">Listener</span></code>, for simplicity, and we shall declare it within our main class, as shown below. This class shall receive notifications when the GSM parameters change. To write to the GUI text view, we add a local <code><span class="keyword">TextView</span></code> variable, which we initialize via the class constructor.
+
+<div class="boxcode"><pre>
+<span class="keyword">public class</span> <span class="keywordtype">MainActivity</span> <span class="keyword">extends</span> <span class="keywordtype">Activity</span> {
+    ...
+    <span class="keyword">private class</span> <span class="keywordtype">Listener</span> <span class="keyword">extends</span> <span class="keywordtype">PhoneStateListener</span> {
+        ...
+        <span class="keyword">private</span> <span class="keywordtype">TextView</span> textView;
+
+        <span class="keyword">public</span> <span class="keywordtype">Listener</span>(<span class="keywordtype">TextView</span> textView) {
+            <span class="keyword">this</span>.textView = textView;
+        }
+        ...
+    }
+    ...
+}</pre></div>
+
+</li>
+
+	<li>Next, we declare a new variable for our newly created <code><span class="keyword">Listener</span></code> class, within the main class.
+
+<div class="boxcode"><pre>
+<span class="keyword">public class</span> <span class="keywordtype">MainActivity</span> <span class="keyword">extends</span> <span class="keywordtype">Activity</span> {
+    ...
+    <span class="keyword">private</span> <span class="keywordtype">Listener</span> listener;
+    ...
+}
+</pre></div>
+</li>
+
+	<li>Then, we create a new instance of this class, in the <code><span class="keyword">onCreate</span></code> method.
+
+<div class="boxcode"><pre>
+<span class="keyword">protected void</span> onCreate(<span class="keywordtype">Bundle</span> savedInstanceState) {
+    ...
+    <span class="keyword">this</span>.listener = <span class="keyword">new</span> <span class="keywordtype">Listener</span>();
+    ...
+}</pre></div>
+</li>
+
+	<li>To receive notifications when GSM parameters change, we must inform the telephony manager of the type of event which we want to receive. These are listed as constants of the <code><span class="keyword">PhoneStateListener</span></code> class. We enable the listening, using the code below. As shown in the example, to listen to multiple events at the same time, we separate them by pipe (<code><span class="keyword">|</span></code>).
+
+<div class="boxcode"><pre>
+<span class="keyword">protected void</span> onCreate(<span class="keywordtype">Bundle</span> savedInstanceState) {
+    ...
+    <span class="keyword">this</span>.telephonyManager.listen(<span class="keyword">this</span>.listener,
+        <span class="keywordtype">PhoneStateListener</span>.<span class="keywordenum">LISTEN_CALL_STATE</span> |
+        <span class="keywordtype">PhoneStateListener</span>.<span class="keywordenum">LISTEN_DATA_ACTIVITY</span>);
+    ...
+}</pre></div>
+</li>
+
+	<li>Now, we have to implement the methods inside the listener class, to receive the data for the parameters we want to process. For example, if we want to listen on the <code><span class="keywordenum">LISTEN_DATA_ACTIVITY</span></code> event, we shall implement the <code><span class="keyword">onDataActivity</span></code> method, as follows.
+
+<div class="boxcode"><pre>
+<span class="keyword">private class</span> <span class="keywordtype">Listener</span> <span class="keyword">extends</span> <span class="keywordtype">PhoneStateListener</span> {
+    ...
+    <span class="keyword">public void</span> onDataActivity(<span class="keyword">int</span> direction) {
+        <span class="keyword">this</span>.textView.append(<span class="stringliteral">"Data activity: "</span> + direction + <span class="stringliteral">"\n"</span>);
+    }
+    ...
+}</pre></div>
+</li>
+</ol>
+
+<table width="960" border="0" cellpadding="0" cellspacing="0" class="tableinfo">
+  <tr><th class="strong">Questions</th></tr>
+  <tr><td class="strong">What are the 9 phone state parameters that we can follow using this class? Use the API documentation for help.</td></tr>
+</table>
+
+<table width="960" border="0" cellpadding="0" cellspacing="0" class="tableinfo">
+  <tr><th>Tasks</th></tr>
+  <tr><td>Create a method to listen and display the call state. What value do you obtain? What does it mean?</td></tr>
+  <tr><td>Use the Telnet console to make a call. Does anything change? How?</td></tr>
+  <tr><td>Create a method to listen and display the service state. What information can you display?</td></tr>
+  <tr><td>Use the Telnet console to change the voice or data GSM state. Does anything change? How?</td></tr>
+</table>
+
+The following is a set of bonus tasks for which you can obtain 15% bonus points.
+
+<table width="960" border="0" cellpadding="0" cellspacing="0" class="tableinfo">
+  <tr><th>Bonus Tasks</th></tr>
+  <tr><td>Create a method to listen and display the signal strength. What information can you display?</td></tr>
+  <tr><td>Use the Telnet console to change the signal strength and observe what changes. No need to write anything for this point.</td></tr>
+  <tr><td>What do the numbers in the signal strength information mean? What is the equivalent signal strength in dBm for the numeric value you obtain? <i>Tip: Use the 3GPP standard TS 27.007 section 8.5, to answer this question}</i>.</td></tr>
+</table>
+
+<div class="infoboxes">
+	<div class="infobox_container">
+		<div class="infobox">
+        	<a href="../../../../../../download/Teaching-2013-Lab-GSM.pdf" style="background-image:url(../../../../../images/doc_as_2013_lab_gsm.png)" target="_blank">
+            	<span class="infoboxtitle">Download this lab.</span>
+                <span class="infoboxtext">February 15, 2013</span>
+                <span class="infoboxtext">PDF/929 KB</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<p class="update">Published: Febrary 21, 2013<br/>Last updated: February 21, 2013</p>
+
+</div>
+</div>
+
+<div id="footer">
+<p><a href="../../../../../../accessibility.html" title="Accessibility">Accessibility</a> | <a href="../../../../../../copyright.html" title="Copyright Information">Copyright Information</a></p>
+</div>
+
+</div>
+
+</body>
+</html>

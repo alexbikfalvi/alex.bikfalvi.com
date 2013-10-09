@@ -1,0 +1,625 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Alex, Bikfalvi, personal, site"/>
+<meta name="description" content="Alex Bikfalvi personal web site"/>
+<meta name="copyright" content="Alex Bikfalvi"/>
+<meta name="robots" content="index, follow" />
+
+<link href="../../images/icon.ico" rel="shortcut icon" />
+<link href="../../style/style.css" rel="stylesheet" title="Silver stylesheet" type="text/css"/>
+
+<title>Alex Bikfalvi - SimStream</title>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24480564-1']);
+  _gaq.push(['_setDomainName', '.bikfalvi.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>
+
+<a name="top" id="top"></a>
+
+<div id="content">
+
+<div id="header">
+<p class="hidden">Alex Bikfalvi</p>
+</div>
+
+<div id="back">
+
+<div id="navigation">
+<ul id="nav_main" class="nav">
+<li><a href="../../" accesskey="H"><span class="accesskey">H</span>ome</a></li>
+<li><a href="../../bio.html" accesskey="B"><span class="accesskey">B</span>io</a></li>
+<li><a href="../../contact.html" accesskey="C"><span class="accesskey">C</span>ontact</a></li>
+<li><a href="../../research.html" accesskey="R"><span class="accesskey">R</span>esearch</a></li>
+<li id="nav_index"><a href="../../projects.html" accesskey="J">Pro<span class="accesskey">j</span>ects</a></li>
+<li><a href="../../pubs.html" accesskey="P"><span class="accesskey">P</span>ublications</a></li>
+<li><a href="../../teaching.html" accesskey="T"><span class="accesskey">T</span>eaching</a></li>
+<li><a href="../../events.html" accesskey="E"><span class="accesskey">E</span>vents</a></li>
+</ul>
+</div>
+
+<div id="path">
+	<ul>
+    	<li id="path_home"><a href="../../" title="Home"><span>Home</span></a></li>
+    	<li class="path_arrow"><a href="../../projects.html" title="Projects">Projects</a></li>
+    	<li class="path_arrow">SimStream</li>
+    </ul>
+</div>
+
+<div id="main_content">
+
+<h1 class="title">SimStream</h1>
+
+<p>The SimStream  simulation software for video streaming is a project in progress and the software on this   page is subject to change. There are no guarantees for   this software and you can use it on your own risk. SimStream   is free software and is licensed under the terms of <a href="http://www.gnu.org/licenses/gpl.html" target="_blank">GNU General Public License</a>.</p>
+<h1>Online Resources</h1>
+<ul>
+  <li><a href="code/html/index.html">Source code documentation</a></li>
+  <li>Download the open source code as <a href="../../download/SimStream.zip">ZIP (305 KB)</a> or <a href="../../download/SimStream.tgz">TAR (207 KB)</a> archive (version 2010.12.14)</li>
+</ul>
+
+<h1><a name="contents" id="contents"></a>On This Page</h1>
+<ol type="I">
+  <li><a href="#s1">The Basics</a>
+    <ol>
+      <li><a href="#s11">What is SimStream?</a></li>
+      <li><a href="#s12">Architecture and Main Components</a></li>
+      </ol>
+  </li>
+  <li><a href="#s2">Simulator Core</a>
+    <ol type="1">
+          <li><a href="#s21">The Run-Time</a>
+            <ol type="a">
+              <li><a href="#s21a">Simulation Events, Calls and Execution Flow</a></li>
+              <li><a href="#s21b">The Events List</a></li>
+              <li><a href="#s21c">The Simulation Model</a></li>
+            </ol>
+          </li>
+          <li><a href="#s22">Objects and Cross-Communication</a>
+            <ol type="a">
+              <li><a href="#s22a">Object Delegates</a></li>
+              <li><a href="#s22b">Object Events</a></li>
+              <li><a href="#s22c">Object Calls</a></li>
+              </ol>
+          </li>
+          <li><a href="#s23">Timers</a></li>
+        </ol>
+      </li>
+  <li><a href="#s3">Networking Library</a>
+    <ol type="1">
+      <li><a href="#s31">Packets</a></li>
+      <li><a href="#s32">Protocols</a>
+        <ol type="a">
+          <li><a href="#s32a">IP, Addressing and Routing</a></li>
+          <li><a href="#s32b">IP Multicast</a></li>
+          <li><a href="#s32c">Transport Layer</a></li>
+        </ol>
+      </li>
+      <li><a href="#s33">Network Nodes</a>
+        <ol type="a">
+          <li><a href="#s33a">Hosts</a></li>
+          <li><a href="#s33b">Routers</a></li>
+        </ol>
+      </li>
+      <li><a href="#s34">Streaming</a>
+        <ol type="a">
+          <li><a href="#s34a">Connectionless Streaming</a></li>
+          <li><a href="#s34b">Connection-Oriented Streaming</a></li>
+          <li><a href="#s34c">Congestion Control</a></li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+  <li><a href="#s4">Streaming Library</a>
+    <ol>
+      <li><a href="#s41">Application-Layer Multicast</a></li>
+      <li><a href="#s42">On-Demand Streaming</a></li>
+    </ol>
+  </li>
+  <li><a href="#s5">Simulation of Large-Scale P2P Streaming</a>
+    <ol>
+      <li><a href="#s51">The Problem</a></li>
+      <li><a href="#s52">Implementation Aspects</a></li>
+      <li><a href="#s53">Findings</a></li>
+      </ol>
+  </li>
+</ol>
+ 
+<h1><a name="s1" id="s1"></a>I. The Basics</h1>
+<p>In this chapter you will learn the basics of the SimStream simulation software:</p>
+<ul>
+  <li>What is SimStream and what are the main features?</li>
+  <li>What is the software architecture and the basic components?</li>
+  <li>How can you use the basic components to create a simple simulator?</li>
+</ul>
+<p class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
+<h2><a name="s11" id="s11"></a>I.1. What is SimStream?</h2>
+<p>The <em>streaming simulator</em>, or <em>SimStream</em> for short, is a packet-level time-discrete network simulator, designed to be efficient for simulating large scale streaming applications. A particular requirement of these applications is that they need to simulate a large number of hosts and packets leading to extensive simulation times for many scenarios.</p>
+<p>Compared with existing network simulators, SimStream reduces the complexity and computing times with the following key aspects:</p>
+<ul>
+  <li>Uses native executable code written in C++</li>
+  <li>Uses index-based addressing making packet routing and forwarding a constant-time operation</li>
+  <li>Uses delegate-based communication between simulator components</li>
+</ul>
+<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<h2><a name="s12" id="s12"></a>I.2. Architecture and Main Components</h2>
+<p>SimStream consists of the following main components:</p>
+<ul>
+  <li>The  core</li>
+  <li>A set of  add-on libraries</li>
+  <li>A set of implemented simulators</li>
+  </ul>
+<p>The  <a href="#fig1a">figure I.a</a> illustrates the main components and sub-components.</p>
+<p><a name="fig1a" id="fig1a"></a><img src="Fig1a.png" width="683" height="456" alt="Figure I.a" /></p>
+<p class="figure">Figure I.a. SimStream architecture and simulators currently implemented</p>
+<h4>The simulator core</h4>
+<p>The <a href="#s2">simulator core</a> is the central part of the simulator that can be used to create any type of time-discrete simulations, not necessarily computer network simulations. The core uses an event scheduling mechanism to serialize  the execution of tasks according to their temporal order within the simulation. The core provides a set of core <em>services</em>, <em>interfaces</em> and <em>libraries</em>.</p>
+<ul>
+  <li>The core services includes the simulator <em>run-time</em> that executes the simulation tasks. In addition, the run-time manages the simulation virtual time and schedules new tasks in the form of <em><a href="#s21a">simulation events</a></em> and <em><a href="#s21a">simulation calls</a></em> stored in an <a href="#s21b">events</a> and calls list.</li>
+  <li>The core interfaces provide the foundation to build a simulator. They contain an interface for simulation events and an interface for the <a href="#s21c">simulation model</a>.</li>
+  <li>The core libraries provide two classes of essential elements. The first, contains several entities such as delegates, calls and events, that allow flexible <a href="#s22">cross-object communication</a> within the simulation. The second, provides timers.</li>
+  </ul>
+<h4>The simulation libraries</h4>
+<p>The simulation libraries bring an extensive set of functionality that is required to implement network simulations for multimedia streaming. Although the libraries are not at all essential when developing a fully customized simulation from scratch, they provide common used elements such as basic implementation of several network protocols, network entities such as hosts, routers and links, streaming client and server application layers, streaming encoders and decoders, etc. In addition, commonly-used routines such as data collection, output formatting, cross-platform random number generators and shuffling are also available.</p>
+<p>The libraries provide evolving functionality, and typically contain any set of objects and functions that is general enough to be used in more than one simulator.</p>
+<h4>The simulators</h4>
+<p>The simulators is a list of customized simulator implementation that are part of the current version of SimStream. Each of this simulators uses the core and various elements from the simulation libraries to implement its desired objectives. The following tables illustrates the current simulators and their purpose.</p>
+<table width="800" border="0" cellpadding="0" cellspacing="0" class="tableinfo">
+  <tr>
+    <th width="250">Simulator</th>
+    <th width="550">Objective</th>
+  </tr>
+  <tr>
+    <td width="250">P2P Streaming with Single ALM-tree</td>
+    <td width="550">Simulation of a multiple channel IPTV service with hybrid IP-multicast and P2P streaming. The P2P overlay uses a single ALM tree with push-based forwarding for each channel.</td>
+  </tr>
+  <tr>
+    <td width="250">P2P Streaming with Multiple ALM-trees</td>
+    <td width="550">Simulation of a multiple channel IPTV service with hybrid IP-multicast and P2P streaming. The P2P overlay uses more than one ALM tree  with push-based forwarding for each channel.</td>
+  </tr>
+  <tr>
+    <td width="250">P2P Streaming with Mesh</td>
+    <td width="550">Simulation of a multiple channel IPTV service with hybrid IP-multicast and P2P streaming. The P2P overlay uses a mesh structure for each channel with segment-level pull-based forwarding. Segment scheduling is done according to the DoNET/Coolstreaming algorithm.</td>
+  </tr>
+  <tr>
+    <td width="250">Unicast Connection Measurement</td>
+    <td width="550">Simplified simulation of  a multiple channel IPTV service for the purpose of measuring the hop-based distance between hosts.</td>
+  </tr>
+  <tr>
+    <td width="250">Multicast Connection Measurement</td>
+    <td width="550">Simplified simulation of  a multiple channel IPTV service for the purpose of measuring the size of the IP multicast tree.</td>
+  </tr>
+  <tr>
+    <td width="250">TFRC Flow Throughput Measurement</td>
+    <td width="550">Simulation of TFRC flow congestion control.</td>
+  </tr>
+</table>
+<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<h1><a name="s2" id="s2"></a>II. Simulator Core</h1>
+<p>This chapter describes the core of the SimStream simulator:</p>
+<ul>
+  <li>The run-time and the scheduling of simulation of events, calls</li>
+  <li>The role of the simulation model</li>
+  <li>Simulation objects and cross-communication between them</li>
+  <li>Times and their usage</li>
+</ul>
+<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<h2><a name="s21" id="s21"></a>II.1. The Run-Time</h2>
+<p>The run-time is the central part of the simulator. It manages the execution flow of the simulation tasks in the form of <em><a href="#s21a">simulation events</a></em> and <em><a href="#s21a">simulation calls</a></em>. In addition, it keeps track of the simulation <em>virtual time</em>, and provides the methods for the scheduling and cancellation of events and calls. The run-time is implemented by the following object class.</p>
+<table width="500" border="0" cellpadding="0" cellspacing="0" class="tableinfo">
+  <tr>
+    <th width="150">Class</th>
+    <th width="350">Description</th>
+    </tr>
+  <tr>
+    <td><a href="code/html/class_c_sim.html">CSim</a></td>
+    <td>The simulator run-time.</td>
+    </tr>
+</table>
+<p>Because all other objects within a simulation cannot call the run-time directly, for purposes such as scheduling events and obtaining the current virtual time, the run-time provides an abstract interface called the <em>simulator handler</em> that can be used for such purpose. At startup, the run-time passes a reference to this handler to the current <a href="#s21c"><em>simulation model</em></a>, which then can pass it on to all other objects that need to call functions of the run-time. The simulator handler is implemented by the following object class.</p>
+<table width="500" border="0" cellpadding="0" cellspacing="0" class="tableinfo">
+  <tr>
+    <th width="150">Class</th>
+    <th width="350">Description</th>
+  </tr>
+  <tr>
+    <td><a href="code/html/class_c_sim_handler.html">CSimHandler</a></td>
+    <td>The handler to the simulator run-time.</td>
+  </tr>
+</table>
+<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<h3><a name="s21a" id="s21a"></a>II.1.a. Simulation Events, Calls and Execution Flow</h3>
+<p>The main function of the run-time is to accept the scheduling of simulation tasks from the <a href="#s21c"><em>simulation model</em></a> or one of its sub-components, and execute them. The simulator tasks come in two flavors:</p>
+<ul>
+  <li>Simulation events, and;</li>
+  <li>Simulation calls.</li>
+  </ul>
+<p>Both  the <em>simulation events</em> and <em>simulation calls</em> are objects that contain information about tasks to execute at any step during the simulation. In the following, we shall describe both, emphasizing the similarities and differences between them.</p>
+<h4>Simulation Events</h4>
+<p>The simulation events are typically the most common used type of task objects to control the flow of the simulation. By far, the majority of tasks from a simulation consists of events.</p>
+<p>All events have a temporal variable that indicates to the run-time when they should be executed on the virtual time scale, and some <em>information</em> about what the execution of the event should do. This information can be anything: data, code or both. The run-time executes the events by passing them to the simulation model, which in turn can use the custom information within the event to perform a specific action. To increase the performance of the simulation, the majority of events contain both the code and data to be executed. In this manner, the simulation model executes an event simply by calling its piece of code, rather than by trying to interpret the data from the event. The <a href="#fig2a">figure II.a</a> illustrates the structure of a simulation event.</p>
+<p><a name="fig2a" id="fig2a"></a><img src="Fig2a.png" width="191" height="134" alt="Figure II.a" /></p>
+<p class="figure">Figure II.a. The structure of a simulation event</p>
+<p>The generic interface for a simulation event is implemented by the following object class.</p>
+<table width="500" border="0" cellpadding="0" cellspacing="0" class="tableinfo">
+  <tr>
+    <th width="150">Class</th>
+    <th width="350">Description</th>
+  </tr>
+  <tr>
+    <td><a href="code/html/class_c_sim_event.html">CSimEvent</a></td>
+    <td>The generic interface for a simulation event.</td>
+  </tr>
+</table>
+<h4>Simulation Calls</h4>
+<p>A simulation call is a  light-weight version of a simulation event. Unlike events, calls do not have a temporal relationship between them, and all current calls are executed at the end of the current event. Simulation calls are <em><a href="#s22c">object calls</a></em>, and their sole purpose is to execute tasks that belong to the current event but cannot be executed as part thereof.  All scheduled calls are synchronous with the event after which they are executing sharing the same virtual time, and they are executed directly from the run-time.</p>
+<div class="boxexample">
+  <p><em><strong>Example</strong></em></p>
+  <p>One common example for using calls is represented by self clean-up tasks, for example an object deleting itself when receiving a certain event. When it is not safe to delete an object as part of a current event (because there may be other references to the object after the memory is freed), the call allows you to schedule this operation  after the event has finished.</p>
+  <p>A second example is where, during an event, a large number of objects call  methods of each other sequentially, which might lead to a stack overflow situation. In cases where the number of these type of calls is dependent on an input parameter, it is always safer to use calls. Calls are  executed from the run-time context,  and always in their scheduled order.</p>
+</div>
+<h4>Execution Flow</h4>
+<p>The simulator run-time execution flow consists in executing scheduled events and calls. Simulation events are always executed first, each event followed by simulation calls, if available. If the code executed during an event schedules more than one call, all scheduled calls are executed after the event with the same virtual time. The  <a href="#fig2b">figure II.b</a> illustrates the execution flow of the simulator run-time.</p>
+<p><a name="fig2b" id="fig2b"></a><img src="Fig2b.png" width="242" height="247" alt="Figure II.b" /></p>
+<p class="figure">Figure II.b. Run-time execution flow</p>
+<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<h3><a name="s21b" id="s21b"></a>II.1.b. The Events List</h3>
+<p>The event list is an ordered list maintained by the simulator run-time that stores simulation events. The events are ordered according to their execution time in a B-tree structure that allows insertion, access and removal of events in a logarithmic amortized time, <em>O</em>(log <em>n</em>). Therefore, the simulator event list performance depends on the number of events with different execution times that is stored in the event list at any given time. Events that share the same execution time are stored according to a FIFO rule, and executed in the same order.</p>
+<div class="boxinfo">
+  <p><em><strong>The calls list</strong></em></p>
+  <p>Unlike the events list, the calls list is a FIFO list that stores all calls that must be executed after the current event. Because a call is always executed after the current event, they are synchronous with the event that generated them and share the same virtual time. However, the FIFO list guarantees that calls are executed in their scheduled order.</p></div>
+<p>The simulator events list and calls list are implemented by the following object classes.</p>
+<table width="500" border="0" cellpadding="0" cellspacing="0" class="tableinfo">
+  <tr>
+    <th width="150">Class</th>
+    <th width="350">Description</th>
+  </tr>
+  <tr>
+    <td><a href="code/html/class_c_sim_event_list.html">CSimEventList</a></td>
+    <td>The simulator event list.</td>
+  </tr>
+  <tr>
+    <td><a href="code/html/class_c_sim_calls.html">CSimCalls</a></td>
+    <td>The simulator calls list.</td>
+  </tr>
+</table>
+<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<h3><a name="s21c" id="s21c"></a>II.1.c. The Simulation Model</h3>
+<p>The simulation model is the implementation of an  interface that instructs the run-time how to execute the simulation. The SimStream simulator allows the implementation of any number of simulation models for any time of event-based time-discrete simulations. All simulation models must implement the <a href="code/html/class_c_sim_model.html">CSimModel</a> interface.</p>
+<p>The simulation model provides the following set of parameters to the run-time:</p>
+<ul>
+  <li>The maximum simulation time</li>
+  <li>A list with initial events (each event is allowed to have an arbitrary virtual execution time)</li>
+  </ul>
+<p>Upon startup, the run-time provides the <em>simulator handler</em> to the model via an <em>initialization function</em>, allowing the model to obtain the virtual time and to schedule events and calls  During simulation, the run-time executes the events by passing them to the model via an <em>execution function</em>. The model understands the structure of each event and based on the data and code the event carries, executes the appropriate task. Upon completion of the simulation, the run-time calls a <em>finalization function</em> enabling the simulation model to execute post-simulation tasks such as writing simulation results to files. For more information, see <a href="#s21">the run-time</a>.</p>
+<p>The  <a href="#fig2c">figure II.c</a> summarizes the interconnection between the simulator run-time and the simulation model.</p>
+<p><a name="fig2c" id="fig2c"></a><img src="Fig2c.png" width="229" height="323" alt="Figure II.c" /></p>
+<p class="figure">Figure II.c. Information flow between the run-time and the simulation model. The arrows indicate the direction of the information flow and counter-indicate the direction of the function call.</p>
+<div class="boxwarning">
+  <p><strong><em>On the usage of the simulator core</em></strong></p>
+  <p>The simulator core is designed for discrete time-domain simulations. However,  time-independent scenarios may still take advantage of the <em>SimStream</em> libraries simply by bypassing the core. These scenarios do not require events, the usage of the run-time or the implementation of the simulation model. Instead, they can take advantage of the existing libraries and provide their own internal logic on how to use them.</p>
+  <p><em>SimStream</em> includes two examples of time-independent simulators that bypass the core and use only a subset of required libraries:</p>
+  <ul>
+    <li><em>Measurement of unicast connections</em>: uses the <a href="#s3">networking libraries</a> to calculate the average unicast path length between pairs of random hosts.</li>
+    <li><em>Measurement of multicast connections</em>: uses the networking libraries to calculate the average multicast tree size with respect to the membership group size.</li>
+  </ul>
+</div>
+<p>The abstract interface for a simulation model is implemented by the following object class.</p>
+<table width="500" border="0" cellpadding="0" cellspacing="0" class="tableinfo">
+  <tr>
+    <th width="150">Class</th>
+    <th width="350">Description</th>
+  </tr>
+  <tr>
+    <td><a href="code/html/class_c_sim_model.html">CSimModel</a></td>
+    <td>The abstract interface for a simulation model.</td>
+  </tr>
+</table>
+<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<h2><a name="s22" id="s22"></a>II.2. Objects and Cross-Communication</h2>
+<p>SimStream is a simulator implemented in C++. For this reason, all components are implemented as C++ classes, and all variables (with the exception of the fundamental data types such as <span class="code">int</span>, <span class="code">char</span> or <span class="code">double</span>) or objects or pointers to objects. This approach decreases the gap between the real-life objects that must be simulated  and their actual implementation.</p>
+<p>To this end, all simulated real-life objects such as hosts, routers, packets,  software (protocol layers, clients, servers, video players, etc.) are defined as C++ classes. Similar to the real-life objects they are trying to mimic, many of these classes require the ability to interact with each other on a reciprocal bases. An example of such interaction is represented by an upper protocol layer needing to interact with a lower protocol layer, while the lower protocol layer needs to interact to the same upper protocol layer. In addition, this level of interaction should be accomplished while the two classes are relatively separated from one another and they communicate only through a set of well defined interfaces.</p>
+<p>However, the C++ programming language has not been designed with such a degree of inter-object communication in mind. One possible solution is to use inheritance where the base class defines the ground functionality while the derived classes implement the most complex features. A first drawback of this approach is that many different classes will be intricate linked to each other, defeating the initial purpose of separating the functionality in different objects in the first place. Then, the derived classes will be limited to the functions available in the base class, or the base class may become unnecessarily complex to accommodate the requirements from all derived classes.</p>
+<p>The  <a href="#fig2d">figure II.d</a> is an example of the required level of inter-object communication. The figure illustrates the common protocol stack implemented in SimStream hosts and routers. Each set of common functions is implemented in a separate object class. This approach makes different components reusable (e.g. the blue components are used by both hosts and routers, while the orange components are only used by routers), while avoiding to add complexity to objects that do not require it (e.g. unlike in practice, IP unicast routing tables for incoming packets are not implemented by hosts, keeping the simulator optimized).</p>
+<div class="boxexample">
+  <p><strong><em>Example</em></strong></p>
+  <p><a name="fig2d" id="fig2d"></a><img src="Fig2d.png" width="626" height="342" alt="Figure II.d" /></p>
+  <p><span class="figure">Figure II.d. Example of inter-object communication: implementation of the protocol stack of hosts and routers in SimStream. The arrows indicate the flow of information and/or the direction of the function calls.</span></p>
+</div>
+<p>This degree of interdependence, which can be far more complex when adding new protocols, makes it very difficult to use C++ class inheritance. In addition, the inheritance must follow the dependency between classes resulting sometimes in a counter-intuitive implementation. For instance, the  <a href="#fig2e">figure II.e</a> illustrates a possible dependency diagram for the components listed in <a href="#fig2d">figure II.d</a>, in which upper layer protocols such as IGMP and PIM-SM must be base classes, while IP forwarding must be derived classes.</p>
+<div class="boxexample">
+  <p><strong><em>Example</em></strong></p>
+  <p><a name="fig2e" id="fig2e"></a><img src="Fig2e.png" width="267" height="342" alt="Figure II.e" /></p>
+  <p><span class="figure">Figure II.e. A possible inheritance diagram for the C++ classes that implement the protocol stack from <a href="#fig2d">figure II.d</a>.</span></p>
+</div>
+<p>Apart from class inheritance, there may be several other solutions to pass object parameters between classes. One is to use a global dispatcher with parameters as generic pointers (<span class="code">void*</span>). The disadvantage of this approach is that class objects must register with the dispatcher, increasing the execution complexity, and the developer must keep track of the parameters data type, increasing the development effort.</p>
+<p>To avoid these disadvantages, the SimStream simulator core provides a set of constructs that enables type-safe fast inter-object communication. These allow different classes to call each others' member functions directly, as in the following scenario.</p>
+<div class="boxexample">
+  <p><strong><em>Example</em></strong></p>
+  <p><a name="fig2f" id="fig2f"></a><img src="Fig2f.png" width="238" height="267" alt="Figure II.f" /></p>
+  <p><span class="figure">Figure II.f. Implementing IP and UDP layer functions in separate classes and the required interaction between them. <a href="#cs2a">Code sample II.a</a> illustrates the C++ classes for this scenario.</span></p>
+  <p><a name="cs2a" id="cs2a"></a> </p>
+  <table border="0" cellspacing="0" cellpadding="0" width="100%">
+    <tr valign="top">
+      <td width="50%"><div class="boxcode">
+        <pre><span class="keyword">class</span> CLayerIp
+{
+<span class="comment">// other declarations</span>
+<span class="keyword">public</span>:
+    <span class="keyword">void</span> Recv(CPacketIp ip)
+    {
+        <span class="comment">// call Recv() for the object of class CLayerUdp</span>
+    }
+
+    <span class="keyword">void</span> Send(CPacketIp ip)
+    {
+        <span class="comment">// send packet to lower layer</span>
+    }
+};</pre>
+      </div></td>
+      <td width="50%"><div class="boxcode">
+        <pre><span class="keyword">class</span> CLayerUdp
+{
+<span class="comment">// other declarations</span>
+<span class="keyword">public</span>:
+    <span class="keyword">void</span> Recv(CPacketUdp udp)
+    {
+        <span class="comment">// receive packet from lower layer</span>
+    }
+
+    <span class="keyword">void</span> Send(CPacketUdp udp)
+    {
+        <span class="comment">// call Send() for the object of class CLayerIp</span>
+    }
+};</pre>
+      </div></td>
+    </tr>
+  </table>
+  <p><span class="figure">Code sample II.a. C++ classes for for the scenario from <a href="#fig2f">figure II.f</a>.</span></p></div>
+<p>The types of constructs for inter-object communication are:</p>
+<ul>
+  <li><a href="#s22a">Delegates</a></li>
+  <li><a href="#s22b">Events</a></li>
+  <li><a href="#s22c">Calls</a></li>
+</ul>
+<p>In actuality,  these constructs are C++ template classes. They use pointers to member functions to enable generic calls from one class to another, without any requirement on the class dependency.</p>
+<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<h3><a name="s22a" id="s22a"></a>II.2.a. Object Delegates</h3>
+<p>A delegate is a template class that enables <em>single</em> function calls, that is a delegate wraps <em>one object</em> and <em>one function</em>. Any object that obtains an instance of the delegate,  can use it to call the <em>one function</em> for the <em>one object </em>contained by the delegate.</p>
+<div class="boxstop">
+  <p><strong><em>On the use of delegates</em></strong></p>
+  <p>The programmer must be extremely careful when using delegates, making sure that any delegate created for the function of an object is no longer used after the object has been destroyed.</p>
+</div>
+<p>A delegate has two components:</p>
+<ul>
+  <li>A <em>generic part</em> (in actuality the base class of the delegate), that is independent of the type of the contained object.</li>
+  <li>An <em>explicit part</em> (in actuality the derived class of the delegate), that is explicitly defined for a certain type of the contained object.</li>
+  </ul>
+<p>In addition, a delegate is explicitly defined for a certain function prototype (i.e. list of parameters and return type). An explicit delegate can be casted to a generic delegate of the same function prototype, but not the other way around.</p>
+<div class="boxexample">
+  <p><strong><em>Example</em></strong></p>
+  <p>This example resumes the example from <a href="#fig2f">figure II.f</a>, while emphasizing a single call using a delegate.</p>
+  <p><a name="fig2g" id="fig2g"></a><img src="Fig2g.png" width="153" height="115" alt="Figure IIg" /></p>
+  <p class="figure">Figure II.g. IP layer object calling a UDP layer object through a delegate.</p>
+  <p><a name="cs2b" id="cs2b"></a></p>
+  <table border="0" cellspacing="0" cellpadding="0" width="100%">
+    <tr>
+      <td><div class="boxcode">
+        <pre><span class="keyword">class</span> CLayerIp
+{
+<span class="keyword">private</span>:
+    <span class="comment">// The generic part of the delegate defined for a function prototype with return type void
+    // and 1 parameter of type CPacketUdp</span>
+    IDelegate1&lt;<span class="keyword">void</span>, CPacketUdp&gt;* delegateGenericRecvUdp;
+<span class="keyword">public</span>:
+    <span class="comment">// Set the delegate for receiving UDP packets</span>
+    <span class="keyword">void</span> SetDelegateRecvUdp(IDelegate1&lt;<span class="keyword">void</span>, CPacketUdp&gt;* delegateGenericRecvUdp)
+    {
+         <span class="keyword">this</span>-&gt;delegateGenericRecvUdp = delegateGenericRecvUdp;
+    }
+    <span class="comment">// Receiving IP packets</span>
+    <span class="keyword">void</span> Recv(CPacketIp ip)
+    {
+        ...
+        <span class="comment">// If the payload is UDP, send the packet to the UDP layer object using the delegate
+</span>        CPacketUdp* udp = ip.Payload();<span class="comment">
+</span>        (*<span class="keyword">this</span>-&gt;delegateGenericRecvUdp)(udp);
+    }
+};</pre></div></td>
+    </tr>
+    <tr>
+      <td><div class="boxcode">
+        <pre>...
+CLayerIp* layerIp = <span class="keyword">new</span> CLayerIp(...); <span class="comment">// Create the IP layer</span>
+CLayerUdp* layerUdp = <span class="keyword">new</span> CLayerUdp(...); <span class="comment">// Create the UDP layer 
+</span><span class="comment">
+// Create the explicit part of the delegate defined for a class of type CLayerUdp
+// and a function prototype with return type void and 1 parameter of type CPacketUdp
+</span>Delegate1&lt;CLayerUdp, <span class="keyword">void</span>, CPacketUdp&gt;* delegateExplicitRecvUdp =
+    <span class="keyword">new</span> Delegate1&lt;CLayerUdp, <span class="keyword">void</span>, CPacketUdp&gt;(
+        layerUdp,         <span class="comment">// the delegate wraps the object layerUdp</span>
+        &amp;CLayerUdp::Recv  <span class="comment">// and the function Recv of class CLayerUdp</span>
+        );
+<span class="comment">
+// Tell the delegate to the IP layer object: </span><span class="comment">the explicit delegate is safely casted to the generic delegate</span>
+layerIp-&gt;SetDelegateRecvUdp(delegateExplicitRecvUdp);
+<span class="comment">
+// From now on, when the object layerIp calls:
+</span>(*<span class="keyword">this</span>-&gt;delegateGenericRecvUdp)(udp);
+<span class="comment">
+// It will be equivalent to calling the function of the object the delegate contains:</span>
+layerUdp-&gt;Recv(udp);</pre>
+      </div></td>
+      </tr>
+  </table>
+  <p class="figure">Code sample II.b. Using a delegate to connect the objects from scenario presented in <a href="#fig2g">figure II.g</a>.</p>
+</div>
+<p>Currently, the simulator core provides delegates for function prototypes with up to five parameters. The explicit version of these delegates are implemented by the following object classes.</p>
+<table width="500" border="0" cellpadding="0" cellspacing="0" class="tableinfo">
+  <tr>
+    <th width="150">Class</th>
+    <th width="350">Description</th>
+  </tr>
+  <tr>
+    <td><a href="code/html/class_delegate0.html">Delegate0</a></td>
+    <td>Explicit delegate with zero parameters.</td>
+  </tr>
+  <tr>
+    <td><a href="code/html/class_delegate1.html">Delegate1</a></td>
+    <td>Explicit delegate with one parameter.</td>
+  </tr>
+  <tr>
+    <td><a href="code/html/class_delegate2.html">Delegate2</a></td>
+    <td>Explicit delegate with two parameters.</td>
+  </tr>
+  <tr>
+    <td><a href="code/html/class_delegate3.html">Delegate3</a></td>
+    <td>Explicit delegate with three parameters.</td>
+  </tr>
+  <tr>
+    <td><a href="code/html/class_delegate4.html">Delegate4</a></td>
+    <td>Explicit delegate with four parameters.</td>
+  </tr>
+  <tr>
+    <td><a href="code/html/class_delegate5.html">Delegate5</a></td>
+    <td>Explicit delegate with five parameters.</td>
+  </tr>
+</table>
+<p>The generic version of these delegates are implemented by the following object classes.</p>
+<table width="500" border="0" cellpadding="0" cellspacing="0" class="tableinfo">
+  <tr>
+    <th width="150">Class</th>
+    <th width="350">Description</th>
+  </tr>
+  <tr>
+    <td><a href="code/html/class_i_delegate0.html">IDelegate0</a></td>
+    <td>Generic delegate with zero parameters.</td>
+  </tr>
+  <tr>
+    <td><a href="code/html/class_i_delegate1.html">IDelegate1</a></td>
+    <td>Generic delegate with one parameter.</td>
+  </tr>
+  <tr>
+    <td><a href="code/html/class_i_delegate2.html">IDelegate2</a></td>
+    <td>Generic delegate with two parameters.</td>
+  </tr>
+  <tr>
+    <td><a href="code/html/class_i_delegate3.html">IDelegate3</a></td>
+    <td>Generic delegate with three parameters.</td>
+  </tr>
+  <tr>
+    <td><a href="code/html/class_i_delegate4.html">IDelegate4</a></td>
+    <td>Generic delegate with four parameters.</td>
+  </tr>
+  <tr>
+    <td><a href="code/html/class_i_delegate5.html">IDelegate5</a></td>
+    <td>Generic delegate with five parameters.</td>
+  </tr>
+</table>
+<h4><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></h4>
+<h3><a name="s22b" id="s22b"></a>II.2.b. Object Events</h3>
+<!--<div class="boxwarning">
+  <p><strong><em>Are simulation events and objects events the same thing?</em></strong></p>
+  <p>No.</p>
+  <p>An <em>object event</em> is a different entity from a <em>simulation event</em>. A <em><a href="#s21a">simulation event</a></em> is an object wrapping code and data to be executed or processed at each step during the simulation. Simulation events have an execution virtual time, are stored in the events list, and are executed by the run-time and the simulation model.</p>
+  <p>An <em>object event</em> is a mechanism for inter-object communication and acts similar to a <a href="#s22a">delegate</a>. An object event is similar to a function call, and can only be called by the object defining it. It cannot be stored in the events list, it doesn't have an execution time and cannot be processed by the run-time or the simulation model.</p>
+</div>
+<p>&nbsp;</p>-->
+<div class="box">Coming soon!</div>
+<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<h3><a name="s22c" id="s22c"></a>II.2.c. Object Calls</h3>
+<div class="box">Coming soon!</div>
+<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<h2><a name="s23" id="s23"></a>II.3. Timers</h2>
+<div class="box">Coming soon!</div>
+<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<h1><a name="s3" id="s3"></a>III. Networking Library</h1>
+<div class="box">Coming soon!</div>
+<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<h2><a name="s31" id="s31"></a>III.1. Packets</h2>
+<div class="box">Coming soon!</div>
+<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<h2><a name="s32" id="s32"></a>III.2. Protocols</h2>
+<div class="box">Coming soon!</div>
+<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<h3><a name="s32a" id="s32a"></a>III.2.a. IP, Addressing and Routing</h3>
+<div class="box">Coming soon!</div>
+<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<h3><a name="s32b" id="s32b"></a>III.2.b. IP Multicast</h3>
+<div class="box">Coming soon!</div>
+<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<h3><a name="s32c" id="s32c"></a>III.2.c. Transport Layer</h3>
+<div class="box">Coming soon!</div>
+<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<h2><a name="s33" id="s33"></a>III.3. Network Nodes</h2>
+<div class="box">Coming soon!</div>
+<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<h3><a name="s33a" id="s33a"></a>III.3.a. Hosts</h3>
+<div class="box">Coming soon!</div>
+<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<h3><a name="s33b" id="s33b"></a>III.3.b. Routers</h3>
+<div class="box">Coming soon!</div>
+<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<h2><a name="s34" id="s34"></a>III.4. Streaming</h2>
+<div class="box">Coming soon!</div>
+<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<h3><a name="s34a" id="s34a"></a>III.4.a. Connectionless Streaming</h3>
+<div class="box">Coming soon!</div>
+<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<h3><a name="s34b" id="s34b"></a>III.4.b. Connection-Oriented Streaming</h3>
+<div class="box">Coming soon!</div>
+<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<h3><a name="s34c" id="s34c"></a>III.4.c. Congestion Control</h3>
+<div class="box">Coming soon!</div>
+<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<h1><a name="s4" id="s4"></a>IV. Streaming Library</h1>
+<div class="box">Coming soon!</div>
+<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<h2><a name="s41" id="s41"></a>IV.1. Application-Layer Multicast</h2>
+<div class="box">Coming soon!</div>
+<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<h2><a name="s42" id="s42"></a>IV.2. On-Demand Streaming</h2>
+<div class="box">Coming soon!</div>
+<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<h1><a name="s5" id="s5"></a>V. Simulation of Large-Scale P2P Streaming</h1>
+<div class="box">Coming soon!</div>
+<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<h2><a name="s51" id="s51"></a>V.1. The Problem</h2>
+<div class="box">Coming soon!</div>
+<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<h2><a name="s52" id="s52"></a>V.2. Implementation Aspects</h2>
+<div class="box">Coming soon!</div>
+<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<h2><a name="s53" id="s53"></a>V.3. Findings</h2>
+<div class="box">Coming soon!</div>
+<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+
+<p class="update">Last updated: December 29, 2010</p>
+
+</div>
+</div>
+
+<div id="footer">
+<p><a href="../../accessibility.html" title="Accessibility">Accessibility</a> | <a href="../../copyright.html" title="Copyright Information">Copyright Information</a></p>
+</div>
+
+</div>
+
+</body>
+</html>

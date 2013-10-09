@@ -1,0 +1,11 @@
+@article{bikfalvi_comnet_2011,
+	title = {{P2P vs. IP Multicast: Comparing Approaches to IPTV Streaming Based on TV Channel Popularity}},
+	author={Alex Bikfalvi and Jaime Garc\'{i}a-Reinoso and Iv\'{a}n Vidal and Francisco Valera and Arturo Azcorra},
+	journal = {Computer Networks},
+	volume = {55},
+	number = {6},
+	pages={1310--1325},
+	publisher={Elsevier},
+	month = {April},
+	year = {2011}
+}

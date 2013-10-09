@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Alex, Bikfalvi, personal, site"/>
+<meta name="description" content="Alex Bikfalvi personal web site"/>
+<meta name="copyright" content="Alex Bikfalvi"/>
+<meta name="robots" content="index, follow" />
+
+<link href="../../images/icon.ico" rel="shortcut icon" />
+<link href="../../style/style.css" rel="stylesheet" title="Silver stylesheet" type="text/css"/>
+
+<title>Alex Bikfalvi - YtCrawler</title>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24480564-1']);
+  _gaq.push(['_setDomainName', '.bikfalvi.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>
+
+<a name="top" id="top"></a>
+
+<div id="content">
+
+<div id="header">
+<p class="hidden">Alex Bikfalvi</p>
+</div>
+
+<div id="back">
+
+<div id="navigation">
+<ul id="nav_main" class="nav">
+<li><a href="../../" accesskey="H"><span class="accesskey">H</span>ome</a></li>
+<li><a href="../../bio.html" accesskey="B"><span class="accesskey">B</span>io</a></li>
+<li><a href="../../contact.html" accesskey="C"><span class="accesskey">C</span>ontact</a></li>
+<li><a href="../../research.html" accesskey="R"><span class="accesskey">R</span>esearch</a></li>
+<li id="nav_index"><a href="../../projects.html" accesskey="J">Pro<span class="accesskey">j</span>ects</a></li>
+<li><a href="../../pubs.html" accesskey="P"><span class="accesskey">P</span>ublications</a></li>
+<li><a href="../../teaching.html" accesskey="T"><span class="accesskey">T</span>eaching</a></li>
+<li><a href="../../events.html" accesskey="E"><span class="accesskey">E</span>vents</a></li>
+</ul>
+</div>
+
+<div id="path">
+	<ul>
+    	<li id="path_home"><a href="../../" title="Home"><span>Home</span></a></li>
+    	<li class="path_arrow"><a href="../../projects.html" title="Projects">Projects</a></li>
+    	<li class="path_arrow">YTCrawler</li>
+    </ul>
+</div>
+
+<div id="main_content">
+  <p>This page describes the upcoming YTCrawler software release 2. <a href="release1.html">Go here</a> for information related to release 1.</p>
+  <h1 class="title">YTCrawler Release 2</h1>
+<p>The YtCrawler software for crawling metadata from the video sharing site YouTube, is a project in progress and the software on this   page is subject to change. There are no guarantees for   this software and you can use it on your own risk. YTCrawler   is free software and is licensed under the terms of <a href="http://www.gnu.org/licenses/gpl.html" target="_blank">GNU General Public License</a>.</p>
+<p>This page is a user guide to YtCrawler. <a href="../../contact.html">Contact me</a> to get the installation package and/or source code. A developer guide is not currently available.</p>
+<h1><a name="contents" id="contents"></a>On This Page</h1>
+<ol type="I">
+  <li><a href="#s1">The Basics</a>
+<ol>
+  <li><a href="#s11">What is YtCrawler?</a></li>
+      <li><a href="#s12">Architecture and Main Components</a></li>
+      <li><a href="#s13">Changes from Release 1</a></li>
+      </ol>
+  </li>
+  <li><a href="#s2">Installation and System Requirements</a></li>
+  <li><a href="#s3">The Administration Console</a>
+<ol>
+  <li><a href="#s31">Database Configuration</a>
+<ol type="a">
+  <li><a href="#s31a">Adding and Removing a Database</a></li>
+          <li><a href="#s31b">Setting the Primary Database</a></li>
+          <li><a href="#s31c">Database Reconfiguration</a></li>
+          <li><a href="#s31d">Database Usage and Testing</a></li>
+          <li><a href="#s31e">Taking a Database Offline</a></li>
+          <li><a href="#s31f">Database Tools</a></li>
+          </ol>
+      </li>
+      <li><a href="#s32">Crawler Configuration</a>
+<ol type="a">
+  <li><a href="#s32a">Global Settings</a></li>
+          <li><a href="#s32b">Understanding Video Feeds</a>
+<ol type="i">
+  <li><a href="#s32bi">Configuring Categories</a></li>
+              <li><a href="#s32bii">Configuring Feeds</a></li>
+              </ol>
+          </li>
+          <li><a href="#s32c">Slaves</a></li>
+          <li><a href="#s32d">Database Tables</a></li>
+          </ol>
+      </li>
+      <li><a href="#s33">Crawler</a>
+<ol type="a">
+  <li><a href="#s33a">Understanding the Crawling Types</a></li>
+          <li><a href="#s33b">Crawling Videos</a></li>
+          <li><a href="#s33c">Crawling Snapshots</a></li>
+          <li><a href="#s33d">Crawl Post-Processing</a></li>
+          </ol>
+      </li>
+      <li><a href="#s34">Data Inspection</a>
+<ol type="a">
+  <li><a href="#s34a">Raw Data</a></li>
+          <li><a href="#s34b">Statistical Data</a></li>
+          <li><a href="#s34c">Data Tools</a></li>
+        </ol>
+      </li>
+      </ol>
+  </li>
+  <li><a href="#s4">The Slave</a></li>
+</ol>
+<h1><a name="s1" id="s1"></a>I. The Basics</h1>
+<p>In this chapter you will learn the basics of the YtCrawler software:</p>
+<ul>
+  <li>What is SimStream and what are the main features?</li>
+  <li>What is the software architecture and the basic components?</li>
+  <li>How can you use the basic components to create a simple simulator?</li>
+</ul>
+<p class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
+<h2><a name="s11" id="s11"></a>I.1. What is YtCrawler?</h2>
+<div class="box">Coming soon!</div>
+<p class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
+<h2><a name="s12" id="s12"></a>I.2. Architecture and Main Components</h2>
+<div class="box">Coming soon!</div>
+<p class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
+<h2 class="pub_link"><a name="s13" id="s13"></a>I.3. Changes from Release 1</h2>
+<div class="box">Coming soon!</div>
+<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<h1><a name="s2" id="s2"></a>II. Installation and System Requirements</h1>
+<div class="box">Coming soon!</div>
+<p class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
+<h1><a name="s3" id="s3"></a>III. The Administration Console</h1>
+<div class="box">Coming soon!</div>
+<p class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
+<h2><a name="s31" id="s31"></a>III.1. Database Configuration
+</h2>
+<div class="box">Coming soon!</div>
+<p class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
+<h3><a name="s31a" id="s31a"></a>III.1.a. Adding and Removing a Database</h3>
+<div class="box">Coming soon!</div>
+<p class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
+<h3><a name="s31b" id="s31b"></a>III.1.b. Setting the Primary Database</h3>
+<div class="box">Coming soon!</div>
+<p class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
+<h3><a name="s31c" id="s31c"></a>III.1.c. Database Reconfiguration</h3>
+<div class="box">Coming soon!</div>
+<p class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
+<h3><a name="s31d" id="s31d"></a>III.1.d. Database Usage and Testing</h3>
+<div class="box">Coming soon!</div>
+<p class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
+<h3><a name="s31e" id="s31e"></a>III.1.e. Taking a Database Offline</h3>
+<div class="box">Coming soon!</div>
+<p class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
+<h3><a name="s31f" id="s31f"></a>III.1.f. Database Tools</h3>
+<div class="box">Coming soon!</div>
+<p class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
+<h2><a name="s32" id="s32"></a>III.2. Crawler Configuration
+</h2>
+<div class="box">Coming soon!</div>
+<p class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
+<h3><a name="s32a" id="s32a"></a>III.2.a. Global Settings</h3>
+<div class="box">Coming soon!</div>
+<p class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
+<h3><a name="s32b" id="s32b"></a>III.2.b. Understanding Video Feeds
+</h3>
+<div class="box">Coming soon!</div>
+<p class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
+<h4><a name="s32bi" id="s32bi"></a>III.2.b.i. Configuring Categories</h4>
+<div class="box">Coming soon!</div>
+<p class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
+<h4><a name="s32bii" id="s32bii"></a>III.2.b.ii. Configuring Feeds</h4>
+<div class="box">Coming soon!</div>
+<p class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
+<h3><a name="s32c" id="s32c"></a>III.2.c. Slaves</h3>
+<div class="box">Coming soon!</div>
+<p class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
+<h3><a name="s32d" id="s32d"></a>III.2.d. Database Tables</h3>
+<div class="box">Coming soon!</div>
+<p class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
+<h2><a name="s33" id="s33"></a>III.3. Crawler</h2>
+<div class="box">Coming soon!</div>
+<p class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
+<h3><a name="s33a" id="s33a"></a>III.3.a. Understanding the Crawling Types</h3>
+<div class="box">Coming soon!</div>
+<p class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
+<h3><a name="s33b" id="s33b"></a>III.3.b. Crawling Videos</h3>
+<div class="box">Coming soon!</div>
+<p class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
+<h3><a name="s33c" id="s33c"></a>III.3.c. Crawling Snapshots</h3>
+<div class="box">Coming soon!</div>
+<p class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
+<h3><a name="s33d" id="s33d"></a>III.3.d. Crawl Post-Processing</h3>
+<div class="box">Coming soon!</div>
+<p class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
+<h2><a name="s34" id="s34"></a>III.4. Data Inspection
+</h2>
+<div class="box">Coming soon!</div>
+<p class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
+<h3><a name="s34a" id="s34a"></a>III.4.a. Raw Data</h3>
+<div class="box">Coming soon!</div>
+<p class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
+<h3><a name="s34b" id="s34b"></a>III.4.b. Statistical Data</h3>
+<div class="box">Coming soon!</div>
+<p class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
+<h3><a name="s34c" id="s34c"></a>III.4.c. Data Tools</h3>
+<div class="box">Coming soon!</div>
+<p class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
+<h1><a name="s4" id="s4"></a>IV. The Slave</h1>
+<div class="box">Coming soon!</div>
+<p class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
+<p class="update">Last updated: January 31, 2011</p>
+
+</div>
+</div>
+
+<div id="footer">
+<p><a href="../../accessibility.html" title="Accessibility">Accessibility</a> | <a href="../../copyright.html" title="Copyright Information">Copyright Information</a></p>
+</div>
+
+</div>
+
+</body>
+</html>

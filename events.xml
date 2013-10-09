@@ -1,0 +1,172 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>News and events from Alex's web site</title>
+    <link>http://alex.bikfalvi.com/events.html</link>
+    <description>RSS feed to news and events from Alex's web site.</description>
+    <language>en-us</language>
+    <pubDate>Fri, 09 Sep 2009 00:00:00 GMT</pubDate>
+    <lastBuildDate>Mon, 18 Feb 2012 00:00:00 GMT</lastBuildDate>
+	<atom:link href="http://alex.bikfalvi.com/events.xml" rel="self" type="application/rss+xml" />
+
+    <item>
+      <title>We Are Hiring Junior Research Engineers</title>
+      <link>http://www.nets.upf.edu/openings/</link>
+      <description>We are seeking highly dynamic individuals for a challenging project: designing, implementing and testing communication protocols for mesh and wireless sensor (WSN) networks, in the framework of two applied research projects, focused on the management of wandering patients, and on domestic and industrial energy management, respectively.</description>
+      <pubDate>Mon, 18 Feb 2013 00:00:00 GMT</pubDate>
+	  <guid>http://alex.bikfalvi.com/events.html#18-02-2013-01</guid>
+    </item>
+    
+	<item>
+      <title>Doctoral Defense</title>
+      <link>http://alex.bikfalvi.com/research/phd/</link>
+      <description>The defense of my doctoral dissertation, titled Peer-to-Peer Television for the IP Multimedia Subsystem, which will take place at 11:00 AM in Aula de Grados from the Leganés campus of Carlos III University.</description>
+      <pubDate>Wed, 18 July 2012 09:00:00 GMT</pubDate>
+	  <guid>http://alex.bikfalvi.com/events.html#18-07-2012-01</guid>
+    </item>
+
+    <item>
+      <title>Invited Reviewer</title>
+      <link>http://www.nets.upf.edu/node/377</link>
+      <description>Invited external reviewer at an internal workshop by the NeTS research group of Universitat Pompeu Fabra.</description>
+      <pubDate>Fri, 11 May 2012 00:00:00 GMT</pubDate>
+	  <guid>http://alex.bikfalvi.com/events.html#11-05-2012-01</guid>
+    </item>
+
+    <item>
+      <title>Invited Speaker</title>
+      <link>http://www.nets.upf.edu/node/378</link>
+      <description>Invited speaker by the NeTS research group at Universitat Pompeu Fabra, with a talk on peer-to-peer television in next generation networks.</description>
+      <pubDate>Thu, 10 May 2012 00:00:00 GMT</pubDate>
+	  <guid>http://alex.bikfalvi.com/events.html#10-05-2012-01</guid>
+    </item>
+	
+    <item>
+      <title>Editorial booard member</title>
+      <link>http://www.iariajournals.org/networks_and_services/index.html</link>
+      <description>Invited to the editorial board of the International Journal on Advances in Networks and Services.</description>
+      <pubDate>Thu, 19 Jan 2012 00:00:00 GMT</pubDate>
+	  <guid>http://alex.bikfalvi.com/events.html#19-01-2012-01</guid>
+    </item>
+	
+    <item>
+      <title>TPC member for IARIA ICNS 2012</title>
+      <link>http://www.iaria.org/conferences2012/ICNS12.html</link>
+      <description>Invited as a technical program committee member to the Eighth International Conference on Networking and Services organized by IARIA in St. Maarten, Netherlands Antilles between 25th and 29th of March 2012.</description>
+      <pubDate>Mon, 4 Jul 2011 00:00:00 GMT</pubDate>
+	  <guid>http://alex.bikfalvi.com/events.html#04-07-2011-01</guid>
+    </item>
+	
+    <item>
+      <title>SimWorker library available online</title>
+      <link>http://alex.bikfalvi.com/projects/simworker/</link>
+      <description>A library for parallel execution in discrete event simulations.</description>
+      <pubDate>Tue, 8 Feb 2011 00:00:00 GMT</pubDate>
+	  <guid>http://alex.bikfalvi.com/events.html#08-02-2011-01</guid>
+    </item>
+ 
+	<item>
+      <title>Paper published</title>
+      <link>http://alex.bikfalvi.com/papers/comnet2011.html</link>
+      <description>The paper P2P vs. IP Multicast: Comparing Approaches to IPTV Streaming Based on TV Channel Popularity is published online in Computer Networks by Elsevier</description>
+      <pubDate>Mon, 27 Dec 2010 00:00:00 GMT</pubDate>
+	  <guid>http://alex.bikfalvi.com/events.html#27-12-2010-01</guid>
+    </item>
+
+    <item>
+      <title>SimStream simulator available online</title>
+      <link>http://alex.bikfalvi.com/projects/simstream/</link>
+      <description>SimStream a C++-based efficient network simulator for large-scale streaming applications is now available online.</description>
+      <pubDate>Thu, 16 Dec 2010 00:00:00 GMT</pubDate>
+	  <guid>http://alex.bikfalvi.com/events.html#16-12-2010-01</guid>
+    </item>
+
+    <item>
+      <title>CfP for IARIA ICNS 2011</title>
+      <link>http://www.iaria.org/conferences2011/CfPICNS11.html</link>
+      <description>Consider to contribute and/or forward to the appropriate groups the opportunity to submit and publish original scientific results in the Seventh International Conference on Networking and Services, May 22-27, 2011 in Venice, Italy.</description>
+      <pubDate>Wed, 13 Sep 2010 00:00:00 GMT</pubDate>
+	  <guid>http://alex.bikfalvi.com/events.html#13-09-2010-01</guid>
+    </item>
+ 
+    <item>
+      <title>TPC member for IARIA ICNS 2011</title>
+      <link>http://www.iaria.org/conferences2011/ICNS11.html</link>
+      <description>Invited as a technical program committee member to the Seventh International Conference on Networking and Services organized by IARIA in Venice, Italy between 22nd and 27th of May 2011.</description>
+      <pubDate>Wed, 19 Aug 2010 00:00:00 GMT</pubDate>
+	  <guid>http://alex.bikfalvi.com/events.html#19-08-2010-01</guid>
+    </item>
+ 
+	<item>
+      <title>Paper published</title>
+      <link>http://alex.bikfalvi.com/papers/comcom2010.html</link>
+      <description>The paper Supporting mobility in an IMS-based P2P IPTV service: a Proactive Context Transfer mechanism is published online in Computer Communcations by Elsevier</description>
+      <pubDate>Fri, 14 May 2010 00:00:00 GMT</pubDate>
+	  <guid>http://alex.bikfalvi.com/events.html#14-05-2010-01</guid>
+    </item>
+
+	<item>
+      <title>Presentation slides now available</title>
+      <link>http://alex.bikfalvi.com/download/IMDEASeminar2Slides.pptx</link>
+      <description>Peer-to-Peer vs. IP multicast: comparing approaches to IPTV streaming based on TV channel popularity. A comparison between IP multicast and P2P as alternatives for IPTV streaming, presented during the IMDEA Networks/NETCOM seminar</description>
+      <pubDate>Tue, 16 Feb 2010 00:00:00 GMT</pubDate>
+	  <guid>http://alex.bikfalvi.com/events.html#16-02-2010-01</guid>
+    </item>
+
+	<item>
+      <title>Paper published</title>
+      <link>http://alex.bikfalvi.com/papers/ieeenetwork2009.html</link>
+      <description>The paper Enabling layered video coding for IMS-based IPTV home services is published in IEEE Network</description>
+      <pubDate>Fri, 21 Dec 2009 00:00:00 GMT</pubDate>
+	  <guid>http://alex.bikfalvi.com/events.html#21-12-2009-01</guid>
+    </item>
+
+	<item>
+      <title>Presentation slides now available</title>
+      <link>http://alex.bikfalvi.com/papers/ap2ps2009.html</link>
+      <description>The slides for the paper titled FLaCoSt: A Novel Peer to Peer Architecture for Video Streaming in a Next Generation Network and presented at the first IARIA International Conference on Advances in P2P Systems are now available</description>
+      <pubDate>Fri, 16 Oct 2009 00:00:00 GMT</pubDate>
+	  <guid>http://alex.bikfalvi.com/events.html#16-10-2009-01</guid>
+    </item>
+	
+	<item>
+      <title>Attending conference</title>
+      <link>http://alex.bikfalvi.com/papers/ap2ps2009.html</link>
+      <description>Attending to the First IARIA International Conference on Advances in P2P Systems and presenting FLaCoSt: A Novel Peer to Peer Architecture for Video Streaming in a Next Generation Network</description>
+      <pubDate>Fri, 17 Sep 2009 00:00:00 GMT</pubDate>
+	  <guid>http://alex.bikfalvi.com/events.html#17-09-2009-01</guid>
+    </item>
+ 
+    <item>
+      <title>Paper published online</title>
+      <link>http://alex.bikfalvi.com/papers/ijcs2009.html</link>
+      <description>The paper A peer-to-peer IPTV service architecture for the IP multimedia subsystem is published online by John Wiley and Sons.</description>
+      <pubDate>Thu, 09 Sep 2009 00:00:00 GMT</pubDate>
+	  <guid>http://alex.bikfalvi.com/events.html#09-09-2009-01</guid>
+    </item>
+ 
+    <item>
+      <title>TPC member for IARIA ICNS 2010</title>
+      <link>http://www.iaria.org/conferences2010/ICNS10.html</link>
+      <description>Invited as a technical program committee member to the Sixth International Conference on Networking and Services organized by IARIA in Cancun, Mexico between 7th and 13th of March 2010.</description>
+      <pubDate>Sun, 16 Aug 2009 00:00:00 GMT</pubDate>
+	  <guid>http://alex.bikfalvi.com/events.html#16-08-2009-01</guid>
+    </item>
+ 
+    <item>
+      <title>Paper published in IJCS</title>
+      <link>http://www3.interscience.wiley.com/journal/117946196/grouphome/home.html</link>
+      <description>The paper A peer-to-peer IPTV service architecture for the IP multimedia subsystem has been accepted for publication in the International Journal of Communication Systems by John Wiley and Sons, Ltd.</description>
+      <pubDate>Sun, 2 Aug 2009 00:00:00 GMT</pubDate>
+	  <guid>http://alex.bikfalvi.com/events.html#02-08-2009-01</guid>
+    </item>
+
+    <item>
+      <title>Attended ICNS 2009 conference</title>
+      <link>http://www.iaria.org/conferences2009/ICNS09.html</link>
+      <description>The 5th International Conference on Networking and Services in Valencia, Spain.</description>
+      <pubDate>Mon, 20 Apr 2009 00:00:00 GMT</pubDate>
+	  <guid>http://alex.bikfalvi.com/events.html#20-04-2009-01</guid>
+    </item>
+  </channel>
+</rss>

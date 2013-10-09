@@ -1,0 +1,11 @@
+@article{escribano_telefonica_2008,
+	title = {{Geographical Segmentation in Telecommunication Services: Economic and Technological Aspects}},
+	author = {\'{A}lvaro Escribano and Arturo Azcorra and Enrique Ca{\~{n}}izares and Alex Bikfalvi},
+	journal = {Pol\'{i}tica Econ\'{o}mica y Regulatoria en Telecomunicaciones},
+	volume = {1},
+	number = {1},
+	pages = {74--87},
+	publisher = {Telef\'{o}nica Espa\~{n}a},
+	month = {September},
+	year = {2008}
+}

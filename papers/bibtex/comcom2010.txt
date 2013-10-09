@@ -1,0 +1,11 @@
+@article{vidal_comcom_2010,
+	title = {{Supporting mobility in an IMS-based P2P IPTV service: A proactive context transfer mechanism}},
+	author = {Iv\'{a}n Vidal and Jaime Garc\'{i}a-Reinoso and Antonio de la Oliva and Alex Bikfalvi and Ignacio Soto},
+	journal = {Computer Communications (Special Issue on Multimedia Networking and Security in Convergent Networking)},
+	volume = {33},
+	number = {14},
+	pages={1736--1751},
+	publisher={Elsevier},
+	month = {September},
+	year = {2010}
+}

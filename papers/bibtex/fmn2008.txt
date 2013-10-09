@@ -1,0 +1,9 @@
+@conference{martinez_fmn_2008,
+	title = {Enabling Global Multimedia Distributed Services based on Hierarchical DHT Overlay Networks},
+	author = {Isa\'{i}as Martinez-Yelmo and Alex Bikfalvi and Carmen Guerrero and Rub\'{e}n Cuevas and Andreas Mauthe},
+	booktitle = {Proceedings of the IEEE Conference on Next Generation Mobile Applications Services and Technologies 2008 (Future Multimedia Networking Workshop)},
+	pages = {543-549},
+	publisher = {IEEE Computer Society},
+	month = {September},
+	year = {2008}
+}

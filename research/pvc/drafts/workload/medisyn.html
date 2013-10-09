@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Overview of Medisyn Workload</title>
+</head>
+
+<body>
+<h1>Overview of Medisyn Syntehetic Workload</h1>
+<h2>Video File Popularity</h2>
+<p>This figure illustrates the distribution of video popularity: an m-zipf distribution.</p>
+<p><a href="Popularity.png"><img src="Popularity.png" width="400" height="300" /></a></p>
+<h2>Video File Duration</h2>
+<p>The set of file durations is divided into groups, where the durations in each group have a normal distribution. The following figure shows the default distribution for file duration, with 4 groups each containing 63%, 10%, 18% and 9% of the files, respectively. The mean duration for each group are: 0, 2000, 3300 and 5821 seconds (the standard deviations are: 600, 400, 600 and 1223).</p>
+<p><a href="Duration.png"><img src="Duration.png" width="400" height="300" /></a></p>
+<h2>Session Prefix</h2>
+<p>The session prefix gives the fraction of file that is watched  by a user during the session. Every file has an individual distribution for the session prefix that depends on the the duration of the file: shorter files have more &quot;complete sessions&quot;, i.e. they are watched completely during a session. Without going into the details, the following figures illustrate the distribution of the session prefix for 3 different file, with durations 67, 241 and 3317 seconds.</p>
+<p><a href="File prefix 1.png"><img src="File prefix 1.png" width="400" height="300" /></a><a href="File prefix 17.png"><img src="File prefix 17.png" width="400" height="300" /></a><a href="File prefix 16.png"><img src="File prefix 16.png" width="400" height="300" /></a></p>
+<h2>New File Introduction</h2>
+<p>New files are being introduced in<em> introduction days</em>. The model of new file introduction has the following components:</p>
+<p>a) The determination of the introduction days: this is done by assuming the first day is an introduction day, and modelling the gaps between the introduction days (these can follow a Pareto distribution - default, an exponential distribution, or constant). The following two figures shows a histogram of the gaps between introduction days using Pareto (most gaps between introduction days are of 1 day, then 2 days etc), and the CDF of file arrival where the first introduction day is day zero.</p>
+<p><a href="File introduction gaps.png"><img src="File introduction gaps.png" width="400" height="300" /></a><a href="Arrival.png"><img src="Arrival.png" width="400" height="300" /></a></p>
+<p>b) Calculating the number of new files that <em>start</em> being introduced with each introduction day. The distribution of these is Pareto:</p>
+<p><a href="File introduction day.png"><img src="File introduction day.png" width="400" height="300" /></a></p>
+<p>c) For every introduction day, Medisyn calculates the time (during the day) when the first file for that introduction day is introduced. This follows a rotated normal distribution with introduction times in the evening and early morning for most introduction days.</p>
+<p><a href="Daily start time.png"><img src="Daily start time.png" width="400" height="300" /></a></p>
+<p>d) When more that one file start being introducted within an introduction day, the first file is introduced at the hour determined using the distribution from (c), while for subsequent files, Medisyn calculates the gaps between the files. These gaps follow a Pareto distribution.</p>
+<h2>File Lifespan</h2>
+<p>Files are divided into two categories: <em>news</em> files and <em>regular</em> files. Files with a higher popularity have a higher probability to be news-like, whereas files with a lower popularity have a higher probability to be regular. The following two figures show a histogram of <em>news</em> and <em>regular</em> files, respectively, in 100-file bins, where the files are sorted by decreasing popularity.</p>
+<p><a href="Class news.png"><img src="Class news.png" width="400" height="300" /></a><a href="Class regular.png"><img src="Class regular.png" width="400" height="300" /></a></p>
+<p>News files have a Pareto shape of the lifespan, regular files have a lognormal shape of the lifespan, measured from their introduction day. The following two figures illustrate an example of file lifespan for news and regular file, respectively, on an absolute time axis (i.e. time starts from zero and file lifespan starts from their introduction time). The news file is the most popular file with 1700 sessions, the regular file is the third most popular with 1574 sessions.</p>
+<p><a href="lifespan_news.png"><img src="lifespan_news.png" width="400" height="300" /></a><a href="lifespan_regular.png"><img src="lifespan_regular.png" width="400" height="300" /></a></p>
+<h2>Diurnal Access Pattern</h2>
+<p>Session times during a day have two components: (i) inter-session times during an hour have an exponential distribution, (ii) while during a day they follow a diurnal pattern with more sessions in the evening. The following figure illustrates the average number of sessions during each hour of the day for all workload days.</p>
+<p><a href="Average daily workload.png"><img src="Average daily workload.png" width="400" height="300" /></a></p>
+<h2>Workload</h2>
+<p>The following figures illustrates the workload obtained in terms of sessions per day, and hour respectively. The last figure is a close-up on the second one, showing the number of sessions per hour across several days (the diurnal access patterns can be observed).</p>
+<p><a href="Workload_day.png"><img src="Workload_day.png" width="400" height="300" /></a><a href="Workload_hours.png"><img src="Workload_hours.png" width="400" height="300" /></a><a href="Workload_hours_zoom.png"><img src="Workload_hours_zoom.png" width="400" height="300" /></a></p>
+<h2>Allocation of Peers</h2>
+<p>The following figure shows the minumum number of peers required to satisfy the previous workload (i.e. the number of peers that are watching something at a moment of time).</p>
+<p><a href="Peers active.png"><img src="Peers active.png" width="400" height="300" /></a></p>
+</body>
+</html>

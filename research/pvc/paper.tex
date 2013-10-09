@@ -1,0 +1,118 @@
+\documentclass{acm_proc_article-sp}
+
+\newcommand{\eg}{e.g.\ } 
+\newcommand{\ie}{i.e.\ } 
+\newcommand{\bi}{\begin{itemize} } 
+\newcommand{\ei}{\end{itemize} } 
+
+\begin{document}
+
+\title{On Design of Scalable P2P Video Caching}
+%\subtitle{[Extended Abstract]
+%\titlenote{A full version of this paper is available as
+%\textit{Author's Guide to Preparing ACM SIG Proceedings Using
+%\LaTeX$2_\epsilon$\ and BibTeX} at
+%\texttt{www.acm.org/eaddress.htm}}}
+
+\numberofauthors{4}
+\author{
+\alignauthor Alex Bikfalvi\\
+	\affaddr{IMDEA Networks}\\
+	\affaddr{Av. del Mar Mediterraneo, 22}\\
+	\affaddr{Legan\'{e}s, Madrid, 28918, Spain}\\
+	\email{alex.bikfalvi@imdea.org}
+\alignauthor Nazanin Magharei\\
+	\affaddr{Department of Computer and Information Science}\\
+	\affaddr{University of Oregon}\\
+	\affaddr{Eugene, OR, 97403, USA}\\
+	\email{nazanin@cs.uoregon.edu}
+\and
+\alignauthor Jaime Garc\'{i}a-Reinoso\\
+	\affaddr{University Carlos III of Madrid}\\
+	\affaddr{Legan\'{e}s, Madrid, 28911, Spain}\\
+	\email{jgr@it.uc3m.es}
+\alignauthor Reza Rejaie\\
+	\affaddr{Department of Computer and Information Science}\\
+	\affaddr{University of Oregon}\\
+	\affaddr{Eugene, OR, 97403, USA}\\
+	\email{reza@cs.uoregon.edu}
+}
+
+\maketitle
+
+\begin{abstract}
+[write the abstract here]
+\end{abstract}
+
+\section{Introduction}
+
+[write the introduction here]
+
+\section{Related Work}
+
+Video streaming caching is not a new idea, and it has been studied extensively in the recent years. Recognizing the particular properties of the multimedia streams, authors have proposed different caching strategies for the purposes of reducing the load on the network and multimedia server, and maximizing the delivered video quality.
+
+For client/server architectures, proxy caches borrow from the concepts or Web caching. One example is the work of Sen et al. \cite{sen1999proxy}, where they assert that user experience is improved by storing the begging (or prefix) of the video and shielding the clients from a long delay when they start the playback. In a different approach, Rejaie et al. \cite{rejaie1999proxy,rejaie2000multimedia} propose a caching mechanism with a congestion control mechanism. They assume the video stream is divided into segments and encoded in several layers. When possible, the entire video is cached, and cache replacements are done per-layer basis, starting from the end of the layer with the lowest popularity.
+
+In a similar approach, Wu et al. \cite{wu2001segment}, enhance the cache utilization efficiency by dividing the video object into segments of exponentially increasing sizes, effectively assigning a higher preference to beginning segments. Popularity is determined at the segment level, allowing a fined-grained control over segment replacement. The beginning segments are cached using a strictly least-recently used (LRU) policy, while for the rest the authors apply a modified LRU depending on segment size.
+
+In \cite{reisslein2002interactive}, the authors developed a strategy that caches video objects based on the user request pattern. As opposed to calculate objects popularity based on past requests, their explicit tracking method uses the request history to estimate future requests, and cache the video objects accordingly. Ma and Du \cite{ma2002reducing} propose a segment-based caching method that stores alternating segments (chunks). In \cite{dan1997multimedia}, the authors present a generalized caching policy that maximizes the number of cached streams by storing short intervals of successive streams.
+
+The increasing interest and research effort dedicated to peer-to-peer video streaming architectures, as opposed to the traditional client/server, has also generated many studies in the area of peer-to-peer caching. One example is PROP \cite{guo2004prop,chen2006design} where the authors examine the performance benefits offered by peer-to-peer caching complementing a classic segmentation-based proxy design. They show that video segment popularity is not a good metric for caching decision, and propose a new utility function that maximizes the caching probability for segments with mid-range popularity.
+
+O. Saleh and M. Hefeeda \cite{saleh2006modeling} propose a generalized caching method for peer-to-peer content having a Mandelbrot-Zipf popularity. Exploring the impact of this popularity model on the cache efficiency, they conclude that objects must be cached incrementally proportional to their popularity. However, their study is focused on caching of atomic object, such shared files, rather than continuous streams.
+
+[to do: examine related work again]
+
+\section{Proxy vs. P2P Caching}
+
+[the rational behind out proposal - in line with Reza's items]
+
+
+\section{P2P Video Caching (PVC)}
+
+[describe the design concepts here]
+
+\subsection{Algorithm Design}
+
+[explain the main intuition behind the design: the difference between global and local popularity; how we estimate local popularity and its trend; design decision, i.e. what we cache depending on popularity]
+
+\subsection{Reactive vs. Proactive} 
+
+[why proactive, what it is improving, how does it work]
+
+\section{Performance Evaluation}
+
+In this section, we present the preliminary evaluation of the PVC algorithm. For this purpose, we developed a time-domain event-based simulator that emulates the video-on-demand streaming between a population of peers. 
+The main performance metric is the bit-hit ratio that quantifies the fraction of streams that are delivered from the peers' cache. Additionally, we measure the number of replicas (or copies) for each stream, in order to identify whether the proactive version of the PVC algorithm manages to reach a better balance between popular and unpopular streams. We ran the simulation several times for every set of input values.
+
+\subsection{Evaluation Setting}
+
+For the generation of workload we relied on Medisyn, a video-on-demand workload generator developed by HP labs \cite{tang2003medisyn}. Its authors used a set of traces collected from their enterprise VoD system to create a model for the users video watching behavior. Although the program is tuned by default to the values that would generate a workload consistent to their traces, the model and Medisyn are flexible enough to allow adjustments to the input parameters.
+
+Since we realize that using only the default workload generated by Medisyn is insufficient to capture the behavior of our algorithm in a different setting, one of our goal is to measure the cache performance under various stream popularity and life span conditions.
+
+\subsection{Impact of the Cache Size}
+
+\subsection{Stream Popularity}
+
+Several authors have identified the Zipf distribution (or a slightly modified version) to accurately model the stream popularity \cite{tang2003medisyn,yu2006understanding} but with the distribution's parameters depending largely on the system where the data was collected.
+
+\subsection{Stream Lifespan (Burstiness)}
+
+\subsection{Peer Uplink Bandwidth}
+
+\subsection{Stream Replication}
+
+In the proactive PVC algorithm, when sender peers accept incoming requests, they already have a well defined view on the popularity of the video stream in question and they pass this information to their receivers as a \emph{cache} indication for streams getting hot, respectively \emph{don't cache} for streams getting cold. The rationale behind this approach is to prevent the spread of too many copies for the streams with a decreasing popularity. In all classic cache algorithms and including the reactive PVC variant, peers will cache the stream unless they already have a well established history.
+
+This is disadvantageous in particular for very popular streams with many new viewers, leading to an over-replication of highly popular content, at the expense of less popular streams. The \emph{cache/don't cache} indication passes this information from old to new peers so such streams are not excessively cached. In order to determine the improvement of the proactive PVC over the classic algorithms and the reactive version, in figure XXX we examine the cumulative distribution function of the number of stream replicas. The figure reveals that the stream replicas are more uniform distributed in PVC-P, whereas LRU, LFU and PVC-R allocate the largest cache slice only to very popular streams.
+
+This results justifies why PVC-P outperforms PVC-R in certain situations
+
+\bibliographystyle{abbrv}
+\bibliography{paper}
+
+\balancecolumns
+
+\end{document}

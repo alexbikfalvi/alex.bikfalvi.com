@@ -1,0 +1,9 @@
+@conference{bikfalvi_softcom_2006,
+	title={{The Management infrastructure of a network measurement system for QoS parameters}},
+	author={Alex Bikfalvi and Paul P\u{a}tra\c{s} and Cristian M. Vancea and Virgil Dobrot\u{a}},
+	booktitle={Proceedings of the International Conference on Software in Telecommunications and Computer Networks (SoftCOM)},
+	pages={242--246},
+	publisher={IEEE Computer Society},
+	month={September-October},
+	year={2006}
+}

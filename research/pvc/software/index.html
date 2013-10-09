@@ -1,0 +1,705 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Alex, Bikfalvi, personal, site"/>
+<meta name="description" content="Alex Bikfalvi personal web site"/>
+
+<link href="../../../style/styler.css" rel="stylesheet" title="Research stylesheet" type="text/css"/>
+
+<title>Alex Bikfalvi - Research | Peer-to-Peer Video Caching</title>
+
+</head>
+
+<body>
+<a name="top" id="top"></a>
+
+<div id="content">
+
+<div class="header">
+<p class="hidden">Alex Bikfalvi</p>
+</div>
+
+<div class="back">
+
+<div id="path">
+<p>You are here: <a href="../../../index.html">Home</a> &gt; <a href="../../../research.html">Research</a> &gt; <a href="../index.html">Peer-to-Peer Video Caching</a> &gt; Simulator</p>
+</div>
+
+<div class="main_content">
+
+<h1>Peer-to-Peer Video Caching Simulator</h1>
+
+<h2>Items on this page</h2>
+
+<ul>
+<li><a href="#dlexe">Download executable</a></li>
+<li><a href="#dlsup">Download supporting files</a></li>
+<li><a href="#cmd">Command syntax</a></li>
+<li><a href="#outs">Output statistical data</a></li>
+<li><a href="#outt">Output trace data</a></li>
+<li><a href="#dlcode">Download the code</a></li>
+<li><a href="#files">Description of code files</a></li>
+</ul>
+
+<h2>Executable</h2>
+<p><a name="dlexe" id="dlexe"></a></p>
+<h3>Download executable</h3>
+<p><a href="../../../download/pvc/SimCache.exe" target="_blank">Download for Windows</a> (EXE/188 KB) <em>(32 bit, version 2.40, compiled on Tue Feb 23 17:29:48 2010)</em></p>
+<p><a href="../../../download/pvc/simcache" target="_blank">Download for Ubuntu</a> (-/152 KB) <em>(32 bit, version 2.40, compiled on Wed Feb 24 08:14:09 2010)</em></p>
+<p class="pub_link"><a href="#top">Go to top</a></p>
+<p><a name="dlsup" id="dlsup"></a></p>
+<h3>Download supporting files</h3>
+<p><a href="../../../download/pvc/king.dat" target="_blank">Delay model King matrix</a> (DAT/19.2 MB)</p>
+<p><a href="../../../download/pvc/requests.log" target="_blank">Sample Medisyn requests file</a> (LOG/2.35 MB)</p>
+<p><a href="../../../download/pvc/streams.txt" target="_blank">Sample Medisyn streams file</a> (TXT/42.0 KB)</p>
+<p class="pub_link"><a href="#top">Go to top</a></p>
+<p><a name="cmd" id="cmd"></a></p>
+<h3>Command syntax</h3>
+<p>The PVC simulator accepts 27 command parameters, in the following order:</p>
+<table width="800" class="list">
+  <tr>
+    <th width="100" scope="col">Index</th>
+    <th width="600" scope="col">Parameter</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Cache model number (see below)</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Maxmium simulation time (in seconds)</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Number of users</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>Requests input file (Medisyn format)</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>Streams input file (Medisyn format)</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>Delay King file</td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>Minimum number of streams</td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>Maximum number of streams</td>
+  </tr>
+  <tr>
+    <td>9</td>
+    <td>Incrementing step for the number of streams</td>
+  </tr>
+  <tr>
+    <td>10</td>
+    <td>Stream segment size (in megabits)</td>
+  </tr>
+  <tr>
+    <td>11</td>
+    <td>Maximum number of peer senders</td>
+  </tr>
+  <tr>
+    <td>12</td>
+    <td>Shuffle peer delay mapping ( 0 - disabled, 1 - enabled )</td>
+  </tr>
+  <tr>
+    <td>13</td>
+    <td>Users watch the entire stream, i.e. ignore session length from the requests input file ( 0 - disabled, 1 - enabled )</td>
+  </tr>
+  <tr>
+    <td>14</td>
+    <td>Minimum peer cache size (in segments)</td>
+  </tr>
+  <tr>
+    <td>15</td>
+    <td>Maximum peer cache size (in segments)</td>
+  </tr>
+  <tr>
+    <td>16</td>
+    <td>Incrementing step for the peer cache size (in segments)</td>
+  </tr>
+  <tr>
+    <td>17</td>
+    <td>Minimum peer uplink bandiwdth (in kbps)</td>
+  </tr>
+  <tr>
+    <td>18</td>
+    <td>Maximum peer uplink bandwidth (in kbps)</td>
+  </tr>
+  <tr>
+    <td>19</td>
+    <td>Incrementing step for the peer uplink bandwidth (in kbps)</td>
+  </tr>
+  <tr>
+    <td>20</td>
+    <td>Cache indication threshold for PVC-P ([0...1] = [always cache ... never cache])</td>
+  </tr>
+  <tr>
+    <td>21</td>
+    <td>Time scaling factor (&gt;1 expand time-scale, &lt;1 compress time-scale)</td>
+  </tr>
+  <tr>
+    <td>22</td>
+    <td>[PVC] Short EWMA smooth factor</td>
+  </tr>
+  <tr>
+    <td>23</td>
+    <td>[PVC] Long EWMA smooth factor</td>
+  </tr>
+  <tr>
+    <td>24</td>
+    <td>[PVC] EWMA trend threshold</td>
+  </tr>
+  <tr>
+    <td>25</td>
+    <td>Number of simulation runs for each data set</td>
+  </tr>
+  <tr>
+    <td>26</td>
+    <td>Output trace file perfix</td>
+  </tr>
+  <tr>
+    <td>27</td>
+    <td>Output statistics file</td>
+  </tr>
+</table>
+<p>Cache models</p>
+<table width="800" class="list">
+  <tr>
+    <th width="100" scope="col">Value</th>
+    <th width="600" scope="col">Description</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Least recently used (LRU)</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Least frequently used v1 (LFU 1)</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>P2P video caching reactive (PVC-R)</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>P2P video caching proactive (PVC-P)</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>Least frequently used v2 (LFU 2)</td>
+  </tr>
+</table>
+<p>Sample run:</p>
+<table width="800" class="code">
+  <tr>
+    <td>SimCache.exe 1 1000000 1000 requests.log streams.txt king.dat 1000 5000 1000 20 5 1 1 100 500 100 1000 5000 1000 0.5 1 0.1 0.9 1 10 trace.csv stat.csv</td>
+  </tr>
+</table>
+<p class="pub_link"><a href="#top">Go to top</a></p>
+<p><a name="outs" id="outs"></a></p>
+<h3>Output statistical data</h3>
+<p>A comma-separated-value file, where for each simulation run, a new line is added containing the following values:</p>
+<table width="800" class="list">
+  <tr>
+    <th width="100" scope="col">Index</th>
+    <th width="700" scope="col">Description</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Number of streams (input parameter)</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Cache size (input parameter)</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Simulation run (input parameter)</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>Number of data samples</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>Stream quality delivered from cache (average, percentage)</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>Stream quality delivered from cache (standard deviation)</td>
+    </tr>
+  <tr>
+    <td>7</td>
+    <td>Cache hit ratio</td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>Peer rejection ratio (average)</td>
+  </tr>
+  <tr>
+    <td>9</td>
+    <td>Peer rejection ratio (standard deviation)</td>
+  </tr>
+  <tr>
+    <td>10</td>
+    <td>Cache rejection ratio (average)</td>
+  </tr>
+  <tr>
+    <td>11</td>
+    <td>Cache rejection ratio (standard deviation)</td>
+  </tr>
+  <tr>
+    <td>12</td>
+    <td>Cache admission ratio (average)</td>
+  </tr>
+  <tr>
+    <td>13</td>
+    <td>Cache admission ration (standard deviation)</td>
+  </tr>
+  <tr>
+    <td>14</td>
+    <td>Number of stream copies (average)</td>
+  </tr>
+  <tr>
+    <td>15</td>
+    <td>Number of stream copies (standard deviation)</td>
+  </tr>
+  <tr>
+    <td>16</td>
+    <td>Number of senders (average)</td>
+  </tr>
+  <tr>
+    <td>17</td>
+    <td>Number of senders (standard deviation)</td>
+  </tr>
+  <tr>
+    <td>18</td>
+    <td>Total number of  sent segment requests per peer (average)</td>
+  </tr>
+  <tr>
+    <td>19</td>
+    <td>Total number of sent segment requests per peer (standard deviation)</td>
+  </tr>
+  <tr>
+    <td>20</td>
+    <td>Number of  successful segment responses per peer (average)</td>
+  </tr>
+  <tr>
+    <td>21</td>
+    <td>Number of successful segment responses per peer (standard deviation)</td>
+  </tr>
+  <tr>
+    <td>22</td>
+    <td>Number of  failed segment responses per peer - no bandwidth (average)</td>
+  </tr>
+  <tr>
+    <td>23</td>
+    <td>Number of failed segment responses per peer - no bandwidth (standard deviation)</td>
+  </tr>
+  <tr>
+    <td>24</td>
+    <td>Number of  failed segment responses per peer - segment not found in cache (average)</td>
+  </tr>
+  <tr>
+    <td>25</td>
+    <td>Number of failed segment responses per peer - segment not found in cache (standard deviation)</td>
+  </tr>
+  <tr>
+    <td>26</td>
+    <td>Uplink bandwidth utilization per peer (average)</td>
+  </tr>
+  <tr>
+    <td>27</td>
+    <td>Uplink bandwidth utilization per peer (stadard deviation)</td>
+  </tr>
+</table>
+<p class="pub_link"><a href="#top">Go to top</a></p>
+<p><a name="outt" id="outt"></a></p>
+<h3>Output trace data</h3>
+<p>In order to enable trace data, you must define the identificator _TRACE in the &quot;stdafx.h&quot; file and recompile the code. To enhance the simulator performance, trace data is not available by default.</p>
+<p>When enabled, a new comma-separated-value file is generated for each simulation run. The filename covention is:</p>
+<p><em>r[run]_[output trace prefix]_[number of streams]_[cache size]_[peer uplink bandwidth].csv</em></p>
+<p>During a simulation run a new line is appended for each streaming session, containing the following values:</p>
+<table width="800" class="list">
+  <tr>
+    <th width="100" scope="col">Index</th>
+    <th width="600" scope="col">Description</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Timestamp</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Peer identificator (an integer value)</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Stream identificator (an integer value)</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>Stream size (in segments)</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>Stream popularity (in total number of sessions)</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>Session start position (in stream segment index)</td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>Session duration (in streamed segments)</td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>Total number of segments viewed during the session</td>
+  </tr>
+  <tr>
+    <td>9</td>
+    <td>Number of segments streamed from the server</td>
+    </tr>
+  <tr>
+    <td>10</td>
+    <td>Number of segments from the local cache</td>
+    </tr>
+  <tr>
+    <td>11</td>
+    <td>Number of segments streamed from another peer's cache</td>
+    </tr>
+  <tr>
+    <td>12</td>
+    <td>Quality delivered from the cache (in percentage)</td>
+  </tr>
+  <tr>
+    <td>13</td>
+    <td>Number of segment requests that were rejected by peers due to insufficient bandwidth</td>
+  </tr>
+  <tr>
+    <td>14</td>
+    <td>Number of segment requests that were rejected by peers due to segment not found</td>
+  </tr>
+  <tr>
+    <td>15</td>
+    <td>Cache indication ([0...1], if greater than the cache indication threshold than &quot;cache&quot;, otherwise &quot;don't cache&quot;)</td>
+  </tr>
+  <tr>
+    <td>16</td>
+    <td>Fraction of cached filled</td>
+  </tr>
+  <tr>
+    <td>17</td>
+    <td>Cache size</td>
+  </tr>
+  <tr>
+    <td>18</td>
+    <td>Number of stream copies</td>
+  </tr>
+  <tr>
+    <td>19</td>
+    <td>Number of senders</td>
+  </tr>
+  <tr>
+    <td>20</td>
+    <td>Maximum number of senders</td>
+  </tr>
+  <tr>
+    <td>Next $19$ columns</td>
+    <td>The peer identificator of the sender</td>
+  </tr>
+</table>
+<p class="pub_link"><a href="#top">Go to top</a></p>
+<h2>Code</h2>
+<p><a name="dlcode" id="dlcode"></a></p>
+<h3>Download the code</h3>
+<p><a href="../../../download/pvc/SimCache.zip" target="_blank">Source code for PVC simulator </a> (ZIP/52.3 KB)</p>
+<p>This is a snapshot of the PVC simulator code as taken on February 24, 2010. It compiles natively in Windows using the C/C++ Run-time Library (CRT). <a href="../../../contact.html">Contact me</a> for the latest revision or if you want to compile the code on other platforms.</p>
+<p class="pub_link"><a href="#top">Go to top</a></p>
+<p><a name="files" id="files"></a></p>
+<h3>Description of files</h3>
+<p>Main file:</p>
+<table width="800" class="list">
+  <tr>
+    <th width="246" scope="col">File</th>
+    <th width="544" scope="col">Description</th>
+  </tr>
+  <tr>
+    <td>SimCache.cpp</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>Simulator core:</p>
+<table width="800" class="list">
+  <tr>
+    <th width="246" scope="col">File</th>
+    <th width="544" scope="col">Description</th>
+  </tr>
+  <tr>
+    <td>Sim.h/cpp</td>
+    <td>Simulator core: manages the execution of scheduled events</td>
+  </tr>
+  <tr>
+    <td><em>SimEvent.h/cpp</em></td>
+    <td><em>Abstract interface for a simulation event: at runtime must be replaced by an implementation (see below)</em></td>
+  </tr>
+  <tr>
+    <td>SimEventList.h/cpp</td>
+    <td>Simulation event list: maintains a set of events ordered according to tehir timestamp, with logarithmic time for insertion, removal and constant time for access</td>
+  </tr>
+  <tr>
+    <td><em>SimHandler.h/cpp</em></td>
+    <td><em>Abstract interface for the simulator core: it provides the simulator model access to core functions such as scheduling and deleting events, return of the simulation time, etc.</em></td>
+  </tr>
+  <tr>
+    <td><em>SimModel.h/cpp</em></td>
+    <td><em>Abstract interface for the simulator model: at runtime must be replaced by an implementation (see below)</em></td>
+  </tr>
+</table>
+<p>Utility:</p>
+<table width="800" class="list">
+  <tr>
+    <th width="246" scope="col">File</th>
+    <th width="544" scope="col">Description</th>
+  </tr>
+  <tr>
+    <td>Console.h/cpp</td>
+    <td><em style="color:#F00">[Windows only]</em> Additional functions for display of text: changing text color, moving the cursor</td>
+  </tr>
+  <tr>
+    <td>Rand.h/cpp</td>
+    <td>Pseudorandom number generator <em style="color:#F00">[only the Windows version is cryptographically secure; <a href="http://msdn.microsoft.com/en-us/library/sxtz2fa8%28VS.80%29.aspx" target="_blank">read more here</a>]</em></td>
+  </tr>
+  <tr>
+    <td>Shuffle.h/cpp</td>
+    <td>Shuffles the order of accessing the elements of an array</td>
+  </tr>
+</table>
+<p>General purpose for peer-to-peer video caching:</p>
+<table width="800" class="list">
+  <tr>
+    <th width="246" scope="col">File</th>
+    <th width="544" scope="col">Description</th>
+  </tr>
+  <tr>
+    <td>Bitmap.h/cpp</td>
+    <td>Video stream bitmap; includes request and response parts</td>
+  </tr>
+  <tr>
+    <td><em>Callback.h/cpp</em></td>
+    <td><em>Abstract interface for accessing functions of the simulation model</em></td>
+  </tr>
+  <tr>
+    <td>Data.h/cpp</td>
+    <td>Handles all output parameters, including calculation of global statistical values</td>
+  </tr>
+  <tr>
+    <td>Indication.h/cpp</td>
+    <td>Cache indication from the sender to receiver</td>
+  </tr>
+  <tr>
+    <td>Info.h/cpp</td>
+    <td>Handles all input parameters</td>
+  </tr>
+  <tr>
+    <td>Video.h/cpp</td>
+    <td>Implementation of a video stream</td>
+  </tr>
+  <tr>
+    <td>Videomap.h/cpp</td>
+    <td>Mapping between the segments of a strem and sender peers; it is used by a peer to schedule the request of segments for the current stream</td>
+  </tr>
+  <tr>
+    <td>Watch.h/cpp</td>
+    <td>Video stream watch information provided by the watch model; it includes the video stream, start point, duration of the watch event, etc.</td>
+  </tr>
+</table>
+<p>Nodes for peer-to-peer video caching:</p>
+<table width="800" class="list">
+  <tr>
+    <th width="250" scope="col">File</th>
+    <th width="550" scope="col">Description</th>
+  </tr>
+  <tr>
+    <td>Boot.h/cpp</td>
+    <td>Implementation of the bootstrap server node</td>
+  </tr>
+  <tr>
+    <td><em>Node.h/cpp</em></td>
+    <td><em>Abstract interface for a node</em></td>
+  </tr>
+  <tr>
+    <td>Peer.h/cpp</td>
+    <td>Implementation of the peer node</td>
+  </tr>
+  <tr>
+    <td>Server.h/cpp</td>
+    <td>Implementation of the server node</td>
+  </tr>
+</table>
+<p>Events for peer-to-peer video caching:</p>
+<table width="800" class="list">
+  <tr>
+    <th width="250" scope="col">File</th>
+    <th width="550" scope="col">Description</th>
+  </tr>
+  <tr>
+    <td>EventDone.h/cpp</td>
+    <td>Event to mark the end of streaming</td>
+  </tr>
+  <tr>
+    <td>EventMessageBootRequest.h/cpp</td>
+    <td>Event for a bootstrapping request message </td>
+  </tr>
+  <tr>
+    <td>EventMessageBootResponse.h/cpp</td>
+    <td>Event for a bootstrapping response message</td>
+  </tr>
+  <tr>
+    <td>EventMessageSegmentRequest.h/cpp</td>
+    <td>Event for a bitmap request message</td>
+  </tr>
+  <tr>
+    <td>EventMessageSegmentResponse.h/cpp</td>
+    <td>Event for a bitmap response message</td>
+  </tr>
+  <tr>
+    <td>EventMessageStreamRequest.h/cpp</td>
+    <td>Event for a segment stream request message</td>
+  </tr>
+  <tr>
+    <td>EventMessageStreamResponse.h/cpp</td>
+    <td>Event for a segment stream response message</td>
+  </tr>
+  <tr>
+    <td>EventStream.h/cpp</td>
+    <td>Event to mark the begin of streaming</td>
+  </tr>
+  <tr>
+    <td>EventWatch.h/cpp</td>
+    <td>Event for a scheduled watch event, according to the watch model</td>
+  </tr>
+</table>
+<p>Simulator model for peer-to-peer video caching:</p>
+<table width="800" class="list">
+  <tr>
+    <th width="250" scope="col">File</th>
+    <th width="550" scope="col">Description</th>
+  </tr>
+  <tr>
+    <td>Model.h/cpp</td>
+    <td>Implementation of the Peer-to-Peer Video Caching simulation model</td>
+  </tr>
+</table>
+<p>General-purpose models for peer-to-peer video caching:</p>
+<table width="800" class="list">
+  <tr>
+    <th width="246" scope="col">File</th>
+    <th width="544" scope="col">Description</th>
+  </tr>
+  <tr>
+    <td><em>ModelWatch.h/cpp</em></td>
+    <td><em>Abstract interface for video watching</em></td>
+  </tr>
+  <tr>
+    <td>ModelWatchMedisyn.h/cpp</td>
+    <td>Implementation of video watching based on Medisyn files</td>
+  </tr>
+</table>
+<p>Cache models for peer-to-peer video caching:</p>
+<table width="800" class="list">
+  <tr>
+    <th width="246" scope="col">File</th>
+    <th width="544" scope="col">Description</th>
+  </tr>
+  <tr>
+    <td><em>ModelCache.h/cpp</em></td>
+    <td><em>Abstract interface for a cache model</em></td>
+  </tr>
+  <tr>
+    <td>ModelCacheLfu.h/cpp</td>
+    <td>Implementation of the LFU cache model (version 1)</td>
+  </tr>
+  <tr>
+    <td>ModelCacheLfu2.h/cpp</td>
+    <td>Implementation of the LFU cache model (version 2)</td>
+  </tr>
+  <tr>
+    <td>ModelCacheLru.h/cpp</td>
+    <td>Implementation of the LRU cache model</td>
+  </tr>
+  <tr>
+    <td>ModelCacheNone.h/cpp</td>
+    <td>Implementation of the no-cache model</td>
+  </tr>
+  <tr>
+    <td>ModelCachePvcP.h/cpp</td>
+    <td>Implementation of the PVC-P cache model</td>
+  </tr>
+  <tr>
+    <td>ModelCachePvcR.h/cpp</td>
+    <td>Implementation of the PVC-R cache model</td>
+  </tr>
+</table>
+<p>Network bandwidth/delay models for peer-to-peer video caching:</p>
+<table width="800" class="list">
+  <tr>
+    <th width="250" scope="col">File</th>
+    <th width="550" scope="col">Description</th>
+  </tr>
+  <tr>
+    <td><em>ModelNet.h/cpp</em></td>
+    <td><em>Abstract interface for a network model (includes  delay, bandwidth)</em></td>
+  </tr>
+  <tr>
+    <td>ModelNetKing.h/cpp</td>
+    <td>Implementation of the network model based on &quot;King&quot; delay dataset</td>
+  </tr>
+</table>
+<p>Peer selection models for peer-to-peer video caching:</p>
+<table width="800" class="list">
+  <tr>
+    <th width="250" scope="col">File</th>
+    <th width="550" scope="col">Description</th>
+  </tr>
+  <tr>
+    <td><em>ModelPool.h/cpp</em></td>
+    <td><em>Abstract interface for a peer selection model</em></td>
+  </tr>
+  <tr>
+    <td>ModelPoolRandom.h/cpp</td>
+    <td>Implementation for a random peer selection</td>
+  </tr>
+</table>
+<p class="pub_link"><a href="#top">Go to top</a></p>
+<p class="update">Last updated: February 25, 2010</p>
+
+</div>
+</div>
+
+<div class="footer"/>
+
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-7601310-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

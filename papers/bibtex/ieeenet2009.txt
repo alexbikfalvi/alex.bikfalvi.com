@@ -1,0 +1,11 @@
+@article{vidal_ieeenet_2009,
+	title={{Enabling layered video coding for IMS-based IPTV home services}},
+	author={Iv\'{a}n Vidal and Jaime Garc\'{i}a-Reinoso and Francisco Valera and Alex Bikfalvi},
+	journal={IEEE Network},
+	volume = {23},
+	number = {6},
+	year={2009},
+	month={November},
+	pages={30--35},
+	publisher={IEEE Communications Society}
+}

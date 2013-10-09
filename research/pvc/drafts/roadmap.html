@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<h1>Roadmap for PVC</h1>
+<p>Workload analysis</p>
+<ol>
+  <li>Trace-based data set</li>
+  <li> No peer churn for now (difficult to match to a type of workload)</li>
+  <li>Peer to session allocation
+    <ul>
+      <li>uniform sessions</li>
+      <li>uniform session time</li>
+    </ul>
+    <blockquote>
+      <p>&nbsp;</p>
+    </blockquote>
+  </li>
+</ol>
+
+<p>Roadmap</p>
+<ol>
+  <li>Finish implementing changes to the simulator (THIS WEEK)</li>
+  <ul>
+    <li>performance enhancements for large scale</li>
+    <li>realistic additions
+      <ul>
+        <li>bursty video traffic</li>
+        <li>queuing requests</li>
+      </ul>
+    </li>
+    <li>simplified assumptions for p2p layer
+      <ul>
+        <li>peer selection based on global/universal knowledge, i.e. best-case scenario</li>
+      </ul>
+    </li>
+  </ul>
+  <li>Obtain results on the main causes for cache misses (REPORT RESULTS NEXT WEEK)</li>
+  <ul>
+    <li>new content</li>
+    <li>content evicted</li>
+    <li>no bandwidth</li>
+    <li>peer left (if churn)</li>
+    <li>other: too high delay (no bandwidth)</li>
+  </ul>
+  <li>Use the heuristic algorithm to determine the baset-case solution (2nd/3rd WEEK OF JUNE)
+    <ul>
+      <li>analyze and compare results</li>
+    </ul>
+  </li>
+  <li>Analytical moedl</li>
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

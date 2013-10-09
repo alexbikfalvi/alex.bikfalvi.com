@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<div id="chart" style="width: 900px; height: 500px;"></div>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+	google.load('visualization', '1', {packages: ['corechart']});
+</script>
+<script type="text/javascript">
+function drawVisualization() {
+	// Create and populate the data table.
+	var data = google.visualization.arrayToDataTable([
+		['ID', 'IQR', '', '', '', 'Median', 'Average'],
+		['Number IP hops', 
+				9.5-(19.5-9.5)*1.5, 
+				9.5, 
+				19.5, 
+				19.5+(19.5-9.5)*1.5, 
+				13.5, 
+				12.484127],  
+		['Number AS hops', 
+				1.0-(4.0-1.0)*1.5, 
+				1.0, 
+				4.0, 
+				4.0+(4.0-1.0)*1.5, 
+				2.5, 
+				2.2619047]
+		// Treat first row as data as well.
+		]);
+	// Create and draw the visualization.
+	var ac = new google.visualization.ComboChart(document.getElementById('chart'));
+	ac.draw(data, {
+		title : 'Box Plot with Median and Average',
+		width: 900,
+		height: 400,
+		vAxis: {title: "Value"},
+		hAxis: {title: "Serie ID"},
+		series: { 0: {type: "candlesticks"}, 1: {type: "line", pointSize: 10, lineWidth: 0 }, 2: {type: "line", pointSize: 10, lineWidth: 0, color: 'black' } }
+  });
+}
+google.setOnLoadCallback(drawVisualization);
+</script>
+
+</body>
+</html>

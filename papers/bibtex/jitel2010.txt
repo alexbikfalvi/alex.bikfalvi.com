@@ -1,0 +1,7 @@
+@conference{diez_jitel_2010,
+	title = {{Distributed Management of Application Layer Multicast Trees for IPTV Services}},
+	author = {David D\'{i}ez-Hern\'{a}ndez and Jaime Garc\'{i}a-Reinoso and Alberto Garc\'{i}a-Mart\'{i}nez and Alex Bikfalvi and Iv\'{a}n Vidal},
+	booktitle = {IX Jornadas de Ingenieria Telematica},
+	month = {September--October},
+	year = {2010}
+}

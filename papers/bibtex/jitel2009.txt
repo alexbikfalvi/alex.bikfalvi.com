@@ -1,0 +1,7 @@
+@conference{martinez_jitel_2009,
+	title = {{Benefits on using H-P2PSIP in mobile environments}},
+	author = {Isa\'{i}as Martinez-Yelmo and Alex Bikfalvi and Carmen Guerrero},
+	booktitle = {VIII Jornadas de Ingenieria Telematica},
+	month = {September},
+	year = {2009}
+}

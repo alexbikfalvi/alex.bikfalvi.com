@@ -1,0 +1,29 @@
+#content {
+	height:100%;
+}
+
+#document {
+	width:1000px;
+	height:100%;
+	margin-left:10px;
+	margin-right:10px;
+	margin-top:0;
+	margin-bottom:0;
+	background:#e1dedb;
+}
+
+#embed {
+	width:1000px;
+	height:100%;
+	margin:0;
+	padding:0;
+	border:none;
+}
+
+#pagetop {
+	background-image:url(../../../images/phd/dissertation/Top.png);
+}
+
+#pagemiddle {
+	height:100%;
+}

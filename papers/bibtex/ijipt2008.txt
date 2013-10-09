@@ -1,0 +1,11 @@
+@article{martinez_ijipt_2008,
+	title = {{Enabling global multimedia distributed services based on hierarchical DHT overlay networks}},
+	author = {Isa\'{i}as Martinez-Yelmo and Alex Bikfalvi and Carmen Guerrero and Rub\'{e}n Cuevas and Andreas Mauthe},
+	journal = {International Journal of Internet Protocol Technology (Special Issue on Future Multimedia Networking)},
+	volume = {3},
+	number = {4},
+	pages={234--244},
+	publisher={Inderscience},
+	month = {December},
+	year = {2008}
+}

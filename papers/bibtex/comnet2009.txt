@@ -1,0 +1,11 @@
+@article{martinez_comnet_2009,
+	title = {{H-P2PSIP: Interconnection of P2PSIP domains for Global Multimedia Services based on a Hierarchical DHT Overlay Network}},
+	author = {Isa\'{i}as Martinez-Yelmo and Alex Bikfalvi and Rub\'{e}n Cuevas and Carmen Guerrero and Jaime Garc\'{i}a-Reinoso},
+	journal = {Computer Networks (Special Issue on Content Distribution Infrastructures for Community Networks)},
+	volume = {53},
+	number = {4},
+	pages={556--568},
+	publisher={Elsevier},
+	month = {March},
+	year = {2009}
+}

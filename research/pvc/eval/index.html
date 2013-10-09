@@ -1,0 +1,347 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Alex, Bikfalvi, personal, site"/>
+<meta name="description" content="Alex Bikfalvi personal web site"/>
+
+<link href="../../../style/styler.css" rel="stylesheet" title="Research stylesheet" type="text/css"/>
+<link href="../../../style/style2.css" rel="alternate stylesheet" title="Brand new shiny stylesheet" type="text/css"/>
+<link href="../../../style/style.css" rel="alternate stylesheet" title="Plain old stylesheet" type="text/css"/>
+
+<title>Alex Bikfalvi - Research | Peer-to-Peer Video Caching | Evaluation</title>
+
+</head>
+
+<body>
+
+<div id="content">
+
+<div class="header">
+<p class="hidden">Alex Bikfalvi at University Carlos III of Madrid</p>
+</div>
+
+<div class="back">
+
+<div id="path">
+<p>You are here: <a href="../../../index.html">Home</a> &gt; <a href="../../../research.html">Research</a> &gt; <a href="../index.html">Peer-to-Peer Video Caching</a> &gt; Evaluation</p>
+</div>
+
+<div class="main_content">
+
+<h1>Evaluation</h1>
+<h2>Items</h2>
+
+
+
+<ul>
+<li><a href="#csize">Effect of the cache size</a></li>
+<li><a href="#str">Effect of the number of streams</a></li>
+<li><a href="#pops">Effect of the stream popularity</a> <em style="color:#F00"><strong>(updated)</strong></em><strong></strong></li>
+<li><a href="#popt">Effect of the stream lifespan</a></li>
+<li><a href="#upl">Effect of the peer uplink bandwidth</a> <em style="color:#F00"><strong>(updated)</strong></em><strong></strong></li>
+<li><a href="#vcop">Distribution of stream replicas</a><em style="color:#F00"><strong> (new)</strong></em><strong></strong></li>
+</ul>
+
+<p><a name="csize" id="csize"></a></p>
+<h2>Effect of the cache size</h2>
+<p>In this evaluation scenario we change the peers' cache size.</p>
+
+<table class="pub_table" cellpadding="4">
+    <tr>
+     	<td width="100px" valign="top">
+        	<p class="pub_date">Variable parameter</p>
+        </td>
+    	<td width="700px" valign="top">
+    	  <p>Cache size: <strong><em>10</em></strong>, <em><strong>20</strong></em>, ..., <em><strong>100</strong></em>, <strong><em>200</em></strong>, ..., <em><strong>500</strong></em> segments</p>
+       	</td>
+    </tr>
+    <tr>
+      <td valign="top"><span class="pub_date">Fixed parameters</span></td>
+      <td><p>Stream size: <em><strong>100</strong></em> segments</p>
+        <p>Number of streams: <em><strong>1000</strong></em><strong></strong></p>
+        <p>Number of peers: <em><strong>1000</strong></em><strong></strong></p>
+        <p>&nbsp;</p>
+        <p>Workload characteristics:</p>
+        <p>- spatial aspect of the stream popularity (alpha for zipf): <em><strong>0.8</strong></em></p>
+        <p>- temporal aspect of the stream popularity (mean of the lognormal function for session lifespan): <em><strong>8</strong></em></p>
+        <p>&nbsp;</p>
+        <p>(for details on how the workload characteristic looks for above values see the description of the input data for the measurements of the <a href="#pops">spatial</a> and <a href="#popt">temporal</a> effect of the popularity)</p>
+<p></p></td>
+    </tr>
+</table>
+
+<p>&nbsp;</p>
+<p>Click on the figures to open the PDF.</p>
+<p><a href="BhrVsCacheSize.pdf" target="_blank">Figure 1.1. <img src="BhrVsCacheSize.png" width="300" height="225" /></a>
+  <a href="CopiesVsCacheSize.pdf" target="_blank">Figure 1.2. <img src="CopiesVsCacheSize.png" width="300" height="225" /></a></p>
+<p><a href="UplinkVsCacheSize.pdf" target="_blank">Figure 1.3. <img src="UplinkVsCacheSize.png" width="300" height="225" /></a></p>
+
+<table class="pub_table" cellpadding="4">
+    <tr>
+     	<td width="100px" valign="top">
+        	<p class="pub_date">Figure 1.1.</p>
+        </td>
+    	<td width="700px" valign="top">
+    	  <p>Bit hit ratio vs. the cache size (expressed in stream segments). Note that all streams have the size of 100 segments. Alternatively, we can use the ratio between the cache size and the stream size, in the current case that all streams have the same size.</p>
+       	</td>
+    </tr>
+    <tr>
+      <td valign="top"><span class="pub_date">Figure 1.2.</span></td>
+      <td><p>The average number of cached stream copies vs. the cache size.</p>
+<p></p></td>
+    </tr>
+    <tr>
+      <td valign="top"><span class="pub_date">Figure 1.3.</span></td>
+      <td>The average uplink bandwidth utlization vs. the cache size. (I understand this figure is not that representative since the average is done over all peers, including those which don't serve full streams - hence the small value; perhaps a better illustration is the CDF of the bandwidth utilization across peers)</td>
+    </tr>
+</table>
+
+<p><a name="str" id="str"></a></p>
+<h2>Effect of the number of streams</h2>
+<p>In this evaluation scenario, we change the number of streams.</p>
+<p style="color:#F00"><strong>Notice: </strong>I made a calculation error, and I set improperly the time scaling factor leading to some sessions being lost for a high number of streams (e.g. in fig. 2.1 it looks as if LRU is getting better for 8000-10000 streams, which probably is due to the incorrect time scale). There are currently simulations running to obtain new data.</p>
+
+<table class="pub_table" cellpadding="4">
+    <tr>
+     	<td width="100px" valign="top">
+        	<p class="pub_date">Variable parameter</p>
+        </td>
+    	<td width="700px" valign="top">
+    	  <p>Number of streams: <strong><em>100</em></strong>, <em><strong>200</strong></em>, ..., <em><strong>1000</strong></em>, <strong><em>2000</em></strong>, ..., <em><strong>10000</strong></em> streams</p>
+       	</td>
+    </tr>
+    <tr>
+      <td valign="top"><span class="pub_date">Fixed parameters</span></td>
+      <td><p>Stream size: <em><strong>100</strong></em> segments</p>
+        <p>Cache size: <em><strong>200</strong></em><strong></strong> segments</p>
+        <p>Number of peers: <em><strong>1000</strong></em><strong></strong></p>
+        <p>&nbsp;</p>
+        <p>Workload characteristics:</p>
+        <p>- spatial aspect of the stream popularity (alpha for zipf): <em><strong>0.67 </strong></em>(needs to be lower to accomodate 10000 streams)</p>
+        <p>- temporal aspect of the stream popularity (mean of the lognormal function for session lifespan): <em><strong>8</strong></em></p>
+        <p>&nbsp;</p>
+        <p>(for details on how the workload characteristic looks for above values see the description of the input data for the measurements of the <a href="#pops">spatial</a> and <a href="#popt">temporal</a> effect of the popularity)</p>
+<p></p></td>
+    </tr>
+</table>
+
+<p><a href="BhrVsStreams.pdf" target="_blank">Figure 2.1. <img src="BhrVsStreams.png" width="300" height="225" /></a><a href="CopiesVsStreams.pdf" target="_blank">Figure 2.2.  <img src="CopiesVsStreams.png" width="300" height="225" /></a></p>
+
+<table class="pub_table" cellpadding="4">
+    <tr>
+     	<td width="100" valign="top">
+        	<p class="pub_date">Figure 2.1.</p>
+        </td>
+    	<td width="700" valign="top">
+    	  <p>Bit hit ratio vs. the number of streams.</p>
+       	</td>
+    </tr>
+    <tr>
+      <td valign="top"><span class="pub_date">Figure 2.2.</span></td>
+      <td><p>The average number of cached stream copies vs. the number of streams.</p>
+<p></p></td>
+    </tr>
+</table>
+
+<p><a name="pops" id="pops"></a></p>
+<h2>Effect of the stream popularity (spatial aspect of the popularity)</h2>
+<p>In this evaluation scenario, we change the slope of the stream popularity.</p>
+<p style="color:#F00"><strong>Update: </strong>this values from these figures are now correct.</p>
+
+<table class="pub_table" cellpadding="4">
+    <tr>
+     	<td width="100px" valign="top">
+        	<p class="pub_date">Variable parameter</p>
+        </td>
+    	<td width="700px" valign="top">
+    	  <p>Slope of the stream popularity (alpha of the zipf distribution): <strong><em>0.3</em></strong>, <em><strong>0.4</strong></em>, ..., <em><strong>1</strong></em></p>
+    	  <p><em>(see figure 3.1 and its explanation below on how each alpha value afects the probability distribution)</em></p></td>
+    </tr>
+    <tr>
+      <td valign="top"><span class="pub_date">Fixed parameters</span></td>
+      <td><p>Stream size: <em><strong>100</strong></em> segments</p>
+        <p>Cache size: <em><strong>200</strong></em><strong></strong> segments</p>
+        <p>Number of peers: <em><strong>1000</strong></em><strong></strong></p>
+        <p>Number of streams: <em><strong>1000</strong></em><strong></strong></p>
+        <p>&nbsp;</p>
+        <p>Workload characteristics:        </p>
+        <p>- temporal aspect of the stream popularity (mean of the lognormal function for session lifespan): <em><strong>8</strong></em></p>
+        <p>&nbsp;</p>
+        <p>(for details on how the workload characteristic looks for above value see the description of the input data for the measurements of the <a href="#popt">temporal</a> effect of the popularity)</p>
+<p></p></td>
+    </tr>
+</table>
+
+<p><a href="in_pop_spatial.pdf" target="_blank">Figure 3.1. <img src="in_pop_spatial.png" width="300" height="225" /></a><a href="BhrVsPopS.pdf" target="_blank">Figure 3.2. <img src="BhrVsPopS.png" width="300" height="225" /></a></p>
+<p><a href="CopiesVsPopS.pdf" target="_blank">Figure 3.2. <img src="CopiesVsPopS.png" width="300" height="225" /></a><a href="UplinkVsPopS.pdf" target="_blank">Figure 3.3. <img src="UplinkVsPopS.png" width="300" height="225" /></a></p>
+
+<table class="pub_table" cellpadding="4">
+    <tr>
+     	<td width="100" valign="top">
+        	<p class="pub_date">Figure 3.1.</p>
+        </td>
+    	<td width="700" valign="top">The change of the stream popularity with alpha (the input parameter for this evaluation scenario). The number of sessions for the most popular stream is always the same (1000 sessions). Please note the distribution is not zipf, but generalized zipf-like (see the Medisyn paper for additional details). As alpha decreases, the popularity distribution gets more uniform. In the current scenation, alpha was upper-bounded at 1 (above this value, a number of streams would get 0 sessions in the workload).</td>
+    </tr>
+    <tr>
+      <td valign="top"><span class="pub_date">Figure 3.2.</span></td>
+      <td width="700" valign="top"><p>Bit hit ratio vs. alpha.</p></td>
+      </tr>
+    <tr>
+      <td valign="top"><span class="pub_date">Figure 3.3.</span></td>
+      <td><p>The average number of cached stream copies vs. alpha.</p>
+        <p></p></td>
+      </tr>
+    <tr>
+      <td valign="top"><span class="pub_date">Figure 3.4.</span></td>
+      <td>The average uplink bandwidth utlization vs. alpha.</td>
+    </tr>
+</table>
+
+<p>Performance increases with alpha: as the difference in popularity between popular and unpopular streams gets greater, there will be more sessions for the popular streams, and  the trashing of these streams is lower. On the downside, there will also be more copies of the popular streams.</p>
+<p><a name="popt" id="popt"></a></p>
+<h2>Effect of the stream lifespan (temporal aspect of the popularity)</h2>
+<table cellpadding="4" class="pub_table">
+  <tr>
+    <td width="100px" valign="top"><p class="pub_date">Variable parameter</p></td>
+    <td width="700px" valign="top"><p>Mean of the lognormal function describing the stream popularity over time: <em><strong>3</strong></em>, <em><strong>4</strong></em>, <em><strong>5</strong></em>, ..., <em><strong>8</strong></em></p>
+      <p><em>(see figure 4.1 and its explanation below on how each mean value afects the stream popularity)</em></p></td>
+  </tr>
+  <tr>
+    <td valign="top"><span class="pub_date">Fixed parameters</span></td>
+    <td><p>Stream size: <em><strong>100</strong></em> segments</p>
+      <p>Cache size: <em><strong>200</strong></em> segments</p>
+      <p>Number of streams: <em><strong>1000</strong></em><strong></strong></p>
+      <p>Number of peers: <em><strong>1000</strong></em></p>
+      <p>&nbsp;</p>
+      <p>Workload characteristics:</p>
+      <p>- spatial aspect of the stream popularity (alpha for zipf): <em><strong>0.8</strong></em>      </p>
+      <p>&nbsp;</p>
+      <p>(for details on how the workload characteristic looks for above value see the description of the input data for the measurements of the <a href="#pops">spatial</a>effect of the popularity)</p>
+      <p></p></td>
+  </tr>
+</table>
+
+<p><a href="in_pop_temp.pdf" target="_blank">Figure 4.1. <img src="in_pop_temp.png" width="300" height="225" /></a> <a href="BhrVsPopT.pdf" target="_blank">Figure 4.2. <img src="BhrVsPopT.png" width="300" height="225" /></a></p>
+<p><a href="CopiesVsPopT.pdf" target="_blank">Figure 4.3. <img src="CopiesVsPopT.png" width="300" height="225" /></a><a href="UplinkVsPopT.pdf" target="_blank">Figure 4.4. <img src="UplinkVsPopT.png" width="300" height="225" /></a></p>
+<table cellpadding="4" class="pub_table">
+  <tr>
+    <td width="100" valign="top"><p class="pub_date">Figure 4.1.</p></td>
+    <td width="700" valign="top"><p>The stream request rate over time (also called stream's lifespan) is modeled by the PDF of the lognormal distribution, weighted by the stream popularity (i.e. the shape would be the same but the amplitude will be different). For two different streams not to have exactly the same lifespan, the parameters of the lognormal distribution (mean and variance) are considered normally distributed random variables.</p>
+      <p>&nbsp;</p>
+      <p>In order to change the burstiness of the requests, we adjust the mean of the lognormal function. For a low mean, the session lifespan is small; when the mean is large the session lifespan is elongated over time (the overall popularity of the streams stays the same).</p>
+      <p>&nbsp;</p>
+      <p>The figure shows the request rate for all streams over time. For a low mean of the lognormal, the stream popularity increases fast and decreases fast, whereas for a high mean, the popularity increases and decreases slow. Note that the skew of the function is approximately the same for all streams.</p></td>
+  </tr>
+  <tr>
+    <td valign="top"><span class="pub_date">Figure 4.2.</span></td>
+    <td width="700" valign="top"><p>Bit hit ratio vs. lognormal mean.</p></td>
+  </tr>
+  <tr>
+    <td valign="top"><span class="pub_date">Figure 4.3.</span></td>
+    <td><p>The average number of cached stream copies vs. lognormal mean.</p>
+      <p></p></td>
+  </tr>
+  <tr>
+    <td valign="top"><span class="pub_date">Figure 4.4.</span></td>
+    <td>The average uplink bandwidth utlization vs. lognormal mean.</td>
+  </tr>
+</table>
+
+<p><a name="upl" id="upl"></a></p>
+<h2>Effect of peer uplink bandwidth</h2>
+<table cellpadding="4" class="pub_table">
+  <tr>
+    <td width="100px" valign="top"><p class="pub_date">Variable parameter</p></td>
+    <td width="700px" valign="top"><p>Peer uplink bandwidth: <em><strong>1</strong></em>, <strong><em>2</em></strong>, ..., <strong><em>10</em></strong> Mbps</p></td>
+  </tr>
+  <tr>
+    <td valign="top"><span class="pub_date">Fixed parameters</span></td>
+    <td><p>Stream size: <em><strong>100</strong></em> segments</p>
+      <p>Cache size: <em><strong>200</strong></em> segments</p>
+      <p>Number of streams: <em><strong>1000</strong></em><strong></strong></p>
+      <p>Number of peers: <em><strong>1000</strong></em></p>
+      <p>Stream bit rate: <em><strong>1</strong></em> Mbps</p>
+      <p>&nbsp;</p>
+      <p>Workload characteristics:</p>
+      <p>- spatial aspect of the stream popularity (alpha for zipf): <em><strong>0.8</strong></em></p>
+      <p>- temporal aspect of the stream popularity (mean of the lognormal function for session lifespan): <em><strong>8</strong></em></p>
+      <p>&nbsp;</p>
+      <p>(for details on how the workload characteristic looks for above values see the description of the input data for the measurements of the <a href="#pops">spatial</a> and <a href="#popt">temporal</a> effect of the popularity)</p>
+      <p></p></td>
+  </tr>
+</table>
+<p><a href="BhrVsUplink.pdf" target="_blank">Figure 5.1. <img src="BhrVsUplink.png" width="300" height="225" /></a><a href="CopiesVsUplink.pdf" target="_blank">Figure 5.2. <img src="CopiesVsUplink.png" width="300" height="225" /></a></p>
+<p><a href="UplinkVsUplink.pdf" target="_blank">Figure 5.3. <img src="UplinkVsUplink.png" width="300" height="225" /></a></p>
+<table cellpadding="4" class="pub_table">
+  <tr>
+    <td width="100" valign="top"><p class="pub_date">Figure 5.1.</p></td>
+    <td width="700" valign="top"><p>Bit hit ratio vs. peer uplink bandwidth.</p></td>
+    </tr>
+  <tr>
+    <td valign="top"><span class="pub_date">Figure 5.2.</span></td>
+    <td><p>The average number of cached stream copies vs. peer uplink bandwidth.</p>
+      <p></p></td>
+    </tr>
+  <tr>
+    <td valign="top"><span class="pub_date">Figure 5.3.</span></td>
+    <td>The average uplink bandwidth utlization vs. peer uplink bandwidth.</td>
+  </tr>
+</table>
+
+<p><a name="vcop" id="vcop"></a></p>
+<h2>Distribution of stream replicas</h2>
+<table cellpadding="4" class="pub_table">
+  <tr>
+    <td width="100px" valign="top"><p class="pub_date">Description</p></td>
+    <td width="700px" valign="top"><p>This figure illustrates the distribtion of stream copies (or replicas) for the analyzed cache algorithms</p></td>
+  </tr>
+  <tr>
+    <td valign="top"><span class="pub_date">Fixed parameters</span></td>
+    <td><p>Stream size: <em><strong>100</strong></em> segments</p>
+      <p>Cache size: <em><strong>200</strong></em> segments</p>
+      <p>Number of streams: <em><strong>1000</strong></em><strong></strong></p>
+      <p>Number of peers: <em><strong>1000</strong></em></p>
+      <p>Peer uplink bandwidth: <em><strong>5</strong></em> Mbps</p>
+      <p>Stream bit rate: <em><strong>1</strong></em> Mbps</p>
+      <p>&nbsp;</p>
+      <p>Workload characteristics:</p>
+      <p>- spatial aspect of the stream popularity (alpha for zipf): <em><strong>0.8</strong></em></p>
+      <p>- temporal aspect of the stream popularity (mean of the lognormal function for session lifespan): <em><strong>8</strong></em></p>
+      <p>&nbsp;</p>
+      <p>(for details on how the workload characteristic looks for above values see the description of the input data for the measurements of the <a href="#pops">spatial</a> and <a href="#popt">temporal</a> effect of the popularity)</p>
+      <p></p></td>
+  </tr>
+</table>
+<p><a href="CopiesCdf.pdf" target="_blank">Figure 6.1. <img src="CopiesCdf.png" width="300" height="225" /></a></p>
+<table cellpadding="4" class="pub_table">
+  <tr>
+    <td width="100" valign="top"><p class="pub_date">Figure 6.1.</p></td>
+    <td width="700" valign="top"><p>The cumulative distribution function of the stream number of copies, where the streams are ordered with their popularity. If the number of copies would be the same for all streams, agostic of their popularity, the CDF should be a straight line. The faster the CDF increases means more copies are kept in the cache for the hot streams, while less copies are saved for the cold streams. The figure clearly shows that both PVC algorithms are better that LRU and LFU at redistributing the cache space from the hottest streams to cold streams. Among these, PVC-P is the best, because of the caching indication sent by old peers to new peers.</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+
+
+<p class="update">Last updated: February 21, 2010</p>
+
+</div>
+</div>
+
+<div class="footer"/>
+
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-7601310-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+@article{bikfalvi_ijcs_2009,
+	title={{A peer-to-peer IPTV service architecture for the IP multimedia subsystem}},
+	author={Alex Bikfalvi and Jaime Garc\'{i}a-Reinoso and Iv\'{a}n Vidal and Francisco Valera},
+	journal={International Journal of Communication Systems},
+	volume = {23},
+	number = {6--7},
+	pages={780--801},
+	month = {June--July},
+	year = {2009},
+	publisher={John Wiley \& Sons}
+}
