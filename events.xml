@@ -10,6 +10,22 @@
 	<atom:link href="http://alex.bikfalvi.com/events.xml" rel="self" type="application/rss+xml" />
 
     <item>
+      <title>Talk Announcement</title>
+      <link>http://alex.bikfalvi.com/papers/imc2013.html</link>
+      <description>The talk Rethinking PlanetLab for Internet Measurements by Manuel Palacin has been accepted in the News and Community Feedback Session of the 2013 Internet Measurement Conference.</description>
+      <pubDate>Fri, 04 Oct 2013 00:00:00 GMT</pubDate>
+	  <guid>http://alex.bikfalvi.com/events.html#04-10-2013-01</guid>
+    </item>
+
+    <item>
+      <title>Article Publication</title>
+      <link>http://alex.bikfalvi.com/papers/jip2013.html</link>
+      <description>The paper The Impact of Content Delivery Networks on the Internet Ecosystem has been accepted for publication in the Journal of Information Policy by Open Journals System.</description>
+      <pubDate>Thu, 20 Jun 2013 00:00:00 GMT</pubDate>
+	  <guid>http://alex.bikfalvi.com/events.html#20-06-2013-01</guid>
+    </item>
+    
+    <item>
       <title>We Are Hiring Junior Research Engineers</title>
       <link>http://www.nets.upf.edu/openings/</link>
       <description>We are seeking highly dynamic individuals for a challenging project: designing, implementing and testing communication protocols for mesh and wireless sensor (WSN) networks, in the framework of two applied research projects, focused on the management of wandering patients, and on domestic and industrial energy management, respectively.</description>

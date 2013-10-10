@@ -8,36 +8,42 @@
 #links ul{
 	list-style:none;
 	list-style-type:none;
+	background-repeat:no-repeat;
 }
 
-#links li {float:left;}
+#links li {
+	float:left;
+	cursor:default;
+	width:32px;
+	height:32px;
+	margin-right:10px;
+}
 
-#links li a {display:block;}
+#links li a {
+	display:block;
+	width:32px;
+	height:32px;
+}
 
-#links_facebook {background:url(../images/facebook_off.png) no-repeat; cursor:default; width:32px; height:32px; margin-right:10px;}
-#links_facebook a{width:32px; height:32px;}
-#links_facebook a:hover {background:url(../images/facebook_on.png) no-repeat;}
-#links_facebook span {display:none;}
+#links li span {display:none;}
 
-#links_twitter {background:url(../images/twitter_off.png) no-repeat; cursor:default; width:32px; height:32px; margin-right:10px;}
-#links_twitter a{width:32px; height:32px;}
-#links_twitter a:hover {background:url(../images/twitter_on.png) no-repeat;}
-#links_twitter span {display:none;}
+#links_facebook {background:url(../images/facebook_off.png);}
+#links_facebook a:hover {background:url(../images/facebook_on.png);}
 
-#links_flickr {background:url(../images/flickr_off.png) no-repeat; cursor:default; width:32px; height:32px; margin-right:10px;}
-#links_flickr a {width:32px; height:32px;}
-#links_flickr a:hover {background:url(../images/flickr_on.png) no-repeat;}
-#links_flickr span {display:none;}
+#links_twitter {background:url(../images/twitter_off.png);}
+#links_twitter a:hover {background:url(../images/twitter_on.png);}
 
-#links_linkedin {background:url(../images/linkedin_off.png) no-repeat; cursor:default; width:32px; height:32px; margin-right:10px;}
-#links_linkedin a {width:32px; height:32px;}
-#links_linkedin a:hover {background:url(../images/linkedin_on.png) no-repeat;}
-#links_linkedin span {display:none;}
+#links_flickr {background:url(../images/flickr_off.png);}
+#links_flickr a:hover {background:url(../images/flickr_on.png);}
 
-#links_lastfm {background:url(../images/lastfm_off.png) no-repeat; cursor:default; width:32px; height:32px; margin-right:10px;}
-#links_lastfm a{width:32px; height:32px;}
-#links_lastfm a:hover {background:url(../images/lastfm_on.png) no-repeat;}
-#links_lastfm span {display:none;}
+#links_linkedin {background:url(../images/linkedin_off.png);}
+#links_linkedin a:hover {background:url(../images/linkedin_on.png);}
+
+#links_lastfm {background:url(../images/lastfm_off.png);}
+#links_lastfm a:hover {background:url(../images/lastfm_on.png);}
+
+#links_github {background:url(../images/github_off.png);}
+#links_github a:hover {background:url(../images/github_on.png);}
 
 #banner{
 	overflow: hidden;

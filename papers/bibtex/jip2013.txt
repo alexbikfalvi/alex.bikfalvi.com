@@ -1,0 +1,12 @@
+@article{palacin_jip_2013,
+	title = {{The Impact of Content Delivery Networks on the Internet Ecosystem}},
+	author = {Manuel Palacin and Miquel Oliver and Jorge Infante and Simon Oechsner and Alex Bikfalvi},
+	journal = {Journal of Information Policy},
+	volume = {3},
+	number = {0},
+	year = {2013},
+	keywords = {Telecommunications; Telecommunications Regulation; Telecommunications Studies; Peering; Content Providers; ISP; Content Delivery Network; Tier 1; Cache; Akamai; Google; Hyper Giants;},
+	abstract = {Are Tier 1 ISPs and “hyper-giant” content providers using preferential interconnection agreements to create Content Delivery Networks (CDNs) that allow them to provide an improved Quality of User Experience inconsistent with network neutrality principles? Yes, say the authors, and they recommend that regulators address these possibly oligopolistic and anti-competitive practices. The effects arising from these CDNs, the authors show, are the same as those of regulated traffic prioritization. Using innovative models, original data, and analysis based on the experience of the Internet ecosystem in Spain, the authors conclude that lesser long tail content providers without significant market power are being cannibalized into such CDNs.},
+	issn = {2158-3897},
+	url = {http://jip.vmhost.psu.edu/ojs/index.php/jip/article/view/137}
+}
