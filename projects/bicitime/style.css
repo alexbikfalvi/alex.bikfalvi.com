@@ -1,0 +1,77 @@
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	margin: 0;
+	padding: 0
+}
+
+dl {
+	font-family: "Open Sans", Arial, sans-serif;
+	padding: 1em;
+}
+
+dt {
+	font-size: 2em;
+	font-weight: bold;
+}
+
+dt span {
+	font-size: .5em; color: #777;
+	margin-left: .5em;
+}
+
+dd {
+	font-size: 1.25em;
+	margin: 1em 0 0;
+	padding-bottom: 1em;
+	border-bottom: 1px solid #eee;
+}
+
+.back-btn {
+	float: right;
+	margin: 0 2em 1em 0;
+}
+
+object[type$="x-shockwave-flash"]:not([classid]),object[type$="futuresplash"]:not([classid]),embed[type$="x-shockwave-flash"],embed[type$="futuresplash"] {
+	display:none !important
+}
+
+#main-page {
+	height: 100%;
+}
+	  
+#main-page * {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+
+#main-page .ui-header .ui-btn {
+	background: none;
+	border: none;
+	top: 9px;
+}
+
+#main-page .ui-header .ui-btn-inner {
+	border: none;
+}
+
+#main-page .ui-content {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+	padding: 0;
+}
+
+#map-canvas {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+}
