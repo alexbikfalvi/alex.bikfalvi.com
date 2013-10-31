@@ -19,14 +19,14 @@
 
 <body>
     <div data-role="page" id="main-page" data-theme="c" data-url="main-page">
-        <div data-role="header" data-theme="c" class="ui-noselect">
+        <div id="main-header" data-role="header" data-theme="c" class="ui-noselect">
             <h1>BicInTime</h1>
             <a href="#menu-panel" data-theme="d" data-icon="bars" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc ui-icon-alt">Open menu</a>
-            <a href="#search-panel" data-theme="d" data-icon="search" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc ui-icon-alt">Find my time</a>
+            <a id="navigation-search" data-theme="d" data-icon="search" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc ui-icon-alt">Find my time</a>
         </div>
         <div data-role="content" class="ui-noselect">
             <div id="map-canvas">
-            </div>-->
+            </div>
         </div>
         <div data-role="panel" id="menu-panel" data-theme="a">
             <p>Menu...</p>
@@ -36,10 +36,10 @@
         	<form id="search-form">
             	<label for="search-origin" class="ui-hidden-accessible">Origin:</label>
 				<input type="search" name="search-origin" id="search-origin" placeholder="Select origin...">
-                <ul id="search-origin-autocomplete" data-role="listview" data-inset="true"></ul>
+                <ul id="search-origin-autocomplete" data-role="listview" data-theme="d" data-divider-theme="c" data-inset="true"></ul>
             	<label for="search-destination" class="ui-hidden-accessible">Destination:</label>
 				<input type="search" name="search-destination" id="search-destination" placeholder="Select destination...">
-                <ul id="search-destination-autocomplete" data-role="listview" data-inset="true"></ul>
+                <ul id="search-destination-autocomplete" data-role="listview" data-theme="d" data-divider-theme="c" data-inset="true"></ul>
                 <fieldset data-role="controlgroup" data-type="horizontal">
                     <legend>Horizontal:</legend>
                     <input type="radio" name="search-date-time-select" id="search-date-time-now" value="on" checked="checked">
@@ -54,7 +54,7 @@
             </form>           
         </div>
         <div data-role="panel" id="results-panel" data-position="right" data-display="overlay">
-        </div>
+        </div>    
     </div>
 </body>
 </html>

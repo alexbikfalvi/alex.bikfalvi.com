@@ -87,3 +87,10 @@ object[type$="x-shockwave-flash"]:not([classid]),object[type$="futuresplash"]:no
 	height: 100%;
 	padding: 0;
 }
+
+#main-footer {
+	position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
