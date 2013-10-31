@@ -9,6 +9,7 @@ var mapDirectionsRendererBicing = null;
 var mapDirectionsRendererDestination = null;
 var mapMarkersEnds = [];
 var mapMarkersStations = [];
+var mapPaths = [];
 
 var mapMarkerRed;
 var mapMarkerGreen;
@@ -23,6 +24,22 @@ var strCurrentLocation = "Current location";
 var isSearch = true;
 
 var searchResult = null;
+
+var pathOptionsWalkOrigin = {
+	strokeColor: '#00FF00',
+	strokeOpacity: 0.8,
+	strokeWeight: 3
+};
+var pathOptionsBicing = {
+	strokeColor: '#0000FF',
+	strokeOpacity: 0.8,
+	strokeWeight: 3
+};
+var pathOptionsWalkDestination = {
+	strokeColor: '#00FF00',
+	strokeOpacity: 0.8,
+	strokeWeight: 3
+};
 
 $(document).ready(function(e) {
 	var mapStyles = [
@@ -425,6 +442,7 @@ function onRequestDirections(originLocation, destinationLocation) {
 			$("#results-panel").panel("close");
 			// Open the search panel.
 			$("#search-panel").panel("open");
+			
 			// Set the search flag to true.
 			isSearch = true;
 		});
@@ -497,14 +515,7 @@ function onDisplayDirections(originLocation, destinationLocation, originStation,
 		function(response, status) {
 			if (status == google.maps.DirectionsStatus.OK) {
 				// Set the map directions.
-				var path = addDirectionsPath(response, 
-				{
-					strokeColor: '#FF0000',
-					strokeOpacity: 1.0,
-					strokeWeight: 2
-				});
-			
-				//mapDirectionsRendererOrigin.setDirections(response);
+				addDirectionsPath(response, pathOptionsWalkOrigin);
 			}
 			else {
 				alert("No directions could be found.");
@@ -515,7 +526,8 @@ function onDisplayDirections(originLocation, destinationLocation, originStation,
 		{origin:originStation, destination:destinationStation, travelMode: google.maps.DirectionsTravelMode.BICYCLING },
 		function(response, status) {
 			if (status == google.maps.DirectionsStatus.OK) {
-				//mapDirectionsRendererBicing.setDirections(response);
+				// Set the map directions.
+				addDirectionsPath(response, pathOptionsBicing);
 			}
 			else {
 				// Route using walking directions.
@@ -524,7 +536,7 @@ function onDisplayDirections(originLocation, destinationLocation, originStation,
 					function(response, status) {
 						if (status == google.maps.DirectionsStatus.OK) {
 							// Set the map directions.
-							//mapDirectionsRendererBicing.setDirections(response);
+							addDirectionsPath(response, pathOptionsBicing);
 						}
 						else {
 							alert("No directions could be found.");
@@ -538,7 +550,7 @@ function onDisplayDirections(originLocation, destinationLocation, originStation,
 		function(response, status) {
 			if (status == google.maps.DirectionsStatus.OK) {
 				// Set the map directions.
-				//mapDirectionsRendererDestination.setDirections(response);
+				addDirectionsPath(response, pathOptionsWalkDestination);
 			}
 			else {
 				alert("No directions could be found.");
@@ -546,18 +558,24 @@ function onDisplayDirections(originLocation, destinationLocation, originStation,
 		});
 }
 
-// A function that adds the directions path.
+// A function that adds the first route from a directions response as path.
 function addDirectionsPath(response, opt) {
+	// If there is no route, return null.
+	if (response.routes.length == 0) {
+		return null;
+	}
+	
+	// Get the first route.
+	var route = response.routes[0];
+	
 	// Create the array of coordinates.
 	var coordinates = [];
-	for (var i = 0; i < response.legs.length; i++) {
-		coordinates.push(response.legs[i].start_location);
-		coordinates.push(response.legs[i].end_location);
-	}
-//	$.each(response.legs, function(index, leg) {
-//		coordinates.push(leg.start_location);
-//		coordinates.push(leg.end_location);
-//	});
+	$.each(route.legs, function(i, leg) {
+		$.each(leg.steps, function(j, step) {
+			coordinates.push(step.start_location);
+			coordinates.push(step.end_location);
+		});
+	});
 	// Create the path.
 	var path = new google.maps.Polyline({
 		path: coordinates,
@@ -566,7 +584,6 @@ function addDirectionsPath(response, opt) {
 	// Set the options.
 	path.setOptions(opt);
 	// Add the path to the map.
+	mapPaths.push(path);
 	path.setMap(map);
-	// Return the path.
-	return path;
 }
