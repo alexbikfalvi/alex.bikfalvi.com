@@ -497,7 +497,14 @@ function onDisplayDirections(originLocation, destinationLocation, originStation,
 		function(response, status) {
 			if (status == google.maps.DirectionsStatus.OK) {
 				// Set the map directions.
-				mapDirectionsRendererOrigin.setDirections(response);
+				var path = addDirectionsPath(response, 
+				{
+					strokeColor: '#FF0000',
+					strokeOpacity: 1.0,
+					strokeWeight: 2
+				});
+			
+				//mapDirectionsRendererOrigin.setDirections(response);
 			}
 			else {
 				alert("No directions could be found.");
@@ -508,7 +515,7 @@ function onDisplayDirections(originLocation, destinationLocation, originStation,
 		{origin:originStation, destination:destinationStation, travelMode: google.maps.DirectionsTravelMode.BICYCLING },
 		function(response, status) {
 			if (status == google.maps.DirectionsStatus.OK) {
-				mapDirectionsRendererBicing.setDirections(response);
+				//mapDirectionsRendererBicing.setDirections(response);
 			}
 			else {
 				// Route using walking directions.
@@ -517,7 +524,7 @@ function onDisplayDirections(originLocation, destinationLocation, originStation,
 					function(response, status) {
 						if (status == google.maps.DirectionsStatus.OK) {
 							// Set the map directions.
-							mapDirectionsRendererBicing.setDirections(response);
+							//mapDirectionsRendererBicing.setDirections(response);
 						}
 						else {
 							alert("No directions could be found.");
@@ -531,7 +538,7 @@ function onDisplayDirections(originLocation, destinationLocation, originStation,
 		function(response, status) {
 			if (status == google.maps.DirectionsStatus.OK) {
 				// Set the map directions.
-				mapDirectionsRendererDestination.setDirections(response);
+				//mapDirectionsRendererDestination.setDirections(response);
 			}
 			else {
 				alert("No directions could be found.");
@@ -539,3 +546,27 @@ function onDisplayDirections(originLocation, destinationLocation, originStation,
 		});
 }
 
+// A function that adds the directions path.
+function addDirectionsPath(response, opt) {
+	// Create the array of coordinates.
+	var coordinates = [];
+	for (var i = 0; i < response.legs.length; i++) {
+		coordinates.push(response.legs[i].start_location);
+		coordinates.push(response.legs[i].end_location);
+	}
+//	$.each(response.legs, function(index, leg) {
+//		coordinates.push(leg.start_location);
+//		coordinates.push(leg.end_location);
+//	});
+	// Create the path.
+	var path = new google.maps.Polyline({
+		path: coordinates,
+		geodesic: true
+	});
+	// Set the options.
+	path.setOptions(opt);
+	// Add the path to the map.
+	path.setMap(map);
+	// Return the path.
+	return path;
+}
