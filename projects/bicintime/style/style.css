@@ -94,3 +94,7 @@ object[type$="x-shockwave-flash"]:not([classid]),object[type$="futuresplash"]:no
     bottom: 0;
     left: 0;
 }
+
+#about-panel {
+	text-align:center;
+}

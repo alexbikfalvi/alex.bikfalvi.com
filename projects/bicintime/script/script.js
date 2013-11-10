@@ -4,9 +4,6 @@ var map = null;
 var mapAutocomplete = null;
 var mapGeocoder = null;
 var mapDirections = null;
-var mapDirectionsRendererOrigin = null;
-var mapDirectionsRendererBicing = null;
-var mapDirectionsRendererDestination = null;
 var mapMarkersEnds = [];
 var mapMarkersStations = [];
 var mapPaths = [];
@@ -22,6 +19,7 @@ var mapMarkersEndshadow;
 var strCurrentLocation = "Current location";
 
 var isSearch = true;
+var isNow = true;
 
 var searchResult = null;
 
@@ -36,7 +34,7 @@ var pathOptionsBicing = {
 	strokeWeight: 3
 };
 var pathOptionsWalkDestination = {
-	strokeColor: '#00FF00',
+	strokeColor: '#FF0000',
 	strokeOpacity: 0.8,
 	strokeWeight: 3
 };
@@ -97,35 +95,8 @@ $(document).ready(function(e) {
 	mapGeocoder = new google.maps.Geocoder();
 	// Create the map directions service.
 	mapDirections = new google.maps.DirectionsService();
-	// Create the map directions renderer.
-	mapDirectionsRendererOrigin = new google.maps.DirectionsRenderer(
-		{
-			suppressMarkers: true,
-			suppressInfoWindows: true,
-			icons: [{
-				icon: { path: 'M 0,-1 0,1', strokeOpacity: 1, scale: 4 },
-				offset: '0',
-				repeat: '20px'
-			}]
-		});
-	mapDirectionsRendererBicing = new google.maps.DirectionsRenderer(
-		{
-			suppressMarkers: true,
-			suppressInfoWindows: true
-		});
-	mapDirectionsRendererDestination = new google.maps.DirectionsRenderer(
-		{
-			suppressMarkers: true,
-			suppressInfoWindows: true,
-			icons: [{
-				icon: { path: 'M 0,-1 0,1', strokeOpacity: 1, scale: 4 },
-				offset: '0',
-				repeat: '20px'
-			}]
-		});
-	mapDirectionsRendererOrigin.setMap(map);
-	mapDirectionsRendererBicing.setMap(map);
-	mapDirectionsRendererDestination.setMap(map);
+	// Open the search panel.
+	$("#search-panel").panel("open");	
 });
 
 $(document).on("pageinit", "#main-page", function() {
@@ -139,6 +110,8 @@ $(document).on("pageinit", "#main-page", function() {
     });
 	// Add an event handler to the search navigation button.
 	$("#navigation-search").on("click", function(e) {
+		// Close the the about panel.
+		$("#about-panel").panel("close");
 		if (isSearch) {
 			// Open the search panel.
 			$("#search-panel").panel("open");
@@ -152,7 +125,7 @@ $(document).on("pageinit", "#main-page", function() {
 	$("#search-panel").on("panelbeforeopen", function(e, data) {
 		var date = new Date();
 		// Reset the search date.
-		$("#search-date-time").val("2013-12-31T15:35:52.52");
+		$("#search-date-time").val(formatTime(date));
 	});
 	// Add an event handler for the changed event of the origin input.
 	$("#search-origin").change(function(e) {
@@ -186,6 +159,19 @@ $(document).on("pageinit", "#main-page", function() {
 		// Call the autocomplete method.
 		onMapAutocomplete($(this), $("#search-destination-autocomplete"));
     });
+	// Add event handlers for the time selection buttons.
+	$("#search-date-time-now").on("click", function(e) {
+		// Disable the date-time input.
+		$("#search-date-time").textinput("disable");
+		// Set the time flag.
+		isNow = true;
+	});
+	$("#search-date-time-custom").on("click", function(e) {
+		// Enable the date-time input.
+		$("#search-date-time").textinput("enable");
+		// Set the time flag.
+		isNow = false;
+	});
 	// Prevent page reload on search form submission.
 	$("#search-form").on("submit", function() { return false; })
 	// Add an event handler for the search start button.
@@ -198,6 +184,23 @@ $(document).on("pageinit", "#main-page", function() {
 		// Close the search panel.
 		$("#search-panel").panel("close");
     });
+	// Add the menu event handlers.
+	$("#menu-planner").on("click", function(e) {
+		// Close the the about panel.
+		$("#about-panel").panel("close");
+		if (isSearch) {
+			// Open the search panel.
+			$("#search-panel").panel("open");
+		}
+		else {
+			// Open the results panel.
+			$("#results-panel").panel("open");
+		}
+	});
+	$("#menu-about").on("click", function(e) {
+		// Open the about pannel.
+		$("#about-panel").panel("open");
+	});
 });
 
 // An event handler called on the map place autocomplete.
@@ -287,13 +290,13 @@ function onSearchChanged() {
 // An event handler called when performing a search.
 function onMapSearch() {
 	// Get the origin address.
-	var addrOrigin = $("#search-origin").val();
+	var originAddr = $("#search-origin").val();
 	// If the origin location is the current location.
-	if (addrOrigin == strCurrentLocation) {
+	if (originAddr == strCurrentLocation) {
 		if (navigator.geolocation) {
 			// Call the search origin function with the current location.
 			navigator.geolocation.getCurrentPosition(function(position) {
-				onMapSearchOrigin(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+				onMapSearchOrigin(originAddr, new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
 			}, function() {
 				alert("The current location is not available.");
 			});
@@ -304,10 +307,10 @@ function onMapSearch() {
 	}
 	else {
 		// Use the geocoder service to get the origin location.
-		mapGeocoder.geocode({'address': addrOrigin}, function(results, status) {
+		mapGeocoder.geocode({'address': originAddr}, function(results, status) {
 			if (status == google.maps.GeocoderStatus.OK) {
 				// Call the search origin function.
-				onMapSearchOrigin(results[0].geometry.location);
+				onMapSearchOrigin(originAddr, results[0].geometry.location);
 			} else {
 				alert("Cannot find the origin address.");
 			}
@@ -316,15 +319,17 @@ function onMapSearch() {
 }
 
 // An event handler called when receiving the response for the origin location.
-function onMapSearchOrigin(originLocation) {
+function onMapSearchOrigin(originAddr, originLocation) {
 	// Get the destination address.
-	var addrDestination = $("#search-destination").val();
+	var destinationAddr = $("#search-destination").val();
 	// If the destination location is the current location.
-	if (addrDestination == strCurrentLocation) {
+	if (destinationAddr == strCurrentLocation) {
 		if (navigator.geolocation) {
 			// Call the search origin function with the current location.
 			navigator.geolocation.getCurrentPosition(function(position) {
 				onMapSearchDestination(
+					originAddr,
+					destinationAddr, 
 					originLocation,
 					new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
 					);
@@ -338,10 +343,15 @@ function onMapSearchOrigin(originLocation) {
 	}
 	else {
 		// Use the geocoder service to get the destination location.
-		mapGeocoder.geocode({'address': addrDestination}, function(results, status) {
+		mapGeocoder.geocode({'address': destinationAddr}, function(results, status) {
 			if (status == google.maps.GeocoderStatus.OK) {
 				// Call the search destination function.
-				onMapSearchDestination(originLocation, results[0].geometry.location);
+				onMapSearchDestination(
+					originAddr,
+					destinationAddr,
+					originLocation,
+					results[0].geometry.location
+					);
 			}
 			else {
 				alert("Cannot find the destination address.");
@@ -351,18 +361,11 @@ function onMapSearchOrigin(originLocation) {
 }
 
 // An event handler called when receiving the responde for the destination location.
-function onMapSearchDestination(originLocation, destinationLocation) {
+function onMapSearchDestination(originAddr, destinationAddr, originLocation, destinationLocation) {
 	// Close the search panel.
 	$("#search-panel").panel("close");
-	// Clear the current markers.
-	for (var i = 0; i < mapMarkersEnds.length; i++) {
-		mapMarkersEnds[i].setMap(null);
-	}
-	mapMarkersEnds = [];
-	for (var i = 0; i < mapMarkersStations.length; i++) {
-		mapMarkerStations[i].setMap(null);
-	}
-	mapMarkerStations = [];
+	// Clear the map.
+	clearMap();
 	// Create a new origin marker.
 	var markerOrigin = new google.maps.Marker({
 		position: originLocation,
@@ -381,6 +384,15 @@ function onMapSearchDestination(originLocation, destinationLocation) {
 		animation: google.maps.Animation.DROP,
 		title:"Destination"
 	});
+	// Add the marker event handlers.
+	google.maps.event.addListener(markerOrigin, 'click', function() {
+		var infoWnd = new google.maps.InfoWindow({content: '<div><h3>Origin</h3><p>' + originAddr + '</p></div>'});
+		infoWnd.open(map, markerOrigin);
+	});
+	google.maps.event.addListener(markerDestination, 'click', function() {
+		var infoWnd = new google.maps.InfoWindow({content: '<div><h3>Destination</h3><p>' + destinationAddr + '</p></div>'});
+		infoWnd.open(map, markerDestination);
+	});
 	// Add the map markers.
 	mapMarkersEnds.push(markerOrigin);
 	mapMarkersEnds.push(markerDestination);
@@ -397,33 +409,47 @@ function onMapSearchDestination(originLocation, destinationLocation) {
 	}
 
 	// Compute directions for the specified locations.
-	onRequestDirections(originLocation, destinationLocation);	
+	onRequestDirections(originAddr, destinationAddr, originLocation, destinationLocation);	
 }
 
 // A method that request the directions for the given location.
-function onRequestDirections(originLocation, destinationLocation) {
-	// Get the current time.
-	var date = new Date();
+function onRequestDirections(originAddr, destinationAddr, originLocation, destinationLocation) {
+	// Get the selected time.
+	var date = isNow ? new Date() : new Date($("#search-date-time").val());
 	// Compute the request url.
 	var url = 'http://bicing.h2o.net.br/getroute.php?origin=' +
 		originLocation.lat() + ',' + originLocation.lng() + '&destination=' +
 		destinationLocation.lat() + ',' + destinationLocation.lng() + '&time=' +
 		date.getTime();
 	// Request the directions.
-	$.ajax(url).done(function(result) {
+	$.ajax(url, { timeout:60000 }).done(function(result) {
 		// Save the result.
 		searchResult = result;
 		// Create the result html content.
 		var html = "";
 		// Parse each result.
 		$.each(result, function(index, value) {
+			var timeWalkOrigin = Math.ceil(value.time.depToStation / 60);
+			var timeBicing = Math.ceil(value.time.bicing / 60);
+			var timeWalkDestination = Math.ceil(value.time.stationToDest / 60);
 			// Create the results set.
 			html += '<div data-role="collapsible-set" data-content-theme="c">' +
-				'<div class=".result-collapsible" data-role="collapsible" data-mini="true" data-collapsed="' + (index == 0 ? "false" : "true") + '">' +
+				'<div class=".result-collapsible" data-role="collapsible" data-mini="true" data-collapsed="' + (index == 0 ? "false" : "true") + '" style="font-size:80%">' +
 				'<h3>' + value.distance.sum + ' meters (' + value.print.sumTime + ')</h3>' +
-				'<p>Depart at: ' + value.station.start.street + ' ' + value.station.start.street_number + '</p>' +
-				'<p>Arrive at: ' + value.station.arrive.street + ' ' + value.station.arrive.street_number + '</p>' +
-                '</div></div>';
+				'<table border="0" cellspacing="0" cellpadding="0">' +
+		        '<tr><td rowspan="1" valign="top"><img src="../images/pin_green.png" width="30" height="40" alt="Origin address" /></td>' + 
+				'<td><b>Leave at</b><br/>' + originAddr + '</td></tr>' + 
+		        '<tr><td rowspan="1" valign="top"><img src="../images/pin_cyan.png" width="30" height="40" alt="Origin station" /></td>' + 
+				'<td><b>Get bike at (+' + timeWalkOrigin + ' min)</b><br/>' + value.station.start.street + ' ' + value.station.start.street_number +
+				'<br/>Station: ' + value.station.start.station_id + '<br/>Bikes now: ' + value.station.start.bikes +
+				'<br/>Bikes estimated: ' + value.station.start.estimation.bikes + '</td></tr>' + 
+		        '<tr><td rowspan="1" valign="top"><img src="../images/pin_magenta.png" width="30" height="40" alt="Destination station" /></td>' + 
+				'<td><b>Leave bike at (+' + timeBicing + ' min)</b><br/>' + value.station.arrive.street + ' ' + value.station.arrive.street_number +
+				'<br/>Station: ' + value.station.start.station_id + '<br/>Slots now: ' + value.station.start.slots +
+				'<br/>Slots estimated: ' + value.station.start.estimation.slots + '</td></tr>' + 
+		        '<tr><td rowspan="1" valign="top"><img src="../images/pin_red.png" width="30" height="40" alt="Destination station" /></td>' + 
+				'<td><b>Arrive at (+' + timeWalkDestination + ' min)</b><br/>' + destinationAddr + '</td></tr>' + 
+				'</table></div></div>';
 		});
 		// Add the close button.
 		html += '<a href="#" type="button" data-theme="d" id="results-clear">New search</a>';
@@ -442,7 +468,8 @@ function onRequestDirections(originLocation, destinationLocation) {
 			$("#results-panel").panel("close");
 			// Open the search panel.
 			$("#search-panel").panel("open");
-			
+			// Clear the map.
+			clearMap();
 			// Set the search flag to true.
 			isSearch = true;
 		});
@@ -457,16 +484,13 @@ function onRequestDirections(originLocation, destinationLocation) {
 			// Show the route for the first result.
 			onDisplayStations(0, originLocation, destinationLocation);
 		}
-	}).fail(function(result) { alert(result); });
+	}).fail(function(result) { alert("The server request timed out." + JSON.stringify(result)); });
 }
 
 // A method called to display the bicing stations.
 function onDisplayStations(index, originLocation, destinationLocation) {
-	// Clear the current station markers if any.
-	for (var i = 0; i < mapMarkersStations.length; i++) {
-		mapMarkerStations[i].setMap(null);
-	}
-	mapMarkerStations = [];
+	// Clear the map directions.
+	clearMapDirections();
 	
 	// Get the current result.
 	var result = searchResult[index];
@@ -494,13 +518,35 @@ function onDisplayStations(index, originLocation, destinationLocation) {
 		animation: google.maps.Animation.DROP,
 		title:"Destination station"
 	});
+
+	// Add the markers event handler.
+	google.maps.event.addListener(markerOrigin, 'click', function() {
+		var infoWnd = new google.maps.InfoWindow({
+			content: '<div><h3>Origin bicing station</h3><p><b>Station: </b>' + result.station.start.station_id + '</p>' +
+				'<p><b>Address: </b>' + result.station.start.street + ' ' + result.station.start.street_number + '</p>' +
+				'<p><b>Bikes now: </b>' + result.station.start.bikes + '</p>' +
+				'<p><b>Bikes estimates: </b>' + result.station.start.estimation.bikes + '</p>' +
+				'</div>'
+		});
+		infoWnd.open(map, markerOrigin);
+	});
+	google.maps.event.addListener(markerDestination, 'click', function() {
+		var infoWnd = new google.maps.InfoWindow({
+			content: '<div><h3>Destination bicing station</h3><p><b>Station: </b>' + result.station.arrive.station_id + '</p>' +
+				'<p><b>Address: </b>' + result.station.arrive.street + ' ' + result.station.arrive.street_number + '</p>' +
+				'<p><b>Slots now: </b>' + result.station.arrive.slots + '</p>' +
+				'<p><b>Slots estimates: </b>' + result.station.arrive.estimation.slots + '</p>' +
+				'</div>'
+		});
+		infoWnd.open(map, markerDestination);
+	});
 	
 	// Add the map markers.
-	mapMarkerStations.push(markerOrigin);
-	mapMarkerStations.push(markerDestination);
+	mapMarkersStations.push(markerOrigin);
+	mapMarkersStations.push(markerDestination);
 	// Add the markers to the map.
-	for (var i = 0; i < mapMarkerStations.length; i++) {
-		setTimeout(function(index) { mapMarkerStations[index].setMap(map); }, 500 * i, i);
+	for (var i = 0; i < mapMarkersStations.length; i++) {
+		setTimeout(function(index) { mapMarkersStations[index].setMap(map); }, 500 * i, i);
 	}
 	
 	// Draw the directions.
@@ -586,4 +632,47 @@ function addDirectionsPath(response, opt) {
 	// Add the path to the map.
 	mapPaths.push(path);
 	path.setMap(map);
+}
+
+// Clears all markers and paths from the map.
+function clearMap() {
+	// Clear the endpoint markers.
+	for (var i = 0; i < mapMarkersEnds.length; i++) {
+		mapMarkersEnds[i].setMap(null);
+	}
+	mapMarkersEnds = [];
+	// Clear the map directions.
+	clearMapDirections();
+}
+
+function clearMapDirections() {
+	// Clear the stations markers.
+	for (var i = 0; i < mapMarkersStations.length; i++) {
+		mapMarkersStations[i].setMap(null);
+	}
+	mapMarkersStations = [];
+	// Clear the directions paths.
+	for (var i = 0; i < mapPaths.length; i++) {
+		mapPaths[i].setMap(null);
+	}
+	mapPaths = [];
+}
+
+// Formats the specified time for the date-time control.
+function formatTime(time) {
+	//"2013-12-31T15:35:52.52"
+
+	var dd = time.getDate();
+	var mm = time.getMonth()+1;
+	var yyyy = time.getFullYear();
+	var hh = time.getHours();
+	var MM = time.getMinutes();
+	var ss = time.getSeconds();
+	if(dd<10){dd='0'+dd;}
+	if(mm<10){mm='0'+mm;}
+	if(hh<10){hh='0'+hh;}
+	if(MM<10){MM='0'+MM;}
+	if(ss<10){ss='0'+ss;}
+	
+	return yyyy + "-" + mm + "-" + dd + "T" + hh + ":" + MM + ":" + ss;
 }
