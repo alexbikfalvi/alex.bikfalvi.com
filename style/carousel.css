@@ -19,13 +19,25 @@
 	width:400px;
 }
 
-#carousel-control{
+#carousel-control-outer {
 	position:absolute;
-	width:100px;
-	height:20px;
-	margin-left:450px;
-	margin-right:450px;
-	margin-top:-30px;
+	width:200px;
+	height: 20px;
+	margin-left: 400px;
+	margin-right:400px;
+	margin-top: -30px;
+}
+
+#carousel-control-inner {
+	float: left;
+	position: relative;
+	left: 50%;
+}
+
+#carousel-control {
+	float: left;
+	position: relative;
+	left: -50%;
 }
 
 #carousel-control a{

@@ -295,7 +295,7 @@ a:hover.external{
 	line-height: 1.2em;
 }
 
-.infoboxtext {
+.infobox-text {
 	text-align:left;
 	padding-top:10px;
 	padding-bottom:10px;
@@ -304,6 +304,6 @@ a:hover.external{
 	font-size:1.2em;
 }
 
-.infoboxtext p{
+.infobox-text p{
 	margin-top:5px;
 }
