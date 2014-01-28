@@ -1,0 +1,48 @@
+/* The stylesheet for social media links. */
+
+#links {
+	width:100%;
+	height:30px;
+	left:0;
+	text-align:left;
+}
+
+#links ul{
+	list-style:none;
+	list-style-type:none;
+	background-repeat:no-repeat;
+}
+
+#links li {
+	float:left;
+	cursor:default;
+	width:32px;
+	height:32px;
+	margin-right:10px;
+}
+
+#links li a {
+	display:block;
+	width:32px;
+	height:32px;
+}
+
+#links li span {display:none;}
+
+#links_facebook {background:url(../images/facebook_off.png);}
+#links_facebook a:hover {background:url(../images/facebook_on.png);}
+
+#links_twitter {background:url(../images/twitter_off.png);}
+#links_twitter a:hover {background:url(../images/twitter_on.png);}
+
+#links_flickr {background:url(../images/flickr_off.png);}
+#links_flickr a:hover {background:url(../images/flickr_on.png);}
+
+#links_linkedin {background:url(../images/linkedin_off.png);}
+#links_linkedin a:hover {background:url(../images/linkedin_on.png);}
+
+#links_lastfm {background:url(../images/lastfm_off.png);}
+#links_lastfm a:hover {background:url(../images/lastfm_on.png);}
+
+#links_github {background:url(../images/github_off.png);}
+#links_github a:hover {background:url(../images/github_on.png);}

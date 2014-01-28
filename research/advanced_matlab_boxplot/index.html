@@ -1,33 +1,20 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
+
 <head>
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta name="keywords" content="Alex, Bikfalvi, personal, site, Matlab, plot, box plot, boxplot"/>
 <meta name="description" content="Alex Bikfalvi personal web site - Advanced Matlab box plot"/>
-<meta name="copyright" content="Alex Bikfalvi"/>
-<meta name="robots" content="index, follow" />
+<meta name="robots" content="index, follow"/>
 
-<link href="../../images/icon.ico" rel="shortcut icon" />
+<link href="../../images/icon.ico" rel="shortcut icon"/>
 <link href="../../style/style.css" rel="stylesheet" title="Silver stylesheet" type="text/css"/>
 <link href="../../style/mglass.css" rel="stylesheet" type="text/css"/>
 
 <title>Alex Bikfalvi - Advanced Boxplot for Matlab</title>
 
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-24480564-1']);
-  _gaq.push(['_setDomainName', '.bikfalvi.com']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
+<script type="text/javascript" src="../../../../script/ga.js"></script>
 <script type="text/javascript" src="../../script/mglass.js"></script>
 
 <style type="text/css">
@@ -87,12 +74,12 @@ pre.error {
 
 <div id="back">
 
-<div id="navigation">
-<ul id="nav_main" class="nav">
+<div id="main-menu">
+<ul id="main-menu-list" class="menu">
 <li><a href="../../" accesskey="H"><span class="accesskey">H</span>ome</a></li>
 <li><a href="../../bio.html" accesskey="B"><span class="accesskey">B</span>io</a></li>
 <li><a href="../../contact.html" accesskey="C"><span class="accesskey">C</span>ontact</a></li>
-<li id="nav_index"><a href="../../research.html" accesskey="R"><span class="accesskey">R</span>esearch</a></li>
+<li id="main-menu-selection"><a href="../../research.html" accesskey="R"><span class="accesskey">R</span>esearch</a></li>
 <li><a href="../../projects.html" accesskey="J">Pro<span class="accesskey">j</span>ects</a></li>
 <li><a href="../../pubs.html" accesskey="P"><span class="accesskey">P</span>ublications</a></li>
 <li><a href="../../teaching.html" accesskey="T"><span class="accesskey">T</span>eaching</a></li>
@@ -102,15 +89,15 @@ pre.error {
 
 <div id="path">
 	<ul>
-    	<li id="path_home"><a href="../../" title="Home"><span>Home</span></a></li>
-    	<li class="path_arrow"><a href="../../research.html">Research</a></li>
-    	<li class="path_arrow">Advanced Box Plot for Matlab</li>
+    	<li id="path-home"><a href="../../" title="Home"><span>Home</span></a></li>
+    	<li class="path-arrow"><a href="../../research.html">Research</a></li>
+    	<li class="path-arrow">Advanced Box Plot for Matlab</li>
     </ul>
 </div>
 
-<div id="flag_beta"></div>
+<div class="flag flag-beta"></div>
 
-<div id="main_content">
+<div id="main-content">
 
 <h1>Advanced Box Plot for Matlab</h1>
 
@@ -146,13 +133,13 @@ pre.error {
 </ul>
 
 <p>Currently, the following optional arguments are supported:</p>
-<table class="tableinfo" width="960">
+<table class="information" style="width: 960px;">
   <tr>
-    <th width="150" scope="col" class="strong">Argument name</th>
+    <th scope="col" class="strong" style="width: 150px;">Argument name</th>
     <th scope="col">Argument description</th>
   </tr>
   <tr>
-    <td width="150" class="strong"><pre><span class="string">'Colorgrad'</span></pre></td>
+    <td class="strong"><pre><span class="string">'Colorgrad'</span></pre></td>
     <td>A text string representing the color gradient applied to the box plot bars. Currently, the following colors are supported:<pre><span class="string">
     'blue_down'
     'blue_up'
@@ -165,7 +152,7 @@ pre.error {
     </span></pre></td>
   </tr>
   <tr>
-    <td width="150" class="strong"><pre><span class="string">'Colorrev'</span></pre></td>
+    <td class="strong"><pre><span class="string">'Colorrev'</span></pre></td>
     <td>A boolean value:
     	<ul>
         	<li>if false, the color gradient applies across the <em>m</em> box plot bars within a group (default);</li>
@@ -174,39 +161,39 @@ pre.error {
     </td>
   </tr>
   <tr>
-    <td width="150" class="strong"><pre><span class="string">'Colormap'</span></pre></td>
+    <td class="strong"><pre><span class="string">'Colormap'</span></pre></td>
     <td>A color matrix, which specifies custom colors for the box plot bars.</td>
   </tr>
   <tr>
-    <td width="150" class="strong"><pre><span class="string">'Labels'</span></pre></td>
+    <td class="strong"><pre><span class="string">'Labels'</span></pre></td>
     <td>The X-axis labels, corresponding to the <em>m</em> groups.</td>
   </tr>
   <tr>
-    <td width="150" class="strong"><pre><span class="string">'OutlierMarker'</span></pre></td>
+    <td class="strong"><pre><span class="string">'OutlierMarker'</span></pre></td>
     <td>The marker used to plot the outliers.</td>
   </tr>
   <tr>
-    <td width="150" class="strong"><pre><span class="string">'OutlierMarkerSize'</span></pre></td>
+    <td class="strong"><pre><span class="string">'OutlierMarkerSize'</span></pre></td>
     <td>The size of the marker used to plot the outliers.</td>
   </tr>
   <tr>
-    <td width="150" class="strong"><pre><span class="string">'OutlierMarkerEdgeColor'</span></pre></td>
+    <td class="strong"><pre><span class="string">'OutlierMarkerEdgeColor'</span></pre></td>
     <td>The edge color of the marker used to plot the outliers.</td>
   </tr>
   <tr>
-    <td width="150" class="strong"><pre><span class="string">'OutlierMarkerFaceColor'</span></pre></td>
+    <td class="strong"><pre><span class="string">'OutlierMarkerFaceColor'</span></pre></td>
     <td>The face color of the marker used to plot the outliers.</td>
   </tr>
   <tr>
-    <td width="150" class="strong"><pre><span class="string">'WidthE'</span></pre></td>
+    <td class="strong"><pre><span class="string">'WidthE'</span></pre></td>
     <td>A numeric value in the interval (0, 1), represeting the width of the whisker edge, relative to width available to an individual box plot bar.</td>
   </tr>
   <tr>
-    <td width="150" class="strong"><pre><span class="string">'WidthL'</span></pre></td>
+    <td class="strong"><pre><span class="string">'WidthL'</span></pre></td>
     <td>A numeric value in the interval (0, 1), represeting the width of the box plot group, relative to width available to an individual box plot group.</td>
   </tr>
   <tr>
-    <td width="150" class="strong"><pre><span class="string">'WidthS'</span></pre></td>
+    <td class="strong"><pre><span class="string">'WidthS'</span></pre></td>
     <td>A numeric value in the interval (0, 1), represeting the width of the box plot bar, relative to width available to an individual box plot bar.</td>
   </tr>
 </table>
@@ -234,7 +221,7 @@ xlabel(<span class="string">'$\mu$'</span>); <span class="comment">% Set the X-a
 </div>
 
 <div class="exampleFigure">
-	<img id="imageSingle" src="FigureSingleSmall.png" width="420" height="320" alt="" border="0"/>
+	<img id="imageSingle" class="no-border" src="FigureSingleSmall.png" width="420" height="320" alt=""/>
 <script type="text/javascript">
 new MGlass("imageSingle","./FigureSingleLarge.png");
 </script>
@@ -279,7 +266,7 @@ legend(<span class="string">'$\sigma=2$'</span>,<span class="string">'$\sigma=4$
 </div>
 
 <div class="exampleFigure">
-	<img id="imageMultipleArray" src="FigureMultipleArraySmall.png" width="420" height="320" alt="" border="0"/>
+	<img id="imageMultipleArray" class="no-border" src="FigureMultipleArraySmall.png" width="420" height="320" alt=""/>
 <script type="text/javascript">
 new MGlass("imageMultipleArray","./FigureMultipleArrayLarge.png");
 </script>
@@ -321,7 +308,7 @@ legend(<span class="string">'$\sigma=2$'</span>,<span class="string">'$\sigma=4$
 </div>
 
 <div class="exampleFigure">
-	<img id="imageMultipleCell" src="FigureMultipleCellSmall.png" width="420" height="320" alt="" border="0"/>
+	<img id="imageMultipleCell" class="no-border" src="FigureMultipleCellSmall.png" width="420" height="320" alt=""/>
 <script type="text/javascript">
 new MGlass("imageMultipleCell","./FigureMultipleCellLarge.png");
 </script>
@@ -341,7 +328,7 @@ aboxplot(h,<span class="string">'labels'</span>,[5,10,15],<span class="string">'
 </div>
 
 <div class="exampleFigure">
-	<img id="imageColorgrad" src="FigureColorgradSmall.png" width="420" height="320" alt="" border="0"/>
+	<img id="imageColorgrad" class="no-border" src="FigureColorgradSmall.png" width="420" height="320" alt=""/>
 <script type="text/javascript">
 new MGlass("imageColorgrad","./FigureColorgradLarge.png");
 </script>
@@ -361,7 +348,7 @@ aboxplot(h,<span class="string">'labels'</span>,[5,10,15],<span class="string">'
 </div>
 
 <div class="exampleFigure">
-	<img id="imageColorrev" src="FigureColorrevSmall.png" width="420" height="320" alt="" border="0"/>
+	<img id="imageColorrev" class="no-border" src="FigureColorrevSmall.png" width="420" height="320" alt=""/>
 <script type="text/javascript">
 new MGlass("imageColorrev","./FigureColorrevLarge.png");
 </script>
@@ -369,15 +356,15 @@ new MGlass("imageColorrev","./FigureColorrevLarge.png");
 </div>
 <h2>Version History</h2>
 
-<table class="tableinfo" width="960">
+<table class="information" style="width: 960px;">
   <tr>
-    <th width="150" scope="col">Version</th>
-    <th width="150" scope="col" class="strong">Date</th>
+    <th scope="col" style="width: 150px;">Version</th>
+    <th scope="col" class="strong" style="width: 150px;">Date</th>
     <th scope="col">Description</th>
   </tr>
   <tr>
-    <td width="150">Beta 1</td>
-    <td width="150" class="strong">September 27, 2012</td>
+    <td>Beta 1</td>
+    <td class="strong">September 27, 2012</td>
     <td>Initial beta release.</td>
   </tr>
 </table>

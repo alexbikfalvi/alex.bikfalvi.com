@@ -1,33 +1,20 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
+
 <head>
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta name="keywords" content="Alex, Bikfalvi, personal, site"/>
 <meta name="description" content="Alex Bikfalvi personal web site"/>
-<meta name="copyright" content="Alex Bikfalvi"/>
-<meta name="robots" content="index, follow" />
+<meta name="robots" content="index, follow"/>
 
-<link href="../../../../../../images/icon.ico" rel="shortcut icon" />
+<link href="../../../../../../images/icon.ico" rel="shortcut icon"/>
 <link href="../../../../../../style/style.css" rel="stylesheet" title="Silver stylesheet" type="text/css"/>
 <link href="../../../../../../style/teaching.css" rel="stylesheet" type="text/css"/>
 
 <title>Alex Bikfalvi - Teaching - Developing a SIP Application in Java</title>
 
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-24480564-1']);
-  _gaq.push(['_setDomainName', '.bikfalvi.com']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
+<script type="text/javascript" src="../../../../../../script/ga.js"></script>
 
 </head>
 
@@ -41,32 +28,32 @@
 
 <div id="back">
 
-<div id="navigation">
-<ul id="nav_main" class="nav">
+<div id="main-menu">
+<ul id="main-menu-list" class="menu">
 <li><a href="../../../../../../" accesskey="H"><span class="accesskey">H</span>ome</a></li>
 <li><a href="../../../../../../bio.html" accesskey="B"><span class="accesskey">B</span>io</a></li>
 <li><a href="../../../../../../contact.html" accesskey="C"><span class="accesskey">C</span>ontact</a></li>
 <li><a href="../../../../../../research.html" accesskey="R"><span class="accesskey">R</span>esearch</a></li>
 <li><a href="../../../../../../projects.html" accesskey="J">Pro<span class="accesskey">j</span>ects</a></li>
 <li><a href="../../../../../../pubs.html" accesskey="P"><span class="accesskey">P</span>ublications</a></li>
-<li id="nav_index"><a href="../../../../../../teaching.html" accesskey="T"><span class="accesskey">T</span>eaching</a></li>
+<li id="main-menu-selection"><a href="../../../../../../teaching.html" accesskey="T"><span class="accesskey">T</span>eaching</a></li>
 <li><a href="../../../../../../events.html" accesskey="E"><span class="accesskey">E</span>vents</a></li>
 </ul>
 </div>
 
 <div id="path">
 	<ul>
-    	<li id="path_home"><a href="../../../../../../" title="Home"><span>Home</span></a></li>
-    	<li class="path_arrow"><a href="../../../../../../teaching.html" title="Teaching">Teaching</a></li>
-    	<li class="path_arrow"><a href="../../../../" title="UPF">Pompeu Fabra University</a></li>
-    	<li class="path_arrow"><a href="../../../" title="2013">2013</a></li>
-    	<li class="path_arrow"><a href="../../" title="UPF">Architecture and Signaling</a></li>
-    	<li class="path_arrow"><a href="../" title="UPF">Lab</a></li>
-    	<li class="path_arrow">Developing a SIP Application in Java</li>
+    	<li id="path-home"><a href="../../../../../../" title="Home"><span>Home</span></a></li>
+    	<li class="path-arrow"><a href="../../../../../../teaching.html" title="Teaching">Teaching</a></li>
+    	<li class="path-arrow"><a href="../../../../" title="UPF">Pompeu Fabra University</a></li>
+    	<li class="path-arrow"><a href="../../../" title="2013">2013</a></li>
+    	<li class="path-arrow"><a href="../../" title="UPF">Architecture and Signaling</a></li>
+    	<li class="path-arrow"><a href="../" title="UPF">Lab</a></li>
+    	<li class="path-arrow">Developing a SIP Application in Java</li>
     </ul>
 </div>
 
-<div id="main_content">
+<div id="main-content">
 
 <h1 class="title">Developing a SIP Application in Java</h1>
 
@@ -161,7 +148,7 @@
 
 <p>After closing the running application, return to the NetBeans IDE, and switch into source code mode. The SIP client application is a single Java class called <code><span class="keyword">SipClient</span></code>. It extends the <code><span class="keyword">JFrame</span></code> class and therefore is a GUI window, and implements the <code><span class="keyword">SipListener</span></code> interface to receive and process SIP messages.</p>
 
-<div class="boxcode">
+<div class="box-code">
   <pre>
 <span class="keyword">public class</span> <span class="keywordtype">SipClient</span> <span class="keyword">extends</span> <span class="keywordtype">JFrame</span> <span class="keyword">implements</span> <span class="keywordtype">SipListener</span> {
     <span class="comment">// ...
@@ -171,7 +158,7 @@
 
 <p>The class includes a number of methods corresponding to the events raised by (i) the GUI and (ii) the SIP JAIN API. The following code sample shows the methods corresponding to GUI events.</p>
 
-<div class="boxcode">
+<div class="box-code">
   <pre>
 <span class="keyword">private void</span> onOpen(<span class="keywordtype">WindowEvent</span> evt) {
     <span class="comment">// A method called when you open your application.</span>
@@ -195,10 +182,10 @@
 
 <p>The meaning of each method is given in the following table.</p>
 
-<table width="960" border="0" cellpadding="0" cellspacing="0" class="tableinfo">
+<table class="information 2-columns">
   <tr>
-    <th width="200" class="strong">Method Name</th>
-    <th width="760">Description</th>
+    <th class="strong">Method Name</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td class="strong"><code><span class="keyword">onOpen</span></code> </td>
@@ -224,7 +211,7 @@
 
 <p>The following code sample shows the methods corresponding to the SIP events.</p>
 
-<div class="boxcode">
+<div class="box-code">
   <pre>
 <span class="keyword">public void</span> processRequest(<span class="keywordtype">RequestEvent</span> requestEvent) {
     <span class="comment">// A method called when you receive a SIP request.</span>
@@ -252,10 +239,10 @@
 
 <p>During this lab, we shall focus only on the first two methods, described in the following table.</p>
 
-<table width="960" border="0" cellpadding="0" cellspacing="0" class="tableinfo">
+<table class="information 2-columns">
   <tr>
-    <th width="200" class="strong">Method Name</th>
-    <th width="760">Description</th>
+    <th class="strong">Method Name</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td class="strong"><code><span class="keyword">processRequest</span></code> </td>
@@ -271,10 +258,10 @@
 
 <p>During the development of our application we shall use several Java packages and classes.</p>
 
-<table width="960" border="0" cellpadding="0" cellspacing="0" class="tableinfo">
+<table class="information 2-columns">
   <tr>
-    <th width="200" class="strong">Package Name</th>
-    <th width="760">Description</th>
+    <th class="strong">Package Name</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td class="strong"><code><span class="keyword">java.net.*</span></code></td>
@@ -302,10 +289,10 @@
   </tr>
 </table>
 
-<table width="960" border="0" cellpadding="0" cellspacing="0" class="tableinfo">
+<table class="information 2-columns">
   <tr>
-    <th width="200" class="strong">Class Name</th>
-    <th width="760">Description</th>
+    <th class="strong">Class Name</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td class="strong"><code><span class="keyword">SipFactory</span></code></td>
@@ -360,7 +347,7 @@
 <li>Open the <code><span class="keyword">SipClient</span></code> NetBeans project in source code view.</li>
 <li>Add the following packages to the source code file, before the beginning of the <code><span class="keyword">SipClient</span></code>class.
 
-<div class="boxcode"><pre>
+<div class="box-code"><pre>
 <span class="keyword">import</span> java.net.*;
 <span class="keyword">import</span> java.util.*;
 <span class="keyword">import</span> javax.sip.address.*;
@@ -371,7 +358,7 @@
 
 <li>The first step is to declare a number of class member variables that represent the configuration settings of our SIP client, and the objects of the SIP API. Add the following variables inside the <code><span class="keyword">SipClient</span></code> class.
 
-<div class="boxcode"><pre>
+<div class="box-code"><pre>
 <span class="comment">// Objects used to communicate to the JAIN SIP API.</span>
 <span class="keywordtype">SipFactory</span> sipFactory;          <span class="comment">// Used to access the SIP API.</span>
 <span class="keywordtype">SipStack</span> sipStack;              <span class="comment">// The SIP stack.</span>
@@ -394,7 +381,7 @@
 
 <li>We need to initialize the SIP API such that we bind our application to the local IP address and the selected port and protocol. For this add the following code to the <code><span class="keyword">onOpen</span></code> method. You may skip the comments in green. Therefore, the initialization code will be executed every time we open our application.
 
-<div class="boxcode">
+<div class="box-code">
   <pre>
 <span class="keyword">try</span> {
     <span class="comment">// Get the local IP address.</span>
@@ -436,7 +423,7 @@
 
 <li>Next, we implement the stateless registration. For this we must create and send a <b>REGISTER</b> request message. The destination of the SIP message is entered by the user in the text field <code><span class="keyword"> textField</span></code>. The message is created and sent when you click on the <b>Reg (LS)</b> button, and therefore, we implemented in the <code><span class="keyword">onRegisterStateless</span></code> method. Add the following code to the method. You may skip the comments in green.
 
-<div class="boxcode">
+<div class="box-code">
   <pre>
 <span class="keyword">try</span> {
     <span class="comment">// Get the destination address from the text field.</span>
@@ -491,7 +478,7 @@
 
 <li>Although your application sends a SIP message, you do not know whether you receive a response. For this we must write code that listens to received responses. We add this code to the <code><span class="keyword">processResponse</span></code> method.
 
-<div class="boxcode"><pre>
+<div class="box-code"><pre>
 <span class="comment">// Get the response.</span>
 <span class="keywordtype">Response</span> response = responseEvent.getResponse();
 <span class="comment">// Display the response message in the text area.</span>
@@ -507,7 +494,7 @@ You need to open and compile the server in NetBeans similar to the SIP client.</
 
 </ol>
 
-<table width="960" border="0" cellpadding="0" cellspacing="0" class="tableinfo">
+<table class="information">
   <tr><th class="strong">Questions</th></tr>
   <tr><td class="strong">Which is the line of code that enables our client application to receive the SIP messages from the SIP API (requests and responses)?</td></tr>
   <tr><td class="strong">What happens if we start twice the client application with the same configuration?</td></tr>
@@ -523,7 +510,7 @@ You need to open and compile the server in NetBeans similar to the SIP client.</
 <li> Copy and paste the code you write in the <code><span class="keyword">onRegisterStateless</span></code> method to the <code><span class="keyword">onRegisterStatefull</span></code> method. Therefore, this code is executed when you click on the <b>Reg (LS)</b> button.</li>
 <li> Comment the line where you send the message using the SIP provider, and instead create a SIP <code><span class="keyword">ClientTransaction</span></code> object for the <b>REGISTER</b> request. Send the message using the transaction.
 
-<div class="boxcode">
+<div class="box-code">
   <pre>
 <span class="comment">// Send the request statelessly through the SIP provider.</span>
 <span class="comment">// this.sipProvider.sendRequest(request);</span>
@@ -537,7 +524,7 @@ transaction.sendRequest();</pre></div>
 <li> Test your application.</li>
 </ol>
 
-<table width="960" border="0" cellpadding="0" cellspacing="0" class="tableinfo">
+<table class="information">
   <tr><th class="strong">Questions</th></tr>
   <tr><td class="strong">Which headers are different between the request and the response SIP messages?</td></tr>
   <tr><td class="strong">Which are the headers that have the same value?</td></tr>
@@ -555,7 +542,7 @@ transaction.sendRequest();</pre></div>
 <li>To keep the lab simple, the SIP server will send only a final response (no provisional responses).</li>
 <li>When receiving the final <b>2xx</b> response, you must send the <b>ACK</b> on the newly created dialog, which can be obtained with the code:
 
-<div class="boxcode"><pre>
+<div class="box-code"><pre>
 <span class="keywordtype">Dialog</span> dialog = responseEvent.getClientTransaction().getDialog();
 </pre></div>
 </li>
@@ -563,14 +550,14 @@ transaction.sendRequest();</pre></div>
 <li> You must check whether the dialog exists (different from <code><span class="keyword">null</span></code>).</li>
 <li> You can create the <b>ACK</b> request using the dialog. Do not forget to add the contact header to the request, after the request is created.
 
-<div class="boxcode"><pre>
+<div class="box-code"><pre>
 <span class="keywordtype">Request</span> request = dialog.createAck(((<span class="keywordtype">CSeqHeader</span>)response.getHeader(<span class="stringliteral">"CSeq"</span>)).getSeqNumber());
 </pre></div>
 </li>
 
 <li> You must send the <b>ACK</b> request using the dialog.
 
-<div class="boxcode"><pre>
+<div class="box-code"><pre>
 dialog.sendAck(request);
 </pre></div>
 </li>
@@ -579,7 +566,7 @@ dialog.sendAck(request);
 <li>Store the dialog object in a class member variable, such that you can use it for the <b>BYE</b> transaction.</li>
 </ul>
 
-<table width="960" border="0" cellpadding="0" cellspacing="0" class="tableinfo">
+<table class="information">
   <tr><th class="strong">Questions</th></tr>
   <tr><td class="strong">Which are the header values in a SIP message that uniquely identify a SIP dialog?</td></tr>
   <tr><td class="strong">When is SIP dialog considered to be created? (Use your lecture notes).</td></tr>
@@ -596,25 +583,25 @@ dialog.sendAck(request);
 <li>To execute a <b>BYE</b> transaction, first you must create a SIP dialog using an <b>INVITE</b> transaction. You need to store the created dialog in a class variable.</li>
 <li>You can create the <b>BYE</b> request using the dialog established during the <b>INVITE</b> transaction. This ensures that all headers already have the correct values. You do not need to add any headers to the message. The code to do this is the following:
 
-<div class="boxcode"><pre>
+<div class="box-code"><pre>
 <span class="keywordtype">Request</span> request = <span class="keyword">this</span>.dialogClient.createRequest(<span class="stringliteral">"BYE"</span>);
 </pre></div>
 </li>
 
 <li> You need to send the <b>BYE</b> statefully using a transaction (like the previous statefull requests).
-<div class="boxcode"><pre>
+<div class="box-code"><pre>
 <span class="keywordtype">ClientTransaction</span> transaction = <span class="keyword">this</span>.sipProvider.getNewClientTransaction(request);
 </pre></div>
 </li>
 
 <li> However, instead of sending the request using the transaction, you send it using the SIP dialog.  
-<div class="boxcode"><pre>
+<div class="box-code"><pre>
 <span class="keyword">this</span>.dialogClient.sendRequest(transaction);
 </pre></div>
 </li>
 </ul>
 
-<table width="960" border="0" cellpadding="0" cellspacing="0" class="tableinfo">
+<table class="information">
   <tr><th class="strong">Questions</th></tr>
   <tr><td class="strong">Compare the headers between the <b>INVITE</b>, <b>ACK</b> and <b>BYE</b> requests of the same dialog. Which headers are the same?</td></tr>
   <tr><td class="strong">Which headers are different?</td></tr>
@@ -623,10 +610,10 @@ dialog.sendAck(request);
 
 
 <div class="infoboxes">
-	<div class="infobox_container">
+	<div class="infobox-container">
 		<div class="infobox">
         	<a href="../../../../../../download/Teaching-2013-Lab-SIP.pdf" style="background-image:url(../../../../../images/doc_as_2013_lab_sip.png)" target="_blank">
-            	<span class="infoboxtitle">Download this lab.</span>
+            	<span class="infobox-title">Download this lab.</span>
                 <span class="infoboxtext">February 8, 2013</span>
                 <span class="infoboxtext">PDF/929 KB</span>
             </a>

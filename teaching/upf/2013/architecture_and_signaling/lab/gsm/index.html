@@ -1,33 +1,20 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
+
 <head>
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta name="keywords" content="Alex, Bikfalvi, personal, site"/>
 <meta name="description" content="Alex Bikfalvi personal web site"/>
-<meta name="copyright" content="Alex Bikfalvi"/>
-<meta name="robots" content="index, follow" />
+<meta name="robots" content="index, follow"/>
 
-<link href="../../../../../../images/icon.ico" rel="shortcut icon" />
+<link href="../../../../../../images/icon.ico" rel="shortcut icon"/>
 <link href="../../../../../../style/style.css" rel="stylesheet" title="Silver stylesheet" type="text/css"/>
 <link href="../../../../../../style/teaching.css" rel="stylesheet" type="text/css"/>
 
 <title>Alex Bikfalvi - Teaching - Accessing GSM Functions on an Android Smartphone</title>
 
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-24480564-1']);
-  _gaq.push(['_setDomainName', '.bikfalvi.com']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
+<script type="text/javascript" src="../../../../../../script/ga.js"></script>
 
 </head>
 
@@ -41,32 +28,32 @@
 
 <div id="back">
 
-<div id="navigation">
-<ul id="nav_main" class="nav">
+<div id="main-menu">
+<ul id="main-menu-list" class="menu">
 <li><a href="../../../../../../" accesskey="H"><span class="accesskey">H</span>ome</a></li>
 <li><a href="../../../../../../bio.html" accesskey="B"><span class="accesskey">B</span>io</a></li>
 <li><a href="../../../../../../contact.html" accesskey="C"><span class="accesskey">C</span>ontact</a></li>
 <li><a href="../../../../../../research.html" accesskey="R"><span class="accesskey">R</span>esearch</a></li>
 <li><a href="../../../../../../projects.html" accesskey="J">Pro<span class="accesskey">j</span>ects</a></li>
 <li><a href="../../../../../../pubs.html" accesskey="P"><span class="accesskey">P</span>ublications</a></li>
-<li id="nav_index"><a href="../../../../../../teaching.html" accesskey="T"><span class="accesskey">T</span>eaching</a></li>
+<li id="main-menu-selection"><a href="../../../../../../teaching.html" accesskey="T"><span class="accesskey">T</span>eaching</a></li>
 <li><a href="../../../../../../events.html" accesskey="E"><span class="accesskey">E</span>vents</a></li>
 </ul>
 </div>
 
 <div id="path">
 	<ul>
-    	<li id="path_home"><a href="../../../../../../" title="Home"><span>Home</span></a></li>
-    	<li class="path_arrow"><a href="../../../../../../teaching.html" title="Teaching">Teaching</a></li>
-    	<li class="path_arrow"><a href="../../../../" title="UPF">Pompeu Fabra University</a></li>
-    	<li class="path_arrow"><a href="../../../" title="2013">2013</a></li>
-    	<li class="path_arrow"><a href="../../" title="UPF">Architecture and Signaling</a></li>
-    	<li class="path_arrow"><a href="../" title="UPF">Lab</a></li>
-    	<li class="path_arrow">Accessing GSM Functions on an Android Smartphone</li>
+    	<li id="path-home"><a href="../../../../../../" title="Home"><span>Home</span></a></li>
+    	<li class="path-arrow"><a href="../../../../../../teaching.html" title="Teaching">Teaching</a></li>
+    	<li class="path-arrow"><a href="../../../../" title="UPF">Pompeu Fabra University</a></li>
+    	<li class="path-arrow"><a href="../../../" title="2013">2013</a></li>
+    	<li class="path-arrow"><a href="../../" title="UPF">Architecture and Signaling</a></li>
+    	<li class="path-arrow"><a href="../" title="UPF">Lab</a></li>
+    	<li class="path-arrow">Accessing GSM Functions on an Android Smartphone</li>
     </ul>
 </div>
 
-<div id="main_content">
+<div id="main-content">
 
 <h1 class="title">Accessing GSM Functions on an Android Smartphone</h1>
 
@@ -144,7 +131,7 @@ By default the Android application displays a simple <i>Hello World!</i> message
 	<li>Open <i>putty</i> and use the Telnet option to connect to the AVD on the specified port number.</li>
 	<li>Once connected, a new text-line console appears, which we can use to send commands to the AVD, as shown below.
 
-<div class="boxcode"><pre>
+<div class="box-code"><pre>
 Android Console: type 'help' for a list of commands
 OK</pre></div>
 </li>
@@ -152,7 +139,7 @@ OK</pre></div>
 	<li>At any time, you can type <code><span class="keyword">help</span></code> or <code><span class="keyword">?</span></code> to display the commands available.</li>
 	<li>During this practice you shall use the <code><span class="keyword">gsm</span></code> command to simulate the behavior of a real-life GSM network. Type the <code><span class="keyword">gsm</span></code> command in the console to display the list of the available options, as shown below:
 
-<div class="boxcode"><pre>
+<div class="box-code"><pre>
 help gsm
 allows you to change GSM-related settings, or to make a new inbound phone
 call
@@ -175,7 +162,7 @@ OK</pre></div>
 	<li>Test some of these commands, and observe the behavior of the phone. You may start each command with the <code><span class="keyword">help</span></code> or <code><span class="keyword">?</span></code> keywords to display additional options.</li>
 </ol>
 
-<table width="960" border="0" cellpadding="0" cellspacing="0" class="tableinfo">
+<table class="information" style="width: 960px;">
   <tr><th class="strong">Questions</th></tr>
   <tr><td class="strong">What is the Telnet command to simulate an incoming telephone call?</td></tr>
   <tr><td class="strong">What is the Telnet command to send an SMS to the virtual smartphone?</td></tr>
@@ -195,7 +182,7 @@ OK</pre></div>
 	<li> Compile and test your application.</li>
 </ol>
 
-<div class="boxcode"><pre>
+<div class="box-code"><pre>
 &lt;<span class="xmlname">RelativeLayout</span> <span class="xmlattr">xmlns:android</span>=<span class="xmlattrvalue">"http://schemas.android.com/apk/res/android"</span>
     <span class="xmlattr">xmlns:tools</span>=<span class="xmlattrvalue">"http://schemas.android.com/tools"</span>
     <span class="xmlattr">android:layout_width</span>=<span class="xmlattrvalue">"match_parent"</span>
@@ -233,12 +220,12 @@ OK</pre></div>
 	<li>Open the Java code file <i>MainActivity.java</i> corresponding to our application. You can open the file using the <b>Package Explorer</b>, under the <i>src</i> &gt; <i>edu.upf.gsminfo</i> package path.</li>
 	<li>We need to add a package that allows us to declare a variable corresponding to the text view from the user interface.
 
-<div class="boxcode"><pre><span class="keyword">import</span> android.widget.<span class="keywordtype">TextView</span>;</pre></div>
+<div class="box-code"><pre><span class="keyword">import</span> android.widget.<span class="keywordtype">TextView</span>;</pre></div>
 </li>
 
 	<li>We declare a new variable within the main class of our application, corresponding to the text view component.
 
-<div class="boxcode"><pre>
+<div class="box-code"><pre>
 <span class="keyword">public class</span> <span class="keywordtype">MainActivity</span> <span class="keyword">extends</span> <span class="keywordtype">Activity</span> {
 	<span class="keyword">private</span> <span class="keywordtype">TextView</span> textView;
     ...
@@ -247,7 +234,7 @@ OK</pre></div>
 
 	<li>We add the remaining of the code for our application, to the <code><span class="keyword">onCreate</span></code> method, which is called every time the application is created.
 
-<div class="boxcode"><pre>
+<div class="box-code"><pre>
 <span class="keyword">protected void</span> onCreate(<span class="keywordtype">Bundle</span> savedInstanceState) {
     ...
 }</pre></div>
@@ -255,13 +242,13 @@ OK</pre></div>
 
 	<li>In this method, first we initialize the text view variable by using the component <b>Id</b>, declared previously with the user interface designer.
 
-<div class="boxcode"><pre>
+<div class="box-code"><pre>
 <span class="keyword">this</span>.textView = (<span class="keywordtype">TextView</span>)<span class="keyword">this</span>.findViewById(<span class="keywordtype">R</span>.id.textView);</pre></div>
 </li>
 
 	<li>To display a text on the user interface, we can set or append a string to the text view component using any of the following methods. To display text, we shall add a new <code><span class="keyword">onStart</span></code> method, such that the text is updated every time we open the application.
 
-<div class="boxcode"><pre>
+<div class="box-code"><pre>
 <span class="keyword">protected void</span> onStart() {
     <span class="keyword">super</span>.onStart();
     ...
@@ -290,11 +277,11 @@ Use it to determine which methods return GSM parameters that could be of our int
 
 	<li>To access the telephony service on an Android phone, first, we must create an instance (that is an object) of the <code><span class="keyword">TelephonyManager</span></code> class. To do this, we create a new variable at the beginning of the class, as shown below.
 
-<div class="boxcode"><pre><span class="keyword">private</span> <span class="keywordtype">TelephonyManager</span> telephonyManager;</pre></div>
+<div class="box-code"><pre><span class="keyword">private</span> <span class="keywordtype">TelephonyManager</span> telephonyManager;</pre></div>
 </li>
 	<li>Then, we create the class instance, by adding the following line of code in the <code><span class="keyword">onCreate</span></code> method.
 
-<div class="boxcode"><pre>
+<div class="box-code"><pre>
 <span class="keyword">this</span>.telephonyManager = (<span class="keywordtype">TelephonyManager</span>) <span class="keyword">this</span>.getSystemService(<span class="keywordenum">TELEPHONY_SERVICE</span>);
 </pre></div>
 </li>
@@ -305,13 +292,13 @@ Use it to determine which methods return GSM parameters that could be of our int
 
 <p><img src="AvdImei.png" width="450" height="413" alt="Displaying the IMEI in the Android application." /></p>
 <p class="figure">Figure 6. Displaying the IMEI in the Android application.</p>
-<table width="960" border="0" cellpadding="0" cellspacing="0" class="tableinfo">
+<table class="information" style="width: 960px;">
   <tr><th class="strong">Questions</th></tr>
   <tr><td class="strong">Does the application display the IMEI? Was any change required?</td></tr>
   <tr><td class="strong">What other methods do you know for displaying the IMEI of a mobile phone?</td></tr>
 </table>
 
-<table width="960" border="0" cellpadding="0" cellspacing="0" class="tableinfo">
+<table class="information" style="width: 960px;">
   <tr><th>Tasks</th></tr>
   <tr><td>Display the phone type. What method do you use? What does the value mean?</td></tr>
   <tr><td>Display the IMEISV. What method do you use? What value do you obtain?</td></tr>
@@ -337,7 +324,7 @@ Use it to determine which methods return GSM parameters that could be of our int
 </li>
 	<li>Second, we need to create a new class, which extends <code><span class="keyword">PhoneStateListener</span></code> and overrides its methods. We shall call this class <code><span class="keyword">Listener</span></code>, for simplicity, and we shall declare it within our main class, as shown below. This class shall receive notifications when the GSM parameters change. To write to the GUI text view, we add a local <code><span class="keyword">TextView</span></code> variable, which we initialize via the class constructor.
 
-<div class="boxcode"><pre>
+<div class="box-code"><pre>
 <span class="keyword">public class</span> <span class="keywordtype">MainActivity</span> <span class="keyword">extends</span> <span class="keywordtype">Activity</span> {
     ...
     <span class="keyword">private class</span> <span class="keywordtype">Listener</span> <span class="keyword">extends</span> <span class="keywordtype">PhoneStateListener</span> {
@@ -356,7 +343,7 @@ Use it to determine which methods return GSM parameters that could be of our int
 
 	<li>Next, we declare a new variable for our newly created <code><span class="keyword">Listener</span></code> class, within the main class.
 
-<div class="boxcode"><pre>
+<div class="box-code"><pre>
 <span class="keyword">public class</span> <span class="keywordtype">MainActivity</span> <span class="keyword">extends</span> <span class="keywordtype">Activity</span> {
     ...
     <span class="keyword">private</span> <span class="keywordtype">Listener</span> listener;
@@ -367,7 +354,7 @@ Use it to determine which methods return GSM parameters that could be of our int
 
 	<li>Then, we create a new instance of this class, in the <code><span class="keyword">onCreate</span></code> method.
 
-<div class="boxcode"><pre>
+<div class="box-code"><pre>
 <span class="keyword">protected void</span> onCreate(<span class="keywordtype">Bundle</span> savedInstanceState) {
     ...
     <span class="keyword">this</span>.listener = <span class="keyword">new</span> <span class="keywordtype">Listener</span>();
@@ -377,7 +364,7 @@ Use it to determine which methods return GSM parameters that could be of our int
 
 	<li>To receive notifications when GSM parameters change, we must inform the telephony manager of the type of event which we want to receive. These are listed as constants of the <code><span class="keyword">PhoneStateListener</span></code> class. We enable the listening, using the code below. As shown in the example, to listen to multiple events at the same time, we separate them by pipe (<code><span class="keyword">|</span></code>).
 
-<div class="boxcode"><pre>
+<div class="box-code"><pre>
 <span class="keyword">protected void</span> onCreate(<span class="keywordtype">Bundle</span> savedInstanceState) {
     ...
     <span class="keyword">this</span>.telephonyManager.listen(<span class="keyword">this</span>.listener,
@@ -389,7 +376,7 @@ Use it to determine which methods return GSM parameters that could be of our int
 
 	<li>Now, we have to implement the methods inside the listener class, to receive the data for the parameters we want to process. For example, if we want to listen on the <code><span class="keywordenum">LISTEN_DATA_ACTIVITY</span></code> event, we shall implement the <code><span class="keyword">onDataActivity</span></code> method, as follows.
 
-<div class="boxcode"><pre>
+<div class="box-code"><pre>
 <span class="keyword">private class</span> <span class="keywordtype">Listener</span> <span class="keyword">extends</span> <span class="keywordtype">PhoneStateListener</span> {
     ...
     <span class="keyword">public void</span> onDataActivity(<span class="keyword">int</span> direction) {
@@ -400,12 +387,12 @@ Use it to determine which methods return GSM parameters that could be of our int
 </li>
 </ol>
 
-<table width="960" border="0" cellpadding="0" cellspacing="0" class="tableinfo">
+<table class="information" style="width: 960px;">
   <tr><th class="strong">Questions</th></tr>
   <tr><td class="strong">What are the 9 phone state parameters that we can follow using this class? Use the API documentation for help.</td></tr>
 </table>
 
-<table width="960" border="0" cellpadding="0" cellspacing="0" class="tableinfo">
+<table class="information" style="width: 960px;">
   <tr><th>Tasks</th></tr>
   <tr><td>Create a method to listen and display the call state. What value do you obtain? What does it mean?</td></tr>
   <tr><td>Use the Telnet console to make a call. Does anything change? How?</td></tr>
@@ -415,7 +402,7 @@ Use it to determine which methods return GSM parameters that could be of our int
 
 The following is a set of bonus tasks for which you can obtain 15% bonus points.
 
-<table width="960" border="0" cellpadding="0" cellspacing="0" class="tableinfo">
+<table class="information"  style="width: 960px;">
   <tr><th>Bonus Tasks</th></tr>
   <tr><td>Create a method to listen and display the signal strength. What information can you display?</td></tr>
   <tr><td>Use the Telnet console to change the signal strength and observe what changes. No need to write anything for this point.</td></tr>
@@ -423,10 +410,10 @@ The following is a set of bonus tasks for which you can obtain 15% bonus points.
 </table>
 
 <div class="infoboxes">
-	<div class="infobox_container">
+	<div class="infobox-container">
 		<div class="infobox">
         	<a href="../../../../../../download/Teaching-2013-Lab-GSM.pdf" style="background-image:url(../../../../../images/doc_as_2013_lab_gsm.png)" target="_blank">
-            	<span class="infoboxtitle">Download this lab.</span>
+            	<span class="infobox-title">Download this lab.</span>
                 <span class="infoboxtext">February 15, 2013</span>
                 <span class="infoboxtext">PDF/929 KB</span>
             </a>

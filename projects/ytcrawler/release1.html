@@ -1,39 +1,26 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
+
 <head>
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta name="keywords" content="Alex, Bikfalvi, personal, site"/>
 <meta name="description" content="Alex Bikfalvi personal web site"/>
-<meta name="copyright" content="Alex Bikfalvi"/>
-<meta name="robots" content="index, follow" />
+<meta name="robots" content="index, follow"/>
 
-<link href="../../images/icon.ico" rel="shortcut icon" />
+<link href="../../images/icon.ico" rel="shortcut icon"/>
 <link href="../../style/style.css" rel="stylesheet" title="Silver stylesheet" type="text/css"/>
 
 <script type="text/javascript" src="../../script/image.js"></script>
 
 <title>Alex Bikfalvi - YTCrawler</title>
 
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-24480564-1']);
-  _gaq.push(['_setDomainName', '.bikfalvi.com']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
+<script type="text/javascript" src="../../../../script/ga.js"></script>
 
 </head>
 
 <body>
-<a name="top" id="top"></a>
+<a id="top"></a>
 
 <div id="content">
 
@@ -43,13 +30,13 @@
 
 <div id="back">
 
-<div id="navigation">
-<ul id="nav_main" class="nav">
+<div id="main-menu">
+<ul id="main-menu-list" class="menu">
 <li><a href="../../" accesskey="H"><span class="accesskey">H</span>ome</a></li>
 <li><a href="../../bio.html" accesskey="B"><span class="accesskey">B</span>io</a></li>
 <li><a href="../../contact.html" accesskey="C"><span class="accesskey">C</span>ontact</a></li>
 <li><a href="../../research.html" accesskey="R"><span class="accesskey">R</span>esearch</a></li>
-<li id="nav_index"><a href="../../projects.html" accesskey="J">Pro<span class="accesskey">j</span>ects</a></li>
+<li id="main-menu-selection"><a href="../../projects.html" accesskey="J">Pro<span class="accesskey">j</span>ects</a></li>
 <li><a href="../../pubs.html" accesskey="P"><span class="accesskey">P</span>ublications</a></li>
 <li><a href="../../teaching.html" accesskey="T"><span class="accesskey">T</span>eaching</a></li>
 <li><a href="../../events.html" accesskey="E"><span class="accesskey">E</span>vents</a></li>
@@ -58,19 +45,19 @@
 
 <div id="path">
 	<ul>
-    	<li id="path_home"><a href="../../" title="Home"><span>Home</span></a></li>
-    	<li class="path_arrow"><a href="../../projects.html" title="Projects">Projects</a></li>
-    	<li class="path_arrow"><a href="./" title="YTCrawler">YTCrawler</a></li>
-    	<li class="path_arrow">Release 1</li>
+    	<li id="path-home"><a href="../../" title="Home"><span>Home</span></a></li>
+    	<li class="path-arrow"><a href="../../projects.html" title="Projects">Projects</a></li>
+    	<li class="path-arrow"><a href="./release1.html" title="YTCrawler">YTCrawler</a></li>
+    	<li class="path-arrow">Release 1</li>
     </ul>
 </div>
 
-<div id="main_content">
+<div id="main-content">
 
 <h1 class="title">YTCrawler Release 1</h1>
 <p>The YouTube Crawler  is a project in progress and the software on this page is pre-release and subject to change. There are no guarantees for this software and you can use it on your own risk. The YouTube Crawler is free software and is licensed under the terms of <a href="http://www.gnu.org/licenses/gpl.html" target="_blank">GNU General Public License</a>.</p>
 
-<h1><a name="contents" id="contents"></a>Contents</h1>
+<h1><a id="contents"></a>Contents</h1>
 <ol type="I">
   <li><a href="#ovewview">Architecture overview</a></li>
   <li><a href="#dbcluster">Database clustering</a></li>
@@ -80,9 +67,9 @@
   <li><a href="#code">Code information</a></li>
   <li><a href="#dload">Download software</a></li>
 </ol>
-<p class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
+<p class="text-small text-italic text-gray"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
 
-<h1><a name="overview" id="ovewview"></a>I. Architecture Overview</h1>
+<h1><a id="ovewview"></a>I. Architecture Overview</h1>
 <p>The YouTube Crawler is a software application that can be used to crawl video information from <a href="http://www.youtube.com/" target="_blank">YouTube</a>. The crawler can capture both <em>static information </em>such as videos' title, author, duration, publishing date, etc, as well as <em>dynamic information</em> such as videos' view count, number of comments, rating, etc. Because static and dynamic video information is usually recorded in a different manner (is sufficient to crawl static data only once, whereas dynamic data should be crawled periodically), the YouTube Crawler has three components.</p>
 
 <ul>
@@ -94,22 +81,22 @@
 <p>The crawler uses an Oracle database to store the crawled video information. The following figure illustrates the principles of the design.</p>
 <p><img src="arch.png" width="464" height="373" alt="YouTube Crawler architecture" /></p>
 
-<h2><a name="a1" id="a1"></a>The Master Crawler</h2>
+<h2><a id="a1"></a>The Master Crawler</h2>
 <p>The <em>master</em> is responsible for initial crawling of YouTube videos and recording the  static video information. Video discovery is acheieved using any of the standard or category based YouTube video feeds. For example, standard feeds include most popular, most recent, most viewed videos, etc; category-based feeds include music, people, games, howto, etc. You can configure any video feed combination for the master crawling.</p>
 <p>In addition, for a crawling deployment, you can use any number of masters in order to load-balance the crawling activity. If you need to identify the data crawled by an individual master, you can preconfigure each master with a unique identifier that will be stored in the database along with the video information.</p>
-<h2><a name="a2" id="a2"></a>The Slave Crawler</h2>
+<h2><a id="a2"></a>The Slave Crawler</h2>
 <p>The <em>slave</em> is used to crawl dynamic video data. Like the master, multiple instances of the slave can be used at the same time to load-balance the crawling activity, each slave being assigned a unique identifier. For this purpose, each master should be configured with the identifiers of the available slaves, and will automatically assign new crawled videos in a balanced manner.</p>
 <p><em>Tip: You can provide redundancy in the crawled data, by assigning the same identifier to two or more slaves.</em></p>
-<h2><a name="a3" id="a3"></a>The Processing Agent</h2>
+<h2><a id="a3"></a>The Processing Agent</h2>
 <p class="notice">This feature is under development.</p>
 <p>The <em>agent</em> has the role of processing live the crawled data. Such processing will include assigning different crawling schedule to videos that meet certain criteria. For example, in a deployment scenario with two slaves, one can be configured to crawl every hour dynamic information for  videos that have at least one view per day, while the second slave can be configured to crawl every six hours dynamic information for  videos that have less than one view per day. Using the crawled data, the agent will verify periodically the change in view count and can assign each video to the corresponding slave.</p>
 <p>Other tasks of the agent will be to verify the crawled data, eliminate errors, perform additional post-processing.</p>
-<p class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
-<h1><a name="dbcluster" id="dbcluster"></a>II. Database Clustering</h1>
+<p class="text-small text-italic text-gray"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
+<h1><a id="dbcluster"></a>II. Database Clustering</h1>
 <p>This is a new feature that will be made available in release 2.</p>
-<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<p><span class="text-small text-italic text-gray"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
 
-<h1><a name="usage" id="usage"></a>III. Using the Crawler</h1>
+<h1><a id="usage"></a>III. Using the Crawler</h1>
 <p>The master, the slave and the processing agent are implemented within the same software application. However, you can use any number of running instances, on any number of computers, to accomodate the necessary number of masters, slaves and processing agents for your scenario.</p>
 <p>Typically, you must follow these steps to setup a crawling scenario:</p>
 <ul>
@@ -121,10 +108,10 @@
   <li><a href="#u6">Start the slave</a></li>
   <li><a href="#u7">Inspect your results during or after the  crawling</a></li>
   </ul>
-<h2><a name="u1" id="u1"></a>Configure the Connection to the Database</h2>
+<h2><a id="u1"></a>Configure the Connection to the Database</h2>
 <p>To configure the connection to the Oracle database, you have to enter the name of the database (see the <a href="#setup">setup section</a> for details), username and password. You can test the connection by connecting to the database at any time. However, establishing an initial connection is not necessary, as the software will automatically connect whenever needed.</p>
 <p><a href="javascript:imagewnd('./server.png',800,600)"><img src="server.png" width="214" height="167" alt="Configuring the database connection" /></a></p>
-<h2><a name="u2" id="u2"></a>Configure the Master and the Slave</h2>
+<h2><a id="u2"></a>Configure the Master and the Slave</h2>
 <p>Before you start the crawling you must configure the following information:</p>
 <ul>
   <li>General crawler parameters: maximum number videos and the number of slaves</li>
@@ -134,20 +121,20 @@
   <li>Master configuration: the crawling period, default video schedule (whether the video is active, i.e. crawled by a slave, or not), master identifier, maximum number of videos for one crawl, the collection of slaves (the master will assign the videos to them in a uniform manner)</li>
   <li>Slave configuration: the crawling period, a number of crawling filters, slave identifier, number of parallel crawling operations, number of retries in case of errors</li>
   </ul>
-<p><a href="javascript:imagewnd('./config1.png',800,600)"><img src="config1.png" width="214" height="167" /></a><a href="javascript:imagewnd('./config2.png',800,600)"><img src="config2.png" width="214" height="167" /></a><a href="javascript:imagewnd('./config3.png',800,600)"><img src="config3.png" alt="" width="214" height="167" /></a><a href="javascript:imagewnd('./config4.png',800,600)"><img src="config4.png" alt="" width="214" height="167" /></a></p>
-<h2><a name="u3" id="u3"></a>Setup Video Categories</h2>
+<p><a href="javascript:imagewnd('./config1.png',800,600)"><img src="config1.png" width="214" height="167" alt=""/></a><a href="javascript:imagewnd('./config2.png',800,600)"><img src="config2.png" width="214" height="167" alt=""/></a><a href="javascript:imagewnd('./config3.png',800,600)"><img src="config3.png" alt="" width="214" height="167" /></a><a href="javascript:imagewnd('./config4.png',800,600)"><img src="config4.png" alt="" width="214" height="167" /></a></p>
+<h2><a id="u3"></a>Setup Video Categories</h2>
 <p>Optional, you can configure any selection of video categories (see <a href="#feeds">video feeds</a> for more information).</p>
-<p><a href="javascript:imagewnd('./categ.png',800,600)"><img src="categ.png" alt="" width="214" height="167" /></a></p>
-<h2><a name="u4" id="u4"></a>Change Video Feeds</h2>
+<p><a href="javascript:imagewnd('./categ.png',800,600)"><img src="categ.png" alt="" width="214" height="167"/></a></p>
+<h2><a id="u4"></a>Change Video Feeds</h2>
 <p>Optional, you can also modify the order of the video feeds (see <a href="#feeds">video feeds</a> for more information).</p>
 <p><a href="javascript:imagewnd('./feeds.png',800,600)"><img src="feeds.png" alt="" width="214" height="167" /></a></p>
-<h2><a name="u5" id="u5"></a>Start the Master</h2>
+<h2><a id="u5"></a>Start the Master</h2>
 <p>Start the master crawler. The master will run periodically with the setup schedule until stopped.</p>
 <p><a href="javascript:imagewnd('./master.png',800,600)"><img src="master.png" alt="" width="214" height="167" /></a></p>
-<h2><a name="u6" id="u6"></a>Start the Slave</h2>
+<h2><a id="u6"></a>Start the Slave</h2>
 <p>Start the slave crawler. The slave will run periodically with the setup schedule until stopped. To enhance performance (i.e. increase the crawling speed), the slave will spawn the configured number of parallel threads to perform the crawling.</p>
 <p><a href="javascript:imagewnd('./slave.png',800,600)"><img src="slave.png" alt="" width="214" height="167" /></a></p>
-<h2><a name="u7" id="u7"></a>View Your Data</h2>
+<h2><a id="u7"></a>View Your Data</h2>
 <p><span class="notice">This feature may be under future development.</span></p>
 <p>You can use the YouTube Crawler to analyze your data, either in real time during the crawling, or at the end, after the crawling has completed. Currently, you can view the following information:</p>
 <ul>
@@ -158,147 +145,147 @@
   </ul>
 <p><em>Tip: You can automatically locate the dynamic data snapshots for a video by using the 'View snapshots' button.</em></p>
 <p><a href="javascript:imagewnd('./data_videos.png',800,600)"><img src="data_videos.png" alt="" width="214" height="167" /></a><a href="javascript:imagewnd('./data_snapshots.png',800,600)"><img src="data_snapshots.png" alt="" width="214" height="167" /></a><a href="javascript:imagewnd('./stat_crawl.png',800,600)"><img src="stat_crawl.png" alt="" width="214" height="167" /></a><a href="javascript:imagewnd('./stat_views.png',800,600)"><img src="stat_views.png" alt="" width="214" height="167" /></a></p>
-<p class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
+<p class="text-small text-italic text-gray"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
 
-<h1><a name="feeds" id="feeds"></a>IV. Understanding Video Feeds</h1>
+<h1><a id="feeds"></a>IV. Understanding Video Feeds</h1>
 <p>For the master crawling, you have to configure video feeds. The YouTube Crawler uses two main types of videos feeds: <em>standard </em>feeds and <em>category</em> feeds. Standard feeds are associated with certain classes of videos, such as the most popular, the most views, the most recent, etc. The following table shows the set of standard feeds currently supported by YouTube and by the YouTube Crawler (<a href="http://code.google.com/apis/youtube/2.0/developers_guide_protocol_video_feeds.html" target="_blank">see here additional details</a>).</p>
-<table class="tableinfo">
+<table class="information" style="width: 900px;">
   <tr>
-    <th width="246" scope="col">Feed</th>
-    <th width="544" scope="col">Information</th>
+    <th class="strong" scope="col" style="width: 250px;">Feed</th>
+    <th scope="col">Information</th>
   </tr>
   <tr>
-    <td>Top rated</td>
+    <td class="strong">Top rated</td>
     <td><strong>URL:</strong>&nbsp;http://gdata.youtube.com/feeds/api/standardfeeds/top_rated<br />
       <strong>Description:</strong>&nbsp;This feed contains the most highly rated YouTube    videos.</td>
     </tr>
   <tr>
-    <td>Top favorites</td>
+    <td class="strong">Top favorites</td>
     <td><strong>URL:</strong>&nbsp;http://gdata.youtube.com/feeds/api/standardfeeds/top_favorites<br />
       <strong>Description:</strong>&nbsp;This feed contains videos most frequently flagged as favorite videos.</td>
     </tr>
   <tr>
-    <td>Most viewed</td>
+    <td class="strong">Most viewed</td>
     <td><strong>URL:</strong>&nbsp;http://gdata.youtube.com/feeds/api/standardfeeds/most_viewed<br />
       <strong>Description:</strong>&nbsp;This feed contains the most frequently watched    YouTube videos.</td>
     </tr>
   <tr>
-    <td>Most popular</td>
+    <td class="strong">Most popular</td>
     <td><strong>URL:</strong>&nbsp;http://gdata.youtube.com/feeds/api/standardfeeds/most_popular<br />
       <strong>Description:</strong>&nbsp;This feed contains the most popular YouTube videos,    selected using an algorithm that combines many different signals to determine    overall popularity.</td>
     </tr>
   <tr>
-    <td>Most recent</td>
+    <td class="strong">Most recent</td>
     <td><strong>URL:</strong>&nbsp;http://gdata.youtube.com/feeds/api/standardfeeds/most_recent<br />
       <strong>Description:</strong>&nbsp;This feed contains the videos most recently    submitted to YouTube.</td>
     </tr>
   <tr>
-    <td>Most discussed</td>
+    <td class="strong">Most discussed</td>
     <td><strong>URL:</strong>&nbsp;http://gdata.youtube.com/feeds/api/standardfeeds/most_discussed<br />
       <strong>Description:</strong>&nbsp;This feed contains the YouTube videos that have    received the most comments.</td>
     </tr>
   <tr>
-    <td>Most responded</td>
+    <td class="strong">Most responded</td>
     <td><strong>URL:</strong>&nbsp;http://gdata.youtube.com/feeds/api/standardfeeds/most_responded<br />
       <strong>Description:</strong>&nbsp;This feed contains YouTube videos that receive the    most video responses.</td>
     </tr>
   <tr>
-    <td>Recently featured</td>
+    <td class="strong">Recently featured</td>
     <td><strong>URL:</strong>&nbsp;http://gdata.youtube.com/feeds/api/standardfeeds/recently_featured<br />
       <strong>Description:</strong>&nbsp;This feed contains videos recently featured on the    YouTube home page or featured videos tab.</td>
     </tr>
   <tr>
-    <td>Videos for mobile phones</td>
+    <td class="strong">Videos for mobile phones</td>
     <td><strong>URL:</strong>&nbsp;http://gdata.youtube.com/feeds/api/standardfeeds/watch_on_mobile<br />
       <strong>Description:</strong>&nbsp;This feed contains videos suitable for playback on    mobile devices.</td>
     </tr>
 </table>
 <p>In addition to these standard feeds there exists a global videos feed:</p>
-<table class="tableinfo">
+<table class="information" style="width: 900px;">
   <tr>
-    <th width="246" scope="col">Feed</th>
-    <th width="544" scope="col">Information</th>
+    <th class="strong" scope="col" style="width: 250px;">Feed</th>
+    <th scope="col">Information</th>
   </tr>
   <tr>
-    <td>Global</td>
+    <td class="strong">Global</td>
     <td><strong>URL:</strong>&nbsp;http://gdata.youtube.com/feeds/api/videos<br /></td>
   </tr>
 </table>
 <p>Category  feeds are defined by the user, based on the category keywords the user selects. In practice, these feeds should match actual video categories from YouTube, but you are allowed to define any combination of categories. The following table contains some examples of category feeds.</p>
-<table class="tableinfo">
+<table class="information" style="width: 900px;">
   <tr>
-    <th width="246" scope="col">Category</th>
-    <th width="544" scope="col">Information</th>
-    </tr>
+    <th class="strong" scope="col" style="width: 250px;">Category</th>
+    <th scope="col">Information</th>
+  </tr>
   <tr>
-    <td>Movies</td>
+    <td class="strong">Movies</td>
     <td><strong>URL:</strong>&nbsp;http://gdata.youtube.com/feeds/api/videos/-/Movies<br /></td>
     </tr>
   <tr>
-    <td>Entertainment</td>
+    <td class="strong">Entertainment</td>
     <td><strong>URL:</strong>&nbsp;http://gdata.youtube.com/feeds/api/videos/-/Entertainment</td>
     </tr>
   <tr>
-    <td>Music</td>
+    <td class="strong">Music</td>
     <td><strong>URL:</strong>&nbsp;http://gdata.youtube.com/feeds/api/videos/-/Music<br /></td>
     </tr>
 </table>
 <p>For crawling you are allowed to every combination of standard and category feeds. For instance, if you select the standard feeds <em>most popular</em> and <em>most recent</em>, with the categories <em>Movies</em> and <em>Music</em>, the YouTube Crawler will crawl the following categories:</p>
-<table class="tableinfo">
+<table class="information" style="width: 900px;">
   <tr>
-    <th width="246" scope="col">Category</th>
-    <th width="544" scope="col">Information</th>
+    <th class="strong" scope="col" style="width: 250px;">Category</th>
+    <th scope="col">Information</th>
   </tr>
   <tr>
-    <td>Most popular movies</td>
+    <td class="strong">Most popular movies</td>
     <td><strong>URL:</strong>&nbsp;http://gdata.youtube.com/feeds/api/standardfeeds/most_popular/-/Movies<br /></td>
   </tr>
   <tr>
-    <td>Most popular music</td>
+    <td class="strong">Most popular music</td>
     <td><strong>URL:</strong>&nbsp;http://gdata.youtube.com/feeds/api/standardfeeds/most_popular/-/Music</td>
   </tr>
   <tr>
-    <td>Most recent movies</td>
+    <td class="strong">Most recent movies</td>
     <td><strong>URL:</strong>&nbsp;http://gdata.youtube.com/feeds/api/standardfeeds/most_recent/-/Movies</td>
   </tr>
   <tr>
-    <td>Most recent music</td>
+    <td class="strong">Most recent music</td>
     <td><strong>URL:</strong>&nbsp;http://gdata.youtube.com/feeds/api/standardfeeds/most_recent/-/Music</td>
   </tr>
 </table>
 <p>In addition, you may also select to crawl the <em>global feed</em> for the selected standard feeds, which will add the following feeds to the crawling:</p>
-<table class="tableinfo">
+<table class="information" style="width: 900px;">
   <tr>
-    <th width="246" scope="col">Category</th>
-    <th width="544" scope="col">Information</th>
+    <th class="strong" scope="col" style="width: 250px;">Category</th>
+    <th scope="col">Information</th>
   </tr>
   <tr>
-    <td>Most popular</td>
+    <td class="strong">Most popular</td>
     <td><strong>URL:</strong>&nbsp;http://gdata.youtube.com/feeds/api/standardfeeds/most_popular<br /></td>
   </tr>
   <tr>
-    <td>Most recent</td>
+    <td class="strong">Most recent</td>
     <td><strong>URL:</strong>&nbsp;http://gdata.youtube.com/feeds/api/standardfeeds/most_recent</td>
   </tr>
 </table>
 <p>Finally, you may also select to crawl the <em>base feed </em>for the selected categories, which will add the following feeds to the crawling:</p>
-<table class="tableinfo">
+<table class="information" style="width: 900px;">
   <tr>
-    <th width="246" scope="col">Category</th>
-    <th width="544" scope="col">Information</th>
+    <th class="strong" scope="col" style="width: 250px;">Category</th>
+    <th scope="col">Information</th>
   </tr>
   <tr>
-    <td>Movies</td>
+    <td class="strong">Movies</td>
     <td><strong>URL:</strong>&nbsp;http://gdata.youtube.com/feeds/api/videos/-/Movies<br /></td>
   </tr>
   <tr>
-    <td>Music</td>
+    <td class="strong">Music</td>
     <td><strong>URL:</strong>&nbsp;http://gdata.youtube.com/feeds/api/videos/-/Music<br /></td>
   </tr>
 </table>
-<p class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
+<p class="text-small text-italic text-gray"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
 
-<h1><a name="setup" id="setup"></a>V. Setup Guide</h1>
+<h1><a id="setup"></a>V. Setup Guide</h1>
 <h2>System Requirements</h2>
 <p>To install and run the YouTube Crawler, you need the following:</p>
 <ul>
@@ -312,119 +299,114 @@
 <h2>Install and Setup the Oracle Client</h2>
 <p><em>(this page is not a guidline for Oracle, although the process is straightforward and easy most of the time; use Oracle documentation for this step)</em></p>
 <p>An easy way to connect from a client to an Oracle database is to configure and use TNS names, by modifying (or creating if necessary) the<em> tnsnames.ora</em> file in the Network/Admin folder of your installation. A sample file is usually available in the <em>Samples</em> subfolder. For example, your <em>tnsnames.ora</em> file should look something like this:</p>
-<table class="tableinfo">
-  <tr>
-    <td width="800" class="code" scope="col"><em>my_database</em> =<br />
-(DESCRIPTION =<br />
-(ADDRESS = (PROTOCOL = TCP)(HOST = <em>database_IP_address</em>)(PORT = <em>database_port</em>))<br />
-(CONNECT_DATA =<br />
-(SERVER = DEDICATED)<br />
-(SERVICE_NAME = <em>database_name</em>)<br />
-)<br />
-)</td>
-  </tr>
-</table>
+<div class="box-code"><pre>
+<em>my_database</em> =
+(
+  DESCRIPTION =
+  (ADDRESS = (PROTOCOL = TCP)(HOST = <em>database_IP_address</em>)(PORT = <em>database_port</em>))
+  (CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = <em>database_name</em>))
+)</pre></div>
 <p>Usually, the port is 1521. You use <em>my_database</em> as the database name in the YouTube Crawler.</p>
 <h2>Create the Database Tables</h2>
 <p>The YouTube Crawler uses two tables, one for <em>static videos</em> data, one for <em>dynamic snapshot</em> data. The master writes information to the <em>videos</em> table, the slave writes information to the <em>snapshot</em> table. The name of the tables can be customized and configured in the crawler. However, the structure of the tables is fixed in this version of the crawler.</p>
 <p>The <em>videos</em> table contains the following columns:</p>
-<table class="tableinfo">
+<table class="information">
   <tr>
     <th colspan="3" scope="col">Videos Table</th>
   </tr>
   <tr>
-    <th width="200" scope="col">Column Name</th>
-    <th width="200" scope="col">Type</th>
-    <th width="400" scope="col">Description</th>
+    <th style="width: 200px;" scope="col">Column Name</th>
+    <th class="strong" style="width: 200px;" scope="col">Type</th>
+    <th style="width: 400px;" scope="col">Description</th>
   </tr>
   <tr>
     <td>ID</td>
-    <td>CHAR (11)</td>
+    <td class="strong">CHAR (11)</td>
     <td>YouTube video identifier</td>
   </tr>
   <tr>
     <td>TITLE</td>
-    <td>VARCHAR2 (256)</td>
+    <td class="strong">VARCHAR2 (256)</td>
     <td>Video title</td>
   </tr>
   <tr>
     <td>AUTHOR</td>
-    <td>VARCHAR2 (256)</td>
+    <td class="strong">VARCHAR2 (256)</td>
     <td>Video author</td>
   </tr>
   <tr>
     <td>DURATION</td>
-    <td>INTEGER</td>
+    <td class="strong">INTEGER</td>
     <td>Video duration in seconds</td>
   </tr>
   <tr>
     <td>CATEGORY</td>
-    <td>VARCHAR2 (256)</td>
+    <td class="strong">VARCHAR2 (256)</td>
     <td>Video category</td>
   </tr>
   <tr>
     <td>PUBLISHED</td>
-    <td>DATE</td>
+    <td class="strong">DATE</td>
     <td>Video published date/time</td>
   </tr>
   <tr>
     <td>VIEWS</td>
-    <td>INTEGER</td>
+    <td class="strong">INTEGER</td>
     <td>Number of views at the time of crawling</td>
   </tr>
   <tr>
     <td>COMMENTS</td>
-    <td>INTEGER</td>
+    <td class="strong">INTEGER</td>
     <td>Number of comments at the time of crawling</td>
   </tr>
   <tr>
     <td>RATING</td>
-    <td>NUMBER (20,10)</td>
+    <td class="strong">NUMBER (20,10)</td>
     <td>Rating at the time of crawling</td>
   </tr>
   <tr>
     <td>CRAWL_MASTER</td>
-    <td>INTEGER</td>
+    <td class="strong">INTEGER</td>
     <td>The identifier of the master</td>
   </tr>
   <tr>
     <td>CRAWL_TYPE</td>
-    <td>INTEGER</td>
+    <td class="strong">INTEGER</td>
     <td>The crawling type (see below)</td>
   </tr>
   <tr>
     <td>CRAWL_SLAVE</td>
-    <td>INTEGER</td>
+    <td class="strong">INTEGER</td>
     <td>The identifier of the assigned slave</td>
   </tr>
   <tr>
     <td>CRAWL_SCHEDULE</td>
-    <td>INTEGER</td>
+    <td class="strong">INTEGER</td>
     <td>The type of slave crawling schedule: active or inactive</td>
   </tr>
   <tr>
     <td>CRAWL_STRING</td>
-    <td>VARCHAR2 (256)</td>
+    <td class="strong">VARCHAR2 (256)</td>
     <td>The crawling string (see below)</td>
   </tr>
   <tr>
     <td>CRAWL_ERRORS</td>
-    <td>INTEGER</td>
+    <td class="strong">INTEGER</td>
     <td>The number of crawling errors (see below)</td>
   </tr>
   <tr>
     <td>CRAWL_ERROR</td>
-    <td>INTEGER</td>
+    <td class="strong">INTEGER</td>
     <td>The crawling error (see below)</td>
   </tr>
   <tr>
     <td>CRAWL_FIRST</td>
-    <td>DATE</td>
+    <td class="strong">DATE</td>
     <td>The date/time of the first crawling</td>
   </tr>
   <tr>
     <td>CRAWL_LAST</td>
-    <td>DATE</td>
+    <td class="strong">DATE</td>
     <td>The date/time of the last crawling</td>
   </tr>
 </table>
@@ -433,142 +415,142 @@
 <p>Note 3: The <em>CRAWL_STRING</em> field contains the feed URL used to crawl the video, in the pre-release version of the YouTube Crawler that supports only feed crawling (type 0). For the release version, in addition the <em>CRAWL_STRING</em> field will contain the identifier of the video used to crawl related and response videos, and the username used to crawl subscribed, favorite and playlist videos.</p>
 <p>Note 4: The <em>CRAWL_ERRORS</em> field indicates the number of video parameters that were missing in the YouTube response.</p>
 <p>Note 5: The <em>CRAWL_ERROR</em> field indicates the video parameters that were missing in the YouTube response. The value of this field is a binary map to all video parameters except the video identifier, as indicated by the following table (0 indicates success, 1 indicates error):</p>
-<table class="tableinfo">
+<table class="information" style="width: 300px;">
   <tr>
-    <th width="100" scope="col">Bit from LSB</th>
-    <th width="200" scope="col">Missing Video Parameter</th>
+    <th class="strong" scope="col" style="width: 100px;">Bit from LSB</th>
+    <th scope="col">Missing Video Parameter</th>
   </tr>
   <tr>
-    <td>0</td>
+    <td class="strong">0</td>
     <td>Title<br /></td>
   </tr>
   <tr>
-    <td>1</td>
+    <td class="strong">1</td>
     <td>Author<br /></td>
   </tr>
   <tr>
-    <td>2</td>
+    <td class="strong">2</td>
     <td>Duration</td>
   </tr>
   <tr>
-    <td>3</td>
+    <td class="strong">3</td>
     <td>Category</td>
   </tr>
   <tr>
-    <td>4</td>
+    <td class="strong">4</td>
     <td>Publised</td>
   </tr>
   <tr>
-    <td>5</td>
+    <td class="strong">5</td>
     <td>Views</td>
   </tr>
   <tr>
-    <td>6</td>
+    <td class="strong">6</td>
     <td>Comments</td>
   </tr>
   <tr>
-    <td>7</td>
+    <td class="strong">7</td>
     <td>Rating</td>
   </tr>
 </table>
 <p>The <em>snapshot</em> table contains the following columns:</p>
-<table class="tableinfo">
+<table class="information">
   <tr>
     <th colspan="3" scope="col">Snapshots Table</th>
   </tr>
   <tr>
-    <th width="200" scope="col">Column Name</th>
-    <th width="200" scope="col">Type</th>
-    <th width="400" scope="col">Description</th>
+    <th style="width: 200px;" scope="col">Column Name</th>
+    <th class="strong" style="width: 200px;" scope="col">Type</th>
+    <th style="width: 400px;" scope="col">Description</th>
   </tr>
   <tr>
     <td>TIMESTAMP</td>
-    <td>DATE</td>
+    <td class="strong">DATE</td>
     <td>The date/time of the crawling</td>
   </tr>
   <tr>
     <td>VIDEO</td>
-    <td>CHAR (11)</td>
+    <td class="strong">CHAR (11)</td>
     <td>YouTube video indentifier</td>
   </tr>
   <tr>
     <td>VIEWS</td>
-    <td>INTEGER</td>
+    <td class="strong">INTEGER</td>
     <td>Number of views at the time of crawling</td>
-    </tr>
+  </tr>
   <tr>
     <td>COMMENTS</td>
-    <td>INTEGER</td>
+    <td class="strong">INTEGER</td>
     <td>Number of comments at the time of crawling</td>
-    </tr>
+  </tr>
   <tr>
     <td>RATING</td>
-    <td>NUMBER (20,10)</td>
+    <td class="strong">NUMBER (20,10)</td>
     <td>Rating at the time of crawling</td>
-    </tr>
+  </tr>
   <tr>
     <td>SLAVE</td>
-    <td>INTEGER</td>
+    <td class="strong">INTEGER</td>
     <td>The identifier of the slave</td>
   </tr>
   <tr>
     <td>ERRORS</td>
-    <td>INTEGER</td>
+    <td class="strong">INTEGER</td>
     <td>The number of crawling errors (see below)</td>
-    </tr>
+  </tr>
   <tr>
     <td>ERROR</td>
-    <td>INTEGER</td>
+    <td class="strong">INTEGER</td>
     <td>The crawling error (see below)</td>
-    </tr>
+  </tr>
   <tr>
     <td>RETRIES</td>
-    <td>INTEGER</td>
+    <td class="strong">INTEGER</td>
     <td>The number of retries (see below)</td>
   </tr>
 </table>
 <p>Note 1: The <em>CRAWL_ERRORS</em> field indicates the number of video parameters that were missing in the YouTube response.</p>
 <p>Note 2: The <em>CRAWL_ERROR</em> field indicates the information that is missing in the YouTube response. The value of this field is a binary map to the missing information, as indicated by the following table (0 indicates success, 1 indicates error):</p>
-<table class="tableinfo">
+<table class="information">
   <tr>
-    <th width="100" scope="col">Bit from LSB</th>
+    <th class="strong" style="width: 100px;" scope="col">Bit from LSB</th>
     <th scope="col">Missing  Video Information</th>
   </tr>
   <tr>
-    <td>0</td>
+    <td class="strong">0</td>
     <td>All information: YouTube did not return a response to the crawling request. When this bit is set to one (1), all other bits are set to zero (0), and the number of errors is set to one (1).<br /></td>
   </tr>
   <tr>
-    <td>1</td>
+    <td class="strong">1</td>
     <td>Views<br /></td>
   </tr>
   <tr>
-    <td>2</td>
+    <td class="strong">2</td>
     <td>Comments</td>
   </tr>
   <tr>
-    <td>3</td>
+    <td class="strong">3</td>
     <td>Rating</td>
   </tr>
 </table>
 <p>Note 3: When any of the video parameters or the video itself was missing in the YouTube response, the slave will automatically retry a limited number of times (by default, 2) to crawl the video during the same crawling session. The<em> RETRIES</em> field indicates the number of retries.</p>
 <h2>Install YouTube Crawler</h2>
 <p><a href="#dload">Download</a> and use the setup MSI file to install YouTube Crawler on your computer. The setup program should detect any dependencies that are missing and you will be prompted to install them. Once you complete this step you can start YouTube Crawler and you are good to go.</p>
-<p class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
+<p class="text-small text-italic text-gray"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
 
-<h1><a name="code" id="code"></a>VI. Code Information</h1>
+<h1><a id="code"></a>VI. Code Information</h1>
 <p>Code information is not yet availabe for the pre-release version.</p>
 
 
-<p class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
+<p class="text-small text-italic text-gray"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
 
-<h1><a name="dload" id="dload"></a>VII. Download Software</h1>
+<h1><a id="dload"></a>VII. Download Software</h1>
 <p>You can download the software installer for the pre-release version of YouTube Crawler.</p>
 <p><a href="../../download/YtCrawlerSetup.msi">Download installer</a> (MSI/2.50 MB)</p>
 <p>For the pre-release version, the code is not yet available for download. <a href="../../contact.html">Contact me</a>, if you wish to obtain the open source code from the latest development build.</p>
 
 
-<p class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
+<p class="text-small text-italic text-gray"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></p>
 
 <p class="update">Last updated: May 26, 2010</p>
 

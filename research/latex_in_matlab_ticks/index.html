@@ -1,33 +1,20 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
+
 <head>
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta name="keywords" content="Alex, Bikfalvi, personal, site, Matlab, plot, LaTeX, axis, tick, label"/>
 <meta name="description" content="Alex Bikfalvi personal web site - Adding LaTeX to Plot Tick Labels in Matlab"/>
-<meta name="copyright" content="Alex Bikfalvi"/>
-<meta name="robots" content="index, follow" />
+<meta name="robots" content="index, follow"/>
 
-<link href="../../images/icon.ico" rel="shortcut icon" />
+<link href="../../images/icon.ico" rel="shortcut icon"/>
 <link href="../../style/style.css" rel="stylesheet" title="Silver stylesheet" type="text/css"/>
 <link href="../../style/mglass.css" rel="stylesheet" type="text/css"/>
 
 <title>Alex Bikfalvi - Adding LaTeX to Plot Tick Labels in Matlab</title>
 
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-24480564-1']);
-  _gaq.push(['_setDomainName', '.bikfalvi.com']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
+<script type="text/javascript" src="../../../../script/ga.js"></script>
 
 <script type="text/javascript" src="../../script/mglass.js"></script>
 
@@ -93,12 +80,12 @@ pre.error {
 
 <div id="back">
 
-<div id="navigation">
-<ul id="nav_main" class="nav">
+<div id="main-menu">
+<ul id="main-menu-list" class="menu">
 <li><a href="../../" accesskey="H"><span class="accesskey">H</span>ome</a></li>
 <li><a href="../../bio.html" accesskey="B"><span class="accesskey">B</span>io</a></li>
 <li><a href="../../contact.html" accesskey="C"><span class="accesskey">C</span>ontact</a></li>
-<li id="nav_index"><a href="../../research.html" accesskey="R"><span class="accesskey">R</span>esearch</a></li>
+<li id="main-menu-selection"><a href="../../research.html" accesskey="R"><span class="accesskey">R</span>esearch</a></li>
 <li><a href="../../projects.html" accesskey="J">Pro<span class="accesskey">j</span>ects</a></li>
 <li><a href="../../pubs.html" accesskey="P"><span class="accesskey">P</span>ublications</a></li>
 <li><a href="../../teaching.html" accesskey="T"><span class="accesskey">T</span>eaching</a></li>
@@ -108,15 +95,15 @@ pre.error {
 
 <div id="path">
 	<ul>
-    	<li id="path_home"><a href="../../" title="Home"><span>Home</span></a></li>
-    	<li class="path_arrow"><a href="../../research.html">Research</a></li>
-    	<li class="path_arrow">Adding LaTeX to Plot Tick Labels in Matlab</li>
+    	<li id="path-home"><a href="../../" title="Home"><span>Home</span></a></li>
+    	<li class="path-arrow"><a href="../../research.html">Research</a></li>
+    	<li class="path-arrow">Adding LaTeX to Plot Tick Labels in Matlab</li>
     </ul>
 </div>
 
-<div id="flag_beta"></div>
+<div class="flag flag-beta"></div>
 
-<div id="main_content">
+<div id="main-content">
 
 <h1>Adding LaTeX to Plot Tick Labels in Matlab</h1>
 
@@ -144,25 +131,25 @@ pre.error {
 <pre>plotTickLatex2D(<span class="string">'argument_name'</span>, argument_value, ...);</pre>
 
 <p>Currently, the following optional arguments are supported:</p>
-<table class="tableinfo" width="960">
+<table class="information" style="width: 960px;">
   <tr>
-    <th width="150" scope="col" class="strong">Argument name</th>
+    <th style="width: 150px;" scope="col" class="strong">Argument name</th>
     <th scope="col">Argument description</th>
   </tr>
   <tr>
-    <td width="150" class="strong"><pre><span class="string">'Axis'</span></pre></td>
+    <td class="strong"><pre><span class="string">'Axis'</span></pre></td>
     <td>A handle of the axis. The default is the current axis.</td>
   </tr>
   <tr>
-    <td width="150" class="strong"><pre><span class="string">'FontSize'</span></pre></td>
+    <td class="strong"><pre><span class="string">'FontSize'</span></pre></td>
     <td>The font size of the tick labels. The default is the font size of the current or specified axis.</td>
   </tr>
   <tr>
-    <td width="150" class="strong"><pre><span class="string">'XLabelDy'</span></pre></td>
+    <td class="strong"><pre><span class="string">'XLabelDy'</span></pre></td>
     <td>An argument of value double, representing a shift of the X-axis label on the vertical direction. The value is in the coordinate system of the figure where the bottom-left is (0,0) and top-right is (1,1).</td>
   </tr>
   <tr>
-    <td width="150" class="strong"><pre><span class="string">'YLabelDx'</span></pre></td>
+    <td class="strong"><pre><span class="string">'YLabelDx'</span></pre></td>
     <td>An argument of value double, representing a shift of the Y-axis label on the horizontal direction. The value is in the coordinate system of the figure where the bottom-left is (0,0) and top-right is (1,1).</td>
   </tr>
 </table>
@@ -180,14 +167,14 @@ pre.error {
 
 <div id="compareResults">
 	<div id="compareResultsBefore">
-		<img id="imageBefore" src="latex_in_matlab_ticks_before_small.png" width="420" height="320" alt="" border="0"/>
+		<img class="no-border" id="imageBefore" src="latex_in_matlab_ticks_before_small.png" width="420" height="320" alt=""/>
 <script type="text/javascript">
 new MGlass("imageBefore","./latex_in_matlab_ticks_before_large.png");
 </script>
         <p>Before</p>
 	</div>
 	<div id="compareResultsAfter">
-		<img id="imageAfter" src="latex_in_matlab_ticks_after_small.png" width="420" height="320" alt="" border="0"/>
+		<img class="no-border" id="imageAfter" src="latex_in_matlab_ticks_after_small.png" width="420" height="320" alt=""/>
 <script type="text/javascript">
 new MGlass("imageAfter","./latex_in_matlab_ticks_after_large.png");
 </script>
@@ -201,15 +188,15 @@ new MGlass("imageAfter","./latex_in_matlab_ticks_after_large.png");
 <p>The current version is limited to two-dimensional plots; three-dimensional plots are not yet supported.</p>
 <h2>Version History</h2>
 
-<table class="tableinfo" width="960">
+<table class="information" style="width: 960px;">
   <tr>
-    <th width="150" scope="col">Version</th>
-    <th width="150" scope="col" class="strong">Date</th>
+    <th style="width: 150px;" scope="col">Version</th>
+    <th style="width: 150px;" scope="col" class="strong">Date</th>
     <th scope="col">Description</th>
   </tr>
   <tr>
-    <td width="150">Beta 1</td>
-    <td width="150" class="strong">August 31, 2011</td>
+    <td>Beta 1</td>
+    <td class="strong">August 31, 2011</td>
     <td>Initial beta release.</td>
   </tr>
   <tr>

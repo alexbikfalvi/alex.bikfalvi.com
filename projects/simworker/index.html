@@ -1,38 +1,25 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
+
 <head>
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta name="keywords" content="Alex, Bikfalvi, personal, site"/>
 <meta name="description" content="Alex Bikfalvi personal web site"/>
-<meta name="copyright" content="Alex Bikfalvi"/>
-<meta name="robots" content="index, follow" />
+<meta name="robots" content="index, follow"/>
 
-<link href="../../images/icon.ico" rel="shortcut icon" />
+<link href="../../images/icon.ico" rel="shortcut icon"/>
 <link href="../../style/style.css" rel="stylesheet" title="Silver stylesheet" type="text/css"/>
 
 <title>Alex Bikfalvi - SimWorker</title>
 
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-24480564-1']);
-  _gaq.push(['_setDomainName', '.bikfalvi.com']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
+<script type="text/javascript" src="../../../../script/ga.js"></script>
 
 </head>
 
 <body>
 
-<a name="top" id="top"></a>
+<a id="top"></a>
 
 <div id="content">
 
@@ -42,13 +29,13 @@
 
 <div id="back">
 
-<div id="navigation">
-<ul id="nav_main" class="nav">
+<div id="main-menu">
+<ul id="main-menu-list" class="menu">
 <li><a href="../../" accesskey="H"><span class="accesskey">H</span>ome</a></li>
 <li><a href="../../bio.html" accesskey="B"><span class="accesskey">B</span>io</a></li>
 <li><a href="../../contact.html" accesskey="C"><span class="accesskey">C</span>ontact</a></li>
 <li><a href="../../research.html" accesskey="R"><span class="accesskey">R</span>esearch</a></li>
-<li id="nav_index"><a href="../../projects.html" accesskey="J">Pro<span class="accesskey">j</span>ects</a></li>
+<li id="main-menu-selection"><a href="../../projects.html" accesskey="J">Pro<span class="accesskey">j</span>ects</a></li>
 <li><a href="../../pubs.html" accesskey="P"><span class="accesskey">P</span>ublications</a></li>
 <li><a href="../../teaching.html" accesskey="T"><span class="accesskey">T</span>eaching</a></li>
 <li><a href="../../events.html" accesskey="E"><span class="accesskey">E</span>vents</a></li>
@@ -57,20 +44,20 @@
 
 <div id="path">
 	<ul>
-    	<li id="path_home"><a href="../../" title="Home"><span>Home</span></a></li>
-    	<li class="path_arrow"><a href="../../projects.html" title="Projects">Projects</a></li>
-    	<li class="path_arrow">SimWorker</li>
+    	<li id="path-home"><a href="../../" title="Home"><span>Home</span></a></li>
+    	<li class="path-arrow"><a href="../../projects.html" title="Projects">Projects</a></li>
+    	<li class="path-arrow">SimWorker</li>
     </ul>
 </div>
 
-<div id="main_content">
+<div id="main-content">
 
 
 <h1 class="title">A Parallel Computation Library for Discrete Event Simulations</h1>
 <p><a href="../../index.html">Alex Bikfalvi</a>, <a href="http://www.it.uc3m.es/~jgr">Jaime García-Reinoso</a></p>
 <h1>Abstract</h1>
 <p>With the advent of multi-core processors, large scale simulations running on desktop-class systems can benefit from true parallel multitasking as opposed to most common time-sharing multitasking. However, most common simulation software is unsuitable to parallel execution due to the dependency chain between different tasks. When such execution is possible, it is usually available only for small sequences of code and spawning a new process or thread to run it parallel will add a significant overhead. This white paper presents a cross-platform library for parallel execution of simulation tasks based on the well-known concept of worker threads.</p>
-<h1><a name="contents" id="contents"></a>On This Page</h1>
+<h1><a id="contents"></a>On This Page</h1>
 <ol type="I">
   <li><a href="#c1">Concept Overview</a></li>
   <li><a href="#c2">Worker Threads</a></li>
@@ -79,7 +66,7 @@
   <li><a href="#c5">Example</a></li>
   <li><a href="#c6">Performance Benefit</a></li>
 </ol>
-<h1><a name="c1" id="c1"></a>I. Concept Overview</h1>
+<h1><a id="c1"></a>I. Concept Overview</h1>
 <p>Our library borrows the concept of <em>worker threads</em>, implemented by the kernel of many operating systems, to create a pool of threads that can - when needed - execute work on the simulator's behalf. These worker threads are created before the simulation starts and are available throughout the simulation interval. When certain pieces of simulation code can be executed in parallel, the simulator  creates a <em>work item</em> that &quot;describes&quot; the work and adds it to the queue of any worker thread. If the thread is busy executing other code, the new work item gets postponed until the thread becomes available.</p>
 <p>Design requirements:</p>
 <ul>
@@ -87,13 +74,13 @@
   <li>A worker thread <em>resumes</em> execution only when a new work item is added to its queue.</li>
   <li>The main simulation thread that created the work item can <em>wait</em> for the completion of the work item (again, the wait does not consume any CPU cycles).</li>
 </ul>
-<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
-<h1><a name="c2" id="c2"></a>II. Worker Threads</h1>
+<p><span class="text-small text-italic text-gray"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<h1><a id="c2"></a>II. Worker Threads</h1>
 <p>The simulator can start a number of worker threads at the beginning of the simulation and stop them at the end. The following two classes implement a worker thread and a set of worker threads respectively.</p>
-<table width="700" border="0" cellpadding="0" cellspacing="0" class="tableinfo">
+<table class="information" style="width: 700px;">
   <tr>
-    <th width="150" class="strong">Class</th>
-    <th width="550">Description</th>
+    <th class="strong" style="width: 150px;">Class</th>
+    <th style="width: 550px;">Description</th>
   </tr>
   <tr>
     <td class="strong"><a href="code/html/class_c_sim_worker.html">CSimWorker</a></td>
@@ -105,26 +92,26 @@
   </tr>
 </table>
 <p>For each worker thread, you can specify a worker <em>queue size</em> where new work items can be stored while the thread is busy. For performance reasons, the worker queue has a fixed size for the lifetime of the worker thread. In order to set an adequate value for the queue size that can accommodate your application, keep in mind that every entry in the worker thread queue is <em>only</em> a pointer to a work item. For example, on a 32-bit system a queue size with 1000 entries will use only 4 KB of memory.</p>
-<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
-<h1><a name="c3" id="c3"></a>III. Work Items</h1>
+<p><span class="text-small text-italic text-gray"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<h1><a id="c3"></a>III. Work Items</h1>
 <p>A work item is an object that encapsulates the work to be performed by the worker thread. Because we are using C++, a work item contains the following information:</p>
 <ul>
   <li>The <em>object</em> and the <em>function pointer</em> the worker thread will call to execute the work item.</li>
   <li>Two <em>formal parameters</em>, one for input and one for output.</li>
   </ul>
-<div class="boxinfo">
+<div class="box-icon box-icon-information">
   <p><strong>Why do we use both an object and a function pointer inside a work item?</strong></p>
   <p>As opposed to C, where we normally would only need a function pointer, using C++ and calling a function in the context of an object, allows us to share with that function (which is executing on the worker thread) any data that would normally be available to that object. This minimizes the number of formal parameters that have to be sent through the stack, and much of the data can be shared natively. Keep in mind you have to synchronize shared data, though!</p>
 </div>
-<div class="boxinfo">
+<div class="box-icon box-icon-information">
   <p><strong>What do I do if I need more (or less) parameters for my work item function?</strong></p>
   <p>1. Use a structure or a class for each parameter, or;</p>
   <p>2. Derive the <a href="code/html/class_c_sim_work_item.html">CSimWorkItem</a> base class and make your own template with more (or less) parameters (use the current <a href="code/html/class_c_sim_work_item_impl.html">CSimWorkItemImpl</a> class as a model).</p>
 </div>
-<table width="700" border="0" cellpadding="0" cellspacing="0" class="tableinfo">
+<table class="information" style="width: 700px;">
   <tr>
-    <th width="150" class="strong">Class</th>
-    <th width="550">Description</th>
+    <th class="strong" style="width: 150px;">Class</th>
+    <th style="width: 550px ">Description</th>
   </tr>
   <tr>
     <td class="strong"><a href="code/html/class_c_sim_work_item.html">CSimWorkItem</a><a href="code/html/class_c_sim_worker.html"></a></td>
@@ -135,35 +122,35 @@
     <td>Derived class for a specific work item object for a function with two formal parameters.</td>
   </tr>
 </table>
-<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
-<h1><a name="c4" id="c4"></a>IV. Work Dispatching and Synchronization</h1>
+<p><span class="text-small text-italic text-gray"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<h1><a id="c4"></a>IV. Work Dispatching and Synchronization</h1>
 <p>After creating and starting a set of worker threads, the simulator can use them as follows:</p>
 <ul>
   <li>Create one or more work items.</li>
   <li>Enqueue the work items to the worker thread or threads. If the simulator uses a set of worker threads (<a href="code/html/class_c_sim_workers.html">CSimWorkers</a> class), the work items are allocated to the existing worker threads in a round-robin fashion. </li>
   <li>Wait for the work items to complete.</li>
   </ul>
-<div class="boxwarning">
+<div class="box-icon box-icon-warning">
   <p><strong>How does the simulator  wait for the work items to complete?</strong></p>
   <p>Every work item has a <em>wait</em> function. The function is blocking, meaning the simulator thread is suspended until the corresponding work item finishes execution on the worker thread.</p>
   <p class="newitem">With the current implementation, on UNIX-based systems the simulator must wait for work items to complete in the same order as they were scheduled to worker threads, otherwise the program will deadlock. On Windows there is no restriction. Why? The worker thread may <strong>only</strong> signal the completion of the work item when the simulator thread waits for its completion (the signal condition on the worker thread  requires locking a mutex that is only unlocked by the wait on the simulator thread). Likewise, the simulator thread may <strong>only</strong> purposefully wait when it is expected that the worker thread will signal the completion of the work item (if the waiting simulator thread misses the signal it will wait indefinitely).</p>
 <p>Note: it is possible to change the synchronization logic for POSIX implementation to make it more flexible.</p>
 </div>
 <p>To synchronize shared variables across multiple threads, the simulator can use a mutual exclusion object (i.e. a mutex). When requiring exclusive access to a resource, a thread may <em>lock</em> the mutex. Upon finishing access to the shared resource, the thread will <em>unlock</em> the mutex to make the resource available for other threads. When locking, if the same resource is in use by another thread and the mutex is already locked, the lock function will block the thread until the mutex is unlocked. To test if a shared resource is available or not, a thread can use <em>try lock</em>, which always returns immediately and indicates whether a lock on the mutex has been acquired.</p>
-<table width="700" border="0" cellpadding="0" cellspacing="0" class="tableinfo">
+<table class="information" style="width: 700px;">
   <tr>
-    <th width="150" class="strong">Class</th>
-    <th width="550">Description</th>
+    <th class="strong" style="width: 150px;">Class</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td class="strong"><a href="code/html/class_c_sim_mutex.html">CSimMutex</a><a href="code/html/class_c_sim_worker.html"></a></td>
     <td>Class for mutex objects.</td>
   </tr>
 </table>
-<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
-<h1><a name="c5" id="c5"></a>V. Example</h1>
+<p><span class="text-small text-italic text-gray"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<h1><a id="c5"></a>V. Example</h1>
 <p>The following is an example on how simple it is to use worker threads in a program. The following program uses 10 worker threads to calculate the square  of the first 1000 natural numbers and prints each result on the screen.</p>
-<div class="boxcode">
+<div class="box-code">
   <pre>
 <span class="preprocessor">#include</span> <span class="stringliteral">&lt;iostream&gt;</span>
 <span class="preprocessor">#include</span> <span class="stringliteral">&quot;SimWorkers.h&quot;</span>
@@ -248,7 +235,7 @@
 }
 </pre></div>
 <p>The output is (numbers are not in order as the work items execute asynchronously): </p>
-<div class="boxcode"><pre>
+<div class="box-code"><pre>
 Starting simulator worker threads : 0 1 2 3 4 5 6 7 8 9 done!
 6^2 = 36
 8^2 = 64
@@ -282,11 +269,11 @@ Starting simulator worker threads : 0 1 2 3 4 5 6 7 8 9 done!
 24^2 = 576
 ...
 </pre></div>
-<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
-<h1><a name="c6" id="c6"></a>VI. Performance Benefit</h1>
+<p><span class="text-small text-italic text-gray"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<h1><a id="c6"></a>VI. Performance Benefit</h1>
 <p>The following figure illustrates the execution time of a discrete event simulation for P2P IPTV streaming. This simulator code is essentially the same with the exception that certain tasks are executed in parallel using 10 worker threads on a 16 core system.</p>
 <p><img src="compare.png" width="560" height="420" alt="Comparison" /></p>
-<p><span class="pub_link"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
+<p><span class="text-small text-italic text-gray"><a href="#top">Go to top</a> | <a href="#contents">Go to contents</a></span></p>
 <p class="update">Last updated: March 6, 2011</p>
 
 </div>

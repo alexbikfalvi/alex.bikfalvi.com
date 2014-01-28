@@ -1,37 +1,24 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<!DOCTYPE html>
+<html>
 
 <head>
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta name="keywords" content="Alex, Bikfalvi, personal, site"/>
 <meta name="description" content="Alex Bikfalvi personal web site"/>
-<meta name="copyright" content="Alex Bikfalvi"/>
-<meta name="robots" content="index, follow" />
+<meta name="robots" content="index, follow"/>
 <meta name="msvalidate.01" content="957C624DE0B8F34DF16350AA65A260CE" />
 <meta name="y_key" content="9364acaf6984bd9a" />
 
-<link href="images/icon.ico" rel="shortcut icon" />
+<link href="images/icon.ico" rel="shortcut icon"/>
 <link href="style/style.css" rel="stylesheet" title="Silver stylesheet" type="text/css"/>
 <link href="style/index.css" rel="stylesheet" type="text/css"/>
+<link href="style/links.css" rel="stylesheet" type="text/css"/>
+<link href="style/carousel.css" rel="stylesheet" type="text/css"/>
 
 <title>Alex Bikfalvi - Home</title>
 
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-24480564-1']);
-  _gaq.push(['_setDomainName', '.bikfalvi.com']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-
+<script type="text/javascript" src="script/ga.js"></script>
 <script type="text/javascript" src="script/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="script/jcarousel.js"></script>
 <script type="text/javascript" src="script/carousel.js"></script>
@@ -55,9 +42,9 @@ h2 { zoom: 1;}
 
 <div id="back">
 
-<div id="navigation">
-<ul id="nav_main" class="nav">
-<li id="nav_index"><a href="./" accesskey="H"><span class="accesskey">H</span>ome</a></li>
+<div id="main-menu">
+<ul id="main-menu-list" class="menu">
+<li id="main-menu-selection"><a href="./" accesskey="H"><span class="accesskey">H</span>ome</a></li>
 <li><a href="./bio.html" accesskey="B"><span class="accesskey">B</span>io</a></li>
 <li><a href="./contact.html" accesskey="C"><span class="accesskey">C</span>ontact</a></li>
 <li><a href="./research.html" accesskey="R"><span class="accesskey">R</span>esearch</a></li>
@@ -75,6 +62,21 @@ h2 { zoom: 1;}
         <p><a href="bio.html" title="Go to my bio web page.">I</a> am a post-doctoral researcher and engineer in telecommunications at the <a href="http://www.nets.upf.edu/" title="Go to the web site of NeTS research group." target="_blank" class="external">Network Technologies and Strategies</a> research group from <a href="http://www.upf.edu/" title="Go to the web site of the Pomepu Fabra University." target="_blank" class="external">Pompeu Fabra University</a> in <a href="http://www.bcn.es/" title="Go to the web site of Barcelona city hall." target="_blank" class="external">Barcelona</a>, <a href="http://www.gencat.cat/index_eng.htm" title="Go to the web site of Catalonia regional government." target="_blank" class="external">Catalonia</a>, <a href="http://www.spain.info/" title="Go to the web site of Spain tourist office." target="_blank" class="external">Spain</a>.</p>
         <p>My <a href="research.html" title="Check out my research work.">research</a> focuses on Internet measurements and the analysis of modern <a href="http://en.wikipedia.org/wiki/Content_delivery_network" target="_blank" class="external">content distribution</a> architectures. At the Pompeu Fabra University, I started an <a href="http://inetanalytics.nets.upf.edu" target="_blank" class="external">Internet Analytics</a> project for distributed measurements, and I am collaborating on the <a href="http://mercury.upf.edu" target="_blank" class="external">Mercury</a> project targeting the Internet topology.</p>
         <p><a href="bio.html" title="More information about me.">Read more...</a></p>
+      </div>
+    </li>
+    <li>
+      <div class="carousel-content" style="background-image:url(images/banner_planetlab.png);">
+      	<p>The software that makes it easy to manage your PlanetLab experiments.</p>
+        <p>The PlanetLab Manager is a desktop application that allows you to configure the PlanetLab site, nodes and slices for your experiments. Using the integrated secure shell (SSH) console you can run commands directly on the PlanetLab nodes.</p>
+        <p><a href="projects/inetanalytics/planetlab" title="Go to the PlanetLab Manager web page.">More information...</a></p>
+      </div>
+    </li>
+    <li>
+      <div class="carousel-content" style="background-image:url(images/banner_mercury.png);">
+      	<p>Today, the Internet Service Provider (ISP) market is very competitive.</p>
+        <p>When ISPs lure their customers with the latest best offers, a questions that begs for answers is: how well is your ISP connected to your favorite web sites?</p>
+        <p>Help us find out, by joining our Mercury Internet measurement project and testing your Internet connection.</p>
+        <p><a href="projects/inetanalytics/mercury" title="Collaborate to the Mercury Internet measurement project.">I want to participate...</a></p>
       </div>
     </li>
     <li>
@@ -114,7 +116,7 @@ h2 { zoom: 1;}
         <p><a href="research/phd/" title="Go to the page of my doctoral defense.">Go to the defense page...</a></p>
       </div>
     </li>
-    <li>
+<!--    <li>
       <div class="carousel-content" style="background-image:url(images/banner_pilot53.png);">
         <p>Your assistant to drive on <a href="http://aws.amazon.com/" title="Go to the web site of Amazon Web Services." target="_blank" class="external">Amazon Web Services</a> Route 53.</p>
         <p>A free GUI application to help you manage your <a href="http://aws.amazon.com/route53/" title="Go to the web page of AWS Route 53." target="_blank" class="external">Route 53</a> account. You can configure your DNS zones and resource records from a single, flexible and easy to use interface.</p>
@@ -131,7 +133,7 @@ h2 { zoom: 1;}
         <li><a href="http://dev.bikfalvi.com" title="Go to my development web site.">dev.bikfalvi.com</a> - free code...</li>
         </ul>
       </div>
-    </li>
+    </li>-->
   </ul>
   <div id="carousel-control">
   	<a href="#"><span>1</span></a>
@@ -140,30 +142,30 @@ h2 { zoom: 1;}
   	<a href="#"><span>4</span></a>
   	<a href="#"><span>5</span></a>
   </div>
-  <div id="sidebar-home">
+  <div id="side-bar-news">
   	<h1>Latest News and Events</h1>
-    <div class="sidebar-event">
-    	<p class="sidebar-date">October 4, 2013</p>
+    <div class="side-bar-news-event">
+    	<p class="side-bar-date">October 4, 2013</p>
         <p>The talk <a href="papers/imc2013.html">Rethinking PlanetLab for Internet Measurements</a> by <a href="http://www.nets.upf.edu/node/314" target="_blank" class="external">Manuel Palacin</a> has been accepted in the News and Community Feedback Session of the <a href="http://conferences.sigcomm.org/imc/2013/" title="Go to the 2013 Internet Measurement Conference web site" target="_blank" class="external">2013 Internet Measurement Conference</a>.</p>
     </div>
-    <div class="sidebar-event">
-    	<p class="sidebar-date">June 20, 2013</p>
+    <div class="side-bar-news-event">
+    	<p class="side-bar-date">June 20, 2013</p>
         <p>The paper <a href="papers/jip2013.html">The Impact of Content Delivery Networks on the Internet Ecosystem</a> has been accepted for publication in the <a href="http://jip.vmhost.psu.edu/ojs/index.php/jip/" title="Go to the Journal of Information Policy home page" target="_blank" class="external">Journal of Information Policy</a> by <a href="http://jip.vmhost.psu.edu/ojs/" title="Go to the Open Journals System home page" target="_blank" class="external">Open Journals System</a>.</p>
     </div>
-    <div class="sidebar-event">
-    	<p class="sidebar-date">February 18, 2013</p>
+    <div class="side-bar-news-event">
+    	<p class="side-bar-date">February 18, 2013</p>
         <p>Open positions for junior research engineers at the <a href="http://www.nets.upf.edu/" title="Check out the NeTS group web site." target="_blank" class="external">NeTS research group</a> from the <a href="http://www.upf.edu/" title="Check out the UPF web site." target="_blank" class="external">Pompeu Fabra University</a>. <a href="http://www.nets.upf.edu/openings/" title="Go to the NeTS recruiting web page." target="_blank" class="external">Check out the details and apply.</a></p>
     </div>
-    <div class="sidebar-event">
-        <p class="sidebar-date">July 18, 2012</p>
+    <div class="side-bar-news-event">
+        <p class="side-bar-date">July 18, 2012</p>
         <p>The defense of my <a href="research/phd/" title="Go to the web page of my doctoral dissertation.">doctoral dissertation</a>, titled <a href="research/phd/dissertation/" title="Read my doctoral dissertation online.">Peer-to-Peer Television for the IP Multimedia Subsystem</a>, which will take place at 11:00 AM in <a href="research/phd/map/" title="View the map." target="_blank">Aula de Grados</a> from the Leganés campus of <a href="http://www.uc3m.es/" title="Go to the web site of the Carlos III University." target="_blank" class="external">Carlos III University</a>.</p>
     </div>
-    <p class="sidebar-more"><a href="events.html" title="Go to the events web page.">See more events</a></p>
-    <p class="sidebar-more"><a href="http://alex.bikfalvi.com/events.xml" type="application/rss+xml" rel="alternate" title="Subscribe to my news and events RSS feed." target="_blank">Subscribe to RSS feed</a></p>
+    <p class="side-bar-news-more"><a href="events.html" title="Go to the events web page.">See more events</a></p>
+    <p class="side-bar-news-more"><a href="http://alex.bikfalvi.com/events.xml" type="application/rss+xml" rel="alternate" title="Subscribe to my news and events RSS feed." target="_blank">Subscribe to RSS feed</a></p>
   </div>
 </div>
 
-<div id="main_content">
+<div id="main-content">
 	<h1>Featured Apps</h1>
     <div class="featured-item">
         <div class="featured-item-image"><a href="projects/ytanalytics"><img src="images/ytanalytics.png" width="160" height="160" alt="YT Analytics"/></a></div>
@@ -200,7 +202,7 @@ h2 { zoom: 1;}
 		</ul>
   	</div>
 
-	<p class="update">Last updated: October 10, 2013</p>
+	<p class="update">Last updated: January 27, 2013</p>
 </div>
 </div>
 

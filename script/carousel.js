@@ -1,12 +1,14 @@
-var numCarouselItems = 5;
+var numCarouselItems = 0;
 
 function carouselInitCallback(carousel)
 {
+	// Set the number of carousel items.
+	numCarouselItems = $('#carousel-control a').length;
+	
     // Disable autoscrolling if the user clicks the prev or next button.
     carousel.buttonNext.bind('click', function() {
         carousel.startAuto(0);
     });
-
     carousel.buttonPrev.bind('click', function() {
         carousel.startAuto(0);
     });
@@ -31,7 +33,7 @@ function carouselItemVisibleOutCallback(carousel, listItem, listIndex, state) {
 	$($('#carousel-control').children()[(listIndex - 1) % numCarouselItems]).css('background-position','0 0');
 }
 
-jQuery(document).ready(function() {
+$(document).ready(function() {
     $('#carousel').jcarousel({
         auto: numCarouselItems,
         wrap: 'both',

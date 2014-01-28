@@ -238,7 +238,7 @@ a:hover.external{
 	text-align:center;
 }
 
-.infobox_container {
+.infobox-container {
 	border:none;
 	-webkit-border-radius: 100% / 8px;
 	-moz-border-radius: 100% / 8px;
@@ -281,12 +281,12 @@ a:hover.external{
 	background: linear-gradient(top, #FAFAFA 0%,#DDDDDD 100%);
 }
 
-.infoboximage {
+.infobox-image {
 	float:left;
 	overflow: hidden;
 }
 
-.infoboxtitle {
+.infobox-title {
 	width:286px;
 	text-align:center;
 	color: #444;

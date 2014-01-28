@@ -7,7 +7,7 @@
 	text-align:center;
 }
 
-.infobox_container {
+.infobox-container {
 	border:none;
 	-webkit-border-radius: 100% / 8px;
 	-moz-border-radius: 100% / 8px;
@@ -63,12 +63,12 @@
 	background-repeat:no-repeat;
 }
 
-.infoboximage {
+.infobox-image {
 	float:left;
 	overflow: hidden;
 }
 
-.infoboxtitle {
+.infobox-title {
 	display:block;
 	width:186px;
 	height:40px;
@@ -91,6 +91,14 @@
 	color:#333;
 }
 
-.infoboxtext p{
+.infoboxtext p {
 	margin-top:5px;
+}
+
+table {
+	width: 960px;
+}
+
+table.2-columns tr th:first-child {
+	width: 200px;
 }
