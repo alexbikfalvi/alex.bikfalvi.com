@@ -1,9 +1,51 @@
 /* Fonts */
 @font-face {
-	font-family:"Open Sans";
-	src:url("fonts/OpenSans-Regular.eot?") format("eot"),url("fonts/OpenSans-Regular.woff") format("woff"),url("fonts/OpenSans-Regular.ttf") format("truetype"),url("fonts/OpenSans-Regular.svg#OpenSans") format("svg");
-	font-weight:normal;
-	font-style:normal;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Light'), local('OpenSans-Light'), url('fonts/OpenSans-Light.woff') format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url('fonts/OpenSans-Normal.woff') format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url('fonts/OpenSans-Semibold.woff') format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url('fonts/OpenSans-Bold.woff') format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Open Sans Light Italic'), local('OpenSansLight-Italic'), url('fonts/OpenSans-Light-Italic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Open Sans Italic'), local('OpenSans-Italic'), url('fonts/OpenSans-Normal-Italic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 600;
+  src: local('Open Sans Semibold Italic'), local('OpenSans-SemiboldItalic'), url('fonts/OpenSans-Semibold-Italic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Open Sans Bold Italic'), local('OpenSans-BoldItalic'), url('fonts/OpenSans-Bold-Italic.woff') format('woff');
 }
 
 /* Page */
@@ -13,7 +55,7 @@ html {
 body {
 	line-height:1.35em;
 	font-family: 'Open Sans',arial,sans-serif;
-	font-size: 12px;
+	font-size: 13px;
 	margin:0;
 	background-repeat: no-repeat;
 	background: #aeaeae; /* Old browsers */
@@ -27,7 +69,7 @@ body {
 h1 {
 	color:#222;
 	font-size:18px;
-	font-weight:300;
+	font-weight:400;
 	line-height:1.2em;
 }
 h2 {
@@ -41,6 +83,9 @@ h3 {
 	font-size:14px;
 	font-weight:300;
 	padding-left:10px;
+}
+b {
+	font-weight: 600;
 }
 pre {
 	font-family:Consolas,Menlo,Monaco,"Lucida Console","Liberation Mono","DejaVu Sans Mono","Bitstream Vera Sans Mono","Courier New",monospace,serif;
@@ -162,20 +207,14 @@ table.publication p {
 
 /* Content */
 #content {
-	width:1020px;
-	padding-top:0;
-	padding-bottom:0;
-	padding-left:0;
-	padding-right:0;
+	width: 1020px;
+	padding: 0
 	margin: 0 auto;
 	overflow:hidden;
 }
 #header {
 	clear:both;
-	padding-top:0;
-	padding-right:0;
-	padding-bottom:135px;
-	padding-left:0;
+	padding: 0 0 135px;
 	background-image:url(../images/back_top.png);
 	background-repeat:no-repeat;
 	background-position:0px 0px;
@@ -207,22 +246,90 @@ table.publication p {
 	background-image:url(../images/back_middle.png);
 	background-repeat:repeat-y;
 	background-position:0px 0px;
-	padding-bottom:0;
-	padding-left:10px;
-	padding-right:0;
-	padding-top:0;
-	float:left;
-	width:1020px;
-	overflow:hidden;
+	padding: 0 10px;
+	width: 1020px;
+	overflow: hidden;
 }
 #main-content {
+	margin: 0 20px;
+	width: 960px;
 	overflow: hidden;
-	margin-left:20px;
-	float:left;
-	width:960px;
 }
-#main-content p{
-	text-align:justify;
+#main-content p {
+	text-align: justify;
+}
+#columned-content {
+	width: 1000px;
+}
+#columned-content .font-large {
+	font-size: 16px;
+	line-height: 1.5em;
+}
+#columned-content .font-large h1 {
+	color: #003070;
+	font-size: 2em;
+	font-weight: 300;
+}
+#columned-content .justify p {
+	text-align: justify;
+}
+#columned-content .row {
+	width: 1000px;
+	margin: 10px 0;
+	overflow: auto;
+}
+#columned-content .row > div {
+	float: left;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+#columned-content .row .col-1 {
+	width: 100px;
+}
+#columned-content .row .col-2 {
+	width: 200px;
+}
+#columned-content .row .col-3 {
+	width: 300px;
+}
+#columned-content .row .col-4 {
+	width: 400px;
+}
+#columned-content .row .col-5 {
+	width: 500px;
+}
+#columned-content .row .col-6 {
+	width: 600px;
+}
+#columned-content .row .col-7 {
+	width: 700px;
+}
+#columned-content .row .col-8 {
+	width: 800px;
+}
+#columned-content .row .col-9 {
+	width: 900px;
+}
+#columned-content .row .padding-left {
+	padding-left: 20px;
+}
+#columned-content .row .padding-right {
+	padding-right: 20px;
+}
+#columned-content .row .justify-left {
+	float: left;
+}
+#columned-content .row .justify-right {
+	float: right;
+}
+#columned-content hr.divider {
+	width: 1000px;
+	height: 1px;
+	margin: 0;
+	border: 0;
+	background-image: url(../images/path_back.png);
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
 /* Side content */
@@ -292,7 +399,7 @@ table.publication p {
 	font-size:21px;
 }
 .figure {
-	font-size: 11px;
+	font-size: 12px;
 	font-style: italic;
 	color: #666;
 	line-height: normal;
@@ -301,11 +408,11 @@ table.publication p {
 .date {
 	color:#666;
 	font-style:italic;
-	font-size:11px;
+	font-size:12px;
 }
 .update {
 	color:#999;
-	font-size:11px;
+	font-size:12px;
 }
 .accesskey {
 	border:0;
@@ -327,7 +434,7 @@ table.publication p {
 	line-height:1em;
 }
 .text-small {
-	font-size:11px;
+	font-size:12px;
 }
 .text-italic {
 	font-style:italic;
@@ -390,7 +497,7 @@ table.publication p {
 
 /* Path */
 #path {
-	font-size:11px;
+	font-size:12px;
 	color:#999;
 	margin-left:20px;
 	width:960px;
@@ -421,7 +528,6 @@ table.publication p {
 	background-image:url(../images/path_arrow.png);
 	background-repeat:no-repeat;
 	background-position:left;
-	padding-top:2px;
 }
 #path-home a{
 	display:block;
