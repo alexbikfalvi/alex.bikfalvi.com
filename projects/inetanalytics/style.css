@@ -4,3 +4,10 @@
 	background-image: url(../../images/projects/back_top_inetanalytics.png);
 }
 
+#header.mercury {
+	background-image: url(../../images/projects/back_top_mercury.png);
+}
+
+#footer.inetanalytics {
+	background-image: url(../../images/projects/back_bottom_inetanalytics.png);
+}
