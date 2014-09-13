@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="keywords" content="Alex, Bikfalvi, personal, site"/>
+<meta name="description" content="Alex Bikfalvi personal web site"/>
+<meta name="robots" content="index, follow"/>
+
+<link href="../../../images/icon.ico" rel="shortcut icon"/>
+<link href="../../../style/style.css" rel="stylesheet" title="Silver stylesheet" type="text/css"/>
+<link href="../../../style/carousel.css" rel="stylesheet" type="text/css"/>
+<link href="../style.css" rel="stylesheet" type="text/css"/>
+
+<title>Alex Bikfalvi - Internet Analytics</title>
+
+<script type="text/javascript" src="../../../script/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../../../script/jcarousel.js"></script>
+<script type="text/javascript" src="../../../script/ga.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#carousel').jcarousel();
+});
+</script>
+
+</head>
+
+<body>
+
+<div id="content">
+
+<div id="header" class="inetanalytics">
+<p class="hidden">Alex Bikfalvi - Internet Analytics</p>
+</div>
+
+<div id="back">
+
+<div id="main-menu">
+<ul id="main-menu-list" class="menu">
+<li><a href="../../../" accesskey="H"><span class="accesskey">H</span>ome</a></li>
+<li><a href="../../../bio.html" accesskey="B"><span class="accesskey">B</span>io</a></li>
+<li><a href="../../../contact.html" accesskey="C"><span class="accesskey">C</span>ontact</a></li>
+<li><a href="../../../research.html" accesskey="R"><span class="accesskey">R</span>esearch</a></li>
+<li id="main-menu-selection"><a href="../../../projects.html" accesskey="J">Pro<span class="accesskey">j</span>ects</a></li>
+<li><a href="../../../pubs.html" accesskey="P"><span class="accesskey">P</span>ublications</a></li>
+<li><a href="../../../teaching.html" accesskey="T"><span class="accesskey">T</span>eaching</a></li>
+<li><a href="../../../events.html" accesskey="E"><span class="accesskey">E</span>vents</a></li>
+</ul>
+</div>
+
+<div id="banner">
+  <ul id="carousel" class="jcarousel-skin-style jcarousel-next-disabled-horizontal">
+    <li>
+      <div class="carousel-content" style="background-image:url(../../../images/banner_planetlab.png);">
+      	<p>The software that makes it easy to manage your PlanetLab experiments.</p>
+        <p>The PlanetLab Manager is a desktop application that allows you to configure the PlanetLab site, nodes and slices for your experiments. Using the integrated secure shell (SSH) console you can run commands directly on the PlanetLab nodes.</p>
+        <p>
+        	<a class="button button-primary" href="#download" role="button">Download</a>
+        	<a class="button button-primary" href="#howto" role="button">How It Works</a>
+        </p>        
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div id="path">
+	<ul>
+    	<li id="path-home"><a href="../../../" title="Home"><span>Home</span></a></li>
+    	<li class="path-arrow"><a href="../../../projects.html">Projects</a></li>
+    	<li class="path-arrow"><a href="../">Internet Analytics</a></li>
+      <li class="path-arrow">PlanetLab Manager</li>
+    </ul>
+</div>
+
+<div id="columned-content">
+	<a id="download"></a>  
+	<div class="row">
+  	<div class="col-third font-medium">
+    	<h1>How Does It Work?</h1>
+      <p>Have you ever run distributed Internet experiments using PlanetLab? Have you ever wondered how you can focus on your research questions, rather than how to connect and manage your PlanetLab nodes? The PlanetLab Manager is your answer.</p>
+      <p>The PlanetLab Manager uses the PlanetLab API to help you setup and manager your PlanetLab experiments from a single desktop application.</p>
+      <p>Its user interface offers a superior visual information, compared to the standard PlanetLab web site, making it easier to select the sites and nodes, which are relevant for your experiment.</p>
+    </div>
+    <div class="col-third font-medium">
+    	<h1>What Do You Need?</h1>
+      <p>To use the PlanetLab Manager, you need a valid PlanetLab account. To run distributed experiments, you also need a PlanetLab slice configured for your account. If you do not have one, ask the principal investigator (PI) of your site to create one for you.</p>
+      <p>The PlanetLab Manager software requires Microsoft Windows, version XP or newer, and .NET Framework 4.0.</p>
+    </div>
+    <div class="col-third font-medium">
+    	<h1>Try It Yourself!</h1>
+      <p><a class="button button-danger" href="../../../download/PlanetLabManager_1_0_beta.exe" role="button">Download Windows Installer</a></p>
+      <p>MSI Windows Installer Executable / 2.50 MB</p>
+      <p><a class="button button-danger" href="../../../download/PlanetLabManager_1_0_beta.zip" role="button">Download ZIP Archive</a></p>
+      <p>ZIP Compressed Archive / 863 KB</p>
+    </div>
+  </div>
+  <hr class="divider"/>
+	<a id="howto"></a>  
+	<div class="row">
+  	<div class="col-3-padding-left font-large">
+    	<h1>Configure Your Account</h1>
+      <p>You begin using the PlanetLab Manager by configuring your account. You need to be a member of a university or research institution currently hosting a PlanetLab site.<p>
+      <p>Once configured, the PlanetLab Manager will save these credentials on your computer, such that your account is readily available the next time you start the application.</p>
+      <p>But do not worry! The program stores your username and password in encypted form, such that they are available only to you.</p>
+    </div>
+    <div class="col-7">
+    	<img src="PlmAccount.png" class="justify-right" alt="Configure Your PlanetLab Account."/>
+    </div>
+  </div>
+  <hr class="divider"/>
+	<div class="row">
+    <div class="col-7">
+    	<img src="PlmSites.png" class="justify-left" alt="View the PlanetLab Sites."/>
+    </div>
+  	<div class="col-3-padding-right font-large">
+    	<h1>Visualize the PlanetLab Slices</h1>
+      <p>This view illustrates the geographical location of the PlanetLab sites. It helps you plan your experiment, especially for reasearch where the distribution of computing nodes is of particular interest.</p>
+      <p>An integrated search tool enables you to easily find sites that are of interest to you. You can inspect sites' information and verify the number of available nodes.</p>
+      <p>You can even export the sites' data, to include it in your research work!</p>
+    </div>
+  </div>
+  <hr class="divider"/>
+	<div class="row">
+  	<div class="col-3-padding-left font-large">
+    	<h1>Browse the PlanetLab Nodes</h1>
+      <p>But sometimes the geography of your experiment is less important.</p>
+      <p>When you are only interest to deploy your experiment to a distributed test-bed, use the nodes view that enables you to quickly find available PlanetLab nodes.</p>
+      <p>Of course, you can also use it to verify the health of a particular site.</p>
+    </div>
+    <div class="col-7">
+    	<img src="PlmNodes.png" class="justify-right" alt="View the PlanetLab Nodes."/>
+    </div>
+  </div>
+  <hr class="divider"/>
+	<div class="row">
+    <div class="col-7">
+    	<img src="PlmSlices.png" class="justify-left" alt="View the PlanetLab Slices."/>
+    </div>
+  	<div class="col-3-padding-right font-large">
+    	<h1>Organize Your Slices</h1>
+      <p>A slice is the gateway to deploying a PlanetLab experiment. Once setup by your principal investigator (PI), you can add it to the PlanetLab nodes, giving you the necessary permissions to connect and execute programs.</p>
+      <p>By default, the program will only show the slices that you currently can manage. However, you can add other slices as well, if you expect to be given permissions for those slices in the future.</p>
+    </div>
+  </div>    
+  <hr class="divider"/>
+	<div class="row">
+  	<div class="col-3-padding-left font-large">
+    	<h1>Setup Your Experiment</h1>
+      <p>The slice management interface enables you to choose the nodes for your slice, which are relevant for your experiment.<p>
+      <p>PlanetLab node selection is available by location, status or slice, simplifying the configuration of slices with many nodes.</p>
+      <p>Node status is displayed in real-time, informing you on which nodes are unavailable at the moment.</p>
+    </div>
+    <div class="col-7">
+    	<img src="PlmSlice.png" class="justify-right" alt="Configure Your PlanetLab Slice."/>
+    </div>
+  </div>
+  <hr class="divider"/>
+	<div class="row">
+    <div class="col-7">
+    	<img src="PlmSession.png" class="justify-left" alt="Connect to PlanetLab Nodes."/>
+    </div>
+  	<div class="col-3-padding-right font-large">
+    	<h1>Run Your Research</h1>
+      <p>Once you configured your slice, there is no need to switch to a different tool!<p>
+      <p>The integrated Secure Shell console enables you to immediately create an SSH connection to the nodes you have just configured.</p>
+      <p>Secure sessions to multiple nodes are maintained in parallel, making it easy to switch between different nodes, execute programs simultaneously, or compare data results.</p>
+    </div>
+  </div>  
+</div>
+
+<div id="main-content">
+
+<p class="update">Last updated: February 13, 2014</p>
+
+</div>
+</div>
+
+<div id="footer">
+<p><a href="../../../accessibility.html" title="Accessibility">Accessibility</a> | <a href="../../../copyright.html" title="Copyright Information">Copyright Information</a></p>
+</div>
+
+</div>
+
+</body>
+</html>

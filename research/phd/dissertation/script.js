@@ -16,6 +16,6 @@ function CreateDocument()
 	var elParent = document.getElementById('document');
 	var elIframe = document.createElement('iframe');
 	elIframe.setAttribute('id','embed');
-	elIframe.setAttribute('src','https://docs.google.com/a/bikfalvi.com/viewer?authuser=1&srcid=0ByT4N8kjyuzXOExZZ0lWbmc2LXM&pid=explorer&a=v&chrome=false&embedded=true');
+	elIframe.setAttribute('src','https://docs.google.com/a/bikfalvi.com/file/d/0ByT4N8kjyuzXOExZZ0lWbmc2LXM/preview');
 	elParent.appendChild(elIframe);
 }

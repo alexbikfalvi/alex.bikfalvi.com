@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="keywords" content="Alex, Bikfalvi, personal, site"/>
+<meta name="description" content="Alex Bikfalvi personal web site"/>
+<meta name="robots" content="index, follow"/>
+
+<link href="../../../../../../images/icon.ico" rel="shortcut icon"/>
+<link href="../../../../../../style/style.css" rel="stylesheet" title="Silver stylesheet" type="text/css"/>
+<link href="../../../../../../style/teaching.css" rel="stylesheet" type="text/css"/>
+
+<title>Alex Bikfalvi - Teaching - Developing a SIP Application in Java</title>
+
+<script type="text/javascript" src="../../../../../../script/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="content">
+
+<div id="header">
+<p class="hidden">Alex Bikfalvi</p>
+</div>
+
+<div id="back">
+
+<div id="main-menu">
+<ul id="main-menu-list" class="menu">
+<li><a href="../../../../../../" accesskey="H"><span class="accesskey">H</span>ome</a></li>
+<li><a href="../../../../../../bio.html" accesskey="B"><span class="accesskey">B</span>io</a></li>
+<li><a href="../../../../../../contact.html" accesskey="C"><span class="accesskey">C</span>ontact</a></li>
+<li><a href="../../../../../../research.html" accesskey="R"><span class="accesskey">R</span>esearch</a></li>
+<li><a href="../../../../../../projects.html" accesskey="J">Pro<span class="accesskey">j</span>ects</a></li>
+<li><a href="../../../../../../pubs.html" accesskey="P"><span class="accesskey">P</span>ublications</a></li>
+<li id="main-menu-selection"><a href="../../../../../../teaching.html" accesskey="T"><span class="accesskey">T</span>eaching</a></li>
+<li><a href="../../../../../../events.html" accesskey="E"><span class="accesskey">E</span>vents</a></li>
+</ul>
+</div>
+
+<div id="path">
+	<ul>
+    	<li id="path-home"><a href="../../../../../../" title="Home"><span>Home</span></a></li>
+    	<li class="path-arrow"><a href="../../../../../../teaching.html" title="Teaching">Teaching</a></li>
+    	<li class="path-arrow"><a href="../../../../" title="UPF">Pompeu Fabra University</a></li>
+    	<li class="path-arrow"><a href="../../../" title="2014">2014</a></li>
+    	<li class="path-arrow"><a href="../../" title="UPF">Architecture and Signaling</a></li>
+    	<li class="path-arrow"><a href="../" title="UPF">Lab</a></li>
+    	<li class="path-arrow">Developing a SIP Application in Java</li>
+    </ul>
+</div>
+
+<div id="main-content">
+
+<h1 class="title">Developing a SIP Application in Java</h1>
+
+<h1>Lab Overview</h1>
+
+<h2>Goals</h2>
+
+<p>The objective of this practical exercise is to create a simple SIP client application using the Java programming language. For this purpose, we shall use the JAIN-SIP application-programming interface (API), which already implements an extensive set of SIP functions.</p>
+
+<h2>What is the JAIN-SIP API?</h2>
+
+<p>In the same way as the socket API, in modern operating systems, implements the functionality of TCP/IP stack protocols, the JAIN-SIP API, illustrated in the figure 1, provides to developers a set of interfaces to:</p>
+<p><img src="JainSipApi.png" width="434" height="240" alt="The JAIN SIP API" /></p>
+<p class="figure">Figure 1. The JAIN SIP API.</p>
+
+<ul>
+<li>Build and parse SIP messages.</li>
+<li>Sending and receiving SIP messages <i>statelessly</i>, at the <i>transport</i> sub-layer.</li>
+<li>Sending and receiving SIP messages <i>statefully</i>, at the <i>transaction</i> sub-layer.</li>
+</ul>
+
+
+<h2>Software Tools</h2>
+
+<p>To create our SIP client application, we shall use:</p>
+
+<ul>
+<li>The Java Software Development Kit Standard Edition (Java SDK SE).</li>
+<li>The NetBeans integrated development environment (IDE).</li>
+<li>The JAIN SIP API.</li>
+</ul>
+
+<h1>Lab Assignment</h1>
+
+<p>This lab assignment consists of four (4) tasks.</p>
+
+<ol>
+<li>Send a SIP request and receive a SIP response in <i>stateless</i> mode.</li>
+<li>Send a SIP request and receive a SIP response in <i>statefull</i> or <i>transaction</i> mode.</li>
+<li>Create a SIP dialog.</li>
+<li>Terminate a SIP dialog.</li>
+</ol>
+
+<p>The first two (2) we shall do <i>together</i>. The last two (2) are <i>individual</i> and/or <i>homework</i>. You need to hand in your code in a single archive file (ZIP, GZ, TAR, etc.) <i>and</i> the answer to the lab questions before the 15th of February, 2013. The answers to questions is 60% of the final mark, uploaded code is 40% of the final mark. Fully functional code gives a bonus of 20%.</p>
+
+<h1>Lab Steps</h1>
+
+<h2>Step 1: Download Prerequisites</h2>
+
+<p>Open your browser and download a prerequisites file from the following URL:</p>
+
+<p><a href="http://alex.bikfalvi.com/teaching/upf/2013/architecture_and_signaling/lab/sip/sip-client.zip" class="external" target="_blank"> http://alex.bikfalvi.com/teaching/upf/2013/architecture_and_signaling/lab/sip/sip-client.zip</a></p>
+
+<p>Unpack the contents of the downloaded file in an empty folder (directory).</p>
+
+<h2>Step 2: Open Project NetBeans</h2>
+
+<ol>
+<li> Open the NetBeans Integrated Development Environment.</li>
+<li> From the <b>File</b> &gt; <b>Open Project...</b> menu open the <code><span class="keyword">SipClient</span></code> Java project found in the previous folder.</li>
+<li> Once the project has loaded, in the left side project tree find and open the <code><span class="keyword">SipClient.java</span></code> file, as shown in the figure 2.</li>
+<li> Our Java application uses a graphical user interface (GUI). At the top of the main code area there are two buttons named <b>Source</b> and <b>Design</b> with which you can change between <i>writing</i> Java source code and <i>designing</i> your user interface. Because the user interface has already been designed for you, we shall continue in source code mode.</li>
+<li> Build your project from the <b>Run</b> &gt; <b>Build Project</b> menu (or with the <b>F11</b> key). Check the project compiles and builds without errors.</li>
+<li> Run your application from the <b>Run</b> &gt; <b>Run Project</b> menu (or with the <b>F6</b> key). You should see a new window named <i>SipClient</i> as shown in the figure 3.</li>
+</ol>
+
+<p><img src="ProjectTree.png" width="342" height="282" alt="The project tree in NetBeans" /></p>
+<p class="figure">Figure 2. The project tree in NetBeans.</p>
+<p><img src="Client.png" width="440" height="380" alt="The GUI window of the SIP application" /></p>
+<p class="figure">Figure 3. The GUI window of the SIP application.</p>
+
+<h2>Step 3: Viewing and Understanding the GUI Controls</h2>
+
+<p>The window of our SIP client application is divided into three regions:</p>
+
+<ul>
+<li> A text field control named <code><span class="keyword">textBox</span></code>, where we shall enter the SIP URI.</li>
+<li> A text area control names <code><span class="keyword">textArea</span></code>, where we can display text information.</li>
+<li> A row of four (4) buttons corresponding to the SIP functions we shall implement.
+    <ul>
+    <li> A <b>Reg (SL)</b> button named <code><span class="keyword">buttonRegistrationStateless</span></code>, that implements a SIP <i>registration</i> using a stateless SIP user agent.</li>
+    <li> A <b>Reg (SF)</b> button named <code><span class="keyword">buttonRegistrationStatefull</span></code>, that implements a SIP <i>registration</i> using a statefull SIP user agent.</li>
+    <li> A <b>Invite</b> button named <code><span class="keyword">buttonRegistrationInvite</span></code>, that establishes a SIP <i>dialog</i> (or <i>INVITE</i> transaction).</li>
+    <li> A <b>Bye</b> button named <code><span class="keyword">buttonRegistrationBye</span></code>, that terminates a SIP <i>dialog</i> (or <i>BYE</i> transaction).</li>
+    </ul>
+    </li>
+</ul>
+
+<p>Initially all buttons are disabled, and we shall enable them programmatically, as needed.</p>
+
+<h2>Step 4: Viewing and Understanding the Source Code</h2>
+
+<p>After closing the running application, return to the NetBeans IDE, and switch into source code mode. The SIP client application is a single Java class called <code><span class="keyword">SipClient</span></code>. It extends the <code><span class="keyword">JFrame</span></code> class and therefore is a GUI window, and implements the <code><span class="keyword">SipListener</span></code> interface to receive and process SIP messages.</p>
+
+<div class="box-code">
+  <pre>
+<span class="keyword">public class</span> <span class="keywordtype">SipClient</span> <span class="keyword">extends</span> <span class="keywordtype">JFrame</span> <span class="keyword">implements</span> <span class="keywordtype">SipListener</span> {
+    <span class="comment">// ...
+    // The class code is here.
+    // ...</span>
+}</pre></div>
+
+<p>The class includes a number of methods corresponding to the events raised by (i) the GUI and (ii) the SIP JAIN API. The following code sample shows the methods corresponding to GUI events.</p>
+
+<div class="box-code">
+  <pre>
+<span class="keyword">private void</span> onOpen(<span class="keywordtype">WindowEvent</span> evt) {
+    <span class="comment">// A method called when you open your application.</span>
+}
+
+<span class="keyword">private void</span> onRegisterStateless(<span class="keywordtype">ActionEvent</span> evt) {
+    <span class="comment">// A method called when you click on the "Reg (SL)" button.</span>
+}
+
+<span class="keyword">private void</span> onRegisterStatefull(<span class="keywordtype">ActionEvent</span> evt) {
+    <span class="comment">// A method called when you click on the "Reg (SF)" button.</span>
+}
+
+<span class="keyword">private void</span> onInvite(<span class="keywordtype">ActionEvent</span> evt) {
+    <span class="comment">// A method called when you click on the "Invite" button.</span>
+}
+
+<span class="keyword">private void</span> onBye(<span class="keywordtype">ActionEvent</span> evt) {
+    <span class="comment">// A method called when you click on the "Bye" button.</span>
+}</pre></div>
+
+<p>The meaning of each method is given in the following table.</p>
+
+<table class="information 2-columns">
+  <tr>
+    <th class="strong">Method Name</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td class="strong"><code><span class="keyword">onOpen</span></code> </td>
+    <td>The method is called when the application is opened.</td>
+  </tr>
+  <tr>
+    <td class="strong"><code><span class="keyword">onRegisterStateless</span></code> </td>
+    <td>The method is called when you click the <b>Reg (SL)</b> button.</td>
+  </tr>
+  <tr>
+    <td class="strong"><code><span class="keyword">onRegisterStatefull</span></code> </td>
+    <td>The method is called when you click the <b>Reg (SF)</b> button.</td>
+  </tr>
+  <tr>
+    <td class="strong"><code><span class="keyword">onInvite</span></code> </td>
+    <td>The method is called when you click the <b>Invite</b> button.</td>
+  </tr>
+  <tr>
+    <td class="strong"><code><span class="keyword">onBye</span></code> </td>
+    <td>The method is called when you click the <b>Bye</b> button.</td>
+  </tr>
+</table>
+
+<p>The following code sample shows the methods corresponding to the SIP events.</p>
+
+<div class="box-code">
+  <pre>
+<span class="keyword">public void</span> processRequest(<span class="keywordtype">RequestEvent</span> requestEvent) {
+    <span class="comment">// A method called when you receive a SIP request.</span>
+}
+
+<span class="keyword">public void</span> processResponse(<span class="keywordtype">ResponseEvent</span> responseEvent) {
+    <span class="comment">// A method called when you receive a SIP request.</span>
+}
+
+<span class="keyword">public void</span> processTimeout(<span class="keywordtype">TimeoutEvent</span> timeoutEvent) {
+    <span class="comment">// A method called when a SIP operation times out.</span>
+}
+
+<span class="keyword">public void</span> processIOException(<span class="keywordtype">IOExceptionEvent</span> exceptionEvent) {
+    <span class="comment">// A method called when a SIP operation results in an I/O error.</span>
+}
+
+<span class="keyword">public void</span> processTransactionTerminated(<span class="keywordtype">TransactionTerminatedEvent</span> transactionTerminatedEvent) {
+    <span class="comment">// A method called when a SIP transaction terminates.</span>
+}
+
+<span class="keyword">public void</span> processDialogTerminated(<span class="keywordtype">DialogTerminatedEvent</span> dialogTerminatedEvent) {
+    <span class="comment">// A method called when a SIP dialog terminates.</span>
+}</pre></div>
+
+<p>During this lab, we shall focus only on the first two methods, described in the following table.</p>
+
+<table class="information 2-columns">
+  <tr>
+    <th class="strong">Method Name</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td class="strong"><code><span class="keyword">processRequest</span></code> </td>
+    <td>The method is called when the application receives a SIP request message.</td>
+  </tr>
+  <tr>
+    <td class="strong"><code><span class="keyword">processResponse</span></code> </td>
+    <td>The method is called when the application receives a SIP response message.</td>
+  </tr>
+</table>
+
+<h2>Packages and Classes</h2>
+
+<p>During the development of our application we shall use several Java packages and classes.</p>
+
+<table class="information 2-columns">
+  <tr>
+    <th class="strong">Package Name</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td class="strong"><code><span class="keyword">java.net.*</span></code></td>
+    <td>Package containing networking classes.</td>
+  </tr>
+  <tr>
+    <td class="strong"><code><span class="keyword">java.util.*</span></code></td>
+    <td>Package containing other utility classes.</td>
+  </tr>
+  <tr>
+    <td class="strong"><code><span class="keyword">javax.sip.*</span></code></td>
+    <td>Package containing the main interfaces that model the architecture from both an application developer and a stack vendor view.</td>
+  </tr>
+  <tr>
+    <td class="strong"><code><span class="keyword">javax.sip.address.*</span></code></td>
+    <td>Package containing the interfaces that represent the addressing components of the SIP protocol.</td>
+  </tr>
+  <tr>
+    <td class="strong"><code><span class="keyword">javax.sip.header.*</span></code></td>
+    <td>Package containing all the headers interfaces supported by the SIP specification.</td>
+  </tr>
+  <tr>
+    <td class="strong"><code><span class="keyword">javax.sip.message.*</span></code></td>
+    <td>Package containing interfaces representing SIP messages.</td>
+  </tr>
+</table>
+
+<table class="information 2-columns">
+  <tr>
+    <th class="strong">Class Name</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td class="strong"><code><span class="keyword">SipFactory</span></code></td>
+    <td>A class which applications can use to obtain SIP API object implementations.</td>
+  </tr>
+  <tr>
+    <td class="strong"><code><span class="keyword">SipListener</span></code></td>
+    <td>An interface representing the application view to a SIP stack, and therefore defines the application's communication channel to the SIP stack.</td>
+  </tr>
+  <tr>
+    <td class="strong"><code><span class="keyword">SipProvider</span></code></td>
+    <td>An interface representing the messaging entity of a SIP stack. In defines the messaging and transactional component view of the SIP stack.</td>
+  </tr>
+  <tr>
+    <td class="strong"><code><span class="keyword">SipStack</span></code></td>
+    <td>An interface representing the management interface of a SIP stack.</td>
+  </tr>
+  <tr>
+    <td class="strong"><code><span class="keyword">MessageFactory</span></code></td>
+    <td>This interface provides factory methods that allow an application to create Request and Response messages from a particular implementation of JAIN SIP.</td>
+  </tr>
+  <tr>
+    <td class="strong"><code><span class="keyword">HeaderFactory</span></code></td>
+    <td>This interface provides factory methods that allow an application to create Header object from a particular implementation of JAIN SIP.</td>
+  </tr>
+  <tr>
+    <td class="strong"><code><span class="keyword">AddressFactory</span></code></td>
+    <td>This interface provides factory methods that allow an application to create Address objects and SIP URIs.</td>
+  </tr>
+  <tr>
+    <td class="strong"><code><span class="keyword">ListeningPoint</span></code></td>
+    <td>This interface represents a unique IP network listening point, which consists of port transport and IP. A ListeningPoint is a Java representation of the socket that a <code><span class="keyword">SipProvider</span></code> messaging entity uses to send and receive messages.</td>
+  </tr>
+  <tr>
+    <td class="strong"><code><span class="keyword">Request</span></code></td>
+    <td>A SIP Request is a request from a client to a server.</td>
+  </tr>
+  <tr>
+    <td class="strong"><code><span class="keyword">Response</span></code></td>
+    <td>A Response message is sent by a recipient of Request once it has received and interpreted the Request.</td>
+  </tr>
+</table>
+
+
+<h1>Lab Tasks</h1>
+
+<h2>Stateless Registration</h2>
+
+<p>This task we shall perform together during the lab. You should write down the answers to the questions in <i>italics</i>. Submit these answers in your lab report.</p>
+
+<ol>
+<li>Open the <code><span class="keyword">SipClient</span></code> NetBeans project in source code view.</li>
+<li>Add the following packages to the source code file, before the beginning of the <code><span class="keyword">SipClient</span></code>class.
+
+<div class="box-code"><pre>
+<span class="keyword">import</span> java.net.*;
+<span class="keyword">import</span> java.util.*;
+<span class="keyword">import</span> javax.sip.address.*;
+<span class="keyword">import</span> javax.sip.header.*;
+<span class="keyword">import</span> javax.sip.message.*;
+</pre></div>
+</li>
+
+<li>The first step is to declare a number of class member variables that represent the configuration settings of our SIP client, and the objects of the SIP API. Add the following variables inside the <code><span class="keyword">SipClient</span></code> class.
+
+<div class="box-code"><pre>
+<span class="comment">// Objects used to communicate to the JAIN SIP API.</span>
+<span class="keywordtype">SipFactory</span> sipFactory;          <span class="comment">// Used to access the SIP API.</span>
+<span class="keywordtype">SipStack</span> sipStack;              <span class="comment">// The SIP stack.</span>
+<span class="keywordtype">SipProvider</span> sipProvider;        <span class="comment">// Used to send SIP messages.</span>
+<span class="keywordtype">MessageFactory</span> messageFactory;  <span class="comment">// Used to create SIP message factory.</span>
+<span class="keywordtype">HeaderFactory</span> headerFactory;    <span class="comment">// Used to create SIP headers.</span>
+<span class="keywordtype">AddressFactory</span> addressFactory;  <span class="comment">// Used to create SIP URIs.</span>
+<span class="keywordtype">ListeningPoint</span> listeningPoint;  <span class="comment">// SIP listening IP address/port.</span>
+<span class="keywordtype">Properties</span> properties;          <span class="comment">// Other properties.</span>
+
+<span class="comment">// Objects keeping local configuration.</span>
+<span class="keywordtype">String</span> ip;                      <span class="comment">// The local IP address.</span>
+<span class="keyword">int</span> port = 6060;                <span class="comment">// The local port.</span>
+<span class="keywordtype">String</span> protocol = <span class="stringliteral">"udp"</span>;        <span class="comment">// The local protocol (UDP).</span>
+<span class="keyword">int</span> tag = (<span class="keyword">new</span> <span class="keywordtype">Random</span>()).nextInt(); <span class="comment">// The local tag.</span>
+<span class="keywordtype">Address</span> contactAddress;         <span class="comment">// The contact address.</span>
+<span class="keywordtype">ContactHeader</span> contactHeader;    <span class="comment">// The contact header.</span>
+</pre></div>
+</li>
+
+<li>We need to initialize the SIP API such that we bind our application to the local IP address and the selected port and protocol. For this add the following code to the <code><span class="keyword">onOpen</span></code> method. You may skip the comments in green. Therefore, the initialization code will be executed every time we open our application.
+
+<div class="box-code">
+  <pre>
+<span class="keyword">try</span> {
+    <span class="comment">// Get the local IP address.</span>
+    <span class="keyword">this</span>.ip = <span class="keywordtype">InetAddress</span>.getLocalHost().getHostAddress();
+    <span class="comment">// Create the SIP factory and set the path name.</span>
+    <span class="keyword">this</span>.sipFactory = <span class="keywordtype">SipFactory</span>.getInstance();
+    <span class="keyword">this</span>.sipFactory.setPathName(<span class="stringliteral">"gov.nist"</span>);
+    <span class="comment">// Create and set the SIP stack properties.</span>
+    <span class="keyword">this</span>.properties = new <span class="keywordtype">Properties</span>();
+    <span class="keyword">this</span>.properties.setProperty(<span class="stringliteral">"javax.sip.STACK_NAME"</span>, <span class="stringliteral">"stack"</span>);
+    <span class="comment">// Create the SIP stack.</span>
+    <span class="keyword">this</span>.sipStack = <span class="keyword">this</span>.sipFactory.createSipStack(<span class="keyword">this</span>.properties);
+    <span class="comment">// Create the SIP message factory.</span>
+    <span class="keyword">this</span>.messageFactory = <span class="keyword">this</span>.sipFactory.createMessageFactory();
+    <span class="comment">// Create the SIP header factory.</span>
+    <span class="keyword">this</span>.headerFactory = <span class="keyword">this</span>.sipFactory.createHeaderFactory();
+    <span class="comment">// Create the SIP address factory.</span>
+    <span class="keyword">this</span>.addressFactory = <span class="keyword">this</span>.sipFactory.createAddressFactory();
+    <span class="comment">// Create the SIP listening point and bind it to the local IP address, port and protocol.</span>
+    <span class="keyword">this</span>.listeningPoint = <span class="keyword">this</span>.sipStack.createListeningPoint(<span class="keyword">this</span>.ip, <span class="keyword">this</span>.port, <span class="keyword">this</span>.protocol);
+    <span class="comment">// Create the SIP provider.</span>
+    <span class="keyword">this</span>.sipProvider = <span class="keyword">this</span>.sipStack.createSipProvider(<span class="keyword">this</span>.listeningPoint);
+    <span class="comment">// Add our application as a SIP listener.</span>
+    <span class="keyword">this</span>.sipProvider.addSipListener(<span class="keyword">this</span>);
+    <span class="comment">// Create the contact address used for all SIP messages.</span>
+    <span class="keyword">this</span>.contactAddress = <span class="keyword">this</span>.addressFactory.createAddress(<span class="stringliteral">"sip:"</span> + <span class="keyword">this</span>.ip + <span class="stringliteral">":"</span> + <span class="keyword">this</span>.port);
+    <span class="comment">// Create the contact header used for all SIP messages.</span>
+    <span class="keyword">this</span>.contactHeader = <span class="keyword">this</span>.headerFactory.createContactHeader(contactAddress);
+
+    <span class="comment">// Display the local IP address and port in the text area.</span>
+    <span class="keyword">this</span>.textArea.append(<span class="stringliteral">"Local address: "</span> + <span class="keyword">this</span>.ip + <span class="stringliteral">":"</span> + <span class="keyword">this</span>.port + <span class="stringliteral">"\n"</span>);
+}
+<span class="keyword">catch</span>(<span class="keywordtype">Exception</span> e) {
+    <span class="comment">// If an error occurs, display an error message box and exit.</span>
+    <span class="keywordtype">JOptionPane</span>.showMessageDialog(<span class="keyword">this</span>, e.getMessage(), <span class="stringliteral">"Error"</span>, <span class="keywordtype">JOptionPane</span>.<span class="keywordenum">ERROR_MESSAGE</span>);
+    <span class="keywordtype">System</span>.exit(-1);
+}</pre></div>
+</li>
+
+<li>Next, we implement the stateless registration. For this we must create and send a <b>REGISTER</b> request message. The destination of the SIP message is entered by the user in the text field <code><span class="keyword"> textField</span></code>. The message is created and sent when you click on the <b>Reg (LS)</b> button, and therefore, we implemented in the <code><span class="keyword">onRegisterStateless</span></code> method. Add the following code to the method. You may skip the comments in green.
+
+<div class="box-code">
+  <pre>
+<span class="keyword">try</span> {
+    <span class="comment">// Get the destination address from the text field.</span>
+    <span class="keywordtype">Address</span> addressTo = <span class="keyword">this</span>.addressFactory.createAddress(<span class="keyword">this</span>.textField.getText());
+    <span class="comment">// Create the request URI for the SIP message.</span>
+    javax.sip.address.<span class="keywordtype">URI</span> requestURI = addressTo.getURI();
+
+    <span class="comment">// Create the SIP message headers.</span>
+
+    <span class="comment">// The "Via" headers.</span>
+    <span class="keywordtype">ArrayList</span> viaHeaders = new <span class="keywordtype">ArrayList</span>();
+    <span class="keywordtype">ViaHeader</span> viaHeader = <span class="keyword">this</span>.headerFactory.createViaHeader(<span class="keyword">this</span>.ip, <span class="keyword">this</span>.port, <span class="stringliteral">"udp"</span>, <span class="keyword">null</span>);
+    viaHeaders.add(viaHeader);
+    <span class="comment">// The "Max-Forwards" header.</span>
+    <span class="keywordtype">MaxForwardsHeader</span> maxForwardsHeader = <span class="keyword">this</span>.headerFactory.createMaxForwardsHeader(70);
+    <span class="comment">// The "Call-Id" header.</span>
+    <span class="keywordtype">CallIdHeader</span> callIdHeader = <span class="keyword">this</span>.sipProvider.getNewCallId();
+    <span class="comment">// The "CSeq" header.</span>
+    <span class="keywordtype">CSeqHeader</span> cSeqHeader = <span class="keyword">this</span>.headerFactory.createCSeqHeader(1L,<span class="stringliteral">"REGISTER"</span>);
+    <span class="comment">// The "From" header.</span>
+    <span class="keywordtype">FromHeader</span> fromHeader = <span class="keyword">this</span>.headerFactory.createFromHeader(<span class="keyword">this</span>.contactAddress, <span class="keywordtype">String</span>.valueOf(<span class="keyword">this</span>.tag));
+    <span class="comment">// The "To" header.</span>
+    <span class="keywordtype">ToHeader</span> toHeader = <span class="keyword">this</span>.headerFactory.createToHeader(addressTo, <span class="keyword">null</span>);
+
+    <span class="comment">// Create the REGISTER request.</span>
+    <span class="keywordtype">Request</span> request = <span class="keyword">this</span>.messageFactory.createRequest(
+        requestURI,
+        <span class="stringliteral">"REGISTER"</span>,
+        callIdHeader,
+        cSeqHeader,
+        fromHeader,
+        toHeader,
+        viaHeaders,
+        maxForwardsHeader);
+    <span class="comment">// Add the "Contact" header to the request.</span>
+    request.addHeader(contactHeader);
+
+    <span class="comment">// Send the request statelessly through the SIP provider.</span>
+    <span class="keyword">this</span>.sipProvider.sendRequest(request);
+
+    <span class="comment">// Display the message in the text area.</span>
+    <span class="keyword">this</span>.textArea.append(
+        <span class="stringliteral">"Request sent:\n"</span> + request.toString() + <span class="stringliteral">"\n\n"</span>);
+}
+<span class="keyword">catch</span>(<span class="keywordtype">Exception</span> e) {
+    <span class="comment">// If an error occurred, display the error.</span>
+    <span class="keyword">this</span>.textArea.append(<span class="stringliteral">"Request sent failed: "</span> + e.getMessage() + <span class="stringliteral">"\n"</span>);
+}</pre></div>
+</li>
+
+<li>Test your application. You need to enter a valid SIP URI. For this in the user text field, change <code><span class="keyword">localhost</span></code> with your IP address displayed in the client.</li>
+
+<li>Although your application sends a SIP message, you do not know whether you receive a response. For this we must write code that listens to received responses. We add this code to the <code><span class="keyword">processResponse</span></code> method.
+
+<div class="box-code"><pre>
+<span class="comment">// Get the response.</span>
+<span class="keywordtype">Response</span> response = responseEvent.getResponse();
+<span class="comment">// Display the response message in the text area.</span>
+<span class="keyword">this</span>.textArea.append(<span class="stringliteral">"\nReceived response: "</span> + response.toString());
+</pre></div>
+</li>
+
+<li>To test whether you receive a response, wait for the instructor's assistance. You may use a Java SIP server available at:
+
+<a href="http://alex.bikfalvi.com/teaching/upf/2013/architecture_and_signaling/lab/sip/sip-server.zip" class="external" target="_blank">http://alex.bikfalvi.com/teaching/upf/2013/architecture_and_signaling/lab/sip/sip-server.zip</a>
+
+You need to open and compile the server in NetBeans similar to the SIP client.</li>
+
+</ol>
+
+<table class="information">
+  <tr><th class="strong">Questions</th></tr>
+  <tr><td class="strong">Which is the line of code that enables our client application to receive the SIP messages from the SIP API (requests and responses)?</td></tr>
+  <tr><td class="strong">What happens if we start twice the client application with the same configuration?</td></tr>
+  <tr><td class="strong">What are the fields in the sent SIP message? Which is the request URI?</td></tr>
+  <tr><td class="strong">Which headers are the same in the response received from the SIP server?</td></tr>
+</table>
+
+<h2>Statefull Registration</h2>
+
+<p>Sending messages statefully is very easy because most of the work is already done for us by the JAIN SIP API. The only thing we have to do is to use a statefull SIP transaction, instead of the stateless <code><span class="keyword">SipProvider</span></code>.</p>
+
+<ol>
+<li> Copy and paste the code you write in the <code><span class="keyword">onRegisterStateless</span></code> method to the <code><span class="keyword">onRegisterStatefull</span></code> method. Therefore, this code is executed when you click on the <b>Reg (LS)</b> button.</li>
+<li> Comment the line where you send the message using the SIP provider, and instead create a SIP <code><span class="keyword">ClientTransaction</span></code> object for the <b>REGISTER</b> request. Send the message using the transaction.
+
+<div class="box-code">
+  <pre>
+<span class="comment">// Send the request statelessly through the SIP provider.</span>
+<span class="comment">// this.sipProvider.sendRequest(request);</span>
+
+<span class="comment">// Create a new SIP client transaction.</span>
+<span class="keywordtype">ClientTransaction</span> transaction = this.sipProvider.getNewClientTransaction(request);
+<span class="comment">// Send the request statefully, through the client transaction.</span>
+transaction.sendRequest();</pre></div>
+</li>
+
+<li> Test your application.</li>
+</ol>
+
+<table class="information">
+  <tr><th class="strong">Questions</th></tr>
+  <tr><td class="strong">Which headers are different between the request and the response SIP messages?</td></tr>
+  <tr><td class="strong">Which are the headers that have the same value?</td></tr>
+  <tr><td class="strong">When receiving a SIP response, how do we know if the message is statefull or stateless?</td></tr>
+</table>
+
+<h2>Create a SIP Dialog</h2>
+
+<p>This is an individual assignment. However, here's a couple of tips below.</p>
+
+<i>Tips:</i>
+<ul>
+<li>A SIP dialog is established by an <b>INVITE</b> transaction. In an <b>INVITE</b> transaction, the SIP client sends an <b>INVITE</b> request message, waits for zero or more <b>1xx</b> provisional responses, and a final <b>2xx</b> response. After the final response, it sends an <b>ACK</b> request.</li>
+<li>A SIP dialog is always statefull, and you must use a transaction.</li>
+<li>To keep the lab simple, the SIP server will send only a final response (no provisional responses).</li>
+<li>When receiving the final <b>2xx</b> response, you must send the <b>ACK</b> on the newly created dialog, which can be obtained with the code:
+
+<div class="box-code"><pre>
+<span class="keywordtype">Dialog</span> dialog = responseEvent.getClientTransaction().getDialog();
+</pre></div>
+</li>
+
+<li> You must check whether the dialog exists (different from <code><span class="keyword">null</span></code>).</li>
+<li> You can create the <b>ACK</b> request using the dialog. Do not forget to add the contact header to the request, after the request is created.
+
+<div class="box-code"><pre>
+<span class="keywordtype">Request</span> request = dialog.createAck(((<span class="keywordtype">CSeqHeader</span>)response.getHeader(<span class="stringliteral">"CSeq"</span>)).getSeqNumber());
+</pre></div>
+</li>
+
+<li> You must send the <b>ACK</b> request using the dialog.
+
+<div class="box-code"><pre>
+dialog.sendAck(request);
+</pre></div>
+</li>
+
+<li>Do not forget to use a <code><span class="keyword">try</span></code> -- <code><span class="keyword">catch</span></code> statement around the instructions above.</li>
+<li>Store the dialog object in a class member variable, such that you can use it for the <b>BYE</b> transaction.</li>
+</ul>
+
+<table class="information">
+  <tr><th class="strong">Questions</th></tr>
+  <tr><td class="strong">Which are the header values in a SIP message that uniquely identify a SIP dialog?</td></tr>
+  <tr><td class="strong">When is SIP dialog considered to be created? (Use your lecture notes).</td></tr>
+  <tr><td class="strong">What happens if your client application fails to send an <b>ACK</b> request after receiving the final <b>2xx</b> response?</td></tr>
+</table>
+
+<h2>Terminate a SIP Dialog</h2>
+
+<p>This is an individual assignment. However, here's a couple of tips below.</p>
+
+<i>Tips:</i>
+<ul>
+<li>Terminating a SIP dialog consists of a <b>BYE</b> transaction.</li>
+<li>To execute a <b>BYE</b> transaction, first you must create a SIP dialog using an <b>INVITE</b> transaction. You need to store the created dialog in a class variable.</li>
+<li>You can create the <b>BYE</b> request using the dialog established during the <b>INVITE</b> transaction. This ensures that all headers already have the correct values. You do not need to add any headers to the message. The code to do this is the following:
+
+<div class="box-code"><pre>
+<span class="keywordtype">Request</span> request = <span class="keyword">this</span>.dialogClient.createRequest(<span class="stringliteral">"BYE"</span>);
+</pre></div>
+</li>
+
+<li> You need to send the <b>BYE</b> statefully using a transaction (like the previous statefull requests).
+<div class="box-code"><pre>
+<span class="keywordtype">ClientTransaction</span> transaction = <span class="keyword">this</span>.sipProvider.getNewClientTransaction(request);
+</pre></div>
+</li>
+
+<li> However, instead of sending the request using the transaction, you send it using the SIP dialog.  
+<div class="box-code"><pre>
+<span class="keyword">this</span>.dialogClient.sendRequest(transaction);
+</pre></div>
+</li>
+</ul>
+
+<table class="information">
+  <tr><th class="strong">Questions</th></tr>
+  <tr><td class="strong">Compare the headers between the <b>INVITE</b>, <b>ACK</b> and <b>BYE</b> requests of the same dialog. Which headers are the same?</td></tr>
+  <tr><td class="strong">Which headers are different?</td></tr>
+  <tr><td class="strong">When does the number from the <code><span class="keyword">CSeq</span></code> header change? Why?</td></tr>
+</table>
+
+
+<div class="infoboxes">
+	<div class="infobox-container">
+		<div class="infobox">
+        	<a href="../../../../../../download/Teaching-2013-Lab-SIP.pdf" style="background-image:url(../../../../../images/doc_as_2013_lab_sip.png)" target="_blank">
+            	<span class="infobox-title infobox-title-double">Download this lab.</span>
+                <span class="infobox-text">February 8, 2013</span>
+                <span class="infobox-text">PDF/929 KB</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<p class="update">Published: Febrary 20, 2013<br/>Last updated: February 21, 2013</p>
+
+</div>
+</div>
+
+<div id="footer">
+<p><a href="../../../../../../accessibility.html" title="Accessibility">Accessibility</a> | <a href="../../../../../../copyright.html" title="Copyright Information">Copyright Information</a></p>
+</div>
+
+</div>
+
+</body>
+</html>

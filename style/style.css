@@ -133,6 +133,7 @@ table.information {
 	background-color: white;
 }
 table.information th {
+	font-weight: 600;
 	padding:4px;
 	background-color:#C0C0C0;
 }
