@@ -1,0 +1,7 @@
+@conference{palacin_eunice_2014,
+	title = {{Revealing Hidden Interconnections between Access ISPs and Content Providers}},
+	author = {Manuel Palacin and Alex Bikfalvi and Miquel Oliver},
+	booktitle = {20th Eunice Open European Summer School and Conference},
+	month = {September},
+	year = {2014}
+}
