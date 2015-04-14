@@ -80,7 +80,7 @@
 
 /* Counter */
 #counterup {
-	width:401px;
+	width:438px;
 	float:left;
 	display:block;
 	display:inline;
@@ -99,8 +99,8 @@
 	display:inline;
 	overflow: hidden;
 }
-.counterupdigitgroup3 {
-	width:108px; /* 34 + 3 + 34 + 3 + 34 */
+.counterupdigitgroup4 {
+	width:145px; /* 34 + 3 + 34 + 3 + 34 + 3 + 34*/
 	height:90px;
 	margin-left:10px;
 	margin-right:10px;
@@ -139,6 +139,10 @@
 	background-repeat:no-repeat;
 }
 #counterupdigitdaythird {
+	background-image:url(../research/phd/counter/Digits10up.png);
+	background-repeat:no-repeat;
+}
+#counterupdigitdayfourth {
 	background-image:url(../research/phd/counter/Digits10up.png);
 	background-repeat:no-repeat;
 }

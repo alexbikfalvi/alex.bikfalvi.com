@@ -129,7 +129,7 @@ a:hover.external{
 }
 
 #counterup {
-	width:401px;
+	width:438px;
 	float:left;
 	display:block;
 	margin-left:300px;
@@ -152,8 +152,8 @@ a:hover.external{
 	overflow: hidden;
 }
 
-.counterupdigitgroup3 {
-	width:108px; /* 34 + 3 + 34 + 3 + 34 */
+.counterupdigitgroup4 {
+	width:145px; /* 34 + 3 + 34 + 3 + 34 + 3 + 34 */
 	height:100px;
 	margin-left:10px;
 	margin-right:10px;
@@ -197,6 +197,11 @@ a:hover.external{
 }
 
 #counterupdigitdaythird {
+	background-image:url(counter/Digits10up.png);
+	background-repeat:no-repeat;
+}
+
+#counterupdigitdayfourth {
 	background-image:url(counter/Digits10up.png);
 	background-repeat:no-repeat;
 }

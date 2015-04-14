@@ -1,6 +1,7 @@
 var elementUpDayFirst;
 var elementUpDaySecond;
 var elementUpDayThird;
+var elementUpDayFourth;
 var elementUpHourFirst;
 var elementUpHourSecond;
 var elementUpMinFirst;
@@ -13,6 +14,7 @@ var currentShuffle = 0;
 var currentDayFirst;
 var currentDaySecond;
 var currentDayThird;
+var currentDayFourth;
 var currentHourFirst;
 var currentHourSecond;
 var currentMinFirst;
@@ -26,6 +28,8 @@ var digitDaySecondCurrentPosition = 0;
 var digitDaySecondFinalPosition = 0;
 var digitDayThirdCurrentPosition = 0;
 var digitDayThirdFinalPosition = 0;
+var digitDayFourthCurrentPosition = 0;
+var digitDayFourthFinalPosition = 0;
 var digitHourFirstCurrentPosition = 0;
 var digitHourFirstFinalPosition = 0;
 var digitHourSecondCurrentPosition = 0;
@@ -68,6 +72,7 @@ function RunCounter()
 	elementUpDayFirst = document.getElementById('counterupdigitdayfirst');
 	elementUpDaySecond = document.getElementById('counterupdigitdaysecond');
 	elementUpDayThird = document.getElementById('counterupdigitdaythird');
+	elementUpDayFourth = document.getElementById('counterupdigitdayfourth');
 	elementUpHourFirst = document.getElementById('counterupdigithourfirst');
 	elementUpHourSecond = document.getElementById('counterupdigithoursecond');
 	elementUpMinFirst = document.getElementById('counterupdigitminutefirst');
@@ -83,7 +88,7 @@ function ResetCounterDayDigitFirstTimeout()
 	if(TimeDelta() >= 0)
 	{
 		elementUpDayFirst.style.backgroundPosition = String(-digitDayFirstCurrentPosition * 40) + "px 0";
-		currentDayFirst = Math.floor(timeDeltaDay / 100) % 10;
+		currentDayFirst = Math.floor(timeDeltaDay / 1000) % 10;
 		digitDayFirstFinalPosition = currentDayFirst * 6;
 		if(digitDayFirstCurrentPosition != digitDayFirstFinalPosition)
 		{
@@ -99,7 +104,7 @@ function ResetCounterDayDigitSecondTimeout()
 	if(TimeDelta() >= 0)
 	{
 		elementUpDaySecond.style.backgroundPosition = String(-digitDaySecondCurrentPosition * 40) + "px 0";
-		currentDaySecond = Math.floor(timeDeltaDay / 10) % 10;
+		currentDaySecond = Math.floor(timeDeltaDay / 100) % 10;
 		digitDaySecondFinalPosition = currentDaySecond * 6;
 		if(digitDaySecondCurrentPosition != digitDaySecondFinalPosition)
 		{
@@ -115,12 +120,28 @@ function ResetCounterDayDigitThirdTimeout()
 	if(TimeDelta() >= 0)
 	{
 		elementUpDayThird.style.backgroundPosition = String(-digitDayThirdCurrentPosition * 40) + "px 0";
-		currentDayThird = Math.floor(timeDeltaDay % 10);
+		currentDayThird = Math.floor((timeDeltaDay / 10) % 10);
 		digitDayThirdFinalPosition = currentDayThird * 6;
 		if(digitDayThirdCurrentPosition != digitDayThirdFinalPosition)
 		{
 			digitDayThirdCurrentPosition = (digitDayThirdCurrentPosition + 1) % 60;
 			setTimeout('ResetCounterDayDigitThirdTimeout()', resetTimeout);
+		}
+		else setTimeout('ResetCounterDayDigitFourthTimeout()', resetTimeout);
+	}
+}
+
+function ResetCounterDayDigitFourthTimeout()
+{
+	if(TimeDelta() >= 0)
+	{
+		elementUpDayFourth.style.backgroundPosition = String(-digitDayFourthCurrentPosition * 40) + "px 0";
+		currentDayFourth = Math.floor(timeDeltaDay % 10);
+		digitDayFourthFinalPosition = currentDayFourth * 6;
+		if(digitDayFourthCurrentPosition != digitDayFourthFinalPosition)
+		{
+			digitDayFourthCurrentPosition = (digitDayFourthCurrentPosition + 1) % 60;
+			setTimeout('ResetCounterDayDigitFourthTimeout()', resetTimeout);
 		}
 		else setTimeout('ResetCounterHourDigitFirstTimeout()', resetTimeout);
 	}
@@ -226,9 +247,10 @@ function CounterTimeout()
 {
 	if(TimeDelta() >= 0)
 	{
-		var newDayFirst = Math.floor((timeDeltaDay / 100) % 10);
-		var newDaySecond = Math.floor((timeDeltaDay / 10) % 10);
-		var newDayThird = Math.floor(timeDeltaDay % 10);
+		var newDayFirst = Math.floor((timeDeltaDay / 1000) % 10);
+		var newDaySecond = Math.floor((timeDeltaDay / 100) % 10);
+		var newDayThird = Math.floor((timeDeltaDay / 10) % 10);
+		var newDayFourth = Math.floor(timeDeltaDay % 10);
 		var newHourFirst = Math.floor(timeDeltaHour / 10);
 		var newHourSecond = Math.floor(timeDeltaHour % 10);
 		var newMinFirst = Math.floor(timeDeltaMin / 10);
@@ -239,6 +261,7 @@ function CounterTimeout()
 		if(newDayFirst != currentDayFirst) ShiftDayFirst(newDayFirst);
 		if(newDaySecond != currentDaySecond) ShiftDaySecond(newDaySecond);
 		if(newDayThird != currentDayThird) ShiftDayThird(newDayThird);
+		if(newDayFourth != currentDayFourth) ShiftDayFourth(newDayFourth);
 		if(newHourFirst != currentHourFirst) ShiftHourFirst(newHourFirst);
 		if(newHourSecond != currentHourSecond) ShiftHourSecond(newHourSecond);
 		if(newMinFirst != currentMinFirst) ShiftMinFirst(newMinFirst);
@@ -272,6 +295,14 @@ function ShiftDayThird(newDayThird)
 	digitDayThirdFinalPosition = newDayThird * 6;
 	currentDayThird = newDayThird;
 	setTimeout('TimeoutDayThird()', 0);
+}
+
+function ShiftDayFourth(newDayFourth)
+{
+	digitDayFourthCurrentPosition = currentDayFourth * 6;
+	digitDayFourthFinalPosition = newDayFourth * 6;
+	currentDayFourth = newDayFourth;
+	setTimeout('TimeoutDayFourth()', 0);
 }
 
 function ShiftHourFirst(newHourFirst)
@@ -349,6 +380,16 @@ function TimeoutDayThird()
 	{
 		digitDayThirdCurrentPosition = (digitDayThirdCurrentPosition + 1) % 60;
 		setTimeout('TimeoutDayThird()', shiftTimeout);
+	}
+}
+
+function TimeoutDayFourth()
+{
+	elementUpDayFourth.style.backgroundPosition = String(-digitDayFourthCurrentPosition * 40) + "px 0";
+	if(digitDayFourthCurrentPosition != digitDayFourthFinalPosition)
+	{
+		digitDayFourthCurrentPosition = (digitDayFourthCurrentPosition + 1) % 60;
+		setTimeout('TimeoutDayFourth()', shiftTimeout);
 	}
 }
 
