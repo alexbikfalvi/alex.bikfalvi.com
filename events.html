@@ -10,9 +10,13 @@
 
 <link href="images/icon.ico" rel="shortcut icon"/>
 <link href="style/style.css" rel="stylesheet" title="Silver stylesheet" type="text/css"/>
+<link href="style/carousel.css" rel="stylesheet" type="text/css"/>
 
 <title>Alex Bikfalvi - Events</title>
 
+<script type="text/javascript" src="script/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="script/jcarousel.js"></script>
+<script type="text/javascript" src="script/carousel.js"></script>
 <script type="text/javascript" src="script/ga.js"></script>
 
 </head>
@@ -40,6 +44,40 @@
 <li><a href="./teaching.html" accesskey="T"><span class="accesskey">T</span>eaching</a></li>
 <li id="main-menu-selection"><a href="./events.html" accesskey="E"><span class="accesskey">E</span>vents</a></li>
 </ul>
+</div>
+
+<div id="banner">
+  <ul id="carousel" class="jcarousel-skin-style">
+    <li>
+      <div class="carousel-content" style="background-image:url(images/banner_openstack_cluj_15.png);">
+        <p>How to virtualize the network for your <a href="https://www.openstack.org/" title="See the OpenStack project." target="_blank" class="external">OpenStack</a> Cloud using <a href="http://www.midonet.org/" title="Check it out" target="_blank" class="external">MidoNet</a>.</p>
+      	<p>An overview of OpenStack networking, a.k.a. <a href="https://wiki.openstack.org/wiki/Neutron" title="Check out Neutron." target="_blank" class="external">Neutron</a>, of the various plugin options, and a deep-dive into the MidoNet SDN, presented at the <a href="http://www.meetup.com/OpenStackRomania/events/222910344/" title="See the meetup." target="_blank" class="external">OpenStack Meetup</a> organized by our friends at <a href="http://www8.hp.com/ro/ro/software/cluj/" title="Go to HP web site." target="_blank" class="external">HP</a> in Cluj-Napoca on October 1, 2015,</p>
+        <p><a class="button button-primary" role="button" href="events/openstackcluj2015.html" title="See the event.">See the event...</a></p>
+      </div>
+    </li>
+    <li>
+      <div class="carousel-content" style="background-image:url(images/banner_fosdem_15.png);">
+      	<p>The annual event for open-source software developers.</p>
+        <p>At FOSDEM'15 organized in Brussels on January 30-31, 2015, <a href="https://twitter.com/kalymero_" title="Follow Antonio on Twitter" target="_blank" class="external">Antonio Sagliocco</a> and I presented MidoNet 101: a beginner's introduction to the <a href="http://www.midonet.org/" title="Check it out" target="_blank" class="external">MidoNet</a> SDN.</p>
+        <p><a class="button button-primary" role="button" href="events/fosdem2015.html" title="See the event.">See the event...</a></p>
+      </div>
+    </li>
+    <li>
+      <div class="carousel-content" style="background-image:url(images/banner_phd.png);">
+      	<p>I defended my doctoral dissertation, titled <a href="research/phd/dissertation/" title="Read my doctoral dissertation online.">Peer-to-Peer Television for the IP Multimedia Subsystem</a>, at <a href="http://www.uc3m.es/" title="Go the web site of the Carlos III University." target="_blank" class="external">Carlos III University of Madrid</a>.</p>
+        <p>The defense took place on July 18, 2012 at 11:00 AM in <a href="research/phd/map/" title="See the map with the location of my doctoral defense." target="_blank">Aula de Grados</a> from the Padre Soler Building, Leganés Campus.</p>
+        <p><a class="button button-primary" role="button" href="research/phd/" title="Go to the page of my doctoral defense.">Go to the Defense Page</a></p>
+      </div>
+    </li>
+  </ul>
+  <div id="carousel-control-outer">
+  <div id="carousel-control-inner">
+  <div id="carousel-control">
+  	<a href="#"><span>1</span></a>
+  	<a href="#"><span>2</span></a>
+  </div>
+  </div>
+  </div>
 </div>
 
 <div id="path">
@@ -200,7 +238,7 @@
   </tr>
 </table>
 
-<p class="update">Last updated: October 10, 2013</p>
+<p class="update">Last updated: April 3, 2016</p>
 
 </div>
 </div>
