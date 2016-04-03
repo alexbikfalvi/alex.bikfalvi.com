@@ -1,11 +1,24 @@
 
 function initialize()
 {
-	var latlng = new google.maps.LatLng(41.40368, 2.19475);
+	var latlng = new google.maps.LatLng(41.398966, 2.156175);
+  var styles = [
+    {
+	  stylers: [
+	    { hue: "#000000" },
+	    { saturation: -100 },
+	    { lightness: 0 }
+	  ]
+    }
+  ];
 	var mapOptions = {
 		zoom: 11,
 		center: latlng,
-		mapTypeId: google.maps.MapTypeId.TERRAIN
+		mapTypeId: google.maps.MapTypeId.ROADMAP,
+		mapTypeControl: false,
+		panControl: false,
+		streetViewControl: false,
+		styles: styles
    	};
 	var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 	var image = new google.maps.MarkerImage('../images/pin.png',
@@ -26,7 +39,7 @@ function initialize()
 		title:"My contact address"
 	});
 
-	var infoWndContent = '<style type="text/css"> @font-face { font-family:"Open Sans"; src:url("http://alex.bikfalvi.com/style/fonts/OpenSans-Regular.eot?") format("eot"), url("http://alex.bikfalvi.com/style/fonts/OpenSans-Regular.woff") format("woff"), url("http://alex.bikfalvi.com/style/fonts/OpenSans-Regular.ttf") format("truetype"), url("http://alex.bikfalvi.com/style/fonts/OpenSans-Regular.svg#OpenSans") format("svg"); 	font-weight:normal; font-style:normal; } body{ line-height:1.35em; font-family: "Open Sans",arial,sans-serif; font-size: 12px; } h1 { color:#333; font-size:140%; font-weight:300; }</style><div><h1>My contact address</h1><p>Carrer de Roc Boronat, 138 <br/> Despatx 55.224 <br/> 08018 Barcelona <br/> Spain</p></div>';
+	var infoWndContent = '<style type="text/css"> @font-face { font-family:"Open Sans"; src:url("http://alex.bikfalvi.com/style/fonts/OpenSans-Regular.eot?") format("eot"), url("http://alex.bikfalvi.com/style/fonts/OpenSans-Regular.woff") format("woff"), url("http://alex.bikfalvi.com/style/fonts/OpenSans-Regular.ttf") format("truetype"), url("http://alex.bikfalvi.com/style/fonts/OpenSans-Regular.svg#OpenSans") format("svg"); 	font-weight:normal; font-style:normal; } body{ line-height:1.35em; font-family: "Open Sans",arial,sans-serif; font-size: 12px; } h1 { color:#333; font-size:140%; font-weight:300; }</style><div><h1>My contact address</h1><p>Carrer de Luis Antúnez, 2-4 <br/> Office 1 <br/> 08006 Barcelona <br/> Spain</p></div>';
 	var infoWnd = new google.maps.InfoWindow({
 		content: infoWndContent
 	});
