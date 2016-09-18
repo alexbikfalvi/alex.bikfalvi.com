@@ -1,0 +1,7 @@
+@conference{palacin_tma_2015,
+	title = {{Analyzing the Interconnection Models of Content Providers}},
+	author = {Manuel Palacin and Alex Bikfalvi and Miquel Oliver},
+	booktitle = {5th PhD School on Traffic Monitoring and Analysis},
+	month = {April},
+	year = {2015}
+}
