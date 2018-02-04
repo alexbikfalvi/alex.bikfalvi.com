@@ -1,7 +1,7 @@
 
 function initialize()
 {
-	var latlng = new google.maps.LatLng(41.398966, 2.156175);
+	var latlng = new google.maps.LatLng(41.388080, 2.123129);
   var styles = [
     {
 	  stylers: [
@@ -39,7 +39,7 @@ function initialize()
 		title:"My contact address"
 	});
 
-	var infoWndContent = '<style type="text/css"> @font-face { font-family:"Open Sans"; src:url("http://alex.bikfalvi.com/style/fonts/OpenSans-Regular.eot?") format("eot"), url("http://alex.bikfalvi.com/style/fonts/OpenSans-Regular.woff") format("woff"), url("http://alex.bikfalvi.com/style/fonts/OpenSans-Regular.ttf") format("truetype"), url("http://alex.bikfalvi.com/style/fonts/OpenSans-Regular.svg#OpenSans") format("svg"); 	font-weight:normal; font-style:normal; } body{ line-height:1.35em; font-family: "Open Sans",arial,sans-serif; font-size: 12px; } h1 { color:#333; font-size:140%; font-weight:300; }</style><div><h1>My contact address</h1><p>Carrer de Luis Antúnez, 2-4 <br/> Office 1 <br/> 08006 Barcelona <br/> Spain</p></div>';
+	var infoWndContent = '<style type="text/css"> @font-face { font-family:"Open Sans"; src:url("http://alex.bikfalvi.com/style/fonts/OpenSans-Regular.eot?") format("eot"), url("http://alex.bikfalvi.com/style/fonts/OpenSans-Regular.woff") format("woff"), url("http://alex.bikfalvi.com/style/fonts/OpenSans-Regular.ttf") format("truetype"), url("http://alex.bikfalvi.com/style/fonts/OpenSans-Regular.svg#OpenSans") format("svg"); 	font-weight:normal; font-style:normal; } body{ line-height:1.35em; font-family: "Open Sans",arial,sans-serif; font-size: 12px; } h1 { color:#333; font-size:140%; font-weight:300; }</style><div><h1>My contact address</h1><p>Avinguda Diagonal, 682 <br/> 7th floor <br/> 08034 Barcelona <br/> Spain</p></div>';
 	var infoWnd = new google.maps.InfoWindow({
 		content: infoWndContent
 	});
